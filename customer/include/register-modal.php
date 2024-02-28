@@ -1,11 +1,11 @@
 <?php
     
-    require_once '../classes/customer.class.php';
+    require_once '../classes/customer-register.class.php';
     require_once  './tools/functions.php';
 
     if(isset($_POST['register'])){
 
-        $user = new Customer();
+        $user = new Register();
         //sanitize
         $user->firstname = htmlentities($_POST['firstname']);
         $user->lastname = htmlentities($_POST['lastname']);
@@ -81,7 +81,7 @@
                                         <label for="email" class="form-label">Email</label>
                                         <input type="email" class="form-control" id="email" name="email" value="<?php if(isset($_POST['email'])){ echo $_POST['email']; } ?>">
                                         <?php
-                                        $new_user = new Customer();
+                                        $new_user = new Register();
                                         if(isset($_POST['email'])){
                                                 $new_user->email = htmlentities($_POST['email']);
                                         }else{
