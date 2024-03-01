@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
     $title = 'Home';
-    require_once('./include/admin-index.php');
+    require_once('./include/secretary-index.php');
 ?>
 <body>
     <main>
