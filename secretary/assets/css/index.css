@@ -1,0 +1,72 @@
+.logo-picture{
+    background-image: linear-gradient(to bottom, #45396c 20%,  #ffffff 100%);
+  }
+  
+  .container{
+    height: 100vh;
+  }
+  
+  .container h1{
+    color: rgb(254, 254, 254);
+  }
+  
+  .form-control{
+    background-color: #C1CCF8;
+  }
+  
+  .logosec, img {
+    height: auto;
+    width: 40%;
+    text-align: center;
+  }
+  
+  .input-group {
+    position: relative;
+    text-decoration: none;
+    color: #060606;
+    border: none;
+  }
+  
+  .input-group .fa  {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px; /* Adjust as needed */
+  }
+  a{
+    text-decoration: none;
+    color: #060606;
+    text-align: left;
+  }
+  
+  .btn-dark-blue {
+    background-color:  #5263AB;
+    border-color: #135289;
+    color: #ffffff;
+  }
+  
+  .btn-dark-blue:hover {
+    background-color: #C1CCF8;
+    border-color: #a5b7d2;
+    color: #060606;
+  }
+  
+  .title{
+    font-weight: 500;
+  }
+  
+  .input-group .fa-user {
+    left: 10px; /* Adjust as needed */
+    color: #ffffff;
+  }
+  
+  .input-group .fa-lock {
+    left: 10px; /* Adjust as needed */
+    color: #ffffff;
+  }
+  
+  .input-group .fa-eye {
+    right: 10px; /* Adjust as needed */
+    color: #000000;
+  
+  }

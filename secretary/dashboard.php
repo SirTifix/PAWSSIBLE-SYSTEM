@@ -2,15 +2,15 @@
 <html lang="en">
 <?php
     $title = 'Dashboard';
-    require_once('./include/admin-head.php');
+    require_once('./include/secretary-head.php');
 ?>
 <body>
     <?php
-        require_once('./include/admin-header.php')
+        require_once('./include/secretary-header.php')
     ?>
     <main>
     <?php
-        require_once('./include/admin-sidepanel.php')
+        require_once('./include/secretary-sidepanel.php')
     ?>
     <section class="dashboard-con">
         <div class="box">
