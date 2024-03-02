@@ -190,9 +190,6 @@
       initializeCalendar(); 
     });
   </script>
-<?php
-        require_once('./assets/script/calendar.js');
-  ?>
 
 </body>
 
