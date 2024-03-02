@@ -577,3 +577,242 @@ header {
     border-radius: 10px;
     margin-bottom: 20px;
 }
+
+/* Schedule Panel*/
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: auto;
+  }
+  
+  .container-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .container-content {
+    padding: 20px;
+  }
+  
+  .calendar-container {
+    width: 70%; /* Adjust the width as needed */
+    height: 100%;
+    margin-right: 20px; /* Add spacing between calendar and time container */
+    margin-left: 150px; /* Add left margin */
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+  
+  .calendar {
+    flex: 1;
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .calendar-header h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .days-container {
+  }
+  
+  .days-of-week {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .days-of-week span {
+    flex: 1;
+  }
+  
+  .calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+
+.calendar-cell {
+    padding: 20px;
+    text-align: center;
+    background-color: #ECEFF2;
+    margin: 10px;
+}
+
+
+  .calendar-cell:hover {
+    background-color: #eaeaea;
+    cursor: pointer;
+  }
+  
+  .separator {
+    border-top: 2px solid #ccc; /* Straight line separator */
+    margin: 10px 0; /* Adjust spacing */
+  }
+  
+  .style-date{
+    padding: 7px;
+  }
+  .time-container {
+    /* Match width of time container with calendar container */
+    background-color: #fffcfc;
+    height: 575px;
+    border-radius: 15px;
+  }
+  
+  .time-slots-container {
+    margin-bottom: 20px; /* Add spacing between time container and other content */
+    padding: 10
+  }
+  
+  .time-slot-heading {
+    text-align: center;
+    
+  }
+  
+  .time-slots-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+    gap: 2px; /* Spacing between time slots */
+}
+
+  .time-slot {
+    padding: 10px;
+    text-align: center;
+    background-color: #ddd;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .time-slot:hover {
+    background-color: #ccc;
+  }
+  
+  /* CSS
+  #modal {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  } */
+  
+  /* CSS */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    max-width: 500px;
+  }
+  
+  .input-container {
+    margin-bottom: 15px;
+    position: relative;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    padding: 5px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  select:focus {
+    border-bottom: 1px solid #007bff;
+  }
+  
+  .underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+  }
+  
+  #submitBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #submitBtn:hover {
+    background-color: #45a049;
+  }
+  
+
+.social-icons{
+  content: "\f09a";
+  width: 10px;
+  font-size: 51px;
+  position: absolute;
+  right: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.buttons-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.buttons-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+}
+
+.edit-btn,
+.done-btn {
+    padding: 10px 20px;
+    background-color: #5263AB;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.done-btn {
+    background-color: #4CAF50;
+}
+
+.edit-btn:hover,
+.done-btn:hover {
+    background-color: #405a91;
+}
+
+
+
+  
