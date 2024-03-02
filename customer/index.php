@@ -141,6 +141,7 @@
           </div>
     </section>
     <?php
+        require_once('./include/footer.php');
         require_once('./include/js.php');
         require_once('./include/register-modal.php');
     ?>
