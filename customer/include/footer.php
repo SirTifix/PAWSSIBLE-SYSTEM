@@ -27,17 +27,20 @@
             <p > +63 947 731 2312</p>
         </div>
         
-        <div>
+        <div >
             <h5>BUSINESS HOURS</h5>
-            <div class="con-time d-flex">
+            <div class="con-time d-flex justify-content-center">
                 
-                <div>
+                <div class="con-time-2 row">
+                <div class="day col">
                     <p>Mon-Fri <br> Sat <br> Sun</p>
                 </div>
                 
-                <div>
+                <div class="d-flex time col">
                     <p>5:30PM - 9:00PM <br> 8:00AM - 5:00PM <br> 1:00PM - 5:00PM</p>
                 </div>
+                </div>
+
             </div>
         </div>
 
