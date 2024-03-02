@@ -3,6 +3,39 @@
 <?php
     $title = 'Veterinarian';
     require_once('./include/admin-head.php');
+    require_once('../classes/veterinarian.class.php');
+    require_once  './tools/functions.php';
+
+    if(isset($_POST['submit'])){
+      $veterinarianClass = new Veterinarian();
+      $currentDateTime = date('Y-m-d H:i:s');
+
+      $veterinarianClass->vetFirstname = htmlentities($_POST['vetFirstname']);
+      $veterinarianClass->vetLastname = htmlentities($_POST['vetLastname']);
+      $veterinarianClass->vetPhone = htmlentities($_POST['vetPhone']);
+      $veterinarianClass->vetEmail = htmlentities($_POST['vetEmail']);
+      $veterinarianClass->vetUsername = htmlentities($_POST['vetUsername']);
+      $veterinarianClass->vetPassword = htmlentities($_POST['vetPassword']);
+      $veterinarianClass->created_at = $currentDateTime;
+
+      if(validate_field($veterinarianClass->vetFirstname) && 
+      validate_field($veterinarianClass->vetLastname) &&
+      validate_field($veterinarianClass->vetEmail) && 
+      validate_field($veterinarianClass->vetUsername) &&
+      validate_field($veterinarianClass->vetPassword) &&
+      validate_password($veterinarianClass->vetPassword) &&
+      validate_email($veterinarianClass->vetEmail))
+      {
+        if($veterinarianClass->add())
+        {
+          header('location: veterinarians.php');
+        }
+        else
+        {
+          echo 'An error occured while adding in the database.';
+        }
+      }
+    }
 ?>
 <body>
   <?php
@@ -40,7 +73,7 @@
               
               <div>
                 <label for="vetLastname	" class="forms-label">Lastname</label>
-                <input type="text" class="form-control" id="vetLastname	" name="vetLastname	" required>
+                <input type="text" class="form-control" id="vetLastname	" name="vetLastname" required>
               </div>
 
               <div>
@@ -79,7 +112,7 @@
                 <a href="veterinarians.php" class="back-btn btn-secondary">Cancel</a>
               </div>
             <div>
-              <button type="submit" class="create-vet-btn btn-secondary" id="addStaffButton">Create Account</button>
+              <button type="submit" name ="submit"class="create-vet-btn btn-secondary" id="addStaffButton">Create Account</button>
             </div>
             </div>
           
