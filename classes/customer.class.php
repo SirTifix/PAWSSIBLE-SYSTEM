@@ -42,6 +42,7 @@ Class Customer{
         $query->bindParam(':customerPhone', $this->customerPhone);
         if($query->execute()){
             return true;
+            echo '<script>alert("Thanks for registering ' . $this->customerFirstname . ', ' . $this->customerLastname . '");</script>';
         }
         else{
             return false;
