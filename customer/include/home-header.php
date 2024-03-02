@@ -22,7 +22,7 @@
                 <i class="fa fa-bell"></i> Account
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end mt-2" aria-labelledby="accountDropdown">
-                    <li><a class="dropdown-item" href="#">My Profile</a></li>
+                    <li><a class="dropdown-item" href="customer-profile.php">My Profile</a></li>
                     <li><a class="dropdown-item" href="#">Appointments</a></li>
                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                 </ul>
