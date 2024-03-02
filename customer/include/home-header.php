@@ -13,10 +13,10 @@
                 Veterinary Clinic</div>
         </div>
         <div class="navbar-links">
-            <a href="#">Home</a>
-            <a href="#">Services</a> 
-            <a href="#">About Us</a>
-            <a href="#">Booking</a>
+            <a href="">Home</a>
+            <a href="services.html">Services</a> 
+            <a href="aboutus.html">About Us</a>
+            <a href="booking.php">Booking</a>
             <div class="dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-bell"></i> Account
