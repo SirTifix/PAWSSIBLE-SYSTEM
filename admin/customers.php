@@ -45,7 +45,7 @@
             </div> 
 
             <div class="crud-btn col-5 justify-content-end">
-                <a href="add-customer.php" class="crud-text"><i class="fa-solid fa-circle-plus m-1" aria-hidden="true"></i>Add Customer</a>
+                <a href="add-customer.php" class="crud-text"><i class="fa-solid fa-circle-plus m-1" aria-hidden="true"></i>Add</a>
             </div>
 
         </section>
