@@ -52,15 +52,15 @@
                         <td></td>
                         <td></td>
                         <td class="d-flex justify-content-center align-items-center">
-                            <div class="crud-btn">
-                            <a href="" class="check-btn"><i class="fa-regular fa-circle-check" aria-hidden="true"></i></a>
-                            </div>
-                            <div class="crud-btn">
+                        <div class="crud-btn">
+                            <a href="" class="check-btn"><i class="fa-regular fa-circle-check m-1" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="crud-btn">
                             <a href="" class="edit-btn"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></a>
-                            </div>
-                            <div class="crud-btn">
+                        </div>
+                        <div class="crud-btn">
                             <a href="" class="delete-btn"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></a>
-                            </div>
+                        </div>
                         </td>
                     </tr>
             </tbody>

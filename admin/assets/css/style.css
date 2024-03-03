@@ -263,7 +263,6 @@ header {
     background-color: #3A3F54;
     color: white;
 }
-
 .crud-icon-update {
     border-radius: 5px;
     padding: 5px 10px;
@@ -608,32 +607,44 @@ header {
 }
 
 .table-appointment{
-    padding: 5px;
-    background: linear-gradient(to bottom, #a2a4d5, #a4a6cf  ,#d7d7e0);
+    padding: 2px 8px;
+    background: linear-gradient(to bottom,  #bdbfde  ,#d7d7e0);
 }
 
 .table-appointment .check-btn{
-    background-color: #277A63;
-    color: #fff;
-    padding: 3px 5px;
     border-radius: 5px;
+    padding: 5px 10px;
+    color: #277A63;
+    text-decoration: none;
     font-size: 1.3em;
+    width: 30px;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
 }
 
 .table-appointment .edit-btn{
-    background-color: #488BBB;
-    color: #fff;
-    padding: 3px 5px;
     border-radius: 5px;
+    padding: 5px 10px;
+    color: #488BBB;
+    text-decoration: none;
     font-size: 1.3em;
+    width: 30px;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
 }
 
-.table-appointment .delete-btn{
-    background-color: #C7353E;
-    color: #fff;
-    padding: 3px 5px;
+.table-appointment .delete-btn i{
     border-radius: 5px;
+    padding: 5px 10px;
+    color: #C7353E;
+    text-decoration: none;
     font-size: 1.3em;
+    width: 30px;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
 }
 
 .search-con{
