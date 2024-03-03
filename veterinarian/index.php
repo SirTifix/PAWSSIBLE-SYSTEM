@@ -1,5 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<?php
+session_start();
+$title = 'Home';
+require_once '../classes/account.class.php';
+
+
+if (isset($_POST['submit'])) {
+    $user = new Account();
+    $user->vetUsername = htmlentities($_POST['username']);
+    $user->vetPassword = htmlentities($_POST['password']);
+    if ($user->sign_in_vet()) {
+        header('location: dashboard.php');
+    } else {
+        $error = 'Invalid email/password. Try Again.';
+    }
+}
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=., initial-scale=1.0">

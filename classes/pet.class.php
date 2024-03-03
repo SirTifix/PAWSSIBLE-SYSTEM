@@ -104,7 +104,7 @@ Class Pet{
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':customerID', $customer_id);
         if ($query->execute()) {
-            $data = $query->fetch();
+            $data = $query->fetchAll(PDO::FETCH_ASSOC); 
         }
         return $data;
     }
