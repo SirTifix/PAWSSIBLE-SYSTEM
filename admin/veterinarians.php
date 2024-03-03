@@ -117,7 +117,6 @@ require_once('../classes/veterinarian.class.php');
                 xhr.send('vetID=' + vetID);
             });
 
-            // Add an event listener to the "Delete" button inside the modal
             document.querySelector('.crud-icon-delete').addEventListener('click', function () {
                 var vetID = this.getAttribute('data-vet-id');
                 document.getElementById('confirmDelete').setAttribute('data-vet-id', vetID);
