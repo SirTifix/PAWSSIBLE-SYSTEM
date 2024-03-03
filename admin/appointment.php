@@ -28,8 +28,8 @@
     </div>
 
     <div class="table-appointment">
-    <div class="search-con">
-            <input type="text" class="search col-10" placeholder="Search here...">
+        <div class="search-con">
+        <input type="text" id="searchInput" class="search col-10" placeholder="Search here...">
     </div>
 
     <table class="table table-striped table-sm">
@@ -74,6 +74,16 @@
     <?php
         require_once('./include/js.php')
     ?>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('#searchInput').on('keyup', function(){
+        var searchText = $(this).val().toLowerCase();
+        $('#appointmentTable tbody tr').filter(function(){
+            $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1);
+        });
+    });
+});
+</script>
 </body>
 </html>
