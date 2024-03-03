@@ -104,8 +104,13 @@ body {
 .logo-text{
     font-weight: bolder;
     color: white;
-
 }
+.logo-text-customer{
+  font-weight: bolder;
+  color: #5263AB;
+}
+
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -132,7 +137,9 @@ body {
 .logo-text {
     font-size: 2.3rem;
 }
-
+.logo-text-customer{
+  font-size: 1.8rem;
+}
 .navbar-links {
     padding-right: 35px;
 }
