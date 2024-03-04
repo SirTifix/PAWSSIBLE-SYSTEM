@@ -281,7 +281,6 @@ img {
     background-color: #3A3F54;
     color: white;
 }
-
 .crud-icon-update {
     border-radius: 5px;
     padding: 5px 10px;
@@ -617,3 +616,84 @@ img {
     border-radius: 10px;
     margin-bottom: 20px;
 }
+
+/* Appointment Panel */
+.appointment-con{
+    margin-left: 260px;
+    margin-right: 0%;
+}
+
+.add-btn-con{
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+}
+
+.add-appointment {
+    border-radius: 10px;
+    width: 210px;
+    background-color: #5263AB;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 5px;
+}
+
+.add-appointment a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.table-appointment{
+    padding: 2px 8px;
+    background: linear-gradient(to bottom,  #bdbfde  ,#d7d7e0);
+}
+
+.table-appointment .check-btn{
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #277A63;
+    text-decoration: none;
+    font-size: 1.3em;
+    width: 30px;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+}
+
+.table-appointment .edit-btn{
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #488BBB;
+    text-decoration: none;
+    font-size: 1.3em;
+    width: 30px;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+}
+
+.table-appointment .delete-btn i{
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #C7353E;
+    text-decoration: none;
+    font-size: 1.3em;
+    width: 30px;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+}
+
+.search-con{
+    background-color: #fff;
+    overflow: hidden;
+    padding: 4px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.276);
+    width: 300px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
