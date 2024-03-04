@@ -5,6 +5,7 @@ require_once 'database.php';
 Class Pet{
     //attributes
 
+    public $customerID;
     public $petID;
     public $petName;
     public $petBirthdate;
@@ -25,11 +26,11 @@ Class Pet{
 
     //Methods
 
-    function add(){
-        $sql = "INSERT INTO pet (petName, petBirthdate, petAge, petBreed, petType, petGender, petWeight, petColor) VALUES 
-        (:petName, :petBirthdate, :petAge, :petBreed, :petType, :petGender, :petWeight, :petColor);";
-
-        $query=$this->db->connect()->prepare($sql);
+    function add($customerId) {
+        $sql = "INSERT INTO pet (petName, petBirthdate, petAge, petBreed, petType, petGender, petWeight, petColor, customerID) VALUES 
+        (:petName, :petBirthdate, :petAge, :petBreed, :petType, :petGender, :petWeight, :petColor, :customerId);";
+    
+        $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':petName', $this->petName);
         $query->bindParam(':petBirthdate', $this->petBirthdate);
         $query->bindParam(':petAge', $this->petAge);
@@ -38,12 +39,13 @@ Class Pet{
         $query->bindParam(':petGender', $this->petGender);
         $query->bindParam(':petWeight', $this->petWeight);
         $query->bindParam(':petColor', $this->petColor);
-        if($query->execute()){
+        $query->bindParam(':customerId', $customerId);
+    
+        if($query->execute()) {
             return true;
-        }
-        else{
+        } else {
             return false;
-        }	
+        }
     }
 
     function update(){
@@ -94,6 +96,15 @@ Class Pet{
         $data = null;
         if ($query->execute()) {
             $data = $query->fetchAll();
+        }
+        return $data;
+    }
+    public function fetchByCustomerId($customer_id) {
+        $sql = "SELECT * FROM pet WHERE customerID = :customerID;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':customerID', $customer_id);
+        if ($query->execute()) {
+            $data = $query->fetchAll(PDO::FETCH_ASSOC); 
         }
         return $data;
     }

@@ -28,7 +28,6 @@ Class Register{
         $query->bindParam(':firstname', $this->firstname);
         $query->bindParam(':lastname', $this->lastname);
         $query->bindParam(':email', $this->email);
-        // Hash the password securely using password_hash
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
         $query->bindParam(':password', $hashedPassword);
         

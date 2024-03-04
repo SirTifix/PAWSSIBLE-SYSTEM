@@ -1,27 +1,21 @@
 <?php
-    require_once('../classes/customer.class.php');
-    require_once('../classes/pet.class.php');
-    require_once('./tools/functions.php');
-    //session_start();
-    //if (!isset($_SESSION['user']) || $_SESSION['user'] != 'admin'){
-        //header('location: index.php');
-    //}
+require_once('../classes/customer.class.php');
+require_once('../classes/pet.class.php');
+require_once('./tools/functions.php');
 
-    if(isset($_POST['save'])){
-        $customer = new Customer();
-        //sanitize
-        $customer->customerFirstname = htmlentities($_POST['customerFirstname']);
-        $customer->customerLastname = htmlentities($_POST['customerLastname']);
-        $customer->customerDOB = htmlentities($_POST['customerDOB']);
-        $customer->customerCity = htmlentities($_POST['customerCity']);
-        $customer->customerAddress = htmlentities($_POST['customerAddress']);
-        $customer->customerEmail = htmlentities($_POST['customerEmail']);
-        $customer->customerState = htmlentities($_POST['customerState']);
-        $customer->customerPostal = htmlentities($_POST['customerPostal']);
-        $customer->customerPhone = htmlentities($_POST['customerPhone']);
+if(isset($_POST['save'])){
+    $customer = new Customer();
+    $customer->customerFirstname = $_POST['customerFirstname'];
+    $customer->customerLastname = $_POST['customerLastname'];
+    $customer->customerDOB = $_POST['customerDOB'];
+    $customer->customerCity = $_POST['customerCity'];
+    $customer->customerAddress = $_POST['customerAddress'];
+    $customer->customerEmail = $_POST['customerEmail'];
+    $customer->customerState = $_POST['customerState'];
+    $customer->customerPostal = $_POST['customerPostal'];
+    $customer->customerPhone = $_POST['customerPhone'];
 
-        //validate
-        if (validate_field($customer->customerFirstname) &&
+    if (validate_field($customer->customerFirstname) &&
         validate_field($customer->customerLastname) &&
         validate_field($customer->customerDOB) &&
         validate_field($customer->customerCity) &&
@@ -29,41 +23,50 @@
         validate_field($customer->customerEmail) &&
         validate_field($customer->customerState) &&
         validate_field($customer->customerPostal) &&
-        validate_field($customer->customerPhone)){
-            if($customer->add()){
-                header('location: customers.php');
-            }else{
-                echo 'An error occured while adding in the database.';
-            }
-        }
+        validate_field($customer->customerPhone)) {
+        
+        $lastInsertedCustomerId = $customer->add();
+
+        if($lastInsertedCustomerId) {
+            $pet = new Pet();
+            $pet->petName = $_POST['petName'];
+            $pet->petBirthdate = $_POST['petBirthdate'];
+            $pet->petAge = $_POST['petAge'];
+            $pet->petBreed = $_POST['petBreed'];
+            $pet->petType = $_POST['petType'];
+            $pet->petGender = $_POST['petGender'];
+            $pet->petWeight = $_POST['petWeight'];
+            $pet->petColor = $_POST['petColor'];
             
-        $pet = new Pet();
-
-        $pet->petName = htmlentities($_POST['petName']);
-        $pet->petBirthdate = htmlentities($_POST['petBirthdate']);
-        $pet->petAge = htmlentities($_POST['petAge']);
-        $pet->petBreed = htmlentities($_POST['petBreed']);
-        $pet->petType = htmlentities($_POST['petType']);
-        $pet->petGender = htmlentities($_POST['petGender']);
-        $pet->petWeight = htmlentities($_POST['petWeight']);
-        $pet->petColor = htmlentities($_POST['petColor']);
-
-        if (validate_field($pet->petName) &&
-        validate_field($pet->petBirthdate) &&
-        validate_field($pet->petAge) &&
-        validate_field($pet->petBreed) &&
-        validate_field($pet->petType) &&
-        validate_field($pet->petGender) &&
-        validate_field($pet->petWeight) &&
-        validate_field($pet->petColor)){
-            if($pet->add()){
-                header('location: customers.php');
-            }else{
-                echo 'An error occured while adding in the database.';
+            if (validate_field($pet->petName) &&
+                validate_field($pet->petBirthdate) &&
+                validate_field($pet->petAge) &&
+                validate_field($pet->petBreed) &&
+                validate_field($pet->petType) &&
+                validate_field($pet->petGender) &&
+                validate_field($pet->petWeight) &&
+                validate_field($pet->petColor)) {
+                
+                if($pet->add($lastInsertedCustomerId)) {
+                    header('Location: customers.php');
+                    exit;
+                } else {
+                    echo 'Error inserting pet record';
+                }
+            } else {
+                echo 'Invalid pet data';
             }
+        } else {
+            echo 'Error inserting customer record';
         }
+    } else {
+        echo 'Invalid customer data';
     }
+}
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
