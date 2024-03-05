@@ -186,3 +186,7 @@ $(document).ready(function(){
     $(this).prev().attr('type', function(index, attr){return attr == 'password' ? 'text' : 'password'; }); 
     
     });  
+
+    document.addEventListener("DOMContentLoaded", function() {
+        initializeCalendar(); 
+        });
