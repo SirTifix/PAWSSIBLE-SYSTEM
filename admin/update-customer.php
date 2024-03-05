@@ -11,8 +11,9 @@
         $customerData = $customer->fetch($customer_id);
 
         if($customerData) {
-            $pet = new Pet();
-            $petData = $pet->fetchByCustomerId($customer_id);
+            $petClass = new Pet();
+            $petData = $petClass->fetchByCustomerId($customer_id);
+            
         } else {
             echo "Customer not found.";
         }
@@ -132,38 +133,38 @@
                 </div>
 
                 <div class="d-flex">
-                  <label for="state" class="form-label fw-bold">Birth Date:</label>
-                  <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petBirthdate']; ?>">
+                  <label for="petBirthdate" class="form-label fw-bold">Birth Date:</label>
+                  <input type="text" class="form-control" id="petBirthdate" name="petBirthdate" required value="<?php echo $petData['petBirthdate']; ?>">
                 </div>
 
                 <div class="d-flex">
-                  <label for="state" class="form-label fw-bold">Pet Age:</label>
-                  <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petAge']; ?>">
+                  <label for="petAge" class="form-label fw-bold">Pet Age:</label>
+                  <input type="text" class="form-control" id="petAge" name="petAge" required value="<?php echo $petData['petAge']; ?>">
                 </div>
 
                 <div class="d-flex">
-                  <label for="state" class="form-label fw-bold">Breed:</label>
-                  <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petBreed']; ?>">
+                  <label for="petBreed" class="form-label fw-bold">Breed:</label>
+                  <input type="text" class="form-control" id="petBreed" name="petBreed" required value="<?php echo $petData['petBreed'];?>">
                 </div>
 
                 <div class="d-flex">
-                  <label for="state" class="form-label fw-bold">Pet Type:</label>
-                  <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petType']; ?>">
+                  <label for="petType" class="form-label fw-bold">Pet Type:</label>
+                  <input type="text" class="form-control" id="petType" name="petType" required value="<?php echo $petData['petType']; ?>">
                 </div>
 
                 <div class="d-flex">
-                  <label for="state" class="form-label fw-bold">Gender:</label>
-                  <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petGender']; ?>">
+                  <label for="petGender" class="form-label fw-bold">Gender:</label>
+                  <input type="text" class="form-control" id="petGender" name="petGender" required value="<?php echo $petData['petGender']; ?>">
                 </div>
 
                 <div class="d-flex">
-                  <label for="state" class="form-label fw-bold">Weight:</label>
-                  <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petWeight']; ?>">
+                  <label for="petWeight" class="form-label fw-bold">Weight:</label>
+                  <input type="text" class="form-control" id="petWeight" name="petWeight" required value="<?php echo $petData['petWeight']; ?>">
                 </div>
 
                 <div class="d-flex">
-                  <label for="state" class="form-label fw-bold">Color:</label>
-                  <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petColor']; ?>">
+                  <label for="petColor" class="form-label fw-bold">Color:</label>
+                  <input type="text" class="form-control" id="petColor" name="petColor" required value="<?php echo $petData['petColor']; ?>">
                 </div>
 
               </div>
