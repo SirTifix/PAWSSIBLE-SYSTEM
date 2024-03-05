@@ -23,7 +23,7 @@
    <section class="appointment-con">
     <div class="add-btn-con">
     <div class="add-appointment ">
-        <a href=""><i class="fa-solid fa-plus pe-2"  aria-hidden="true"></i>New Appointment</a>
+        <a href="appointment-booking.php"><i class="fa-solid fa-plus pe-2"  aria-hidden="true"></i>New Appointment</a>
     </div>
     </div>
 
