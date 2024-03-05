@@ -62,9 +62,10 @@ require_once('../classes/veterinarian.class.php');
                         <?php
                         $veterinarianClass = new Veterinarian();
                         $vetRecords = $veterinarianClass->showVet();
+                        $counter = 1;
                         foreach ($vetRecords as $record) {
                             echo '<tr>';
-                            echo '<th scope="row">' . $record['vetID'] . '</th>';
+                            echo '<th scope="row">' . $counter . '</th>';
                             echo '<td>' . $record['fullName'] . '</td>';
                             echo '<td>' . date('d M Y', strtotime($record['created_at'])) . '</td>';
                             echo '<td class="d-flex justify-content-end">';
@@ -76,6 +77,7 @@ require_once('../classes/veterinarian.class.php');
                             echo '</div>';
                             echo '</td>';
                             echo '</tr>';
+                            $counter++;
                         }
                         ?>
                     </tbody>
