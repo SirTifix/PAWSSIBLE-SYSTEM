@@ -151,7 +151,7 @@
                 <span class="underline"></span>
               </div>
               <div id="petFormsContainer" class="petFormsContainer"></div>
-              <button id="submitBtn">Submit</button>
+              <button id="submitBtn">Book Appointment</button>
             </div>
           </div>
         </div>

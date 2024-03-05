@@ -1,5 +1,4 @@
 document.getElementById('appointmentLink').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent default link behavior
     // Remove active class from all links
     document.querySelectorAll('.appointment-btn').forEach(function(link) {
         link.classList.remove('appointment-active');
@@ -9,7 +8,6 @@ document.getElementById('appointmentLink').addEventListener('click', function(ev
 });
 
 document.getElementById('pendingLink').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent default link behavior
     // Remove active class from all links
     document.querySelectorAll('.appointment-btn').forEach(function(link) {
         link.classList.remove('appointment-active');
