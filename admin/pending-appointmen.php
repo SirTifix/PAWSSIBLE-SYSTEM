@@ -35,11 +35,11 @@
             </div>
         </div>
         <div class="col-auto my-1">
-            <a href="./appointment.php" class="appointment-btn appointment-active" id="appointmentLink"><i class="far fa-calendar-check"></i>Appointment</a>
+            <a href="./appointment.php" class="appointment-btn" id="appointmentLink"><i class="far fa-calendar-check"></i>Appointment</a>
         </div>
         <div class="col-auto my-1">
             <div class="d-flex align-items-center">
-                <a href="./pending-appointmen.php" class="appointment-btn" id="pendingLink"><i class="far fa-clock"></i>Pending</a>
+                <a href="./pending-appointmen.php" class="appointment-btn appointment-active" id="pendingLink"><i class="far fa-clock"></i>Pending</a>
             </div>
         </div>
     </div> 

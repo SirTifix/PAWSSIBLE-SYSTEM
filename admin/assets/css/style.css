@@ -690,7 +690,7 @@ img {
 .appointment-btn {
     background-color: #ffffff; /* White background color */
     text-decoration: none;
-    color: #888484;
+    color: black;
     padding: 5px 0px; /* Adjust padding as needed */
     border-radius: 5px; /* Optional: Add rounded corners */
     display: flex;
@@ -698,8 +698,25 @@ img {
     justify-content: center;
     width: 130px; /* Set a fixed width for both links */
 }
+
 .appointment-btn i {
     margin-right: 5px; /* Adjust margin as needed */
+}
+
+.appointment-btn:hover {
+    background-color: #f0f0f0; /* Change background color on hover */
+}
+
+.appointment-active {
+    background-color: #277A63; /* Active background color */
+}
+
+.appointment-active:hover {
+    background-color: #277A63; /* Keep active background color on hover */
+}
+
+.appointment-btn:active {
+    background-color: #d0d0d0; /* Change background color on click */
 }
 
 .search-con {

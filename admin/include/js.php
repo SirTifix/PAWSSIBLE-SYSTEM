@@ -8,3 +8,4 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 <script src="./assets/js/calendar.js"></script>
+<script src="./assets/js/appointment.js"></script>
