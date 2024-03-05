@@ -19,18 +19,24 @@ document.addEventListener('DOMContentLoaded', function() {
         // Dynamically create and append pet info forms based on the selected number of pets
         for (let i = 1; i <= numberOfPets; i++) {
             const petForm = document.createElement('div');
+            petForm.classList.add('pet-info-form'); // Add the class to the created div
             petForm.innerHTML = `
-                <div class="pet-info-form">
-                    <h3>Pet ${i} Details</h3>
-                    <label for="petName${i}">Name:</label>
-                    <input type="text" id="petName${i}" name="petName${i}" required><br><br>
-                    <label for="petType${i}">Type:</label>
-                    <input type="text" id="petType${i}" name="petType${i}" required><br><br>
-                    <!-- Add additional fields for sex, breed, birth date, services, vet, and other concerns -->
+                <h3>Pet ${i} Details</h3>
+
+                <div class="input-container">
+                <label for="petName${i}">Name:</label>
+                <input type="text" class="input-appointment" id="petName${i}" name="petName${i}" required><br><br>
                 </div>
+
+                <div class="input-container">
+                <label for="petType${i}">Type:</label>
+                <input type="text" class="input-appointment" id="petType${i}" name="petType${i}" required><br><br>
+                </div>
+                <!-- Add additional fields for sex, breed, birth date, services, vet, and other concerns -->
             `;
             petFormsContainer.appendChild(petForm);
         }
+        
     });
 
     const prevMonthBtn = document.getElementById('prevMonthBtn');

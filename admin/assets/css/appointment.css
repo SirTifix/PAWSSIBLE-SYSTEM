@@ -1,10 +1,16 @@
 /*Appointment-booking */
 
+
+.appointment-calendar-con{
+  padding-top: 100px;
+  margin-left: 260px;
+}
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 700px;
     overflow: auto;
   }
   
@@ -17,6 +23,11 @@
     padding: 20px;
   }
   
+  .prevnext-btn{
+    border: none;
+    background-color: transparent;
+    font-size: 1.5em;
+  }
   .calendar-container {
     margin-right: 20px; /* Add spacing between calendar and time container */
     background-color: #ffffff;
@@ -114,12 +125,18 @@
     background-color: #ccc;
   }
  
+.close{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 2em;
+  }
+
   .modal-content {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 60%;
     max-width: 500px;
   }
   
@@ -128,10 +145,7 @@
     position: relative;
   }
   
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  select {
+  .input-appointment {
     border: none;
     border-bottom: 1px solid #ccc;
     width: 100%;
@@ -187,6 +201,3 @@
     margin: 10px 0; /* Adjust spacing */
   }
 
-  .appointment-calendar-con{
-    margin-left: 260px;
-  }

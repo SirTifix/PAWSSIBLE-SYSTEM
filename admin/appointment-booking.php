@@ -16,19 +16,13 @@
 
     <section class="appointment-calendar-con">
 
-    <div style="position: absolute; bottom: 65vh; left: 34vh; color: #2A2F4F;">
-    <h2> <strong> AVAILABLE DATE </strong></h2>
-  </div>
-  <div style="position: absolute; bottom: 65vh; left: 107vh; color: #2A2F4F;">
-    <h2> <strong> AVAILABLE TIME </strong></h2>
-  </div>
   <div class="container">
     <div class="calendar-container container-box">
       <div class="calendar container-content">
         <div class="calendar-header">
-          <button id="prevMonthBtn">&lt;</button>
+          <button id="prevMonthBtn" class="prevnext-btn">&lt;</button>
           <h2 id="currentMonthYear"></h2>
-          <button id="nextMonthBtn">&gt;</button>
+          <button id="nextMonthBtn" class="prevnext-btn">&gt;</button>
         </div>
         <div class="days-container">
           <div style="color: #5263AB;" class="days-of-week">
@@ -122,33 +116,33 @@
   <div id="modal" class="modal fade" data-bs-backdrop="static" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
-        <span data-bs-dismiss="modal" class="close">&times;</span>
+        <span data-bs-dismiss="modal" class="close"><i class="fa-solid fa-circle-xmark"></i></span>
         <h2>Selected Details</h2>
         <div class="selected-details">
           <p id="selectedDateTime"></p>
           <div class="input-container">
             <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required>
+            <input type="text" id="firstName" class="input-appointment" name="firstName" required>
             <span class="underline"></span>
           </div>
           <div class="input-container">
             <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required>
+            <input type="text" id="lastName" class="input-appointment" name="lastName" required>
             <span class="underline"></span>
           </div>
           <div class="input-container">
             <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" class="input-appointment" name="email" required>
             <span class="underline"></span>
           </div>
           <div class="input-container">
             <label for="contactNumber">Contact Number:</label>
-            <input type="tel" id="contactNumber" name="contactNumber" required>
+            <input type="tel" id="contactNumber" class="input-appointment" name="contactNumber" required>
             <span class="underline"></span>
           </div>
           <div class="input-container">
             <label for="pets">Number of Pets:</label>
-            <select id="pets" name="pets">
+            <select id="pets" class="input-appointment" name="pets">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
