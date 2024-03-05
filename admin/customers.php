@@ -128,7 +128,7 @@ require_once('./include/admin-head.php');
             </div>
         </section>
         <script>
-            document.getElementById('confirmDelete').addEventListener('click', function () {
+             document.getElementById('confirmDelete').addEventListener('click', function () {
                 var customerID = this.getAttribute('data-customer-id');
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'delete-customer.php');
@@ -147,8 +147,6 @@ require_once('./include/admin-head.php');
                 var customerID = this.getAttribute('data-customer-id');
                 document.getElementById('confirmDelete').setAttribute('data-customer-id', customerID);
             });
-
-
         </script>
     </main>
     <?php

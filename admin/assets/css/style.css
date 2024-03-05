@@ -651,7 +651,7 @@ img {
     background: linear-gradient(to bottom,  #bdbfde  ,#d7d7e0);
 }
 
-.table-appointment .check-btn{
+.check-btn{
     border-radius: 5px;
     padding: 5px 10px;
     color: #277A63;
@@ -663,7 +663,7 @@ img {
     align-items: center; /* Vertically center */
 }
 
-.table-appointment .edit-btn{
+.edit-btn{
     border-radius: 5px;
     padding: 5px 10px;
     color: #488BBB;
@@ -675,7 +675,7 @@ img {
     align-items: center; /* Vertically center */
 }
 
-.table-appointment .delete-btn i{
+.delete-btn i{
     border-radius: 5px;
     padding: 5px 10px;
     color: #C7353E;
@@ -687,13 +687,56 @@ img {
     align-items: center; /* Vertically center */
 }
 
-.search-con{
+.appointment-btn {
+    background-color: #ffffff; /* White background color */
+    text-decoration: none;
+    color: black;
+    padding: 5px 0px; /* Adjust padding as needed */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px; /* Set a fixed width for both links */
+}
+
+.appointment-btn i {
+    margin-right: 5px; /* Adjust margin as needed */
+}
+
+.appointment-btn:hover {
+    background-color: #f0f0f0; /* Change background color on hover */
+}
+
+.appointment-active {
+    background-color: #277A63; /* Active background color */
+}
+
+.appointment-active:hover {
+    background-color: #277A63; /* Keep active background color on hover */
+}
+
+.appointment-btn:active {
+    background-color: #d0d0d0; /* Change background color on click */
+}
+
+.search-con {
     background-color: #fff;
     overflow: hidden;
-    padding: 4px 20px;
+    padding: 5px 10px;
     border: 1px solid rgba(0, 0, 0, 0.276);
     width: 300px;
     border-radius: 5px;
-    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    flex-grow: 1; /* Allow the input to grow and take up remaining space */
+    width: 100%; /* Make the input take up 100% of the available space */
+    border: none;
+}
+
+.search-input:hover {
+    background-color: transparent; /* Remove yellow hover effect */
 }
 
