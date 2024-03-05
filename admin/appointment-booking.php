@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
     $title = 'Appointment';
-    require_once('./include/admin-head.appointment.php');
+    require_once('./include/admin-head.php');
 ?>
 <body>
     <?php
@@ -112,7 +112,8 @@
         </div>
       </div>
 
-      <div id="modal" class="modal fade" data-bs-backdrop="static" tabindex="-1">
+     <section>
+     <div id="modal" class="modal fade" data-bs-backdrop="static" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
             <span data-bs-dismiss="modal" class="close"><i class="fa-solid fa-circle-xmark"></i></span>
@@ -157,6 +158,8 @@
         </div>
       </div>
 
+     </section>
+     
     </section>
 
     </main>

@@ -67,7 +67,8 @@
                             <i class="fa-regular fa-trash-can" aria-hidden="true"></i></a>
                     </div>
                     <div class="crud-btn">
-                        <a href="" class=""><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                        <a href="" class="" data-bs-toggle="modal"data-bs-target="#modal">
+                            <i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                     </div>
                 </td>
             </tr>
@@ -93,12 +94,67 @@
                     </div>
                 </div>
             </div>
+
+        <section>
+        <div id="modal" class="modal fade" data-bs-backdrop="static" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <h2 class="text-center">Review Pending Appointment</h2> <br>    
+            <h3 class="text-center">Personal Details</h3>
+            <div class="selected-details">
+              <p id="selectedDateTime"></p>
+              <div class="input-container">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" class="input-appointment" name="firstName" required>
+                <span class="underline"></span>
+              </div>
+              <div class="input-container">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" class="input-appointment" name="lastName" required>
+                <span class="underline"></span>
+              </div>
+              <div class="input-container">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" class="input-appointment" name="email" required>
+                <span class="underline"></span>
+              </div>
+              <div class="input-container">
+                <label for="contactNumber">Contact Number:</label>
+                <input type="tel" id="contactNumber" class="input-appointment" name="contactNumber" required>
+                <span class="underline"></span>
+              </div>
+              <h3 class="text-center">Pet Details</h3>
+                <div class="input-container">
+                <label for="petName${i}">Name:</label>
+                <input type="text" class="input-appointment" id="petName${i}" name="petName${i}" required><br><br>
+                </div>
+
+                <div class="input-container">
+                <label for="petType${i}">Type:</label>
+                <input type="text" class="input-appointment" id="petType${i}" name="petType${i}" required><br><br>
+                </div>
+                <span class="underline"></span>
+            </div>
+              <div id="petFormsContainer" class="petFormsContainer"></div>
+              <button id="backBtn">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+        </section>
+
         </section>
 
     </main>
     <?php
         require_once('./include/js.php')
     ?>
+
+    <script>
+        document.getElementById('backBtn').addEventListener('click', function() {
+        window.location.href = './pending-appointment.php';
+    });
+    </script>
 
 </body>
 </html>

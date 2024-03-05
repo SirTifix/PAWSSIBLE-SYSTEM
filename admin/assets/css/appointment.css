@@ -185,6 +185,20 @@
     background-color: #45a049;
   }
   
+  #backBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #2A2F4F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+  }
+  
+  #backBtn:hover {
+    background-color: #7d8091;
+  }
 
 .social-icons{
   content: "\f09a";
