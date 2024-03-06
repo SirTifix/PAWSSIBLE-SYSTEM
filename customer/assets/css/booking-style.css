@@ -24,6 +24,7 @@
   
   .calendar {
     flex: 1;
+    height: 680px;
   }
   
   .calendar-header {
@@ -82,7 +83,7 @@
   .time-container {
     width: 450px; /* Match width of time container with calendar container */
     background-color: #fffcfc;
-    height: 575px;
+    height: 680px;
     border-radius: 15px;
   }
   
