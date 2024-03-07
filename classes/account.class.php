@@ -14,6 +14,10 @@ class Account{
     public $secretaryUsername;
     public $secretaryPassword;
 
+    public $vetUsername;
+
+    public $vetPassword;
+
     protected $db;
 
     function __construct()
@@ -30,7 +34,7 @@ class Account{
             $accountData = $query->fetch(PDO::FETCH_ASSOC);
     
             if ($accountData && password_verify($this->password, $accountData['password'])) {
-                $this->id = $accountData['id'];
+                $this->id = $accountData['customerID'];
                 return true;
             }
         }
@@ -54,6 +58,24 @@ class Account{
     
         return false;
     }
+
+    function sign_in_vet(){
+        $sql = "SELECT * FROM veterinarian WHERE vetUsername = :vetUsername LIMIT 1;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':vetUsername', $this->vetUsername);
+    
+        if ($query->execute()) {
+            $accountData = $query->fetch(PDO::FETCH_ASSOC);
+    
+            if ($accountData && password_verify($this->vetPassword, $accountData['vetPassword'])) {
+                $this->id = $accountData['vetID'];
+                return true;
+            }
+        }
+    
+        return false;
+    }
+
 
     function sign_in_secretary(){
         $sql = "SELECT * FROM secretary WHERE secretaryUsername = :secretaryUsername LIMIT 1;";

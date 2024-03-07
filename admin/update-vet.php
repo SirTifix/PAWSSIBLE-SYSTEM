@@ -3,6 +3,29 @@
 <?php
     $title = 'Veterinarian';
     require_once('./include/admin-head.php');
+    require_once('../classes/veterinarian.class.php');
+    $veterinarianClass = new Veterinarian();
+    
+    if(isset($_GET['vetID'])) {
+      $vetID = $_GET['vetID'];
+      $vetData = $veterinarianClass->fetch($vetID); // Fetch data from database
+      if($vetData) {
+          $vetFirstname = $vetData['vetFirstname'];
+          $vetLastname = $vetData['vetLastname'];
+          $vetEmail = $vetData['vetEmail'];
+          $vetUsername = $vetData['vetUsername'];
+          $vetPhone = $vetData['vetPhone'];
+      } else {
+          // Handle error if data not found
+          echo "Error: Veterinarian data not found.";
+          exit();
+      }
+  } else {
+      // Handle error if vetID not provided
+      echo "Error: vetID not provided.";
+      exit();
+  }
+
 ?>
 <body>
   <?php
@@ -35,17 +58,17 @@
             <div class="ms-5">
             <div class="mt-3">
                 <label for="vetFirstname" class="forms-label">Firstname</label>
-                <input type="text" class="form-control" id="vetFirstname" name="vetFirstname" required>
+                <input type="text" class="form-control" id="vetFirstname" name="vetFirstname" value="<?php echo $vetFirstname; ?>" required>
               </div>
               
               <div>
-                <label for="vetLastname	" class="forms-label">Lastname</label>
-                <input type="text" class="form-control" id="vetLastname	" name="vetLastname	" required>
+                <label for="vetLastname" class="forms-label">Lastname</label>
+                <input type="text" class="form-control" id="vetLastname" name="vetLastname" value="<?php echo $vetLastname; ?>" required>
               </div>
 
               <div>
                 <label for="vetPhone" class="forms-label">Phone Number</label>
-                <input type="text" class="form-control" id="vetPhone" name="vetPhone" required>
+                <input type="text" class="form-control" id="vetPhone" name="vetPhone" value="<?php echo $vetPhone; ?>" required>
               </div>
             </div>
             </div>
@@ -54,12 +77,12 @@
              <div class="ms-5">
              <div class="mt-3">
                 <label for="vetEmail" class="forms-label">Email Address</label>
-                <input type="text" class="form-control" id="vetEmail" name="vetEmail" required>
+                <input type="text" class="form-control" id="vetEmail" name="vetEmail" value="<?php echo $vetEmail; ?>" required>
               </div>
       
               <div>
                 <label for="vetUsername" class="forms-label">Username</label>
-                <input type="text" class="form-control" id="vetUsername" name="vetUsername" required>
+                <input type="text" class="form-control" id="vetUsername" name="vetUsername" value="<?php echo $vetUsername; ?>" required>
               </div>
       
               <div>

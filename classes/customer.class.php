@@ -29,7 +29,7 @@ Class Customer{
     function add(){
         $sql = "INSERT INTO customer_record (customerFirstname, customerLastname, customerDOB, customerCity, customerAddress, customerEmail, customerState, customerPostal, customerPhone) VALUES 
         (:customerFirstname, :customerLastname, :customerDOB, :customerCity, :customerAddress, :customerEmail, :customerState, :customerPostal, :customerPhone);";
-
+    
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':customerFirstname', $this->customerFirstname);
         $query->bindParam(':customerLastname', $this->customerLastname);
@@ -40,14 +40,15 @@ Class Customer{
         $query->bindParam(':customerState', $this->customerState);
         $query->bindParam(':customerPostal', $this->customerPostal);
         $query->bindParam(':customerPhone', $this->customerPhone);
+    
         if($query->execute()){
-            return true;
-            echo '<script>alert("Thanks for registering ' . $this->customerFirstname . ', ' . $this->customerLastname . '");</script>';
-        }
-        else{
+            $lastInsertedCustomerId = $this->db->connect()->query("SELECT MAX(customerID) FROM customer_record")->fetchColumn();
+            return $lastInsertedCustomerId;
+        } else {
             return false;
         }	
     }
+    
 
     function update(){
         $sql = "UPDATE customer_record SET customerFirstname=:customerFirstname,  customerLastname=:customerLastname, customerDOB=:customerDOB, customerCity=:customerCity, customerAddress=:customerAddress, customerEmail=:customerEmail, customerState=:customerState, customerPostal=:customerPostal, customerPhone=:customerPhone WHERE customerID=:customerID;";
@@ -100,6 +101,32 @@ Class Customer{
             $data = $query->fetchAll();
         }
         return $data;
+    }
+    function showCustomer()
+    {
+        $sql = "SELECT customerID, CONCAT(vetFirstname, ' ', vetLastname) AS fullName, created_at FROM veterinarian ORDER BY vetLastname ASC, vetFirstname ASC;";
+        $query = $this->db->connect()->prepare($sql);
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+    public function deleteCustomerAndPets($customerID) {
+        $petQuery = $this->db->connect()->prepare("DELETE FROM pet WHERE customerID = :customerID");
+        $petQuery->bindParam(':customerID', $customerID);
+        if (!$petQuery->execute()) {
+            return false; 
+        }
+
+        $customerQuery = $this->db->connect()->prepare("DELETE FROM customer_record WHERE customerID = :customerID");
+        $customerQuery->bindParam(':customerID', $customerID);
+        if ($customerQuery->execute()) {
+            return true; 
+        } else {
+            return false; 
+        }
     }
 }
 

@@ -31,10 +31,10 @@
       </a>
   </section>
 
-  <div style="position: absolute; bottom: 65vh; left: 34vh; color: #2A2F4F;">
+  <div style="position: absolute; bottom: 69vh; left: 34vh; color: #FFFFFF;">
     <h2> <strong> AVAILABLE DATE </strong></h2>
   </div>
-  <div style="position: absolute; bottom: 65vh; left: 107vh; color: #2A2F4F;">
+  <div style="position: absolute; bottom: 69vh; left: 107vh; color: #2A2F4F;">
     <h2> <strong> AVAILABLE TIME </strong></h2>
   </div>
   <div class="container">
@@ -88,42 +88,42 @@
             <div> 09:00 AM</div>
           </div>
 
-          <div class="time-slot" data-time="09:00 AM 10:00">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="09:00 AM 10:00">
             <div>09:00 AM</div>
             <div>10:00 AM</div>
           </div>
 
-          <div class="time-slot" data-time="10:00 AM 11:00">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="10:00 AM 11:00">
             <div>10:00 AM</div>
             <div>11:00 AM</div>
           </div>
 
-          <div class="time-slot" data-time="11:00 AM 12:00">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="11:00 AM 12:00">
             <div>11:00 AM</div>
             <div>12:00 PM</div>
           </div>
 
-          <div class="time-slot" data-time="12:00 AM 01:00">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="12:00 AM 01:00">
             <div>12:00 PM</div>
             <div>01:00 PM</div>
           </div>
 
-          <div class="time-slot" data-time="01:00 AM 02:00">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="01:00 AM 02:00">
             <div>01:00 AM</div>
             <div>02:00 AM</div>
           </div>
 
-          <div class="time-slot" data-time="02:00 AM 03:00">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="02:00 AM 03:00">
             <div>02:00 AM</div>
             <div>03:00 AM</div>
           </div>
 
-          <div class="time-slot" data-time="03:00 AM 04:00">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="03:00 AM 04:00">
             <div>03:00 AM</div>
             <div>04:00 AM</div>
           </div>
 
-          <div class="time-slot" data-time="04:00 AM 05:00">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="04:00 AM 05:00">
             <div>04:00 AM</div>
             <div>05:00 AM</div>
           </div>
@@ -134,7 +134,7 @@
     </div>
   </div>
 
-  <div id="modal" class="modal fade" data-bs-backdrop="static" tabindex="-1">
+  <div id="modal" class="modal fade" data-bs-backdr ="static" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <span data-bs-dismiss="modal" class="close">&times;</span>
@@ -185,11 +185,6 @@
     crossorigin="anonymous"></script>
 
   <script src="./assets/script/calendar.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      initializeCalendar(); 
-    });
-  </script>
 
 </body>
 
