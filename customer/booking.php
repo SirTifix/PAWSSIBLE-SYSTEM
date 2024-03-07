@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    $title = 'Pawssible Solutions Veterinary';
-    require_once('./include/home-header.php');
-    require_once('./tools/functions.php');
+$title = 'Pawssible Solutions Veterinary';
+require_once('./include/home-header.php');
+require_once('./tools/functions.php');
 ?>
 
 <head>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php echo $title?></title>
+  <title>
+    <?php echo $title ?>
+  </title>
   <link rel="stylesheet" href="./assets/css/booking-style.css">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -185,11 +187,7 @@
     crossorigin="anonymous"></script>
 
   <script src="./assets/script/calendar.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      initializeCalendar(); 
-    });
-  </script>
+  
 
 </body>
 
