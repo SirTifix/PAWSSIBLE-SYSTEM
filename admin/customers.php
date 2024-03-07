@@ -43,8 +43,7 @@ require_once('./include/admin-head.php');
             </div>
 
             <div class="crud-btn col-5 justify-content-end">
-                <a href="add-customer.php" class="crud-text"><i class="fa-solid fa-circle-plus m-1"
-                        aria-hidden="true"></i>Add</a>
+            <a href="add-customer.php" class="crud-text" style="width: 35%"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Customer</a>
             </div>
 
         </section>

@@ -42,14 +42,14 @@
                                 <form action="" method="post">
                                     <div class="mb-5 input-group">
                                         <span class="input-group-text" style="background-color: #ffffff;"><i class="fa fa-user"></i></span>
-                                        <input type="email" class="form-control" style="border-left: none;" id="email" name="email" placeholder="Username" value="<?php if(isset($_POST['email'])){ echo $_POST['email']; } ?>">
+                                        <input type="email" class="form-control" style="border-left: none;" id="email" name="email" placeholder="Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email']; } ?>">
                                     </div>
                                     <div class="mb-4 input-group">
                                         <span class="input-group-text" style="background-color: #ffffff;"><i class="fa fa-lock"></i></span>
                                         <input type="password" class="form-control" style="border-left: none;" id="password" name="password" placeholder="Password" value="<?php if(isset($_POST['password'])){ echo $_POST['password']; } ?>">
                                     </div>
                                     <div class="form-group text-end">
-                                        <a href="forgot-password.php" style="color: #8A8A8A;">Forgot Password?</a>
+                                    <a href="#" style="color: #8A8A8A;" data-bs-toggle="modal" data-bs-target="#forgotpasswordModal">Forgot Password?</a>
                                     </div>
                                     <div class="col-12 col-md-6 col-md-4 mt-5 mx-auto text-center">
                                         <button type="submit" name="login" class="btn btn-create-account py-2 px-5" style="background-color: #5263AB; color: white; font-weight: bold; border-radius: 10px;">Login</button>
