@@ -61,11 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
       calendarCell.textContent = i;
       calendarCell.addEventListener("click", () => {
         const selectedDate = new Date(year, month, i);
-        alert(
-          `You clicked on ${getMonthName(
-            month
-          )} ${i}, ${year} at ${selectedDate.toDateString()}`
-        );
+        const formattedDate = formatDate(selectedDate); // Format the selected date
+        alert(`You clicked on ${formattedDate}`);
       });
       calendarBody.appendChild(calendarCell);
     }
@@ -113,14 +110,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   timeSlots.forEach((timeSlot) => {
     timeSlot.addEventListener("click", () => {
-      const selectedDate = document.querySelector(".calendar-cell.selected");
-      if (selectedDate) {
+      const selectedDateCell = document.querySelector(".calendar-cell.selected");
+      if (selectedDateCell) {
+        const selectedDate = new Date(currentYear, currentMonth, parseInt(selectedDateCell.textContent));
         const selectedTime = timeSlot.dataset.time; // Get the time from the data-time attribute
+        openModal(selectedDate, selectedTime); // Call the openModal function
       } else {
         alert("Please select a date from the calendar first.");
       }
     });
   });
+
   calendarBody.addEventListener("click", (event) => {
     const selectedDate = document.querySelector(".calendar-cell.selected");
     if (selectedDate) {
@@ -132,11 +132,18 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function openModal(selectedDate, selectedTime) {
+    const formattedDate = formatDate(selectedDate); // Format the selected date
     document.getElementById("selectedDateTime").textContent =
       "Selected Date: " +
-      selectedDate +
-      ", Selected Time Slot: " +
+      formattedDate +
+      ", " +
       selectedTime;
+  }
+
+  // Function to format date in "Month Day, Year" format
+  function formatDate(date) {
+    const options = { month: "long", day: "numeric", year: "numeric" };
+    return date.toLocaleDateString("en-US", options);
   }
 });
 
@@ -149,10 +156,6 @@ var btn = document.getElementById("registerBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
-};
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
