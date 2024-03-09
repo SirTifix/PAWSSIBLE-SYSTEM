@@ -183,7 +183,7 @@ require_once('./tools/functions.php');
             <span class="underline"></span>
           </div>
           <div id="petFormsContainer" class="petFormsContainer"></div>
-          <button id="submitBtn">Submit</button>
+          <button type ="submit"id="submitBtn">Submit</button>
         </div>
       </div>
     </div>
@@ -195,7 +195,11 @@ require_once('./tools/functions.php');
     crossorigin="anonymous"></script>
 
   <script src="./assets/script/calendar.js"></script>
-  
+
+  <script>
+   
+
+  </script>
 
 </body>
 
