@@ -23,8 +23,7 @@ header {
     /* Ensure header stays above other content */
 }
 
-.logosec,
-img {
+.logosec{
     height: auto;
     width: 20%;
 }
@@ -740,3 +739,26 @@ img {
     background-color: transparent; /* Remove yellow hover effect */
 }
 
+.profile-pic {
+    background-color: #EAEAEA !important;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+    border-color: solid 3px #000000;
+    border-radius: 10px;
+}
+  
+.upload-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    background: #C1CCF8;
+}
+
+ 
