@@ -82,9 +82,14 @@
                     
                      
                     </div> 
-                    <div class="col-md-12 mt-3 text-md-end">
-                        <button type="submit" class="save-vet-btn btn-secondary" id="addStaffButton">Save</button>
-                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <a href="customer_information.php" class="back-btn btn-secondary">Back</a>
+                  </div>
+                <div>
+                  <button type="submit" class="create-vet-btn btn-secondary" id="addStaffButton">Save</button>
+                </div>
+                </div>
                 </form>
             </div>
         </section>
