@@ -112,11 +112,13 @@ require_once('./include/admin-head.php');
                     <div class="pet-info-box">
                       <div class="mb-3">
                         <div class="d-flex">
+                          <input type="file" id="fileInput" accept="image/*">
                           <label for="petname" class="form-label-pet">Name:</label>
                           <input type="text" class="form-control-pet" id="petname" name="petname" required
                             value="<?php echo $petData['petName']; ?>">
                         </div>
                         <div class="d-flex">
+                        <input type="file" id="fileInput" accept="image/*">
                           <label for="pettype" class="form-label-pet">Pet Type:</label>
                           <input type="text" class="form-control-pet" id="pettype" name="pettype" required
                             value="<?php echo $petData['petType']; ?>">
@@ -237,7 +239,32 @@ require_once('./include/admin-head.php');
       }
     });
 
+      // Get the file input element
+      const fileInput = document.getElementById('fileInput');
+        // Get the image preview element
+        const imagePreview = document.getElementById('imagePreview');
+
+        // Add event listener to file input change event
+        fileInput.addEventListener('change', function(event) {
+            // Get the selected file
+            const file = event.target.files[0];
+            // Create a FileReader object
+            const reader = new FileReader();
+            // Set up the onload event for the reader
+            reader.onload = function(e) {
+                // Create an img element
+                const img = document.createElement('img');
+                // Set the src attribute of the img element to the data URL of the selected file
+                img.src = e.target.result;
+                // Append the img element to the image preview container
+                imagePreview.innerHTML = '';
+                imagePreview.appendChild(img);
+            };
+            // Read the selected file as a data URL
+            reader.readAsDataURL(file);
+        });
     </script>
+
 </body>
 
 </html>

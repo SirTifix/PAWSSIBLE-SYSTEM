@@ -333,7 +333,7 @@ if(isset($_POST['save'])){
         reader.readAsDataURL(file);
       }
     });
-
     </script>
+    
 </body>
 </html>
