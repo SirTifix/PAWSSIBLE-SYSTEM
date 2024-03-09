@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
 
 <body>
     <main>
-        <div class="row">
+        <div class="row m-0">
             <div class="container logo-picture col-lg-7 col-md-6">
                 <div class="title pt-5 px-5">
                     <h1> Welcome to PAWSsible Solution<br>
