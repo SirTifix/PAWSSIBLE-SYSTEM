@@ -51,7 +51,7 @@
                 <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" required>
               </div>
               <div>
-                <a href="customer_information.php" class="back-btn btn-secondary  px-5 my-5">View</a>
+                <a href="customer-details.php" class="back-btn btn-secondary  px-5 my-5">View</a>
               </div>
       
         </div>
