@@ -994,12 +994,31 @@ margin: 0 15em;
   width: 150px;
 }
 
-
-.pet-profile{
-  background-color: #EAEAEA;
-  width: 200px;
+.user-picture {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 1em;
+  border-radius: 50%;
+  background-color: #c3c6aa !important;
 }
 
-i .pet-pp-icon{
-  background-color: #5263AB;
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border-color: solid 3px #000000;
+}
+
+.upload-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  background: #D9D9D9;
 }

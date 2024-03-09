@@ -210,13 +210,14 @@ if(isset($_POST['save'])){
                             </div>
                             
                             <div class="d-flex justify-content-around">
-                            <div class="pet-profile m-0">
-                                    <input type="file" id="fileInput" style="display: none;" accept="image/*">
-                                    <img src="./assets/img/upload-photo.png" alt="Pet Profile Pic" class="pet-profile-pic" id="profilePic">
-                                    <label for="fileInput" class="upload-icon">
-                                        <i class="fa-solid fa-plus" class="pet-pp-icon"></i>
-                                    </label>
-                                </div>
+                                
+                            <div class="user-picture position-relative ">
+                                <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                                <img src="./assets/img/upload-photo.png" alt="Profile Picture" class="profile-pic" id="profilePic">
+                                <label for="fileInput" class="upload-icon">
+                                    <i class="fa-solid fa-plus"></i>
+                                </label>
+                            </div>
 
                                 <div class="form-body">
                                     <div class="d-flex mt-3">
