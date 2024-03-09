@@ -439,7 +439,7 @@ header {
     flex-direction: row;
 }
 
-.back-btn {
+.back-btn, .cus-btn {
     background-color: #fff;
     color: #3A3F54;
     text-decoration: none;
@@ -451,10 +451,15 @@ header {
     margin-left: 300px;
 }
 
-.back-btn:hover {
+.back-btn:hover, .cus-btn:hover {
     background-color: #828aa9; /* Change text color on hover */
     color: white;
 }
+/* .cus-btn {
+ float: right;
+} */
+
+
 
 
 
