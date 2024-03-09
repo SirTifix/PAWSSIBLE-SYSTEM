@@ -19,7 +19,6 @@
             <a href="./index.php">Home</a>
             <a href="./services.html">Services</a> 
             <a href="./aboutus.html">About Us</a>
-            <a href="./booking.php">Booking</a>
             <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
         </div>
     </nav>
