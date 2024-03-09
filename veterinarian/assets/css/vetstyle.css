@@ -865,7 +865,7 @@ header {
   select {
     border: none;
     border-bottom: 1px solid #ccc;
-    width: 100%;
+    width: 300px;
     padding: 5px;
     font-size: 16px;
     outline: none;
@@ -900,3 +900,82 @@ header {
   #submitBtn:hover {
     background-color: #45a049;
   }
+
+  /* Account Settings*/
+.account-settings-con{
+  background-color: #f5efef;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* Appointment Panel */
+.appointment-con{
+  margin-left: 260px;
+  margin-right: 0%;
+}
+.veterinarian-con{
+  padding-top: 49px;
+  margin-left: 260px;
+}
+
+.veterinarian-head p {
+  margin-left: 15px;
+}
+
+.veterinarian-head {
+  font-size: 2.5em;
+  font-weight: 500;
+  background: linear-gradient(to right, #c0ccff, #EAEAEA);
+  margin: 0px 400px 0px 0px;
+}
+.vet-form-con {
+  display: flex;
+  justify-content: center;
+  /* Center horizontally */
+  align-items: center;
+  /* Center vertically */
+  width: 75%;
+  margin-left: 300px;
+}
+
+.save-vet-btn {
+  padding: 10px 70px;
+  background-color: #3A3F54;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  margin: 10px;
+}
+
+.save-vet-btn:hover {
+  background-color: #828aa9;
+  /* Change text color on hover */
+  color: white;
+}
+.form-control{
+  border: 1px solid rgba(0, 0, 0, 0.276);
+}
+.forms-body {
+  display: flex;
+  align-items: center;
+}
+
+.forms-label {
+  display: inline-block;
+  margin-bottom: 5px;
+  width: 150px;
+}
+.custom-width {
+  width: 300px; /* Adjust the width as per your requirement */
+}
+.head-form .fa-user {
+  color: black;
+  font-size: 2em;
+}
+
+.head-form .fa-paw {
+  color: black;
+  font-size: 2em;
+}
