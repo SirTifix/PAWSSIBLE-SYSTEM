@@ -995,3 +995,11 @@ margin: 0 15em;
 }
 
 
+.pet-profile{
+  background-color: #EAEAEA;
+  width: 200px;
+}
+
+i .pet-pp-icon{
+  background-color: #5263AB;
+}

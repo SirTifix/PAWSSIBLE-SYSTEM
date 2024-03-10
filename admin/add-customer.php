@@ -208,7 +208,16 @@ if(isset($_POST['save'])){
                             <div class="vet-head-form mt-4">
                                 <p>Pet Information</p>
                             </div>
+                            
                             <div class="d-flex justify-content-around">
+                        
+                            <div class="position-relative mt-5">
+                                <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                                <img src="./assets/img/upload-photo.png" alt="Profile Picture" class="profile-pic" id="profilePic">
+                                <label for="fileInput" class="upload-icon"><i class="fa-solid fa-plus"></i>
+                                </label>
+                            </div>
+
                                 <div class="form-body">
                                     <div class="d-flex mt-3">
                                         <label for="petName" class="form-label fw-bold">Pet Name:</label>
@@ -312,5 +321,19 @@ if(isset($_POST['save'])){
             </div>
     </section>
     </main>
+    
+    <script>
+           document.getElementById('fileInput').addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          document.getElementById('profilePic').src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+    </script>
+    
 </body>
 </html>

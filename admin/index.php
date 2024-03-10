@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
 
 <body>
     <main>
-        <div class="row">
+        <div class="row m-0">
             <div class="container logo-picture col-lg-7 col-md-6">
                 <div class="title pt-5 px-5">
                     <h1> Welcome to PAWSsible Solution<br>
@@ -31,8 +31,8 @@ if (isset($_POST['submit'])) {
                 </div>
 
             </div>
-            <div class="col-lg-5 col-md-6">
-                <img src="assets/img/Logo.png" alt="Logo" class="logosec mx-auto d-block">
+            <div class="col-lg-5 col-md-6 pt-5">
+                <img src="assets/img/clinic-logo.png" alt="Logo" class="logosec mx-auto d-block">
                 <div class="login py-5 text-center">
                     <h1>Admin Login</h1>
                 </div>
@@ -53,7 +53,7 @@ if (isset($_POST['submit'])) {
                                     <span toggle="#password-field"
                                         class="fa fa-fw fa-eye field-icon toggle-password pe-4"></span>
                                 </div>
-                                <div class="form-group text-left">
+                                <div class="form-group text-end">
                                     <a href="forgot-password.php">Forgot Password?</a>
                                 </div>
                             </div>

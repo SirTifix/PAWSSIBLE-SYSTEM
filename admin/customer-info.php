@@ -112,11 +112,13 @@ require_once('./include/admin-head.php');
                     <div class="pet-info-box">
                       <div class="mb-3">
                         <div class="d-flex">
+                          <input type="file" id="fileInput" accept="image/*">
                           <label for="petname" class="form-label-pet">Name:</label>
                           <input type="text" class="form-control-pet" id="petname" name="petname" required
                             value="<?php echo $petData['petName']; ?>">
                         </div>
                         <div class="d-flex">
+                        <input type="file" id="fileInput" accept="image/*">
                           <label for="pettype" class="form-label-pet">Pet Type:</label>
                           <input type="text" class="form-control-pet" id="pettype" name="pettype" required
                             value="<?php echo $petData['petType']; ?>">
@@ -155,11 +157,13 @@ require_once('./include/admin-head.php');
             </div>
             <div class="modal-body">
               <div class="d-flex justify-content-around">
-                <div class="upload-pic-con">
-                  <form action="upload.php" method="post" enctype="multipart/form-data">
-                    <input type="submit" value="Upload Image" name="submit">
-                  </form>
-                </div>
+                
+              <div class="position-relative mt-5">
+                  <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                  <img src="./assets/img/upload-photo.png" alt="Profile Picture" class="profile-pic" id="profilePic">
+                  <label for="fileInput" class="upload-icon"><i class="fa-solid fa-plus"></i>
+                  </label>
+              </div>
 
                 <form action="" method="post">
                   <div class="form-body">
@@ -223,6 +227,44 @@ require_once('./include/admin-head.php');
   <?php
   require_once('./include/js.php')
     ?>
+     <script>
+           document.getElementById('fileInput').addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          document.getElementById('profilePic').src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+      // Get the file input element
+      const fileInput = document.getElementById('fileInput');
+        // Get the image preview element
+        const imagePreview = document.getElementById('imagePreview');
+
+        // Add event listener to file input change event
+        fileInput.addEventListener('change', function(event) {
+            // Get the selected file
+            const file = event.target.files[0];
+            // Create a FileReader object
+            const reader = new FileReader();
+            // Set up the onload event for the reader
+            reader.onload = function(e) {
+                // Create an img element
+                const img = document.createElement('img');
+                // Set the src attribute of the img element to the data URL of the selected file
+                img.src = e.target.result;
+                // Append the img element to the image preview container
+                imagePreview.innerHTML = '';
+                imagePreview.appendChild(img);
+            };
+            // Read the selected file as a data URL
+            reader.readAsDataURL(file);
+        });
+    </script>
+
 </body>
 
 </html>

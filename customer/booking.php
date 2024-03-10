@@ -90,50 +90,82 @@ require_once('./tools/functions.php');
             <div> 09:00 AM</div>
           </div>
 
+<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
             data-time="09:00 AM 10:00">
+=======
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="09:00 AM 10:00 AM">
+>>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
             <div>09:00 AM</div>
             <div>10:00 AM</div>
           </div>
 
+<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
             data-time="10:00 AM 11:00">
+=======
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="10:00 AM 11:00 AM">
+>>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
             <div>10:00 AM</div>
             <div>11:00 AM</div>
           </div>
 
+<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
             data-time="11:00 AM 12:00">
+=======
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="11:00 AM 12:00 PM">
+>>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
             <div>11:00 AM</div>
             <div>12:00 PM</div>
           </div>
 
+<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
             data-time="12:00 AM 01:00">
+=======
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="12:00 AM 01:00 PM">
+>>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
             <div>12:00 PM</div>
             <div>01:00 PM</div>
           </div>
 
+<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
             data-time="01:00 AM 02:00">
+=======
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="01:00 AM 02:00 PM">
+>>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
             <div>01:00 AM</div>
             <div>02:00 AM</div>
           </div>
 
+<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
             data-time="02:00 AM 03:00">
+=======
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="02:00 AM 03:00 PM">
+>>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
             <div>02:00 AM</div>
             <div>03:00 AM</div>
           </div>
 
+<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
             data-time="03:00 AM 04:00">
+=======
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="03:00 AM 04:00 PM">
+>>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
             <div>03:00 AM</div>
             <div>04:00 AM</div>
           </div>
 
+<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
             data-time="04:00 AM 05:00">
+=======
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="04:00 AM 05:00 PM">
+>>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
             <div>04:00 AM</div>
             <div>05:00 AM</div>
           </div>
