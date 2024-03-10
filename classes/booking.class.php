@@ -91,13 +91,18 @@ class Booking
     }
     function show()
     {
-        $sql = "SELECT * FROM booking ORDER BY bookingDate ASC;";
+        $sql = "SELECT bookingID, CONCAT(firstName, ' ', lastName) AS fullName, status, bookingDate, bookingTime FROM booking ORDER BY bookingID ASC;";
         $query = $this->db->connect()->prepare($sql);
         $data = null;
         if ($query->execute()) {
             $data = $query->fetchAll();
         }
         return $data;
+    }
+
+    function showPet()
+    {
+
     }
 }
 ?>

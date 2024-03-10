@@ -150,9 +150,10 @@ require_once('./include/home-header.php');
           <span data-bs-dismiss="modal" class="close">&times;</span>
           <h2>Selected Details</h2>
           <div class="selected-details">
-            <p id="selectedDateTime"></p>
+            <p id= "selectedDateTime"> </p>
             <input type="hidden" id="selectedDate" name="selectedDate">
             <input type="hidden" id="selectedTime" name="selectedTime">
+
             <div class="input-container">
               <label for="firstName">First Name:</label>
               <input type="text" id="firstName" name="firstName" required>

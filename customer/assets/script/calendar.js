@@ -138,8 +138,8 @@ document.addEventListener("DOMContentLoaded", function () {
       formattedDate +
       ", " +
       selectedTime;
-      document.getElementById("selectedDate").textContent = formattedDate;
-      document.getElementById("selectedTime").textContent = selectedTime;
+      document.getElementById("selectedDate").value = formattedDate;
+      document.getElementById("selectedTime").value = selectedTime;
   }
 
   // Function to format date in "Month Day, Year" format
