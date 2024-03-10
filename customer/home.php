@@ -149,6 +149,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
           </div>
     </section>
     <?php
+        require_once('./include/footer.php');
         require_once('./include/js.php');
     ?>
     <script src="./script/calendar.js"></script>
