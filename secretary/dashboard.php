@@ -12,15 +12,15 @@
     <?php
         require_once('./include/sec-sidepanel.php')
     ?>
-    <section class="dashboard-con">
+    <section class="dashboard-con mb-5">
         <div class="box">
-            <div class="dashboard-head">
+            <div class="dashboard-head mb-5">
               <p>Welcome to Dashboard!</p>
             </div>
 
-            <div class="dashboard-container">
+            <div class="dashboard-container"> 
 
-                <div class="dashboard-box">
+                <div class="dashboard-box py-1 px-3">
                     <p class="my-1">Total No. of Customer: </p>
                     <div class="d-flex justify-content-between align-items-center">
                       <i class="dashboard-icon fa-solid fa-users m-2" aria-hidden="true"></i>
@@ -28,22 +28,22 @@
                     </div>
                 </div> 
 
-                <div class="dashboard-box">
-                  <p class="my-1">Total No. of Pet: </p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <i class="dashboard-icon fa-solid fa-paw m-2" aria-hidden="true"></i>
-                    <h1 class="m-3">4</h1>
-                  </div>
-              </div> 
+                <div class="dashboard-box py-1 px-3">
+                    <p class="my-1">Total No. of Pet: </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <i class="dashboard-icon fa-solid fa-paw m-2" aria-hidden="true"></i>
+                      <h1 class="m-3">4</h1>
+                    </div>
+                </div> 
 
-              <div class="dashboard-box">
-                <p class="my-1">Total No. of Vaccination: </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <i class="dashboard-icon fa-solid fa-syringe m-2" aria-hidden="true"></i>
-                  <h1 class="m-3">22</h1>
-                </div>
-            </div> 
-
+                <div class="dashboard-box py-1 px-3">
+                    <p class="my-1">Total No. of Vaccination: </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <i class="dashboard-icon fa-solid fa-syringe m-2" aria-hidden="true"></i>
+                      <h1 class="m-3">22</h1>
+                    </div>
+                </div> 
+                
             </div>
         </div>
     </section>
@@ -52,11 +52,11 @@
       <div class="chart-container">
 
         <div class="chart-box row">
-          <p class="col-lg-10">Weekly Customer </p> <button class="calendar col-lg-2"><i class="fa-solid fa-calendar " aria-hidden="true"></i> </button>
+          <p class="col-lg-10 p-3 m-0">Weekly Customer </p> <button class="calendar col-lg-2"><i class="fa-solid fa-calendar " aria-hidden="true"></i> </button>
         </div>
 
         <div class="chart-box row">
-          <p class="col-lg-10">Monthly Customer </p> <button class="calendar col-lg-2"><i class="fa-solid fa-calendar " aria-hidden="true"></i> </button>
+          <p class="col-lg-10 p-3 m-0">Monthly Customer </p> <button class="calendar col-lg-2"><i class="fa-solid fa-calendar " aria-hidden="true"></i> </button>
         </div>
 
       </div>

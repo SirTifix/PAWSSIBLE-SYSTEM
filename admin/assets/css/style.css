@@ -179,20 +179,24 @@ header {
     display: flex;
     justify-content: start;
     padding-left: 10px;
-    color: #5263AB;
+    color: #2A2F4F;
     font-weight: 500;
-    font-size: 1.2em;
+    font-size: 15px;
 }
 
 .dashboard-icon {
-    color: black;
+    color: #85929E;
     font-size: 2em;
 }
 
 .dashboard-box {
     background-color: #ffff;
-    height: auto;
+    height: 50%;
     width: 20%;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px #bebebe,
+                -5px -5px 10px #ffffff;
+    border-left: #2A2F4F 7px solid;
 }
 
 /* Chart */
@@ -209,12 +213,16 @@ header {
 .chart-box {
     background-color: #fff;
     height: auto;
-    width: 30%;
+    width: 40%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px #bebebe;
 }
 
 .chart-box button {
+    height: auto;
     border: none;
     background-color: #fff;
+    border-radius: 0px 5px 5px 0px;
 }
 
 /*Recent Customer Table */
@@ -225,8 +233,10 @@ header {
 
 .cust-table-wrapper {
     background-color: #fff;
-    padding: 30px;
-    margin: 40px;
+    padding: 20px;
+    margin: 65px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px #bebebe;
 }
 
 .cust-text {
