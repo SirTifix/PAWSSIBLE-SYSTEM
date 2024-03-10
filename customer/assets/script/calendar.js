@@ -27,6 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     <label for="petType${i}">Type:</label>
                     <input type="text" id="petType${i}" name="petType${i}" required><br><br>
                     <!-- Add additional fields for sex, breed, birth date, services, vet, and other concerns -->
+
+                    
                 </div>
             `;
       petFormsContainer.appendChild(petForm);
@@ -134,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function openModal(selectedDate, selectedTime) {
     const formattedDate = formatDate(selectedDate); // Format the selected date
     document.getElementById("selectedDateTime").textContent =
-      "Selected Date: " +
+      "" +
       formattedDate +
       ", " +
       selectedTime;
