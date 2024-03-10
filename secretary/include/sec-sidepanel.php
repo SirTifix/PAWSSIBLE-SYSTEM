@@ -1,6 +1,6 @@
 <div class="side-panel d-flex flex-column">
         <i class="admin-icon fa-solid fa-circle-user align-items-center"></i>
-        <div class="admin-header">Secretary</div>
+        <div class="sec-header pt-2">Secretary</div>
         <div class="border-line"></div>
         <div class="side-panel-links">
           <a href="dashboard.php" class="sidebar-text align-items-center"><i class="fa fa-tasks" aria-hidden="true"></i> Dashboard</a>
