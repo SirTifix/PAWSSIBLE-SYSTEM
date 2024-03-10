@@ -965,7 +965,22 @@ margin: 0 15em;
 }
 
 /* Footer Part */
-.con a {
+footer {
+  background: linear-gradient(to top, rgb(20, 27, 69), rgba(37, 51, 138, 0.5), rgba(76, 86, 164, 0.5), rgba(255, 255, 255, 0.19));
+  background-blend-mode: overlay; /* Blend the linear gradient with the image */
+}
+
+.logo-footer-img {
+  width: 100px;
+  height: auto;
+  z-index: 99;
+}
+
+.footer-branding p {
+  color: #fff;
+}
+
+.con-links a {
   text-decoration: none; /* Remove underline */
   color: #000;
 }
@@ -980,6 +995,7 @@ margin: 0 15em;
   background-color: #A9B0CF;
   padding: 5px 20px;
   border-radius: 8px;
+  width: 290px;
 }
 
 .con-time-2 {
@@ -994,6 +1010,9 @@ margin: 0 15em;
   width: 150px;
 }
 
+.con-links{
+  border-bottom: 2px solid #343232;
+}
 
 .pet-profile{
   background-color: #EAEAEA;
@@ -1003,3 +1022,4 @@ margin: 0 15em;
 i .pet-pp-icon{
   background-color: #5263AB;
 }
+
