@@ -143,7 +143,7 @@ require_once('./include/admin-head.php');
         </div>
       </div>
     </section>
-
+    <!--Modal-->
     <section>
       <div class="modal fade" id="addPetModal" tabindex="-1" aria-labelledby="addPetModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -207,7 +207,6 @@ require_once('./include/admin-head.php');
                       <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petColor']; ?>">
                     </div>
                   </div>
-
               </div>
 
               <div class="modal-footer">
