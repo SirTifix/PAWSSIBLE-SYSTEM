@@ -3,7 +3,6 @@
 <?php
 $title = 'Pawssible Solutions Veterinary';
 require_once('./include/home-header.php');
-require_once('./tools/functions.php');
 ?>
 
 <head>
@@ -90,82 +89,50 @@ require_once('./tools/functions.php');
             <div> 09:00 AM</div>
           </div>
 
-<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="09:00 AM 10:00">
-=======
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="09:00 AM 10:00 AM">
->>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
+            data-time="09:00 AM 10:00 AM">
             <div>09:00 AM</div>
             <div>10:00 AM</div>
           </div>
 
-<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="10:00 AM 11:00">
-=======
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="10:00 AM 11:00 AM">
->>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
+            data-time="10:00 AM 11:00 AM">
             <div>10:00 AM</div>
             <div>11:00 AM</div>
           </div>
 
-<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="11:00 AM 12:00">
-=======
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="11:00 AM 12:00 PM">
->>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
+            data-time="11:00 AM 12:00 PM">
             <div>11:00 AM</div>
             <div>12:00 PM</div>
           </div>
 
-<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="12:00 AM 01:00">
-=======
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="12:00 AM 01:00 PM">
->>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
+            data-time="12:00 AM 01:00 PM">
             <div>12:00 PM</div>
             <div>01:00 PM</div>
           </div>
 
-<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="01:00 AM 02:00">
-=======
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="01:00 AM 02:00 PM">
->>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
+            data-time="01:00 AM 02:00 PM">
             <div>01:00 AM</div>
             <div>02:00 AM</div>
           </div>
 
-<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="02:00 AM 03:00">
-=======
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="02:00 AM 03:00 PM">
->>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
+            data-time="02:00 AM 03:00 PM">
             <div>02:00 AM</div>
             <div>03:00 AM</div>
           </div>
 
-<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="03:00 AM 04:00">
-=======
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="03:00 AM 04:00 PM">
->>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
+            data-time="03:00 AM 04:00 PM">
             <div>03:00 AM</div>
             <div>04:00 AM</div>
           </div>
 
-<<<<<<< HEAD
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="04:00 AM 05:00">
-=======
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="04:00 AM 05:00 PM">
->>>>>>> 27efd4b052cd8e0c536d489ae11a78968f37f324
+            data-time="04:00 AM 05:00 PM">
             <div>04:00 AM</div>
             <div>05:00 AM</div>
           </div>
@@ -176,51 +143,55 @@ require_once('./tools/functions.php');
     </div>
   </div>
 
-  <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <span data-bs-dismiss="modal" class="close">&times;</span>
-        <h2>Selected Details</h2>
-        <div class="selected-details">
-          <p id="selectedDateTime"></p>
-          <div class="input-container">
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName" required>
-            <span class="underline"></span>
+  <form action="submit-booking.php" method="POST">
+    <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <span data-bs-dismiss="modal" class="close">&times;</span>
+          <h2>Selected Details</h2>
+          <div class="selected-details">
+            <p id="selectedDateTime"></p>
+            <input type="hidden" id="selectedDate" name="selectedDate">
+            <input type="hidden" id="selectedTime" name="selectedTime">
+            <div class="input-container">
+              <label for="firstName">First Name:</label>
+              <input type="text" id="firstName" name="firstName" required>
+              <span class="underline"></span>
+            </div>
+            <div class="input-container">
+              <label for="lastName">Last Name:</label>
+              <input type="text" id="lastName" name="lastName" required>
+              <span class="underline"></span>
+            </div>
+            <div class="input-container">
+              <label for="email">Email Address:</label>
+              <input type="email" id="email" name="email" required>
+              <span class="underline"></span>
+            </div>
+            <div class="input-container">
+              <label for="contactNumber">Contact Number:</label>
+              <input type="tel" id="contactNumber" name="contactNumber" required>
+              <span class="underline"></span>
+            </div>
+            <div class="input-container">
+              <label for="pets">Number of Pets:</label>
+              <select id="pets" name="pets">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              <span class="underline"></span>
+            </div>
+            <div id="petFormsContainer" class="petFormsContainer"></div>
+            <button type="submit" id="submitBtn" name = "submitBtn" >Submit</button>
           </div>
-          <div class="input-container">
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName" required>
-            <span class="underline"></span>
-          </div>
-          <div class="input-container">
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" name="email" required>
-            <span class="underline"></span>
-          </div>
-          <div class="input-container">
-            <label for="contactNumber">Contact Number:</label>
-            <input type="tel" id="contactNumber" name="contactNumber" required>
-            <span class="underline"></span>
-          </div>
-          <div class="input-container">
-            <label for="pets">Number of Pets:</label>
-            <select id="pets" name="pets">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <span class="underline"></span>
-          </div>
-          <div id="petFormsContainer" class="petFormsContainer"></div>
-          <button type ="submit"id="submitBtn">Submit</button>
         </div>
       </div>
     </div>
-  </div>
 
+  </form>
   <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -229,7 +200,7 @@ require_once('./tools/functions.php');
   <script src="./assets/script/calendar.js"></script>
 
   <script>
-   
+
 
   </script>
 
