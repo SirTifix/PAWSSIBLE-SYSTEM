@@ -72,14 +72,19 @@ document.addEventListener("DOMContentLoaded", function () {
                         <label for="services"> <h5>Select Services</h5></label>
                         <select class="form-control" id="services">
                           <option value="">Choose...</option>
-                          <option value="grooming">
-                            Grooming<span class="price">PHP 1,000</span>
+                          <option value="Spay/Neuter">
+                          Spay/Neuter<span class="price">PHP 1,000</span>
                           </option>
-                          <option value="boarding">
-                            Boarding<span class="price">PHP 1,500</span>
+                          <option value="Eye Extraction">
+                          Eye Extraction<span class="price">PHP 4,500</span>
                           </option>
-                          <option value="training">
-                            Training<span class="price">PHP 2,000</span>
+                          <option value="Imputation">
+                          Imputation<span class="price">PHP 2,500</span>
+                          </option>
+                          <option value="Caesarian">
+                          Caesarian<span class="price">PHP 1,000</span>
+                          </option><option value="Vaccination">
+                          Vaccination<span class="price">PHP 300</span>
                           </option>
                         </select>
                       </div>
@@ -88,9 +93,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         <label for="vet"> <h5>Select vet</h5></label>
                         <select class="form-control" id="vet">
                           <option value="">Choose...</option>
-                          <option value="vet1">Vet 1</option>
-                          <option value="vet2">Vet 2</option>
-                          <option value="vet3">Vet 3</option>
+                          <option value="vet1">Dr.Jasmin abayon</option>
+                          <option value="vet2">Dr.Erwin roy jalao</option>
+                          <option value="vet3">Dr.Portia quintas</option>
+                          <option value="vet3">Dr.Roi-lee cataluna</option>
+                          <option value="vet3">Dr.France jalao</option>
                         </select>
                       </div>
                     </div>
@@ -103,13 +110,91 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
 
                     <div class="select-ex-pet">
-                      <button
-                        type="submit"
-                        class="btn"
-                        style="background-color: #6075d1; float: right;"
-                      >
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profileModal" style="background-color: #6075d1; float: right;">
                         Select Existing Pet
                       </button>
+
+
+
+                      <!-- Profile Modal -->
+                      <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <div class="Profile container d-flex flex-row">
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+                                  <div class="d-flex flex-column justify-content-center align-items-center">
+                                    <div class="user-picture position-relative">
+                                      <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                                      <img src="default-profile-pic.png" alt="" class="profile-pic" id="profilePic">
+                                      <label for="fileInput" class="upload-icon">
+                                        <i class="fa-solid fa-plus"></i>
+                                      </label>
+                                    </div>
+                                    <span class="text-black fs-5">Raf Saludo</span>
+                                  </div>
+                                  <hr>
+                                  <ul class="nav nav-pills flex-column mb-auto">
+                                    <li class="nav-item">
+                                      <a class="nav-link text-black" style="color: black;">
+                                        <i style="margin-right: 10px;" class="fa-solid fa-paw"></i> <strong>
+                                          Pet
+                                        </strong>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                    
+                                <div class="content p-4 w-100">
+                                <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Pet No.</th>
+                                    <th>Pet Name</th>
+                                    <th>Species</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>4412</td>
+                                    <td>Max</td>
+                                    <td>Dog</td>
+                                    <td> <button type="button" class="Select-button btn btn-primary aria-expanded="false">
+                                    Select
+                                  </button>
+                                  </td>
+                                  </tr>
+                                  <tr>
+                                    <td>4413</td>
+                                    <td>Max</td>
+                                    <td>Dog</td>
+                                    <td> <button type="button" class="Select-button btn btn-primary aria-expanded="false">
+                                    Select
+                                  </button>
+                                  </td>
+                                  </tr>
+                                  <tr>
+                                    <td>4414</td>
+                                    <td>Kebies</td>
+                                    <td>Cat</td>
+                                    <td> <button type="button" class="Select-button btn btn-primary aria-expanded="false">
+                                    Select
+                                  </button>
+                                  </td>
+
+                                  </tr>
+                                </tbody>
+                              </table>
+                              </div>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </form>
                 </div>
@@ -144,22 +229,22 @@ document.addEventListener("DOMContentLoaded", function () {
       const calendarCell = document.createElement("div");
       calendarCell.classList.add("calendar-cell");
       calendarCell.textContent = i;
-      
+
       calendarCell.addEventListener("click", () => {
         const selectedDate = new Date(year, month, i);
         const formattedDate = formatDate(selectedDate); // Format the selected date
         alert(`You clicked on ${formattedDate}`);
       });
-      
+
       // Create and append the "10 slots" text below each calendar cell
       const slotsText = document.createElement("div");
       slotsText.textContent = "10 slots";
       slotsText.classList.add("slots-text");
       calendarCell.appendChild(slotsText);
-      
+
       calendarBody.appendChild(calendarCell);
     }
-}
+  }
 
   function getMonthName(month) {
     const months = [
@@ -203,9 +288,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   timeSlots.forEach((timeSlot) => {
     timeSlot.addEventListener("click", () => {
-      const selectedDateCell = document.querySelector(".calendar-cell.selected");
+      const selectedDateCell = document.querySelector(
+        ".calendar-cell.selected"
+      );
       if (selectedDateCell) {
-        const selectedDate = new Date(currentYear, currentMonth, parseInt(selectedDateCell.textContent));
+        const selectedDate = new Date(
+          currentYear,
+          currentMonth,
+          parseInt(selectedDateCell.textContent)
+        );
         const selectedTime = timeSlot.dataset.time; // Get the time from the data-time attribute
         openModal(selectedDate, selectedTime); // Call the openModal function
       } else {
@@ -227,10 +318,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function openModal(selectedDate, selectedTime) {
     const formattedDate = formatDate(selectedDate); // Format the selected date
     document.getElementById("selectedDateTime").textContent =
-      "" +
-      formattedDate +
-      ", " +
-      selectedTime;
+      "" + formattedDate + ", " + selectedTime;
   }
 
   // Function to format date in "Month Day, Year" format
@@ -248,7 +336,6 @@ var btn = document.getElementById("registerBtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {

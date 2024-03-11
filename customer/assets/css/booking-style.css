@@ -240,6 +240,10 @@ select:focus {
   float: right;
 }
 
+.Profile{
+width: 500vh;
+}
+
 .petFormsContainer {
   display: flex;
   flex-direction: column;

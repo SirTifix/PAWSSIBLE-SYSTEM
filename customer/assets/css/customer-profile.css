@@ -1,7 +1,4 @@
-body {
-  margin: 0;
-  padding: 0;
-}
+
 
 .Profile {
   padding: 0% !important;
@@ -17,7 +14,26 @@ body {
   height: 100%;
   border-radius: 5px 0px 0px 5px;
 }
+.modal-lg {
+  max-width: 50% !important;
+}
 
+.modal-body{
+padding: 0% !important;
+border-radius: 0% !important;
+}
+
+.Select-button{
+  padding: 3px !important;
+}
+
+.modal-content {
+  max-height: 20% !important;
+  overflow-y: auto;
+}
+.btn-close{
+  flex-direction: ;
+}
 .profile-pic {
   width: 150px;
   height: 150px;
