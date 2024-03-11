@@ -120,16 +120,16 @@ document.addEventListener("DOMContentLoaded", function () {
                       <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                           <div class="modal-content">
-                            <div class="modal-body">
-                              <div class="Profile container d-flex flex-row">
+                            <div class="modal-header">
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="Profile select-container d-flex flex-row">
                                 <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
                                   <div class="d-flex flex-column justify-content-center align-items-center">
                                     <div class="user-picture position-relative">
                                       <input type="file" id="fileInput" style="display: none;" accept="image/*">
                                       <img src="default-profile-pic.png" alt="" class="profile-pic" id="profilePic">
-                                      <label for="fileInput" class="upload-icon">
-                                        <i class="fa-solid fa-plus"></i>
                                       </label>
                                     </div>
                                     <span class="text-black fs-5">Raf Saludo</span>

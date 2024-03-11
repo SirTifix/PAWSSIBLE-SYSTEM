@@ -115,5 +115,12 @@ require_once('./tools/functions.php');
       showContent('pet', document.querySelector('.nav-link.active'));
     };
   </script>
+
+<script>
+    $('#modal1, #modal2').on('show.bs.modal', function (e) {
+      // Hide any previously opened modals
+      $('.modal').not($(this)).modal('hide');
+    });
+  </script>
   <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
 </body>

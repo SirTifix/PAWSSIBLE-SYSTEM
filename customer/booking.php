@@ -13,10 +13,9 @@ require_once('./tools/functions.php');
   <title>
     <?php echo $title ?>
   </title>
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/booking-style.css">
   <link rel="stylesheet" href="./assets/css/style.css">
-  <link rel="stylesheet" href="./assets/css/select-pet.css">
   <link rel="stylesheet" href="./assets/css/customer-profile.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -221,7 +220,7 @@ require_once('./tools/functions.php');
                     </div>
 
                     <div class="modal-footer justify-content-center">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
+                      <button type="button" class="btn btn-secondary" id="finishBookingBtn" data-dismiss="modal" style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
                         Booking</button>
                     </div>
                   </div>
@@ -233,17 +232,28 @@ require_once('./tools/functions.php');
       </div>
     </div>
   </div>
+
   
-  <script>
-    $('#modal1, #modal2').on('show.bs.modal', function (e) {
-      // Hide any previously opened modals
-      $('.modal').not($(this)).modal('hide');
-    });
-  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="./assets/script/calendar.js"></script>
+
+  <script>
+    
+      $(document).ready(function() {
+    $('#anotherModal').on('show.bs.modal', function (e) {
+      $('.modal').modal('hide');
+    });
+  });
+
+
+  document.getElementById('finishBookingBtn').addEventListener('click', function() {
+    location.reload();
+  });
+</script>
 
 </body>
 

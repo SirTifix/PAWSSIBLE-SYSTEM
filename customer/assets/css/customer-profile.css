@@ -3,7 +3,7 @@
 .Profile {
   padding: 0% !important;
   background-color: #d9d9d9;
-  max-width: 80%;
+  max-width: 100%;
   height: 700px;
   border-color: black solid 3px;
   border-radius: 5px;
@@ -15,9 +15,15 @@
   border-radius: 5px 0px 0px 5px;
 }
 .modal-lg {
-  max-width: 50% !important;
+  width: 60% !important;
 }
 
+.select-container{
+height: 500px;
+width: 100%;
+align-items: center;
+
+}
 .modal-body{
 padding: 0% !important;
 border-radius: 0% !important;
@@ -28,11 +34,7 @@ border-radius: 0% !important;
 }
 
 .modal-content {
-  max-height: 20% !important;
-  overflow-y: auto;
-}
-.btn-close{
-  flex-direction: ;
+  max-height: 100% !important;
 }
 .profile-pic {
   width: 150px;
