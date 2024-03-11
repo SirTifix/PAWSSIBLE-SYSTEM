@@ -28,6 +28,18 @@ class Booking
         return rand(1000, 9999);
     }
 
+    function acceptBooking()
+    {
+        $sql = "UPDATE booking SET status ='Accepted' WHERE bookingID = :bookingID;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':bookingID', $this->bookingID);
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private function isUniqueID($bookingID)
     {
         $query = "SELECT COUNT(*) AS count FROM booking WHERE bookingID = :bookingID";
@@ -73,7 +85,7 @@ class Booking
         $query->bindParam(':bookingTime', $this->bookingTime);
 
         if ($query->execute()) {
-            
+
             $sqlPet = "INSERT INTO booking_pet (petName, petType, bookingID) VALUES (:petName, :petType, :bookingID);";
             $queryPet = $this->db->connect()->prepare($sqlPet);
 
@@ -89,9 +101,19 @@ class Booking
             return false;
         }
     }
-    function show()
+    function showPending()
     {
-        $sql = "SELECT bookingID, CONCAT(firstName, ' ', lastName) AS fullName, status, bookingDate, bookingTime FROM booking ORDER BY bookingID ASC;";
+        $sql = "SELECT bookingID, CONCAT(firstName, ' ', lastName) AS fullName, status, bookingDate, bookingTime FROM booking WHERE status ='Pending' ORDER BY bookingID ASC;";
+        $query = $this->db->connect()->prepare($sql);
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+    function showAccepted()
+    {
+        $sql = "SELECT bookingID, CONCAT(firstName, ' ', lastName) AS fullName, status, bookingDate, bookingTime FROM booking WHERE status ='Accepted' ORDER BY bookingID ASC;";
         $query = $this->db->connect()->prepare($sql);
         $data = null;
         if ($query->execute()) {
@@ -100,9 +122,31 @@ class Booking
         return $data;
     }
 
+    function show()
+    {
+        $sql = "SELECT * FROM booking WHERE bookingID = :bookingID;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':bookingID', $this->bookingID); 
+        if ($query->execute()) {
+            $data = $query->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $data = null; 
+        }
+        return $data;
+    }
+
     function showPet()
     {
-
+        $sql = "SELECT petName, petType FROM booking_pet WHERE bookingID = :bookingID";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':bookingID', $this->bookingID);
+        if ($query->execute()) {
+            $data = $query->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            $data = array();
+        }
+        return $data;
     }
+
 }
 ?>
