@@ -690,10 +690,17 @@ header {
     margin: 30px;
     padding: 10px;
     margin-left: 380px;
-    border: 20px;
+    border: 20px;}
 
+    .calendar-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%; /* Ensure container takes up full height */
+    }
   
-  }
+  
   table {
     width: 85%;
     border-collapse: collapse;
@@ -819,7 +826,7 @@ header {
       margin-right: 20px; /* Add spacing between calendar and time container */
       background-color: #ffffff;
       border-radius: 15px;
-      margin-left:30px ;
+     
       border: 1px solid #dee2e6; /* Border style */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
@@ -886,7 +893,7 @@ header {
     .time-container {
         width: 400px; /* Match width of time container with calendar container */
       background-color: #fffcfc;
- 
+      flex-direction: column; 
       border-radius: 15px;
     }
     
@@ -1028,8 +1035,7 @@ header {
    
 
    .white-container {
-     background:  #ced6fa; 
-    padding-left: 50px;
+     background:  #d7ddf7; 
     padding-bottom: 20px;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -1106,5 +1112,6 @@ header {
     display: inline-block; /* Make it display as inline-block */
     font-size: 16px; /* Font size */
     border-radius: 5px; /* Rounded corners */
+    background: #ede9e4;
 
 }

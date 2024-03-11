@@ -22,9 +22,9 @@
   <button type="submit" class="save-cal-btn btn-secondary" id="addStaffButton">EDIT TIME AND DATE </button>
   </div>
 
-<div class="white-container">
+<div class="white-container ">
  
-    <div class="date-time  row">
+    <div class="row justify-content-center align-items-center">
         <div class="col-md-6 calendar-container">
         <div class="calendar-controls d-flex justify-content-center align-items-center p-3">
             <button onclick="previousMonth()"><</button>
@@ -53,40 +53,40 @@
                 </tbody>
             </table>
             </div>
-        <div id="popup" class="popup">
-            <div class="row popup-content py-4">
-                <span class="close" onclick="closePopup()">&times;</span>
-                <p id="popup-date"></p>        
-                <div class="col">
-                    <button id="unavailableBtn" onclick="setUnavailable()">Unavailable</button>
+            <div id="popup" class="popup">
+                <div class="row popup-content py-4">
+                    <span class="close" onclick="closePopup()">&times;</span>
+                    <p id="popup-date"></p>        
+                    <div class="col">
+                        <button id="unavailableBtn" onclick="setUnavailable()">Unavailable</button>
+                    </div>
+                    <div class="col">
+                        <button id="setAvailableBtn" onclick="setAvailable()">Available</button>
+                    </div>
+            
                 </div>
-                <div class="col">
-                    <button id="setAvailableBtn" onclick="setAvailable()">Available</button>
-                </div>
-           
-              </div>
-        </div>
-        
-        <div class="time-container container-box">
-        <div class="row">
-                <tr>
-                    <td>
-                        <div class="d-flex justify-content-end align-items-center pt-3">
-                        <div class="crud-btn">
-                              <a href="#" class="add-btn" data-bs-toggle="modal" data-bs-target="#addTimeSlotModal">
-                                  <i class="fa fa-plus-circle m-1" aria-hidden="true"></i>
-                              </a>
-                          </div>
-                          <div class="crud-btn">
-                            <a href="#" class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                                <i class="fa-regular fa-trash-can" aria-hidden="true"></i>
-                            </a>
-                        </div>
-
-                        </div>
-                    </td>
-                </tr>
             </div>
+        
+        <div class="col-md-6 time-container container-box">
+            <div class="row">
+                    <tr>
+                        <td>
+                            <div class="d-flex justify-content-end align-items-center pt-3">
+                            <div class="crud-btn">
+                                <a href="#" class="add-btn" data-bs-toggle="modal" data-bs-target="#addTimeSlotModal">
+                                    <i class="fa fa-plus-circle m-1" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div class="crud-btn">
+                                <a href="#" class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                    <i class="fa-regular fa-trash-can" aria-hidden="true"></i>
+                                </a>
+                            </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                </div>
               <div class="time-slots-container container-content">
                 <h3 class="time-slot-heading"> Time </h3>
                 <h6 class="style-date" style="text-align: center; color: #5263AB;"> Select Time Slot</h6>
@@ -141,9 +141,10 @@
 
                 </div>
               </div>
-              <!-- Modal -->
-<!-- Check Modal -->
-<!-- Add Time Slot Modal -->
+
+        </div>
+</div>
+</div>
 <div class="modal fade" id="addTimeSlotModal" tabindex="-1" aria-labelledby="addTimeSlotModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -186,11 +187,6 @@
                 </div>
             </div>
         </section>
-
-
-    </div>
-</div>
-</div>
 <div class="d-flex justify-content-end align-items-center pt-3">
 <button type="submit" class="save-cal-btn btn-secondary" id="addStaffButton">Done </button>
 </div>
