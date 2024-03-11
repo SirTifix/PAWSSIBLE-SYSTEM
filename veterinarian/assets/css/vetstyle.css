@@ -383,7 +383,7 @@ td.available {
   padding: 20px;
   border: 1px solid #111111;
   border-radius: 20px;
-  width: 40%;
+  width: 30%;
   text-align: center;
 }
 
@@ -1408,4 +1408,7 @@ margin-left: 240px;
 .head-form .fa-paw {
   color: black;
   font-size: 2em;
+}
+.sched-btn{
+
 }
