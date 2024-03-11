@@ -39,11 +39,11 @@ if (isset($_POST['submit'])) {
                             <h1 class="h1 my-5 text-center" style="color: #5263AB; font-weight: bold;">ADMIN LOGIN</h1>
                             <form action="" method="post">
                                 <div class="mb-5 input-group">
-                                    <span class="input-group-text pe-4" style="background-color: #C1CCF8;"></span><i class="fa fa-user ps-2"></i>
+                                    <span class="input-group-text pe-4" style="background-color: #C1CCF8;"><i class="fa fa-user ps-2"></i></span>
                                     <input type="text" class="form-control py-2" style="border-left: none; background-color: #C1CCF8;" id="username" name="username" placeholder="Username">
                                 </div>
                                 <div class="mb-4 input-group">
-                                    <span class="input-group-text pe-4" style="background-color: #C1CCF8;"></span><i class="fa fa-lock ps-2"></i>
+                                    <span class="input-group-text pe-4" style="background-color: #C1CCF8;"><i class="fa fa-lock ps-2"></i></span>
                                     <input type="password" class="form-control py-2" style="border-left: none; background-color: #C1CCF8;" id="password" name="password" placeholder="Password">
                                 </div>
                                 <div class="form-group text-end">
