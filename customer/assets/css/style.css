@@ -1016,7 +1016,7 @@ footer {
 
 .con-time-2 {
   border-radius: 8px;
-  border: solid 1px #2A2F4F;
+  border: solid 5px #DADADA;
   display: inline-block; /* Display as inline-block to center horizontally */
   width: fit-content;
   padding: 5px;

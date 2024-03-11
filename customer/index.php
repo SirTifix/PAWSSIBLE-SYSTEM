@@ -9,7 +9,6 @@
     <?php
     require_once('./include/user-header.php')
     ?>
-    <main>
     <section class="uno d-flex col-12">
         <div class="intro col-11"> 
             <h1>Your Pet's Health,</h1>
