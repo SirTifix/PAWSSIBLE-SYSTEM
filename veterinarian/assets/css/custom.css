@@ -1,56 +1,15 @@
-
 .logo-picture{
+  background-image: linear-gradient(to bottom, #45396c 20%,  #ffffff 100%);
+}
 
-    background-image: linear-gradient(to bottom, #45396c 20%,  #ffffff 100%);
-    
-  }
 .container{
-    height: 100vh;
-  }
+  height: 100vh;
+}
 
 .container h1{
-    color: rgb(254, 254, 254);
+  color: rgb(254, 254, 254);
 }
 
-.form-control{
-    background-color: #C1CCF8;
-  
-}
-.logosec, img {
-  height: auto;
-  width: 40%;
-  text-align: center;
-}
-
-.input-group i{
-  position: absolute;
-  color: #ffffff;
-}
-.input-group i::hover{
-  position: absolute;
-  color: #686666;
-}
-.input-group {
-  text-decoration: none;
-  color: #060606;
-}
-
-a{
-  text-decoration: none;
-  color:#060606;
-  text-align: left;
-}
-.btn-dark-blue {
-  background-color:  #5263AB; /* Dark blue color */
-  border-color: #135289; /* Border color */
-  color: #ffffff;
- 
-}
-.btn-dark-blue:hover {
-  background-color: #C1CCF8; /* Dark blue color on hover */
-  border-color: #a5b7d2; /* Border color on hover */
-  color: #060606;
-}
 .title{
   font-weight: 500;
 }

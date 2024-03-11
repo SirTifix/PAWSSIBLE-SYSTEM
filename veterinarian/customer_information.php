@@ -51,7 +51,7 @@
                 <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" required>
               </div>
               <div>
-                <a href="customer_information.php" class="back-btn btn-secondary  px-5 my-5">View</a>
+                <a href="customer-details.php" class="cus-btn btn-secondary  px-5 my-5">View</a>
               </div>
       
         </div>
@@ -61,7 +61,7 @@
                 <p> Pet Type: Dog</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                      <a href="pet_information.php" class="back-btn btn-secondary">View</a>
+                      <a href="pet_information.php" class="cus-btn btn-secondary">View</a>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                 <p> Pet Type: Dog</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                      <a href="pet_information.php" class="back-btn btn-secondary">View</a>
+                      <a href="pet_information.php" class="cus-btn btn-secondary">View</a>
                     </div>
                 </div>
             </div>
@@ -79,7 +79,7 @@
                 <p> Pet Type: Dog</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                      <a href="pet_information.php" class="back-btn btn-secondary">View</a>
+                      <a href="pet_information.php" class="cus-btn btn-secondary">View</a>
                     </div>
                 </div>
             </div>

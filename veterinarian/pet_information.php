@@ -1,51 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="/vendor/bootstrap-5.0.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/vetstyle.css">
-    <title>Pet Information</title>
-</head>
+<?php
+    
+    require_once('./include/vet-head.php');
+?>
+
 <body>
-  <header class="row m-0 align-items-center fixed-top">
-    <div class="logo col-4 align-items-center m-0 row">
-        <img src="assets/img/Logo.png" alt="Logo" class="logosec col-6">
-        <div class="logo-text col-6">PAWSsible Solutions <br> Veterinary Clinic</div>
-    </div>
+  <?php
+        require_once('./include/vet-header.php')
+    ?>
+   <?php
+        require_once('./include/vet-sidepanel.php')
+    ?>
 
-    <div class="search-container col-4 d-flex justify-content-center">
-        <div class="search-wrapper d-flex align-items-center m-0 row">
-            <input type="text" class="search col-10" placeholder="search.....">
-            <i class="search-icon fas fa-search col-2" aria-hidden="true"></i>
-        </div>
-    </div>
-
-    <div class="bell-logout-con col-4 d-flex justify-content-end">
-        <div class="bell-btn">
-            <button><i class="bell-icon fa-solid fa-bell pe-4" aria-hidden="true"></i></button>
-        </div>  
-        <div class="logout-btn">
-            <button><i class="logout-icon fas fa-right-from-bracket pe-2" aria-hidden="true"></i></button>
-        </div>
-    </div>
-</header>
-
-  <div class="side-panel d-flex flex-column mt-5 pt-3">
-    <i class=" admin-icon fa-solid fa-circle-user align-items-center"></i>
-    <div class="admin-header">Admin</div>
-    <div class="border-line"></div>
-    <div class="side-panel-links">
-        <a href="dashboard.php" class="sidebar-text align-items-center"><i class="fa fa-tasks" aria-hidden="true"></i> Dashboard</a>
-        <a href="appointment.php" class="sidebar-text align-items-center"><i class="fa-solid fa-clock" aria-hidden="true"></i> Appointment</a>
-        <a href="schedule.php" class="sidebar-text align-items-center"><i class="fa-solid fa-calendar" aria-hidden="true"></i> Schedule</a>
-        <a href="customer.php" class="sidebar-text align-items-center"><i class="fa-solid fa-users" aria-hidden="true"></i> Customers</a>
-        <a href="" class="sidebar-text align-items-center"><i class="fa-solid fa-gear" aria-hidden="true"></i> Settings</a>
-    </div>
-</div>
 
 
 

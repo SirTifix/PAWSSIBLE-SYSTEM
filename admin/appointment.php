@@ -50,7 +50,6 @@ require_once('../classes/booking.class.php');
                 </div>
 
 
-
                 <table class="table table-striped table-sm">
                     <thead>
                         <tr>
@@ -74,19 +73,19 @@ require_once('../classes/booking.class.php');
                             echo "<td>" . $appointment['bookingDate'] . "</td>";
                             echo "<td>" . $appointment['bookingTime'] . "</td>";
                             echo "<td>" . $appointment['status'] . "</td>";
-                            echo '<td class="d-flex justify-content-center align-items-center">';
-                            echo '<div class="crud-btn">';
-                            echo '<a href="" class="check-btn" data-bs-toggle="modal" data-bs-target="#acceptModal"> <i class="fa-regular fa-circle-check m-1" aria-hidden="true"></i></a>';
-                            echo '</div>';
-                            echo '<div class="crud-btn">';
-                            echo '<a href="" class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteDModal">';
+                                echo '<td class="d-flex justify-content-center align-items-center">';
+                                echo '<div class="crud-btn">';
+                                echo '<a href="" class="check-btn" data-bs-toggle="modal" data-bs-target="#acceptModal"> <i class="fa-regular fa-circle-check m-1" aria-hidden="true"></i></a>';
+                                echo '</div>';
+                                echo '<div class="crud-btn">';
+                                echo '<a href="" class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteDModal">';
                             echo '<i class="fa-regular fa-trash-can" aria-hidden="true"></i></a>';
-                            echo '</div>';
-                            echo '<div class="crud-btn">';
-                            echo '<a href="" class="" data-bs-toggle="modal" data-bs-target="#modal">';
-                            echo '<i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>';
-                            echo '</div>';
-                            echo '</td>';
+                                echo '</div>';
+                                echo '<div class="crud-btn">';
+                                echo '<a href="" class="" data-bs-toggle="modal" data-bs-target="#modal">';
+                                echo '<i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>';
+                                echo '</div>';
+                                echo '</td>';
                             echo "</tr>";
                         }
                         ?>
@@ -106,7 +105,7 @@ require_once('../classes/booking.class.php');
                         <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
                             this Appointment?</h4>
                         <div class="modal-footer justify-content-between" style="border: none;">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                             <button type="button" class="btn btn-primary" id="confirmDelete" data-customer-id=""
                                 style="background-color: #FF0000; border: none;">Delete</button>
                         </div>

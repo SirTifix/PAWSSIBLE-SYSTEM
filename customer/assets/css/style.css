@@ -145,25 +145,41 @@ body {
 }
 
 .navbar-links a {
-    text-decoration: none;
-    color: #5263AB;
-    font-weight: 20px;
-    font-size: 28px;
-    padding: 18px;
-    margin: 5px;
+  display: inline-block;
+  position: relative;
+  color: #5263AB;
+  font-weight: 20px;
+  text-decoration: none;
+  font-size: 28px;
+  padding: 18px;
+  margin: 5px;
+}
+.navbar-links a:hover{
+  color: #2A2F4F;
+}
 
+.navbar-links a:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #2A2F4F;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+
+.navbar-links a:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+  
 }
 
 .dos{
     padding-bottom: 200px;
-}
-.navbar-links a:hover{
-    width: fit-content;
-    background-color: #97a2d4;
-    border: 1px solid #16406c ;
-    color: #ffffff;
-    border-radius: 15px; 
-    transition: 0.6s;
 }
 
 .dropdown {
@@ -965,7 +981,22 @@ margin: 0 15em;
 }
 
 /* Footer Part */
-.con a {
+footer {
+  background: linear-gradient(to top, rgb(20, 27, 69), rgba(37, 51, 138, 0.5), rgba(76, 86, 164, 0.5), rgba(255, 255, 255, 0.19));
+  background-blend-mode: overlay; /* Blend the linear gradient with the image */
+}
+
+.logo-footer-img {
+  width: 100px;
+  height: auto;
+  z-index: 99;
+}
+
+.footer-branding p {
+  color: #fff;
+}
+
+.con-links a {
   text-decoration: none; /* Remove underline */
   color: #000;
 }
@@ -980,6 +1011,7 @@ margin: 0 15em;
   background-color: #A9B0CF;
   padding: 5px 20px;
   border-radius: 8px;
+  width: 290px;
 }
 
 .con-time-2 {
@@ -994,6 +1026,9 @@ margin: 0 15em;
   width: 150px;
 }
 
+.con-links{
+  border-bottom: 2px solid #343232;
+}
 
 .pet-profile{
   background-color: #EAEAEA;
@@ -1003,3 +1038,4 @@ margin: 0 15em;
 i .pet-pp-icon{
   background-color: #5263AB;
 }
+

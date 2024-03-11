@@ -3,6 +3,7 @@
 <?php
 $title = 'Pawssible Solutions Veterinary';
 require_once('./include/home-header.php');
+require_once('./tools/functions.php');
 ?>
 
 <head>
@@ -14,6 +15,9 @@ require_once('./include/home-header.php');
   </title>
   <link rel="stylesheet" href="./assets/css/booking-style.css">
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/book-form.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
@@ -143,6 +147,103 @@ require_once('./include/home-header.php');
     </div>
   </div>
 
+  <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-cont">
+        <h2>Personal Information</h2>
+
+
+        <div class="selected-details">
+          <div class="row">
+
+            <div class="input-container  col-sm-3">
+              <label for="firstName">First Name:</label>
+              <input type="text" id="firstName" name="firstName" required>
+
+            </div>
+
+            <div class="input-container col-sm-3">
+              <label for="lastName">Last Name:</label>
+              <input type="text" id="lastName" name="lastName" required>
+
+            </div>
+
+            <div class="details col-sm">
+              <label for="lastName">Selected Date and Time</label>
+              <div class="col-sm">
+                <p id="selectedDateTime"></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-container col-6">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-container col-6">
+                <label for="contactNumber">Contact Number:</label>
+                <input type="tel" id="contactNumber" name="contactNumber" required>
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="input-container col-6">
+                <label for="pets">Number of Pets:</label>
+                <select id="pets" name="pets">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="petFormsContainer" class="petFormsContainer"></div>
+
+            <button type="button" id="submitBtn" class="btn btn-primary" data-toggle="modal"
+              data-target="#confirmationModal" style="background-color:#2A2F4F" class="float-right">
+              Book Appointment
+            </button>
+
+
+            <!-- Confirmation Modal -->
+            <div class="confirmation-modal">
+              <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
+                aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                  <div class="modal-content text-center">
+                    <div class="modal-header">
+                      <h5 class="modal-title mx-auto" id="confirmationModalLabel">Appointment Confirmation</h5>
+                      </button>
+                    </div>
+
+                    <div class="modal-body align-items-center justify-content-center d-flex flex-column">
+                      <i class="fas fa-check-circle text-success confirmation-circle mb-3" style="font-size: 80px;"></i>
+                      <p class="booking-number mb-2" style="font-size: 14px;">Your booking number:</p>
+                      <p class="mb-4">0001</p>
+                    </div>
+
+                    <div class="modal-footer justify-content-center">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
+                        Booking</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
   <form action="submit-booking.php" method="POST">
     <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
       <div class="modal-dialog">
@@ -197,6 +298,9 @@ require_once('./include/home-header.php');
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <script src="./assets/script/calendar.js"></script>
 

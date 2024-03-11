@@ -20,13 +20,98 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let i = 1; i <= numberOfPets; i++) {
       const petForm = document.createElement("div");
       petForm.innerHTML = `
-                <div class="pet-info-form">
-                    <h3>Pet ${i} Details</h3>
-                    <label for="petName${i}">Name:</label>
-                    <input type="text" id="petName${i}" name="petName${i}" required><br><br>
-                    <label for="petType${i}">Type:</label>
-                    <input type="text" id="petType${i}" name="petType${i}" required><br><br>
-                    <!-- Add additional fields for sex, breed, birth date, services, vet, and other concerns -->
+                <div class="pet-info-form background-color-container" container bg-light mt-4 p-4">
+                  <h2 class="mb-4">Pet ${i} Information Form</h2>
+                  <form>
+                    <div class="form-row">
+                      <div class="form-group col-sm-2  background-color">
+                        <label for="petname"><h5>Pet Name</h5></label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="petname"
+                          placeholder="Enter pet name"
+                        />
+                      </div>
+                      <div class="form-group col-sm-2 background-color">
+                        <label for="pettype"> <h5>Pet Type</h5></label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="pettype"
+                          placeholder="Enter pet type"
+                        />
+                      </div>
+                      <div class="form-group col-sm-2 background-color">
+                        <label for="sex"> <h5>Sex</h5></label>
+                        <input
+                          type="text"
+                          class="form-control background-color"
+                          id="sex"
+                          placeholder="Enter sex"
+                        />
+                      </div>
+
+                      <div class="form-group col-sm-2">
+                        <label for="concerns"> <h5>Concerns</h5></label>
+                        <textarea style="height: 200px;" class="form-concerns" id="concerns"></textarea>
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group col-sm-2 background-color">
+                        <label for="breed"> <h5>Breed</h5></label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="breed"
+                          placeholder="Enter breed"
+                        />
+                      </div>
+                      <div class="form-group col-sm-2">
+                        <label for="services"> <h5>Select Services</h5></label>
+                        <select class="form-control" id="services">
+                          <option value="">Choose...</option>
+                          <option value="grooming">
+                            Grooming<span class="price">PHP 1,000</span>
+                          </option>
+                          <option value="boarding">
+                            Boarding<span class="price">PHP 1,500</span>
+                          </option>
+                          <option value="training">
+                            Training<span class="price">PHP 2,000</span>
+                          </option>
+                        </select>
+                      </div>
+
+                      <div class="form-group col-sm-2">
+                        <label for="vet"> <h5>Select vet</h5></label>
+                        <select class="form-control" id="vet">
+                          <option value="">Choose...</option>
+                          <option value="vet1">Vet 1</option>
+                          <option value="vet2">Vet 2</option>
+                          <option value="vet3">Vet 3</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group col-sm-2 background-color">
+                        <label for="birthdate"> <h5>BirthDate</h5></label>
+                        <input type="date" class="form-control" id="birthdate" />
+                      </div>
+                    </div>
+
+                    <div class="select-ex-pet">
+                      <button
+                        type="submit"
+                        class="btn"
+                        style="background-color: #6075d1; float: right;"
+                      >
+                        Select Existing Pet
+                      </button>
+                    </div>
+                  </form>
                 </div>
             `;
       petFormsContainer.appendChild(petForm);
@@ -59,14 +144,22 @@ document.addEventListener("DOMContentLoaded", function () {
       const calendarCell = document.createElement("div");
       calendarCell.classList.add("calendar-cell");
       calendarCell.textContent = i;
+      
       calendarCell.addEventListener("click", () => {
         const selectedDate = new Date(year, month, i);
         const formattedDate = formatDate(selectedDate); // Format the selected date
         alert(`You clicked on ${formattedDate}`);
       });
+      
+      // Create and append the "10 slots" text below each calendar cell
+      const slotsText = document.createElement("div");
+      slotsText.textContent = "10 slots";
+      slotsText.classList.add("slots-text");
+      calendarCell.appendChild(slotsText);
+      
       calendarBody.appendChild(calendarCell);
     }
-  }
+}
 
   function getMonthName(month) {
     const months = [
@@ -134,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function openModal(selectedDate, selectedTime) {
     const formattedDate = formatDate(selectedDate); // Format the selected date
     document.getElementById("selectedDateTime").textContent =
-      "Selected Date: " +
+      "" +
       formattedDate +
       ", " +
       selectedTime;

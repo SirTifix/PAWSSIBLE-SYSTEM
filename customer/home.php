@@ -30,10 +30,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
             <h2>compassionate care and expert attention.</h2>
         </div>
   
-        <a href="booking.php">
-          <button type="button" class="boton" style="background-color: #2A2F4F; color: white;">BOOK NOW</button>
-        </a>
-
+        <a href="./booking.php" type="button" class="boton" style="background-color: #2A2F4F; color: white;">BOOK NOW</a>
   
         <div class="social-icons col-2">
           <a href="https://www.facebook.com/profile.php?id=61551085774858"  title="facebook"> 
@@ -152,6 +149,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
           </div>
     </section>
     <?php
+        require_once('./include/footer.php');
         require_once('./include/js.php');
     ?>
     <script src="./script/calendar.js"></script>

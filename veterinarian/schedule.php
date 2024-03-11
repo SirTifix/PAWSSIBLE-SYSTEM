@@ -13,18 +13,7 @@
         require_once('./include/vet-sidepanel.php')
     ?>
     
-<div class="side-panel d-flex flex-column mt-5 pt-3">
-    <i class=" admin-icon fa-solid fa-circle-user align-items-center"></i>
-    <div class="admin-header">Admin</div>
-    <div class="border-line"></div>
-    <div class="side-panel-links">
-        <a href="dashboard.html" class="sidebar-text align-items-center"><i class="fa fa-tasks" aria-hidden="true"></i> Dashboard</a>
-        <a href="appointment.html" class="sidebar-text align-items-center"><i class="fa-solid fa-clock" aria-hidden="true"></i> Appointment</a>
-        <a href="schedule.html" class="sidebar-text align-items-center"><i class="fa-solid fa-calendar" aria-hidden="true"></i> Schedule</a>
-        <a href="customer.html" class="sidebar-text align-items-center"><i class="fa-solid fa-users" aria-hidden="true"></i> Customers</a>
-        <a href="" class="sidebar-text align-items-center"><i class="fa-solid fa-gear" aria-hidden="true"></i> Settings</a>
-    </div>
-</div>
+
 
 <section class="customer-info-icon row">
     <div class="head-form col-12 d-flex justify-content-between align-items-center">
@@ -38,34 +27,37 @@
         </div>
     </div>    
 </section>
+  <div class="white-container d-flex justify-content-center align-items-center">
+  
+    <div class="calendar ">
+      <div class="calendar-controls d-flex justify-content-center align-items-center">
+        <button onclick="previousMonth()"><</button>
+        <h3 id="month-name"></h3>
+        <button onclick="nextMonth()">></button>
+        <input type="number" id="year" value="2024">
+        <button onclick="generateCalendar()">Generate Calendar</button>
+      </div>
+          <table id="calendar">
+            <thead>
+              <tr>
+                <th colspan="7">Calendar</th>
+              </tr>
+              <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
 
-<div class="calendar">
-  <div class="calendar-controls d-flex justify-content-center align-items-center">
-    <button onclick="previousMonth()"><</button>
-    <h3 id="month-name"></h3>
-    <button onclick="nextMonth()">></button>
-    <input type="number" id="year" value="2024">
-    <button onclick="generateCalendar()">Generate Calendar</button>
   </div>
-      <table id="calendar">
-        <thead>
-          <tr>
-            <th colspan="7">Calendar</th>
-          </tr>
-          <tr>
-            <th>Sun</th>
-            <th>Mon</th>
-            <th>Tue</th>
-            <th>Wed</th>
-            <th>Thu</th>
-            <th>Fri</th>
-            <th>Sat</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    </div>
 <div id="popup" class="popup">
     <div class="popup-content py-4">
         <span class="close" onclick="closePopup()">&times;</span>
