@@ -429,11 +429,11 @@ button {
   margin-left: 260px;
 }
 
-.container {
+.app-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 700px;
+
     overflow: auto;
   }
   
@@ -864,8 +864,17 @@ button {
     padding: 10px 20px;
     margin: 10px;
     font-weight: bold;
-    margin-left: 300px;
+    
 }
+ .cus-btn {
+margin-left: 240px;
+  
+}
+.back-btn{
+  margin-left: 300px;
+}
+
+
 
 .back-btn:hover, .cus-btn:hover {
     background-color: #828aa9; /* Change text color on hover */
