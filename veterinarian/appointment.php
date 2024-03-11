@@ -25,7 +25,7 @@
         </div>
       </div>    
     
-    <div class="container app-center">
+    <div class="app-container app-center">
       <div class="row justify-content-center ">
         <div class="app-con col-md-7 ">
       
