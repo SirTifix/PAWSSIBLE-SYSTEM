@@ -632,6 +632,11 @@ header {
     margin-right: 0%;
 }
 
+.appointment-calendar-con{
+    margin-left: 260px;
+    margin-right: 0%;
+}
+
 .add-btn-con{
     display: flex;
     justify-content: flex-end;
@@ -684,7 +689,7 @@ header {
     align-items: center; /* Vertically center */
 }
 
-.delete-btn i{
+.delete-btn {
     border-radius: 5px;
     padding: 5px 10px;
     color: #C7353E;

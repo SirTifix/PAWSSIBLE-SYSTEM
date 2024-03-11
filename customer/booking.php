@@ -18,8 +18,7 @@ require_once('./tools/functions.php');
   <link rel="stylesheet" href="/assets/css/book-form.css">
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
@@ -88,55 +87,46 @@ require_once('./tools/functions.php');
         <h6 class="style-date" style="text-align: center; color: #5263AB;"> Select Time Slot</h6>
         <div class="separator"></div>
         <div class="time-slots">
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="08:00 AM - 09:00 AM">08:00 AM
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="08:00 AM - 09:00 AM">08:00 AM
             <div> 09:00 AM</div>
           </div>
 
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="09:00 AM 10:00 AM">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="09:00 AM 10:00 AM">
             <div>09:00 AM</div>
             <div>10:00 AM</div>
           </div>
 
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="10:00 AM 11:00 AM">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="10:00 AM 11:00 AM">
             <div>10:00 AM</div>
             <div>11:00 AM</div>
           </div>
 
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="11:00 AM 12:00 PM">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="11:00 AM 12:00 PM">
             <div>11:00 AM</div>
             <div>12:00 PM</div>
           </div>
 
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="12:00 AM 01:00 PM">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="12:00 AM 01:00 PM">
             <div>12:00 PM</div>
             <div>01:00 PM</div>
           </div>
 
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="01:00 AM 02:00 PM">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="01:00 AM 02:00 PM">
             <div>01:00 AM</div>
             <div>02:00 AM</div>
           </div>
 
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="02:00 AM 03:00 PM">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="02:00 AM 03:00 PM">
             <div>02:00 AM</div>
             <div>03:00 AM</div>
           </div>
 
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="03:00 AM 04:00 PM">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="03:00 AM 04:00 PM">
             <div>03:00 AM</div>
             <div>04:00 AM</div>
           </div>
 
-          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="04:00 AM 05:00 PM">
+          <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="04:00 AM 05:00 PM">
             <div>04:00 AM</div>
             <div>05:00 AM</div>
           </div>
@@ -206,16 +196,14 @@ require_once('./tools/functions.php');
 
             <div id="petFormsContainer" class="petFormsContainer"></div>
 
-            <button type="button" id="submitBtn" class="btn btn-primary" data-toggle="modal"
-              data-target="#confirmationModal" style="background-color:#2A2F4F" class="float-right">
+            <button type="button" id="submitBtn" class="btn btn-primary" data-toggle="modal" data-target="#confirmationModal" style="background-color:#2A2F4F" class="float-right">
               Book Appointment
             </button>
 
 
             <!-- Confirmation Modal -->
             <div class="confirmation-modal">
-              <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
-                aria-labelledby="confirmationModalLabel" aria-hidden="true">
+              <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                   <div class="modal-content text-center">
                     <div class="modal-header">
@@ -230,8 +218,7 @@ require_once('./tools/functions.php');
                     </div>
 
                     <div class="modal-footer justify-content-center">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
                         Booking</button>
                     </div>
                   </div>
@@ -243,12 +230,9 @@ require_once('./tools/functions.php');
       </div>
     </div>
   </div>
-  </div>
 
   <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
