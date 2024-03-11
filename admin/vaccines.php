@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    $title = 'vaccine';
+    $title = 'Vaccine';
     require_once('./include/admin-head.php');
 ?>
 <body>
