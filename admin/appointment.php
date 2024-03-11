@@ -45,7 +45,6 @@
     </div> 
 
 
-
     <table class="table table-striped table-sm">
         <thead>
             <tr>
@@ -64,18 +63,18 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                <td class="d-flex justify-content-center align-items-center">
-                    <div class="crud-btn">
-                        <a href="" class="check-btn"><i class="fa-regular fa-circle-check m-1" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="crud-btn">
-                        <a href="" class="edit-btn"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="crud-btn">
-                        <a href="" class="delete-btn" data-bs-toggle="modal"data-bs-target="#deleteDModal">
-                            <i class="fa-regular fa-trash-can" aria-hidden="true"></i></a>
-                    </div>
-                </td>
+                    <td class="d-flex justify-content-center align-items-center">
+                        <div class="crud-btn">
+                            <a href="" class="check-btn"><i class="fa-regular fa-circle-check m-1" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="crud-btn">
+                            <a href="" class="edit-btn"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="crud-btn">
+                            <a href="" class="delete-btn" data-bs-toggle="modal"data-bs-target="#deleteDModal">
+                                <i class="fa-regular fa-trash-can" aria-hidden="true"></i></a>
+                        </div>
+                    </td>
             </tr>
         </tbody>
     </table>
@@ -92,7 +91,7 @@
                         <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
                             this Appointment?</h4>
                         <div class="modal-footer justify-content-between" style="border: none;">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                             <button type="button" class="btn btn-primary" id="confirmDelete" data-customer-id=""
                                 style="background-color: #FF0000; border: none;">Delete</button>
                         </div>
