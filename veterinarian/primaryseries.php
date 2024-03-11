@@ -63,7 +63,7 @@
                     <div class="col">January 8, 2024</div>
                     <div class="col">Dr.Green</div>
                     <div class="col crud-btn">
-                      <a href="edit-primary.html" class="crud-icon-update"><i class="fa-solid fa-pen-to-square m-1" aria-hidden="true"></i></a>
+                      <a href="edit-primary.php" class="crud-icon-update"><i class="fa-solid fa-pen-to-square m-1" aria-hidden="true"></i></a>
                   </div>
                       
                   </div>

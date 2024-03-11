@@ -27,34 +27,37 @@
         </div>
     </div>    
 </section>
+  <div class="white-container d-flex justify-content-center align-items-center">
+  
+    <div class="calendar ">
+      <div class="calendar-controls d-flex justify-content-center align-items-center">
+        <button onclick="previousMonth()"><</button>
+        <h3 id="month-name"></h3>
+        <button onclick="nextMonth()">></button>
+        <input type="number" id="year" value="2024">
+        <button onclick="generateCalendar()">Generate Calendar</button>
+      </div>
+          <table id="calendar">
+            <thead>
+              <tr>
+                <th colspan="7">Calendar</th>
+              </tr>
+              <tr>
+                <th>Sun</th>
+                <th>Mon</th>
+                <th>Tue</th>
+                <th>Wed</th>
+                <th>Thu</th>
+                <th>Fri</th>
+                <th>Sat</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
 
-<div class="calendar">
-  <div class="calendar-controls d-flex justify-content-center align-items-center">
-    <button onclick="previousMonth()"><</button>
-    <h3 id="month-name"></h3>
-    <button onclick="nextMonth()">></button>
-    <input type="number" id="year" value="2024">
-    <button onclick="generateCalendar()">Generate Calendar</button>
   </div>
-      <table id="calendar">
-        <thead>
-          <tr>
-            <th colspan="7">Calendar</th>
-          </tr>
-          <tr>
-            <th>Sun</th>
-            <th>Mon</th>
-            <th>Tue</th>
-            <th>Wed</th>
-            <th>Thu</th>
-            <th>Fri</th>
-            <th>Sat</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    </div>
 <div id="popup" class="popup">
     <div class="popup-content py-4">
         <span class="close" onclick="closePopup()">&times;</span>
