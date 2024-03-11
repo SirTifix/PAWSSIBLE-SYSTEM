@@ -21,7 +21,7 @@
             <div class="dashboard-container"> 
 
                 <div class="dashboard-box py-1 px-3">
-                    <p class="my-1">Total No. of Customer: </p>
+                    <p class="my-1">Customer Handled: </p>
                     <div class="d-flex justify-content-between align-items-center">
                       <i class="dashboard-icon fa-solid fa-users m-2" aria-hidden="true"></i>
                       <h1 class="m-3">13</h1>
@@ -29,21 +29,13 @@
                 </div> 
 
                 <div class="dashboard-box py-1 px-3">
-                    <p class="my-1">Total No. of Pet: </p>
+                    <p class="my-1">Upcoming Appointments: </p>
                     <div class="d-flex justify-content-between align-items-center">
-                      <i class="dashboard-icon fa-solid fa-paw m-2" aria-hidden="true"></i>
+                      <i class="dashboard-icon fa-solid  fa-clock  m-2" aria-hidden="true"></i>
                       <h1 class="m-3">4</h1>
                     </div>
                 </div> 
-
-                <div class="dashboard-box py-1 px-3">
-                    <p class="my-1">Total No. of Vaccination: </p>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <i class="dashboard-icon fa-solid fa-syringe m-2" aria-hidden="true"></i>
-                      <h1 class="m-3">22</h1>
-                    </div>
-                </div> 
-                
+\            
             </div>
         </div>
     </section>

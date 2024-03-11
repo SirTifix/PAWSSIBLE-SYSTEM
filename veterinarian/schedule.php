@@ -59,7 +59,7 @@
 
   </div>
 <div id="popup" class="popup">
-    <div class="popup-content py-4">
+    <div class="popup-content px-4">
         <span class="close" onclick="closePopup()">&times;</span>
         <p id="popup-date"></p>
         <label for="unavailableStart">Unavailable from:</label>
@@ -98,9 +98,10 @@
             <option value="21">09:00 PM</option>
             <option value="22">10:00 PM</option>
         </select>
-        
+        <div class=" d-flex justify-content-center align-items-center sched-btn ">
         <button id="unavailableBtn" onclick="setUnavailable()">Set Unavailable</button>
         <button id="setAvailableBtn" onclick="setAvailable()">Set Available</button>
+        </div>
     </div>
 </div>
 

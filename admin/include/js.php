@@ -11,7 +11,3 @@ integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxV
 <script src="./assets/js/appointment.js"></script>
 <script src="./assets/js/update-vet.js"></script>
 <script src="./assets/js/appointment.table.js"></script>
-
-
-
-  
