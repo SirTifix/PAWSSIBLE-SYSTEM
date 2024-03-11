@@ -5,12 +5,13 @@ function displaySelectedDate(dateElement, selectedDate) {
 
 document.addEventListener("DOMContentLoaded", function () {
   // Get the pets dropdown menu
+  let numberOfPets;
   const petsDropdown = document.getElementById("pets");
 
   // Add event listener to the pets dropdown menu
   petsDropdown.addEventListener("change", function () {
     console.log("Dropdown value changed");
-    const numberOfPets = parseInt(this.value);
+    numberOfPets = parseInt(this.value);
     const petFormsContainer = document.getElementById("petFormsContainer");
 
     // Clear any existing pet info forms
@@ -69,28 +70,16 @@ document.addEventListener("DOMContentLoaded", function () {
                         />
                       </div>
                       <div class="form-group col-sm-2">
-                        <label for="services"> <h5>Select Services</h5></label>
-                        <select class="form-control" id="services">
-                          <option value="">Choose...</option>
-                          <option value="grooming">
-                            Grooming<span class="price">PHP 1,000</span>
-                          </option>
-                          <option value="boarding">
-                            Boarding<span class="price">PHP 1,500</span>
-                          </option>
-                          <option value="training">
-                            Training<span class="price">PHP 2,000</span>
-                          </option>
+                        <label for="services-${i}"> <h5>Select Services</h5></label>
+                        <select class="form-control" id="services-${i}" name="services">
+                        <option value="">Choose...</option>
                         </select>
                       </div>
 
                       <div class="form-group col-sm-2">
-                        <label for="vet"> <h5>Select vet</h5></label>
-                        <select class="form-control" id="vet">
+                      <label for="vet-${i}"><h5>Select vet</h5></label>
+                      <select class="form-control" id="vet-${i}">
                           <option value="">Choose...</option>
-                          <option value="vet1">Vet 1</option>
-                          <option value="vet2">Vet 2</option>
-                          <option value="vet3">Vet 3</option>
                         </select>
                       </div>
                     </div>
@@ -114,9 +103,61 @@ document.addEventListener("DOMContentLoaded", function () {
                   </form>
                 </div>
             `;
-      petFormsContainer.appendChild(petForm);
-    }
-  });
+            petFormsContainer.appendChild(petForm);
+          }
+          fetchServices(populateServicesDropdown);
+          fetchVets(populateVetDropdown);
+        });
+      
+        function fetchServices(callback) {
+          console.log("Fetching services...");
+          fetch('../customer/fetch-services.php')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              callback(data, numberOfPets);
+            })
+            .catch(error => console.error('Error fetching services:', error));
+        }
+      
+        function populateServicesDropdown(services, numberOfPets) {
+          for (let i = 1; i <= numberOfPets; i++) {
+            const servicesSelect = document.getElementById(`services-${i}`);
+            servicesSelect.innerHTML = "<option value=''>Choose...</option>";
+            services.forEach(service => {
+              servicesSelect.innerHTML += `<option value="${service.serviceID}">${service.service}</option>`;
+            });
+          }
+        }
+
+        function fetchVets(callback) {
+          console.log("Fetching vets...");
+          fetch('../customer/fetch-vet.php')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+            .then(data => {
+              callback(data, numberOfPets);
+            })
+            .catch(error => console.error('Error fetching vets:', error));
+        }
+      
+        function populateVetDropdown(vetsData, numberOfPets) {
+          for (let i = 1; i <= numberOfPets; i++) {
+          const vetSelect = document.getElementById(`vet-${i}`);
+          vetSelect.innerHTML = "<option value=''>Choose...</option>";
+          vetsData.forEach(vet => {
+            vetSelect.innerHTML += `<option value="${vet.vetID}">${vet.fullName}</option>`;
+          });
+        }
+        }
 
   const prevMonthBtn = document.getElementById("prevMonthBtn");
   const nextMonthBtn = document.getElementById("nextMonthBtn");
@@ -144,22 +185,21 @@ document.addEventListener("DOMContentLoaded", function () {
       const calendarCell = document.createElement("div");
       calendarCell.classList.add("calendar-cell");
       calendarCell.textContent = i;
-      
+
       calendarCell.addEventListener("click", () => {
         const selectedDate = new Date(year, month, i);
-        const formattedDate = formatDate(selectedDate); // Format the selected date
+        const formattedDate = formatDate(selectedDate);
         alert(`You clicked on ${formattedDate}`);
       });
-      
-      // Create and append the "10 slots" text below each calendar cell
+
       const slotsText = document.createElement("div");
       slotsText.textContent = "10 slots";
       slotsText.classList.add("slots-text");
       calendarCell.appendChild(slotsText);
-      
+
       calendarBody.appendChild(calendarCell);
     }
-}
+  }
 
   function getMonthName(month) {
     const months = [
@@ -231,28 +271,23 @@ document.addEventListener("DOMContentLoaded", function () {
       formattedDate +
       ", " +
       selectedTime;
-      document.getElementById("selectedDate").value = formattedDate;
-      document.getElementById("selectedTime").value = selectedTime;
+    document.getElementById("selectedDate").value = formattedDate;
+    document.getElementById("selectedTime").value = selectedTime;
   }
 
-  // Function to format date in "Month Day, Year" format
   function formatDate(date) {
     const options = { month: "long", day: "numeric", year: "numeric" };
     return date.toLocaleDateString("en-US", options);
   }
 });
 
-// Get the modal
 var modal = document.getElementById("registrationModal");
 
-// Get the button that opens the modal
 var btn = document.getElementById("registerBtn");
 
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";

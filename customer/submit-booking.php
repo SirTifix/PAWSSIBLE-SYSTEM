@@ -23,14 +23,26 @@ if (isset($_POST['submitBtn'])) {
 
     $petNames = array();
     $petTypes = array();
+    $petBreeds = array();
+    $petBirthDates = array();
+    $serviceIDs = array();
+    $vetIDs = array();
 
     for ($i = 1; $i <= $numberPets; $i++) {
         $petNames[] = $_POST['petName' . $i];
         $petTypes[] = $_POST['petType' . $i];
+        $petBreeds[] = $_POST['petBreed' . $i];
+        $petBirthDates[] = $_POST['petBirthDate' . $i];
+        $serviceIDs[] = $_POST['services' . $i];
+        $vetIDs[] = $_POST['vet' . $i];
     }
 
     $booking->petName = $petNames;
     $booking->petType = $petTypes;
+    $booking->petBreed = $petBreeds;
+    $booking->petBirthDate = $petBirthDates;
+    $booking->serviceID = $serviceIDs;
+    $booking->vetID = $vetIDs;
 
     $lastInsertedBookingId = $booking->add();
 

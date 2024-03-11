@@ -17,6 +17,9 @@ class Booking
 
     public $petName;
     public $petType;
+    public $sex;
+    public $petBreed;
+    public $petBirthDate;
     protected $db;
     function __construct()
     {
@@ -86,12 +89,19 @@ class Booking
 
         if ($query->execute()) {
 
-            $sqlPet = "INSERT INTO booking_pet (petName, petType, bookingID) VALUES (:petName, :petType, :bookingID);";
+            $sqlPet = "INSERT INTO booking_pet (petName, petType, sex, petBreed, petBirthDate, bookingID, serviceID, vetID) VALUES 
+            (:petName, :petType, :sex, :petBreed, :petBirthDate, :bookingID, :serviceID, :vetID);";
             $queryPet = $this->db->connect()->prepare($sqlPet);
 
             foreach ($this->petName as $key => $name) {
                 $queryPet->bindParam(':petName', $this->petName[$key]);
                 $queryPet->bindParam(':petType', $this->petType[$key]);
+                $queryPet->bindParam(':sex', $this->sex[$key]);
+                $queryPet->bindParam(':petBreed', $this->petBreed[$key]);
+                $queryPet->bindParam(':petBirthDate', $this->petBirthDate[$key]);
+                $queryPet->bindParam(':bookingID', $this->bookingID[$key]);
+                $queryPet->bindParam(':serviceID', $this->serviceID[$key]);
+                $queryPet->bindParam(':vetID', $this->vetID[$key]);
                 $queryPet->bindParam(':bookingID', $bookingID);
                 $queryPet->execute();
             }

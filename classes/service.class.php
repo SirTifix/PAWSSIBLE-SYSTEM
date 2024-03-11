@@ -76,6 +76,16 @@ class Service
         return $data;
     }
 
+    function populateCombobox()
+    {
+        $sql = "SELECT serviceID, CONCAT(serviceName, ' ₱', servicePrice) AS service FROM service ORDER BY serviceName ASC;";
+        $query = $this->db->connect()->prepare($sql);
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
 
     function show()
     {

@@ -151,163 +151,128 @@ require_once('./tools/functions.php');
     <div class="modal-dialog">
       <div class="modal-cont">
         <h2>Personal Information</h2>
-
-
-        <div class="selected-details">
-          <div class="row">
-
-            <div class="input-container  col-sm-3">
-              <label for="firstName">First Name:</label>
-              <input type="text" id="firstName" name="firstName" required>
-
-            </div>
-
-            <div class="input-container col-sm-3">
-              <label for="lastName">Last Name:</label>
-              <input type="text" id="lastName" name="lastName" required>
-
-            </div>
-
-            <div class="details col-sm">
-              <label for="lastName">Selected Date and Time</label>
-              <div class="col-sm">
-                <p id="selectedDateTime"></p>
-              </div>
-            </div>
-
+        <form id="bookingForm" action="submit-booking.php" method="POST">
+          <div class="selected-details">
             <div class="row">
-              <div class="input-container col-6">
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" required>
+
+              <div class="input-container  col-sm-3">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
 
               </div>
-            </div>
 
-            <div class="row">
-              <div class="input-container col-6">
-                <label for="contactNumber">Contact Number:</label>
-                <input type="tel" id="contactNumber" name="contactNumber" required>
+              <div class="input-container col-sm-3">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
 
               </div>
-            </div>
 
-            <div class="row">
-              <div class="input-container col-6">
-                <label for="pets">Number of Pets:</label>
-                <select id="pets" name="pets">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
+              <div class="details col-sm">
+                <label for="lastName">Selected Date and Time</label>
+                <div class="col-sm">
+                  <p id="selectedDateTime"></p>
+                  <input type="hidden" id="selectedDate" name="selectedDate">
+                  <input type="hidden" id="selectedTime" name="selectedTime">
+                </div>
               </div>
+
+              <div class="row">
+                <div class="input-container col-6">
+                  <label for="email">Email Address:</label>
+                  <input type="email" id="email" name="email" required>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-container col-6">
+                  <label for="contactNumber">Contact Number:</label>
+                  <input type="tel" id="contactNumber" name="contactNumber" required>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="input-container col-6">
+                  <label for="pets">Number of Pets:</label>
+                  <select id="pets" name="pets">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="petFormsContainer" class="petFormsContainer"></div>
             </div>
+          </div>
+        </form>
+        <button type="submit" id="submitBtn" class="btn btn-primary" data-toggle="modal"
+          data-target="#confirmationModal" style="background-color:#2A2F4F" class="float-right">
+          Book Appointment
+        </button>
 
-            <div id="petFormsContainer" class="petFormsContainer"></div>
 
-            <button type="button" id="submitBtn" class="btn btn-primary" data-toggle="modal"
-              data-target="#confirmationModal" style="background-color:#2A2F4F" class="float-right">
-              Book Appointment
-            </button>
+        <!-- Confirmation Modal -->
+        <div class="confirmation-modal">
+          <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
+            aria-labelledby="confirmationModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content text-center">
+                <div class="modal-header">
+                  <h5 class="modal-title mx-auto" id="confirmationModalLabel">Appointment Confirmation</h5>
+                </div>
 
+                <div class="modal-body align-items-center justify-content-center d-flex flex-column">
+                  <i class="fas fa-check-circle text-success confirmation-circle mb-3" style="font-size: 80px;"></i>
+                  <p class="booking-number mb-2" style="font-size: 14px;">Your booking number: <span
+                      id="bookingID"></span></p>
+                </div>
 
-            <!-- Confirmation Modal -->
-            <div class="confirmation-modal">
-              <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
-                aria-labelledby="confirmationModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                  <div class="modal-content text-center">
-                    <div class="modal-header">
-                      <h5 class="modal-title mx-auto" id="confirmationModalLabel">Appointment Confirmation</h5>
-                      </button>
-                    </div>
-
-                    <div class="modal-body align-items-center justify-content-center d-flex flex-column">
-                      <i class="fas fa-check-circle text-success confirmation-circle mb-3" style="font-size: 80px;"></i>
-                      <p class="booking-number mb-2" style="font-size: 14px;">Your booking number:</p>
-                      <p class="mb-4">0001</p>
-                    </div>
-
-                    <div class="modal-footer justify-content-center">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
-                        Booking</button>
-                    </div>
-                  </div>
+                <div class="modal-footer justify-content-center">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                    style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
+                    Booking</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  <form action="submit-booking.php" method="POST">
-    <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <span data-bs-dismiss="modal" class="close">&times;</span>
-          <h2>Selected Details</h2>
-          <div class="selected-details">
-            <p id= "selectedDateTime"> </p>
-            <input type="hidden" id="selectedDate" name="selectedDate">
-            <input type="hidden" id="selectedTime" name="selectedTime">
 
-            <div class="input-container">
-              <label for="firstName">First Name:</label>
-              <input type="text" id="firstName" name="firstName" required>
-              <span class="underline"></span>
-            </div>
-            <div class="input-container">
-              <label for="lastName">Last Name:</label>
-              <input type="text" id="lastName" name="lastName" required>
-              <span class="underline"></span>
-            </div>
-            <div class="input-container">
-              <label for="email">Email Address:</label>
-              <input type="email" id="email" name="email" required>
-              <span class="underline"></span>
-            </div>
-            <div class="input-container">
-              <label for="contactNumber">Contact Number:</label>
-              <input type="tel" id="contactNumber" name="contactNumber" required>
-              <span class="underline"></span>
-            </div>
-            <div class="input-container">
-              <label for="pets">Number of Pets:</label>
-              <select id="pets" name="pets">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-              <span class="underline"></span>
-            </div>
-            <div id="petFormsContainer" class="petFormsContainer"></div>
-            <button type="submit" id="submitBtn" name = "submitBtn" >Submit</button>
-          </div>
-        </div>
-      </div>
-    </div>
+        <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  </form>
-  <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="./assets/script/calendar.js"></script>
 
-  <script src="./assets/script/calendar.js"></script>
-
-  <script>
-
-
-  </script>
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const submitBtn = document.getElementById("submitBtn");
+            submitBtn.addEventListener("click", function () {
+              const formData = new FormData(document.getElementById("bookingForm"));
+              fetch('submit-booking.php', {
+                method: 'POST',
+                body: formData
+              })
+                .then(response => response.json())
+                .then(data => {
+                  if (data.success) {
+                    document.getElementById("bookingID").textContent = data.bookingID;
+                    $('#confirmationModal').modal('show');
+                  } else {
+                    console.error("Failed to submit booking.");
+                  }
+                })
+                .catch(error => console.error('Error submitting booking:', error));
+            });
+          });
+        </script>
 
 </body>
 

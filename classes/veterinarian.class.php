@@ -108,6 +108,16 @@ class Veterinarian
         }
         return $data;
     }
+    function populateCombobox()
+    {
+        $sql = "SELECT vetID, CONCAT(vetFirstname, ' ', vetLastname) AS fullName FROM veterinarian ORDER BY vetLastname ASC;";
+        $query = $this->db->connect()->prepare($sql);
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
 }
 
 ?>
