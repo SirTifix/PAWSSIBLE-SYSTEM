@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
     $title = 'Schedule';
-    require_once('./include/vet-head.php');
+    require_once('./include/sched.php');
 ?>
 <body>
 <?php

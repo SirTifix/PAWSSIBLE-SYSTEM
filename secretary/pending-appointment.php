@@ -16,17 +16,11 @@
 
     <section class="veterinarian-con">
         <div class="veterinarian-head">
-            <p>Appointments</p>
+            <p>Pending Appointments</p>
         </div>
     </section>
 
-   <section class="appointment-con">
-    <div class="add-btn-con">
-    <div class="add-appointment ">
-        <a href="appointment-booking.php"><i class="fa-solid fa-plus pe-2"  aria-hidden="true"></i>New Appointment</a>
-    </div>
-    </div>
-
+   <section class="appointment-con mt-5 pt-3">
     <div class="table-appointment">
     <div class="row justify-content-end align-items-center m-0">
         <div class="col-auto my-1">
@@ -35,14 +29,15 @@
             </div>
         </div>
         <div class="col-auto my-1">
-            <a href="./appointment.php" class="appointment-btn appointment-active" id="appointmentLink"><i class="far fa-calendar-check"></i>Appointment</a>
+            <a href="./appointment.php" class="appointment-btn" id="appointmentLink"><i class="far fa-calendar-check"></i>Appointment</a>
         </div>
         <div class="col-auto my-1">
             <div class="d-flex align-items-center">
-                <a href="./pending-appointment.php" class="appointment-btn" id="pendingLink"><i class="far fa-clock"></i>Pending</a>
+                <a href="./pending-appointment.php" class="appointment-btn appointment-active" id="pendingLink"><i class="far fa-clock"></i>Pending</a>
             </div>
         </div>
     </div> 
+
 
 
     <table class="table table-striped table-sm">
@@ -63,19 +58,19 @@
                 <td></td>
                 <td></td>
                 <td></td>
-                    <td class="d-flex justify-content-center align-items-center">
-                        <div class="crud-btn">
-                            <a href="" class="check-btn"><i class="fa-regular fa-circle-check m-1" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="crud-btn">
-                            <a href="" class="edit-btn" data-bs-toggle="modal"data-bs-target="#modal">
-                                <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></a>
-                        </div>
-                        <div class="crud-btn">
-                            <a href="" class="delete-btn" data-bs-toggle="modal"data-bs-target="#deleteDModal">
-                                <i class="fa-regular fa-trash-can" aria-hidden="true"></i></a>
-                        </div>
-                    </td>
+                <td class="d-flex justify-content-center align-items-center">
+                    <div class="crud-btn">
+                        <a href="" class="check-btn"><i class="fa-regular fa-circle-check m-1" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="crud-btn">
+                        <a href="" class="delete-btn" data-bs-toggle="modal"data-bs-target="#deleteDModal">
+                        <i class="fa-solid fa-xmark" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="crud-btn">
+                        <a href="" class="" data-bs-toggle="modal"data-bs-target="#modal">
+                            <i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -89,23 +84,25 @@
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                        <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
+                        <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to decline
                             this Appointment?</h4>
                         <div class="modal-footer justify-content-between" style="border: none;">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                             <button type="button" class="btn btn-primary" id="confirmDelete" data-customer-id=""
                                 style="background-color: #FF0000; border: none;">Delete</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section>
+    <section>
         <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
           <div class="modal-dialog">
             <div class="modal-cont">
+                
+                <h2 class="align-self-center mb-3">Review Pending Appointment</h2>
                 <h3 class="align-self-center mb-4">Personal Information</h3>
+              
               <div class="selected-details">
                 <div class="row">   
 
@@ -239,7 +236,7 @@
                 </div>
                   <div id="petFormsContainer" class="petFormsContainer"></div>
 
-                  <button id="resched-btn">Reschedule Appointment</button> 
+                  <button id="backBtn">Back</button>
                 </div>
               </div>
             </div>
@@ -249,11 +246,18 @@
 
     </section>
 
-        
+        </section>
+
     </main>
     <?php
         require_once('./include/js.php')
     ?>
+
+    <script>
+        document.getElementById('backBtn').addEventListener('click', function() {
+        window.location.href = './pending-appointment.php';
+    });
+    </script>
 
 </body>
 </html>

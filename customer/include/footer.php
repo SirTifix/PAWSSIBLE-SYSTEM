@@ -1,5 +1,5 @@
 <footer>
-    <div class="con-links container-fluid row justify-content-between">
+    <div class="con-links container-fluid row justify-content-between pt-5">
 
     <div class="col-lg-3 col-md-6">
         <h5 class="fw-bolder">VISIT US</h5>

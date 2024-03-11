@@ -17,8 +17,8 @@
         </div>
         <div class="navbar-links">
             <a href="./index.php">Home</a>
-            <a href="./services.html">Services</a> 
-            <a href="./aboutus.html">About Us</a>
+            <a href="./services.php">Services</a> 
+            <a href="./aboutus.php">About Us</a>
             <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
         </div>
     </nav>

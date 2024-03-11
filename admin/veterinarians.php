@@ -41,8 +41,7 @@ require_once('../classes/veterinarian.class.php');
             </div>
 
             <div class="crud-btn col-5 justify-content-end">
-                <a href="create-vet.php" class="crud-text"><i class="fa-solid fa-circle-plus m-1"
-                        aria-hidden="true"></i>Add</a>
+                <a href="create-vet.php" class="crud-text" style="width: 38%"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Veterinarian</a>
             </div>
 
         </section>

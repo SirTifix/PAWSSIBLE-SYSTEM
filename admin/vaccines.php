@@ -21,7 +21,7 @@
         <section class="filter-con row">
             <div class="col-12 d-flex justify-content-end pe-4 py-3">
                 <div class="crud-btn">
-                    <a href="" class="crud-text" data-bs-toggle="modal" data-bs-target="#addVaccineModal"><i class="fa-solid fa-circle-plus me-2" aria-hidden="true"></i>New</a>
+                    <a href="" class="crud-text" data-bs-toggle="modal" data-bs-target="#addVaccineModal" style="width: 500%"><i class="fa-solid fa-circle-plus me-2" aria-hidden="true"></i>Add Vaccine</a>
                 </div>
 
                 <div class="modal fade" id="addVaccineModal" tabindex="-1" aria-labelledby="addVaccineModalLabel" aria-hidden="true">
