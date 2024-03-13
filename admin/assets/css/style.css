@@ -270,7 +270,6 @@ header {
     color: white;
     text-decoration: none;
     font-size: 1.1em;
-    width: 80px;
     display: flex;
     justify-content: center;
     /* Horizontally center */
@@ -283,7 +282,6 @@ header {
     /* Change text color on hover */
     color: white;
     border-radius: 50px;
-    width: 80px;
 }
 
 .crud-btn a.crud-text:active {
@@ -776,4 +774,3 @@ header {
     background: #C1CCF8;
 }
 
- 
