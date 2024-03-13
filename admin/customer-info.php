@@ -143,7 +143,8 @@ require_once('./include/admin-head.php');
         </div>
       </div>
     </section>
-    <!--Modal-->
+
+    <!--Add Pet Modal-->
     <section>
       <div class="modal fade" id="addPetModal" tabindex="-1" aria-labelledby="addPetModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -208,7 +209,6 @@ require_once('./include/admin-head.php');
                     </div>
                   </div>
               </div>
-
               <div class="modal-footer">
                 <div>
                   <a href="customer-info.php" class="back-btn btn-secondary">Cancel</a>
@@ -222,6 +222,7 @@ require_once('./include/admin-head.php');
         </div>
       </div>
     </section>
+
   </main>
   <?php
   require_once('./include/js.php')

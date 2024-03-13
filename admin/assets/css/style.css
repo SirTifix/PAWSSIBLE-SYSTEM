@@ -774,3 +774,123 @@ header {
     background: #C1CCF8;
 }
 
+/* Pet Medical History */
+.pet-medhist-con{
+    margin-left: 260px;
+    margin-right: 0%;
+}
+
+.pet-medhist-content{
+    padding: 10px 40px;
+}
+
+.petmed-body{
+    border: solid 1px #888484;
+    background-color: #fff;
+}
+
+.petmed-head{
+    margin-top: 50px;
+    color: #fff;
+    background-color: #303962;
+    padding: 10px 0px;
+}
+
+.form-control-medhist {
+    width: 350px;
+    border: 1px solid #888484;
+    padding: 8px 5px;
+    margin: 5px 0px;
+    border-radius: 5px;
+}
+
+.form-label-medhist{
+    width: 120px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+}
+
+.table-headpet th {
+    background-color: #8493D9;
+}
+
+.table-bodypet td {
+    background-color: white; /* Set background color to white */
+    color: black; /* Set text color to black */
+    font-size: 1.1em;
+}
+
+
+
+.hamburger-icon {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 1.3em;
+    position: relative;
+}
+
+.dropdown-vaccine {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.dropdown-vaccine a {
+    display: flex;
+    justify-content: start; 
+    align-items: center; 
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.hamburger-icon.active .dropdown-vaccine {
+    display: block;
+}
+
+.hamburger-icon-medhist{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 1.3em;
+    position: relative;
+}
+.dropdown-medhist{
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.dropdown-medhist a {
+    display: flex;
+    justify-content: start; 
+    align-items: center;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000000;
+    padding: 3px 0px;
+}
+
+.hamburger-icon-medhist.active .dropdown-medhist {
+    display: block;
+}
