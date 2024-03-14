@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+        require_once('./include/js.php')
+    ?>
+<?php
     
     require_once('./include/vet-head.php');
 ?>

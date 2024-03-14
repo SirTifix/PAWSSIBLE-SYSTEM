@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+        require_once('./include/js.php')
+    ?>
+<?php
     
     require_once('./include/vet-head.php');
 ?>
@@ -45,26 +48,28 @@
                   </button>
               </div>
               
-                  <div class="row font-weight-bold py-4">
-                    <div class="col">Date</div>
-                      <div class="col">Medicine Used</div>
-                      <div class="col">Dosage</div>
-                      <div class="col">Next Date</div>
-                      <div class="col">Veterinarian</div>
-                      <div class="col">Action</div>
-                  </div>
-
-                  <div class="row py-3 row-divider">
-                    <div class="col">12lbs</div>
-                    <div class="col">12/11/2023</div>
-                    <div class="col">Distemper, Hepatitis, Parvovirus, Parainfluenza (DHPP)</div>
-                    <div class="col">January 8, 2024</div>
-                    <div class="col">Dr.Green</div>
-                    <div class="col crud-btn">
-                      <a href="edit-deworming.php" class="crud-icon-update"><i class="fa-solid fa-pen-to-square m-1" aria-hidden="true"></i></a>
-                  </div>
-                      
-                  </div>
+              <table class="table">
+              <thead>
+                  <tr class=" pet-title font-weight-bold py-4">
+                      <th scope="col">Date</th>
+                      <th scope="col">Medicine Used</th>
+                      <th scope="col">Dosage</th>
+                      <th scope="col">Next Date</th>
+                      <th scope="col">Veterinarian</th>
+                      <th scope="col">Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr class="pet-con py-3 row-divider">
+                      <td>12/11/2023</td>
+                      <td>Distemper, Hepatitis, Parvovirus, Parainfluenza (DHPP)</td>
+                      <td>12lbs</td>
+                      <td>January 8, 2024</td>
+                      <td>Dr.Green</td>
+                      <td class="crud-btn"><a href="edit-deworming.php" class="crud-icon-update"><i class="fa-solid fa-pen-to-square m-1" aria-hidden="true"></i></a></td>
+                  </tr>
+              </tbody>
+          </table>
 
                  <div class="d-flex justify-content-between align-items-center">
                   <div>

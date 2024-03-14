@@ -967,8 +967,12 @@ margin-left: 240px;
     height: 80px;
     width: 700px;
 }
-
-
+.pet-title th{
+  background-color: #8493D9;
+}
+.pet-con{
+  background-color: white;
+}
 .pet-btn {
     background-color: #fff;
     color: #3A3F54;
@@ -1000,16 +1004,40 @@ margin-left: 240px;
     margin-right: 0; 
 }
 /* Dropdown */
-.dropdown {
-    position: relative;
+.dropdown-toggle::after {
+  display: none;
 }
 
+/* Remove the highlight */
+.dropdown-toggle:focus {
+  outline: none;
+  box-shadow: none;
+}
+.dropdown-toggle {
+  background-color: transparent !important;
+  border: none; /* Remove border if needed */
+}
+.dropdown {
+    position: relative;
+    box-shadow: none;
+    background-color: none;
+}
+
+.btn {
+ 
+  background-color: none;
+}
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
     z-index: 1;
+}
+.dropdown-item:active {
+
+  background-color: #f9f9f9;
+
 }
 
 .dropdown-content a {
