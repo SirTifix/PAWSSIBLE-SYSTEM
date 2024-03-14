@@ -4,6 +4,7 @@
 <?php
 $title = 'Pawssible Solutions Veterinary';
 require_once('./tools/functions.php');
+require_once('./include/customer-header.php');
 ?>
 
 <head>
@@ -13,17 +14,16 @@ require_once('./tools/functions.php');
   <title>
     <?php echo $title ?>
   </title>
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="../customer/assets/css/style.css">
   <link rel="stylesheet" href="../customer/assets/css/customer-profile.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head> 
 
 <body>
-  <?php
+  <!-- <?php
   require_once('./include/customer-header.php');
-  ?>
+  ?> -->
   <div class="Profile container d-flex flex-row">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
       <div class="d-flex flex-column justify-content-center align-items-center">
@@ -106,5 +106,11 @@ require_once('./tools/functions.php');
       showContent('appointment', document.querySelector('.nav-link.active'));
     };
   </script>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
 </body>

@@ -13,12 +13,12 @@
             <a href="aboutus.php">About Us</a>
             <a href="booking.php">Booking</a>
             <div class="dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-bell"></i> Account
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end mt-2" aria-labelledby="accountDropdown">
                     <li><a class="dropdown-item" href="customer-profile.php">My Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Appointments</a></li>
+                    <li><a class="dropdown-item" href="appointment.php">Appointments</a></li>
                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                 </ul>
             </div>
