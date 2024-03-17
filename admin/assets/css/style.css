@@ -680,7 +680,7 @@ header {
     padding: 5px 10px;
     color: #488BBB;
     text-decoration: none;
-    font-size: 1.3em;
+    font-size: 1.1em;
     width: 30px;
     display: flex;
     justify-content: center; /* Horizontally center */
@@ -692,7 +692,7 @@ header {
     padding: 5px 10px;
     color: #C7353E;
     text-decoration: none;
-    font-size: 1.3em;
+    font-size: 1.1em;
     width: 30px;
     display: flex;
     justify-content: center; /* Horizontally center */
@@ -866,6 +866,7 @@ header {
     margin-right: 15px;
     font-size: 1.3em;
     position: relative;
+    
 }
 .dropdown-medhist{
     display: none;
@@ -883,12 +884,11 @@ header {
 .dropdown-medhist a {
     display: flex;
     justify-content: start; 
-    align-items: center;
+    align-items: center; 
     text-decoration: none;
     font-size: 1rem;
     font-weight: bold;
     color: #000000;
-    padding: 3px 0px;
 }
 
 .hamburger-icon-medhist.active .dropdown-medhist {
