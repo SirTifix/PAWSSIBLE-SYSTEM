@@ -894,3 +894,31 @@ header {
 .hamburger-icon-medhist.active .dropdown-medhist {
     display: block;
 }
+
+.form-label-medHis {
+    width: 150px; /* Adjust the width as needed */
+    margin-top: 15px;
+    margin-right: 10px; /* Add margin to create space between label and control */
+}
+
+.form-control-medHis {
+    width: calc(100% - 160px); /* Adjust the width accounting for label width and margin */
+    margin-top: 15px;
+    margin-bottom: 15px; /* Add margin to the bottom of the control */
+    border-radius: 5px;
+    border: 2px solid #ccc; /* Add gray border */
+    transition: border-color 0.3s; /* Add transition effect for smoother color change */
+}
+
+.form-control-medHis:hover,
+.form-control-medHis:focus {
+    border-color: #85c5e8; /* Change border color to blue when focused */
+    outline: none; /* Remove default focus outline */
+    border-width: 2px;
+}
+
+
+
+
+
+

@@ -129,11 +129,11 @@
             <div class="hamburger-icon-medhist" id="hamburger-icon-medhist">
                 <i class="fa-solid fa-bars"></i>
                 <div class="dropdown-medhist" id="dropdown-medhist">
-                    <a href="#"><i class="fa-solid fa-circle-chevron-down ms-2 me-4"></i>Add</a>
+                    <a href="" data-bs-toggle="modal"data-bs-target="#addMedRecModal">
+                        <i class="fa-solid fa-circle-chevron-down ms-2 me-4"></i>Add</a>
                 </div>
             </div>
         </div>
-
 
         <div class="d-flex justify-content-around">
             <table class="table table-bordered">
@@ -156,7 +156,7 @@
                         <td></td>
                         <td class="d-flex justify-content-center align-items-center">
                             <div class="crud-btn">
-                                <a href="" class="edit-btn" data-bs-toggle="modal"data-bs-target="#modal">
+                                <a href="" class="edit-btn" data-bs-toggle="modal"data-bs-target="#updateMedRecModal">
                                     <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></a>
                             </div>
                             <div class="crud-btn">
@@ -203,7 +203,7 @@
                         <td></td>
                         <td class="d-flex justify-content-center align-items-center">
                             <div class="crud-btn">
-                                <a href="" class="edit-btn" data-bs-toggle="modal"data-bs-target="#modal">
+                                <a href="" class="edit-btn" data-bs-toggle="modal"data-bs-target="">
                                     <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></a>
                             </div>
                             <div class="crud-btn">
@@ -217,150 +217,122 @@
         </div>
 
         <section>
-        <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
-          <div class="modal-dialog">
-            <div class="modal-cont">
-                <h3 class="align-self-center mb-4">Personal Information</h3>
-              <div class="selected-details">
-                <div class="row">   
+            <div class="modal fade" id="addMedRecModal" tabindex="-1" aria-labelledby="addDModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header d-flex justify-content-center align-items-center" 
+                        style="background-color: #303962; color: #fff; border-bottom: none; padding: 1rem;">
+                            <h2 class="modal-title">Medical History</h2>
+                            </button>
+                        </div>
+                        <div>
+                            <form action="" method="post">
+                                <div class="row p-3">
+                                    <div class="col-6">
+                                        <div class="d-flex mt-3">
+                                            <label for="age" class="form-label-medHis fw-bold">Age(weeks)</label>
+                                            <input type="text" class="form-control-medHis" id="age" name="age" required>
+                                        </div>
 
-                  <div class="input-container  col-sm-3">
-                    <label for="firstName">First Name:</label>
-                    <input type="text" id="firstName" name="firstName" required>
+                                        <div class="d-flex">
+                                            <label for="Date" class="form-label-medHis fw-bold">Date:</label>
+                                            <input type="Date" class="form-control-medHis" id="Date" name="Date" required>
+                                        </div>
+                                        
+                                        <div class="d-flex">
+                                            <label for="veterinarian" class="form-label-medHis fw-bold">Veterinarian</label>
+                                            <input type="text" class="form-control-medHis" id="veterinarian" name="veterinarian" required>
+                                        </div>
 
-                  </div>
+                                        <div class="d-flex">
+                                            <label for="history" class="form-label-medHis fw-bold">History</label>
+                                            <textarea class="form-control-medHis" id="history" name="history" rows="6" required></textarea>
+                                        </div>
+                                    </div>
 
-                  <div class="input-container col-sm-3">
-                    <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastName" name="lastName" required>
+                                    <div class="col-6">
+                                        <div class="d-flex mt-3">
+                                            <label for="physicalExam" class="form-label-medHis fw-bold">Physical Examination</label>
+                                            <textarea class="form-control-medHis" id="physicalExam" name="physicalExam" rows="6" required></textarea>
+                                        </div>
 
-                  </div>
-
-                  <div class="details col-sm">
-                    <label for="lastName">Selected Date and Time</label>
-                    <div class="col-sm">
-                      <p id="selectedDateTime"></p>
+                                        <div class="d-flex">
+                                            <label for="diagnosis" class="form-label-medHis fw-bold">Diagnosis/ Treatment Plan</label>
+                                            <textarea class="form-control-medHis" id="diagnosis" name="diagnosis" rows="6" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+ 
+                            </form>
+                        </div>
+                        <div class="modal-footer justify-content-between" style="border: none;">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Save</button>
+                        </div>
                     </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="input-container col-6">
-                      <label for="email">Email Address:</label>
-                      <input type="email" id="email" name="email" required>
-
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="input-container col-6">
-                      <label for="contactNumber">Contact Number:</label>
-                      <input type="tel" id="contactNumber" name="contactNumber" required>
-
-                    </div>
-                  </div>
-
-                  <div class="pet-info-form background-color-container">
-                  <h3 class="mb-4 text-center">Pet Information Form</h3>
-                  <form>
-                    <div class="form-row">
-                      <div class="form-group col-sm-2  background-color">
-                        <label for="petname"><h5>Pet Name</h5></label>
-                        <input
-                          type="text"
-                          class="book-form-control"
-                          id="petname"
-                          placeholder="Enter pet name"
-                        />
-                      </div>
-                      <div class="form-group col-sm-2 background-color">
-                        <label for="pettype"> <h5>Pet Type</h5></label>
-                        <input
-                          type="text"
-                          class="book-form-control"
-                          id="pettype"
-                          placeholder="Enter pet type"
-                        />
-                      </div>
-                      <div class="form-group col-sm-2 background-color">
-                        <label for="sex"> <h5>Sex</h5></label>
-                        <input
-                          type="text"
-                          class="book-form-control background-color"
-                          id="sex"
-                          placeholder="Enter sex"
-                        />
-                      </div>
-
-                      <div class="form-group col-sm-2">
-                        <label for="concerns"> <h5>Concerns</h5></label>
-                        <textarea style="height: 200px;" class="form-concerns" id="concerns"></textarea>
-                      </div>
-                    </div>
-
-                    <div class="form-row">
-                      <div class="form-group col-sm-2 background-color">
-                        <label for="breed"> <h5>Breed</h5></label>
-                        <input
-                          type="text"
-                          class="book-form-control"
-                          id="breed"
-                          placeholder="Enter breed"
-                        />
-                      </div>
-                      <div class="form-group col-sm-2">
-                        <label for="services"> <h5>Select Services</h5></label>
-                        <select class="book-form-control" id="services">
-                          <option value="">Choose...</option>
-                          <option value="grooming">
-                            Grooming<span class="price">PHP 1,000</span>
-                          </option>
-                          <option value="boarding">
-                            Boarding<span class="price">PHP 1,500</span>
-                          </option>
-                          <option value="training">
-                            Training<span class="price">PHP 2,000</span>
-                          </option>
-                        </select>
-                      </div>
-
-                      <div class="form-group col-sm-2">
-                        <label for="vet"> <h5>Select vet</h5></label>
-                        <select class="book-form-control" id="vet">
-                          <option value="">Choose...</option>
-                          <option value="vet1">Vet 1</option>
-                          <option value="vet2">Vet 2</option>
-                          <option value="vet3">Vet 3</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div class="form-row">
-                      <div class="form-group col-sm-2 background-color">
-                        <label for="birthdate"> <h5>BirthDate</h5></label>
-                        <input type="date" class="book-form-control" id="birthdate" />
-                      </div>
-                    </div>
-
-                    <div class="select-ex-pet">
-                      <button
-                        type="submit"
-                        class="btn"
-                        style="background-color: #6075d1; float: right;"
-                      >
-                        Select Existing Pet
-                      </button>
-                    </div>
-                  </form>
                 </div>
-                  <div id="petFormsContainer" class="petFormsContainer"></div>
-
-                  <button id="resched-btn">Reschedule Appointment</button> 
-                </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </section>
+        </section>
+
+        <section>
+            <div class="modal fade" id="updateMedRecModal" tabindex="-1" aria-labelledby="updateDModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header d-flex justify-content-center align-items-center" 
+                        style="background-color: #303962; color: #fff; border-bottom: none; padding: 1rem;">
+                            <h2 class="modal-title">Medical History</h2>
+                            </button>
+                        </div>
+                        <div>
+                            <form action="" method="post">
+                                <div class="row p-3">
+                                    <div class="col-6">
+                                        <div class="d-flex mt-3">
+                                            <label for="age" class="form-label-medHis fw-bold">Age(weeks)</label>
+                                            <input type="text" class="form-control-medHis" id="age" name="age" required>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="Date" class="form-label-medHis fw-bold">Date:</label>
+                                            <input type="Date" class="form-control-medHis" id="Date" name="Date" required>
+                                        </div>
+                                        
+                                        <div class="d-flex">
+                                            <label for="veterinarian" class="form-label-medHis fw-bold">Veterinarian</label>
+                                            <input type="text" class="form-control-medHis" id="veterinarian" name="veterinarian" required>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="history" class="form-label-medHis fw-bold">History</label>
+                                            <textarea class="form-control-medHis" id="history" name="history" rows="6" required></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="d-flex mt-3">
+                                            <label for="physicalExam" class="form-label-medHis fw-bold">Physical Examination</label>
+                                            <textarea class="form-control-medHis" id="physicalExam" name="physicalExam" rows="6" required></textarea>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="diagnosis" class="form-label-medHis fw-bold">Diagnosis/ Treatment Plan</label>
+                                            <textarea class="form-control-medHis" id="diagnosis" name="diagnosis" rows="6" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+ 
+                            </form>
+                        </div>
+                        <div class="modal-footer justify-content-between" style="border: none;">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
         <section>
