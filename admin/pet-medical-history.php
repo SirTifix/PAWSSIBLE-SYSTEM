@@ -141,6 +141,7 @@
                     <tr class="table-headpet text-center">
                         <th scope="col">Age (weeks)</th>
                         <th scope="col">Date</th>
+                        <th scope="col">Veterinarian</th>
                         <th scope="col">History</th>
                         <th scope="col">Physical Examination</th>
                         <th scope="col">Diagnosis/Treatment Plan</th>
@@ -149,6 +150,7 @@
                 </thead>
                 <tbody id="petHistoryTableBody">
                     <tr class="table-bodypet ">
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -175,7 +177,8 @@
             <div class="hamburger-icon" id="hamburger-icon">
                 <i class="fa-solid fa-bars"></i>
                 <div class="dropdown-vaccine" id="dropdown-vaccine">
-                    <a href="#"><i class="fa-solid fa-circle-chevron-down ms-2 me-4"></i>Add</a>
+                    <a href="#" data-bs-toggle="modal"data-bs-target="#addVaccineModal">
+                        <i class="fa-solid fa-circle-chevron-down ms-2 me-4"></i>Add</a>
                 </div>
             </div>
         </div>
@@ -185,11 +188,11 @@
                 <thead>
                     <tr class="table-headpet text-center">
                         <th scope="col">Age (weeks)</th>
-                        <th scope="col">Weight</th>
-                        <th scope="col">Date Given</th>
-                        <th scope="col">Vaccine</th>
-                        <th scope="col">Next Date</th>
                         <th scope="col">Veterinarian</th>
+                        <th scope="col">Vaccine</th>
+                        <th scope="col">Vaccine Category</th>
+                        <th scope="col">Date Given</th>
+                        <th scope="col">Due Date</th>
                         <th scope="col" width="5%">Action</th>
                     </tr>
                 </thead>
@@ -203,7 +206,7 @@
                         <td></td>
                         <td class="d-flex justify-content-center align-items-center">
                             <div class="crud-btn">
-                                <a href="" class="edit-btn" data-bs-toggle="modal"data-bs-target="">
+                                <a href="" class="edit-btn" data-bs-toggle="modal"data-bs-target="#updateVaccineModal">
                                     <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></a>
                             </div>
                             <div class="crud-btn">
@@ -216,6 +219,7 @@
             </table>
         </div>
 
+        <!-- Medical Record Add and Update Modal -->
         <section>
             <div class="modal fade" id="addMedRecModal" tabindex="-1" aria-labelledby="addDModalLabel"
                 aria-hidden="true">
@@ -231,7 +235,7 @@
                                 <div class="row p-3">
                                     <div class="col-6">
                                         <div class="d-flex mt-3">
-                                            <label for="age" class="form-label-medHis fw-bold">Age(weeks)</label>
+                                            <label for="age" class="form-label-medHis fw-bold">Age(weeks):</label>
                                             <input type="text" class="form-control-medHis" id="age" name="age" required>
                                         </div>
 
@@ -241,24 +245,24 @@
                                         </div>
                                         
                                         <div class="d-flex">
-                                            <label for="veterinarian" class="form-label-medHis fw-bold">Veterinarian</label>
+                                            <label for="veterinarian" class="form-label-medHis fw-bold">Veterinarian:</label>
                                             <input type="text" class="form-control-medHis" id="veterinarian" name="veterinarian" required>
                                         </div>
 
                                         <div class="d-flex">
-                                            <label for="history" class="form-label-medHis fw-bold">History</label>
+                                            <label for="history" class="form-label-medHis fw-bold">History:</label>
                                             <textarea class="form-control-medHis" id="history" name="history" rows="6" required></textarea>
                                         </div>
                                     </div>
 
                                     <div class="col-6">
                                         <div class="d-flex mt-3">
-                                            <label for="physicalExam" class="form-label-medHis fw-bold">Physical Examination</label>
+                                            <label for="physicalExam" class="form-label-medHis fw-bold">Physical Examination:</label>
                                             <textarea class="form-control-medHis" id="physicalExam" name="physicalExam" rows="6" required></textarea>
                                         </div>
 
                                         <div class="d-flex">
-                                            <label for="diagnosis" class="form-label-medHis fw-bold">Diagnosis/ Treatment Plan</label>
+                                            <label for="diagnosis" class="form-label-medHis fw-bold">Diagnosis/ Treatment Plan:</label>
                                             <textarea class="form-control-medHis" id="diagnosis" name="diagnosis" rows="6" required></textarea>
                                         </div>
                                     </div>
@@ -268,7 +272,7 @@
                         </div>
                         <div class="modal-footer justify-content-between" style="border: none;">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Save</button>
+                            <button type="button" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Add</button>
                         </div>
                     </div>
                 </div>
@@ -290,7 +294,7 @@
                                 <div class="row p-3">
                                     <div class="col-6">
                                         <div class="d-flex mt-3">
-                                            <label for="age" class="form-label-medHis fw-bold">Age(weeks)</label>
+                                            <label for="age" class="form-label-medHis fw-bold">Age(weeks):</label>
                                             <input type="text" class="form-control-medHis" id="age" name="age" required>
                                         </div>
 
@@ -300,24 +304,24 @@
                                         </div>
                                         
                                         <div class="d-flex">
-                                            <label for="veterinarian" class="form-label-medHis fw-bold">Veterinarian</label>
+                                            <label for="veterinarian" class="form-label-medHis fw-bold">Veterinarian:</label>
                                             <input type="text" class="form-control-medHis" id="veterinarian" name="veterinarian" required>
                                         </div>
 
                                         <div class="d-flex">
-                                            <label for="history" class="form-label-medHis fw-bold">History</label>
+                                            <label for="history" class="form-label-medHis fw-bold">History:</label>
                                             <textarea class="form-control-medHis" id="history" name="history" rows="6" required></textarea>
                                         </div>
                                     </div>
 
                                     <div class="col-6">
                                         <div class="d-flex mt-3">
-                                            <label for="physicalExam" class="form-label-medHis fw-bold">Physical Examination</label>
+                                            <label for="physicalExam" class="form-label-medHis fw-bold">Physical Examination:</label>
                                             <textarea class="form-control-medHis" id="physicalExam" name="physicalExam" rows="6" required></textarea>
                                         </div>
 
                                         <div class="d-flex">
-                                            <label for="diagnosis" class="form-label-medHis fw-bold">Diagnosis/ Treatment Plan</label>
+                                            <label for="diagnosis" class="form-label-medHis fw-bold">Diagnosis/ Treatment Plan:</label>
                                             <textarea class="form-control-medHis" id="diagnosis" name="diagnosis" rows="6" required></textarea>
                                         </div>
                                     </div>
@@ -328,6 +332,137 @@
                         <div class="modal-footer justify-content-between" style="border: none;">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                             <button type="button" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vaccine Add and Update Modal -->
+        <section>
+            <div class="modal fade" id="addVaccineModal" tabindex="-1" aria-labelledby="addDModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header d-flex justify-content-center align-items-center" 
+                        style="background-color: #303962; color: #fff; border-bottom: none; padding: 1rem;">
+                            <h2 class="modal-title">Vaccine</h2>
+                            </button>
+                        </div>
+                        <div>
+                            <form action="" method="post">
+                                <div class="mt-4 mx-5">
+                                        <div class="d-flex">
+                                            <label for="age" class="form-label-vaccine fw-bold p-2">Age(weeks):</label>
+                                            <input type="text" class="form-control-vaccine p-2" id="age" name="age" required>
+                                        </div>
+                                        
+                                        <div class="d-flex">
+                                            <label for="veterinarian" class="form-label-vaccine fw-bold">Veterinarian:</label>
+                                            <input type="text" class="form-control-vaccine" id="veterinarian" name="veterinarian" required>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="vaccine" class="form-label-vaccine fw-bold">Vaccine:</label>
+                                            <select class="form-select form-control-vaccine" id="vaccine" name="vaccine" required>
+                                                <option value="">Select Vaccine</option>
+                                                <option value="vaccine1">Vaccine 1</option>
+                                                <option value="vaccine2">Vaccine 2</option>
+                                                <option value="vaccine3">Vaccine 3</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="vaccineCateg" class="form-label-vaccine fw-bold">Vaccine Category:</label>
+                                            <select class="form-select form-control-vaccine" id="vaccineCateg" name="vaccineCateg" required>
+                                                <option value="">Select Vaccine Category</option>
+                                                <option value="vaccine1">Primary Series</option>
+                                                <option value="vaccine2">Annual Boosters</option>
+                                                <option value="vaccine3">Deworming</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="date" class="form-label-vaccine fw-bold">Date Given:</label>
+                                            <input type="date" class="form-control-vaccine" id="date" name="date" required>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="dueDate" class="form-label-vaccine fw-bold">Due Date:</label>
+                                            <div class="form-control-vaccine" id="dueDate">Due date automatically will be display after select the date given</div>
+                                        </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer justify-content-between" style="border: none;">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="modal fade" id="updateVaccineModal" tabindex="-1" aria-labelledby="updateDModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header d-flex justify-content-center align-items-center" 
+                        style="background-color: #303962; color: #fff; border-bottom: none; padding: 1rem;">
+                            <h2 class="modal-title">Vaccine</h2>
+                            </button>
+                        </div>
+                        <div>
+                            <form action="" method="post">
+                                <div class="mt-4 mx-5">
+                                        <div class="d-flex">
+                                            <label for="age" class="form-label-vaccine fw-bold p-2">Age(weeks):</label>
+                                            <input type="text" class="form-control-vaccine p-2" id="age" name="age" required>
+                                        </div>
+                                        
+                                        <div class="d-flex">
+                                            <label for="veterinarian" class="form-label-vaccine fw-bold">Veterinarian:</label>
+                                            <input type="text" class="form-control-vaccine" id="veterinarian" name="veterinarian" required>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="vaccine" class="form-label-vaccine fw-bold">Vaccine:</label>
+                                            <select class="form-select form-control-vaccine" id="vaccine" name="vaccine" required>
+                                                <option value="">Select Vaccine</option>
+                                                <option value="vaccine1">Vaccine 1</option>
+                                                <option value="vaccine2">Vaccine 2</option>
+                                                <option value="vaccine3">Vaccine 3</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="vaccineCateg" class="form-label-vaccine fw-bold">Vaccine Category:</label>
+                                            <select class="form-select form-control-vaccine" id="vaccineCateg" name="vaccineCateg" required>
+                                                <option value="">Select Vaccine Category</option>
+                                                <option value="vaccine1">Primary Series</option>
+                                                <option value="vaccine2">Annual Boosters</option>
+                                                <option value="vaccine3">Deworming</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="date" class="form-label-vaccine fw-bold">Date Given:</label>
+                                            <input type="date" class="form-control-vaccine" id="date" name="date" required>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="dueDate" class="form-label-vaccine fw-bold">Due Date:</label>
+                                            <div class="form-control-vaccine" id="dueDate">Due date automatically will be display after select the date given</div>
+                                        </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer justify-content-between" style="border: none;">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Add</button>
                         </div>
                     </div>
                 </div>

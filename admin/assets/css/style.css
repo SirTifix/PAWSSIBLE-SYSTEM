@@ -899,6 +899,14 @@ header {
     width: 150px; /* Adjust the width as needed */
     margin-top: 15px;
     margin-right: 10px; /* Add margin to create space between label and control */
+    padding: 10px;
+}
+
+.form-label-vaccine {
+    width: 130px; /* Adjust the width as needed */
+    margin-top: 15px;
+    margin-right: 10px; /* Add margin to create space between label and control */
+    padding: 10px;
 }
 
 .form-control-medHis {
@@ -908,6 +916,7 @@ header {
     border-radius: 5px;
     border: 2px solid #ccc; /* Add gray border */
     transition: border-color 0.3s; /* Add transition effect for smoother color change */
+    padding: 10px;
 }
 
 .form-control-medHis:hover,
@@ -917,6 +926,22 @@ header {
     border-width: 2px;
 }
 
+.form-control-vaccine {
+    width: calc(100% - 100px); /* Adjust the width accounting for label width and margin */
+    margin-top: 15px;
+    margin-bottom: 15px; /* Add margin to the bottom of the control */
+    border-radius: 5px;
+    border: 2px solid #ccc; /* Add gray border */
+    transition: border-color 0.3s; /* Add transition effect for smoother color change */
+    padding: 10px;
+}
+
+.form-control-vaccine:hover,
+.form-control-vaccine:focus {
+    border-color: #85c5e8; /* Change border color to blue when focused */
+    outline: none; /* Remove default focus outline */
+    border-width: 2px;
+}
 
 
 
