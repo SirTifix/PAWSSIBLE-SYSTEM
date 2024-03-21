@@ -960,7 +960,24 @@ header {
     z-index: 1000;  
     display: none;
 }
+/* VACCINE FORM */
+.pet-information{
+    padding-left: 200px;
 
-
-
-
+}
+.vac-container{
+   margin:20px;
+   margin-left: 70px;
+}
+.form-label-petType {
+   
+    margin-top: 15px;
+    margin-left: 60px; /* Add margin to create space between label and control */
+    padding: 10px;
+}
+.form-control-petType{
+    margin-left: 60px; 
+    width: 330px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
