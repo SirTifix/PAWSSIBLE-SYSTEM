@@ -22,16 +22,33 @@ require_once('../classes/veterinarian.class.php');
 
         <section class="filter-con row">
             <div class="row col-7">
-                <div class="form-group col-6 col-sm-auto">
-                    <select name="year" class="form-select">
-                        <option value="">Today</option>
-                        <option value="Manager">This Year</option>
-                        <option value="Staff">Last Year</option>
-                        <option value="Cashier">Custom date range</option>
+                <div class="form-group col-8 col-sm-auto">
+                    <select id="dateRangeSelect" class="form-select">
+                        <option value="today">Today</option>
+                        <option value="thisYear">This Year</option>
+                        <option value="lastYear">Last Year</option>
+                        <option value="custom" class="custom-option">Custom date range</option>
                     </select>
-                </div>
+                
 
-                <div class="form-group col-6 col-sm-auto">
+                    <div id="customDateContainer">
+                        <div id="customDateRange" class="customDateRange">
+                            <label for="startDate" class="my-1">After:</label>
+                            <input type="date" id="startDate" class="my-1" name="startDate">
+
+                            <label for="endDate" class="my-2">Before:</label>
+                            <input type="date" id="endDate" name="endDate">
+
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                            <button type="button" class="btn btn-secondary">Cancel</button>
+                            <button type="button" class="btn btn-primary">Apply</button>
+                        </div>
+
+                    </div>
+                </div>  
+            </div>
+
+            <div class="form-group col-4 col-sm-auto">
                     <select name="status" class="form-select">
                         <option value="">All Status</option>
                         <option value="Active">Active</option>
@@ -41,9 +58,8 @@ require_once('../classes/veterinarian.class.php');
             </div>
 
             <div class="crud-btn col-5 justify-content-end">
-                <a href="create-vet.php" class="crud-text" style="width: 38%"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Veterinarian</a>
+                <a href="create-vet.php" class="crud-text" style="width: 35%"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Veterinary</a>
             </div>
-
         </section>
 
         <section class="table-con">
@@ -121,6 +137,14 @@ require_once('../classes/veterinarian.class.php');
                 document.getElementById('confirmDelete').setAttribute('data-vet-id', vetID);
             });
 
+            document.getElementById("dateRangeSelect").addEventListener("change", function() {
+                var customDateRange = document.getElementById("customDateRange");
+                if (this.value === "custom") {
+                    customDateRange.style.display = "block";
+                } else {
+                    customDateRange.style.display = "none";
+                }
+            });
         </script>
 
     </main>
