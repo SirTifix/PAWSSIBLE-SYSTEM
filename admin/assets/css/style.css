@@ -436,7 +436,6 @@ header {
     color: #3A3F54;
     text-decoration: none;
     border: 1px solid #4a4f63;
-    /* Add border property with black color */
     border-radius: 50px;
     padding: 10px 60px;
     margin: 10px;
@@ -453,11 +452,11 @@ header {
     background-color: #3A3F54;
     color: #fff;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 10px 40px;
     margin: 10px 20px;
     border-radius: 20px;
-    font-size: 1.2em;
-    font-weight: 450;
+    font-size: 1.1em;
+    font-weight: 500;
 }
 
 .top-back:hover {

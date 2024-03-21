@@ -1,4 +1,5 @@
 <?php
+
 require_once('../classes/customer.class.php');
 require_once('../classes/pet.class.php');
 require_once('./tools/functions.php');
@@ -20,7 +21,7 @@ if (isset($_GET['customerID'])) {
 } else {
   echo "Customer ID is missing.";
   exit;
-}
+} 
 ?>
 
 <!DOCTYPE html>
@@ -41,11 +42,10 @@ require_once('./include/admin-head.php');
     <section class="veterinarian-con">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <div class="veterinarian-head">
-          <p>Update Customer Information</p>
+          <p>Customer Information</p>
         </div>
         <div>
-          <a href="customers.php" class="top-back btn-secondary pe-5"><i class="fa-solid fa-chevron-left me-3"></i>
-            BACK</a>
+          <a href="customers.php" class="top-back btn-secondary"> BACK</a>
         </div>
       </div>
     </section>
@@ -62,31 +62,31 @@ require_once('./include/admin-head.php');
             <form action="" method="post">
               <div class="form-customer-info">
                 <div class="d-flex mt-3">
-                  <label for="id" class="form-label fw-bold">ID:</label>
+                  <label for="id" class="forms-label fw-bold">ID:</label>
                   <input type="text" class="form-control" id="id" name="id" required
                     value="<?php echo $customerData['customerID']; ?>">
                 </div>
 
                 <div class="d-flex">
-                  <label for="name" class="form-label fw-bold">Name:</label>
+                  <label for="name" class="forms-label fw-bold">Name:</label>
                   <input type="text" class="form-control" id="name" name="name" required
                     value="<?php echo $customerData['customerFirstname'] . ' ' . $customerData['customerLastname']; ?>">
                 </div>
 
                 <div class="d-flex">
-                  <label for="address" class="form-label fw-bold">Address:</label>
+                  <label for="address" class="forms-label fw-bold">Address:</label>
                   <input type="text" class="form-control" id="address" name="address" required
                     value="<?php echo $customerData['customerAddress'] . ' ' . $customerData['customerCity']; ?>">
                 </div>
 
                 <div class="d-flex">
-                  <label for="email" class="form-label fw-bold">Email:</label>
+                  <label for="email" class="forms-label fw-bold">Email:</label>
                   <input type="text" class="form-control" id="email" name="email" required
                     value="<?php echo $customerData['customerEmail']; ?>">
                 </div>
 
                 <div class="d-flex">
-                  <label for="num" class="form-label fw-bold">Phone Number:</label>
+                  <label for="num" class="forms-label fw-bold">Phone Number:</label>
                   <input type="text" class="form-control" id="num" name="num" required
                     value="<?php echo $customerData['customerPhone']; ?>">
                 </div>
@@ -106,36 +106,34 @@ require_once('./include/admin-head.php');
               <?php
               $pets = $pet->fetchByCustomerId($customer_id);
               if ($pets) {
-                foreach ($pets as $petData) {
+                foreach ($pets as $petData) { 
                   ?>
                   <div class="form-pet-info">
                     <div class="pet-info-box">
                       <div class="mb-3">
                         <div class="d-flex">
-                          <input type="file" id="fileInput" accept="image/*">
-                          <label for="petname" class="form-label-pet">Name:</label>
+                          <label for="petname" class="forms-label-pet">Name:</label>
                           <input type="text" class="form-control-pet" id="petname" name="petname" required
                             value="<?php echo $petData['petName']; ?>">
                         </div>
                         <div class="d-flex">
-                        <input type="file" id="fileInput" accept="image/*">
-                          <label for="pettype" class="form-label-pet">Pet Type:</label>
+                          <label for="pettype" class="forms-label-pet">Pet Type:</label>
                           <input type="text" class="form-control-pet" id="pettype" name="pettype" required
                             value="<?php echo $petData['petType']; ?>">
                         </div>
                       </div>
-                      <a href="#" class="view-pet-btn" data-bs-toggle="modal" data-bs-target="#viewPetModal<?php echo $petData['petId']; ?>">View</a>
+                      <a href="" class="view-pet-btn" data-bs-toggle="modal" data-bs-target="#viewPetModal<?php //echo $petData['petId']; ?>">View</a>
                     </div>
                   </div>
 
                   <div class="modal fade" id="viewPetModal<?php echo $petData['petId']; ?>" tabindex="-1" aria-labelledby="viewPetModalLabel<?php echo $petData['petId']; ?>" aria-hidden="true">
 
                   </div>
-                  <?php
+                  <?php 
                 }
               } else {
                 echo "No pets found for this customer.";
-              }
+              } 
               ?>
 
           </div>
@@ -169,52 +167,131 @@ require_once('./include/admin-head.php');
                 <form action="" method="post">
                   <div class="form-body">
                     <div class="d-flex mt-3">
-                      <label for="petname" class="form-label fw-bold">Pet Name:</label>
+                      <label for="petname" class="forms-label fw-bold">Pet Name:</label>
                       <input type="text" class="form-control" id="petname" name="petname" required value="<?php echo $petData['petName']; ?>">
                     </div>
 
                     <div class="d-flex">
-                      <label for="state" class="form-label fw-bold">Birth Date:</label>
+                      <label for="state" class="forms-label fw-bold">Birth Date:</label>
                       <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petBirthdate']; ?>">
                     </div>
 
                     <div class="d-flex">
-                      <label for="state" class="form-label fw-bold">Pet Age:</label>
+                      <label for="state" class="forms-label fw-bold">Pet Age:</label>
                       <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petAge']; ?>">
                     </div>
 
                     <div class="d-flex">
-                      <label for="state" class="form-label fw-bold">Breed:</label>
+                      <label for="state" class="forms-label fw-bold">Breed:</label>
                       <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petBreed']; ?>">
                     </div>
 
                     <div class="d-flex">
-                      <label for="state" class="form-label fw-bold">Pet Type:</label>
+                      <label for="state" class="forms-label fw-bold">Pet Type:</label>
                       <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petType']; ?>">
                     </div>
 
                     <div class="d-flex">
-                      <label for="state" class="form-label fw-bold">Gender:</label>
+                      <label for="state" class="forms-label fw-bold">Gender:</label>
                       <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petGender']; ?>">
                     </div>
 
                     <div class="d-flex">
-                      <label for="state" class="form-label fw-bold">Weight:</label>
+                      <label for="state" class="forms-label fw-bold">Weight:</label>
                       <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petWeight']; ?>">
                     </div>
 
                     <div class="d-flex">
-                      <label for="state" class="form-label fw-bold">Color:</label>
+                      <label for="state" class="forms-label fw-bold">Color:</label>
                       <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petColor']; ?>">
                     </div>
                   </div>
               </div>
-              <div class="modal-footer">
+              <div class="modal-footer mt-3 d-flex justify-content-between align-items-center">
                 <div>
                   <a href="customer-info.php" class="back-btn btn-secondary">Cancel</a>
                 </div>
                 <div>
                   <button type="submit" class="save-vet-btn btn-secondary" id="addStaffButton">Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--View Pet Modal-->
+    <section>
+      <div class="modal fade" id="viewPetModal" tabindex="-1" aria-labelledby="viewPetModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="d-flex align-items-center w-100">
+                <div class="mt-4 text-center w-100">
+                  <h2 class="modal-title fw-bold" id="addPetModalLabel">Pet Information</h2>
+                </div>
+              </div>
+            </div>
+            <div class="modal-body">
+              <div class="d-flex justify-content-around">
+                
+              <div class="position-relative mt-5">
+                  <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                  <img src="./assets/img/upload-photo.png" alt="Profile Picture" class="profile-pic" id="profilePic">
+                  <label for="fileInput" class="upload-icon"><i class="fa-solid fa-plus"></i>
+                  </label>
+              </div>
+
+                <form action="" method="post">
+                  <div class="form-body">
+                    <div class="d-flex mt-3">
+                      <label for="petname" class="forms-label fw-bold">Pet Name:</label>
+                      <input type="text" class="form-control" id="petname" name="petname" required value="<?php echo $petData['petName']; ?>">
+                    </div>
+
+                    <div class="d-flex">
+                      <label for="state" class="forms-label fw-bold">Birth Date:</label>
+                      <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petBirthdate']; ?>">
+                    </div>
+
+                    <div class="d-flex">
+                      <label for="state" class="forms-label fw-bold">Pet Age:</label>
+                      <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petAge']; ?>">
+                    </div>
+
+                    <div class="d-flex">
+                      <label for="state" class="forms-label fw-bold">Breed:</label>
+                      <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petBreed']; ?>">
+                    </div>
+
+                    <div class="d-flex">
+                      <label for="state" class="forms-label fw-bold">Pet Type:</label>
+                      <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petType']; ?>">
+                    </div>
+
+                    <div class="d-flex">
+                      <label for="state" class="forms-label fw-bold">Gender:</label>
+                      <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petGender']; ?>">
+                    </div>
+
+                    <div class="d-flex">
+                      <label for="state" class="forms-label fw-bold">Weight:</label>
+                      <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petWeight']; ?>">
+                    </div>
+
+                    <div class="d-flex">
+                      <label for="state" class="forms-label fw-bold">Color:</label>
+                      <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petColor']; ?>">
+                    </div>
+                  </div>
+              </div>
+              <div class="modal-footer mt-5 d-flex justify-content-between align-items-center">
+                <div>
+                  <a href="customer-info.php" class="back-btn btn-secondary">Cancel</a>
+                </div>
+                <div>
+                <a href="view-medicalRecord.php" class="back-btn btn-secondary">View Medical Record</a>
                 </div>
               </div>
             </div>

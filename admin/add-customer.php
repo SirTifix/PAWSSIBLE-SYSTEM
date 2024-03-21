@@ -99,7 +99,7 @@ if(isset($_POST['save'])){
                         <div class="form-body d-flex flex-wrap row">
                             <div class="d-flex mt-3 align-items-center col-12 row">
                                 <div class="my-1 d-flex align-items-center col-6 ps-5">
-                                    <label for="customerFirstname" class="form-label">First Name:</label>
+                                    <label for="customerFirstname" class="forms-label">First Name:</label>
                                     <input type="text" class="form-control" id="customerFirstname" name="customerFirstname" required value="<?php if(isset($_POST['customerFirstname'])) { echo $_POST['customerFirstname']; } ?>">
                                     <?php
                                         if(isset($_POST['customerFirstname']) && !validate_field($_POST['customerFirstname'])){
@@ -110,7 +110,7 @@ if(isset($_POST['save'])){
                                     ?>
                                 </div>
                                 <div class="my-1 d-flex align-items-center col-6 ps-5">
-                                    <label for="customerLastname" class="form-label">Last Name:</label>
+                                    <label for="customerLastname" class="forms-label">Last Name:</label>
                                     <input type="text" class="form-control" id="customerLastname" name="customerLastname" required value="<?php if(isset($_POST['customerLastname'])) { echo $_POST['customerLastname']; }?>">
                                     <?php
                                         if(isset($_POST['customerLastname']) && !validate_field($_POST['customerLastname'])){
@@ -123,7 +123,7 @@ if(isset($_POST['save'])){
                             </div>
                             <div class="d-flex align-items-center col-12 row">
                                 <div class="my-1 d-flex align-items-center col-6 ps-5">
-                                    <label for="customerDOB" class="form-label">DOB:</label>
+                                    <label for="customerDOB" class="forms-label">DOB:</label>
                                     <input type="date" class="form-control" id="customerDOB" name="customerDOB" required value="<?php if(isset($_POST['customerDOB'])) { echo $_POST['customerDOB']; }?>">
                                     <?php
                                         if(isset($_POST['customerLastname']) && !validate_field($_POST['customerLastname'])){
@@ -134,7 +134,7 @@ if(isset($_POST['save'])){
                                     ?>
                                 </div>
                                 <div class="my-1 d-flex align-items-center col-6 ps-5">
-                                    <label for="customerCity" class="form-label">City:</label>
+                                    <label for="customerCity" class="forms-label">City:</label>
                                     <input type="text" class="form-control" id="customerCity" name="customerCity" required value="<?php if(isset($_POST['customerCity'])) { echo $_POST['customerCity']; }?>">
                                     <?php
                                         if(isset($_POST['customerCity']) && !validate_field($_POST['customerCity'])){
@@ -146,7 +146,7 @@ if(isset($_POST['save'])){
                                 </div>
                             </div>
                                 <div class="address-form align-items-center col-12 ps-5">
-                                    <label for="customerAddress" class="form-label ms-2">Address:</label>
+                                    <label for="customerAddress" class="forms-label ms-2">Address:</label>
                                     <input type="text" class="form-control" id="customerAddress" name="customerAddress" style="width: 82.5%;" required value="<?php if(isset($_POST['customerAddress'])) { echo $_POST['customerAddress']; }?>">
                                     <?php
                                         if(isset($_POST['customerAddress']) && !validate_field($_POST['customerAddress'])){
@@ -158,7 +158,7 @@ if(isset($_POST['save'])){
                                 </div>
                             <div class="d-flex align-items-center col-12 row">
                                 <div class="my-1 d-flex align-items-center col-6 ps-5">
-                                    <label for="customerEmail" class="form-label">Email:</label>
+                                    <label for="customerEmail" class="forms-label">Email:</label>
                                     <input type="text" class="form-control" id="customerEmail" name="customerEmail" required value="<?php if(isset($_POST['customerEmail'])) { echo $_POST['customerEmail']; }?>">
                                     <?php
                                         if(isset($_POST['customerEmail']) && !validate_field($_POST['customerEmail'])){
@@ -169,7 +169,7 @@ if(isset($_POST['save'])){
                                     ?>
                                 </div>
                                 <div class="my-1 d-flex align-items-center col-6 ps-5">
-                                    <label for="customerState" class="form-label">State/Province:</label>
+                                    <label for="customerState" class="forms-label">State/Province:</label>
                                     <input type="text" class="form-control" id="customerState" name="customerState" required value="<?php if(isset($_POST['customerState'])) { echo $_POST['customerState']; }?>">
                                     <?php
                                         if(isset($_POST['customerState']) && !validate_field($_POST['customerState'])){
@@ -182,7 +182,7 @@ if(isset($_POST['save'])){
                             </div>
                             <div class="d-flex align-items-center col-12 row">
                                 <div class="my-1 d-flex align-items-center col-6 ps-5">
-                                    <label for="customerPostal" class="form-label">Zip code/Postal:</label>
+                                    <label for="customerPostal" class="forms-label">Zip code/Postal:</label>
                                     <input type="text" class="form-control" id="customerPostal" name="customerPostal" required value="<?php if(isset($_POST['customerPostal'])) { echo $_POST['customerPostal']; }?>">
                                     <?php
                                         if(isset($_POST['customerPostal']) && !validate_field($_POST['customerPostal'])){
@@ -193,7 +193,7 @@ if(isset($_POST['save'])){
                                     ?>
                                 </div>
                                 <div class="my-1 d-flex align-items-center col-6 ps-5">
-                                    <label for="customerPhone" class="form-label">Phone Number:</label>
+                                    <label for="customerPhone" class="forms-label">Phone Number:</label>
                                     <input type="text" class="form-control" id="customerPhone" name="customerPhone" required value="<?php if(isset($_POST['customerPhone'])) { echo $_POST['customerPhone']; }?>">
                                     <?php
                                         if(isset($_POST['customerPhone']) && !validate_field($_POST['customerPhone'])){
@@ -220,7 +220,7 @@ if(isset($_POST['save'])){
 
                                 <div class="form-body">
                                     <div class="d-flex mt-3">
-                                        <label for="petName" class="form-label fw-bold">Pet Name:</label>
+                                        <label for="petName" class="forms-label fw-bold">Pet Name:</label>
                                         <input type="text" class="form-control" id="petName" name="petName" required value="<?php if(isset($_POST['petName'])) { echo $_POST['petName']; }?>">
                                         <?php
                                             if(isset($_POST['petName']) && !validate_field($_POST['petName'])){
@@ -231,7 +231,7 @@ if(isset($_POST['save'])){
                                         ?>
                                     </div>
                                     <div class="d-flex">
-                                        <label for="petBirthdate" class="form-label fw-bold">Birth Date:</label>
+                                        <label for="petBirthdate" class="forms-label fw-bold">Birth Date:</label>
                                         <input type="text" class="form-control" id="petBirthdate" name="petBirthdate" required value="<?php if(isset($_POST['petBirthdate'])) { echo $_POST['petBirthdate']; }?>">
                                         <?php
                                             if(isset($_POST['petBirthdate']) && !validate_field($_POST['petBirthdate'])){
@@ -242,7 +242,7 @@ if(isset($_POST['save'])){
                                         ?>
                                     </div>
                                     <div class="d-flex">
-                                        <label for="petAge" class="form-label fw-bold">Pet Age:</label>
+                                        <label for="petAge" class="forms-label fw-bold">Pet Age:</label>
                                         <input type="text" class="form-control" id="petAge" name="petAge" required value="<?php if(isset($_POST['petAge'])) { echo $_POST['petAge']; }?>">
                                         <?php
                                             if(isset($_POST['petAge']) && !validate_field($_POST['petAge'])){
@@ -253,7 +253,7 @@ if(isset($_POST['save'])){
                                         ?>
                                     </div>
                                     <div class="d-flex">
-                                        <label for="petBreed" class="form-label fw-bold">Breed:</label>
+                                        <label for="petBreed" class="forms-label fw-bold">Breed:</label>
                                         <input type="text" class="form-control" id="petBreed" name="petBreed" required value="<?php if(isset($_POST['petBreed'])) { echo $_POST['petBreed']; }?>">
                                         <?php
                                             if(isset($_POST['petBreed']) && !validate_field($_POST['petBreed'])){
@@ -264,7 +264,7 @@ if(isset($_POST['save'])){
                                         ?>
                                     </div>
                                     <div class="d-flex">
-                                        <label for="petType" class="form-label fw-bold">Pet Type:</label>
+                                        <label for="petType" class="forms-label fw-bold">Pet Type:</label>
                                         <input type="text" class="form-control" id="petType" name="petType" required value="<?php if(isset($_POST['petType'])) { echo $_POST['petType']; }?>">
                                         <?php
                                             if(isset($_POST['petType']) && !validate_field($_POST['petType'])){
@@ -275,7 +275,7 @@ if(isset($_POST['save'])){
                                         ?>
                                     </div>
                                     <div class="d-flex">
-                                        <label for="petGender" class="form-label fw-bold">Gender:</label>
+                                        <label for="petGender" class="forms-label fw-bold">Gender:</label>
                                         <input type="text" class="form-control" id="petGender" name="petGender" required value="<?php if(isset($_POST['petGender'])) { echo $_POST['petGender']; }?>">
                                         <?php
                                             if(isset($_POST['petGender']) && !validate_field($_POST['petGender'])){
@@ -286,7 +286,7 @@ if(isset($_POST['save'])){
                                         ?>
                                     </div>
                                     <div class="d-flex">
-                                        <label for="petWeight" class="form-label fw-bold">Weight:</label>
+                                        <label for="petWeight" class="forms-label fw-bold">Weight:</label>
                                         <input type="text" class="form-control" id="petWeight" name="petWeight" required value="<?php if(isset($_POST['petWeight'])) { echo $_POST['petWeight']; }?>">
                                         <?php
                                             if(isset($_POST['petWeight']) && !validate_field($_POST['petWeight'])){
@@ -297,7 +297,7 @@ if(isset($_POST['save'])){
                                         ?>
                                     </div>
                                     <div class="d-flex">
-                                        <label for="petColor" class="form-label fw-bold">Color:</label>
+                                        <label for="petColor" class="forms-label fw-bold">Color:</label>
                                         <input type="text" class="form-control" id="petColor" name="petColor" required value="<?php if(isset($_POST['petColor'])) { echo $_POST['petColor']; }?>">
                                         <?php
                                             if(isset($_POST['petColor']) && !validate_field($_POST['petColor'])){
