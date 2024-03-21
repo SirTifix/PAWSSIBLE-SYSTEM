@@ -16,7 +16,7 @@
     <section class="veterinarian-con">
       <div class="d-flex justify-content-between align-items-center mb-4">
         <div class="veterinarian-head">
-          <p>Update Pet Medical History</p>
+          <p>Update Medical History</p>
         </div>
         <div>
           <a href="update-customer.php" class="top-back btn-secondary"> BACK</a>
