@@ -24,14 +24,28 @@ require_once('./include/admin-head.php');
 
         <section class="filter-con row">
             <div class="row col-7">
-                <div class="form-group col-6 col-sm-auto">
-                    <select name="year" class="form-select">
-                        <option value="">Today</option>
-                        <option value="Manager">This Year</option>
-                        <option value="Staff">Last Year</option>
-                        <option value="Cashier">Custom date range</option>
-                    </select>
-                </div>
+            <div class="form-group col-6 col-sm-auto">
+    <select id="dateRangeSelect" class="form-select">
+        <option value="today">Today</option>
+        <option value="thisYear">This Year</option>
+        <option value="lastYear">Last Year</option>
+        <option value="custom">
+            Custom date range 
+            <span class="dropdown-arrow">
+                <i class="fa-solid fa-angle-right"></i>
+            </span>
+        </option>
+    </select>
+</div>
+
+<div id="customDateRange" style="display: none;">
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate">
+
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" name="endDate">
+</div>
+
 
                 <div class="form-group col-6 col-sm-auto">
                     <select name="status" class="form-select">
@@ -145,6 +159,15 @@ require_once('./include/admin-head.php');
             document.querySelector('.crud-icon-delete').addEventListener('click', function () {
                 var customerID = this.getAttribute('data-customer-id');
                 document.getElementById('confirmDelete').setAttribute('data-customer-id', customerID);
+            });
+
+            document.getElementById("dateRangeSelect").addEventListener("change", function() {
+                var customDateRange = document.getElementById("customDateRange");
+                if (this.value === "custom") {
+                    customDateRange.style.display = "block";
+                } else {
+                    customDateRange.style.display = "none";
+                }
             });
         </script>
     </main>

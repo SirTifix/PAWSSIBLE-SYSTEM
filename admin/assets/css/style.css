@@ -942,7 +942,21 @@ header {
     border-width: 2px;
 }
 
+.custom-date-range-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+}
 
+.custom-date-range {
+    margin-top: 10px;
+}
+
+.dropdown-arrow {
+    float: right; /* Align the arrow to the right */
+    margin-left: 5px; /* Add some space between the text and the arrow */
+}
 
 
 
