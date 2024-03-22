@@ -705,8 +705,6 @@ header {
     width: 85%;
     border-collapse: collapse;
     height:200px;
-
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin: 20px;
 
    
@@ -1035,15 +1033,13 @@ header {
 }
    
 
-   .white-container {
-     background:  #d7ddf7; 
-    padding-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding-top : 40px;
-    width: 75%;
-    margin-left: 300px;
-   }
+.white-container {
+padding-bottom: 20px;
+border-radius: 5px;
+padding-top : 40px;
+width: 75%;
+margin-left: 300px;
+}
 
    
 .save-cal-btn {

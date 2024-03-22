@@ -7,6 +7,7 @@ Class Customer{
 
     public $customerID;
     public $customerFirstname;
+    public $customerMiddlename;
     public $customerLastname;
     public $customerDOB;
     public $customerCity;
@@ -27,11 +28,12 @@ Class Customer{
     //Methods
 
     function add(){
-        $sql = "INSERT INTO customer_record (customerFirstname, customerLastname, customerDOB, customerCity, customerAddress, customerEmail, customerState, customerPostal, customerPhone) VALUES 
-        (:customerFirstname, :customerLastname, :customerDOB, :customerCity, :customerAddress, :customerEmail, :customerState, :customerPostal, :customerPhone);";
+        $sql = "INSERT INTO customer_record (customerFirstname, customerMiddlename, customerLastname, customerDOB, customerCity, customerAddress, customerEmail, customerState, customerPostal, customerPhone) VALUES 
+        (:customerFirstname, :customerMiddlename, :customerLastname, :customerDOB, :customerCity, :customerAddress, :customerEmail, :customerState, :customerPostal, :customerPhone);";
     
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':customerFirstname', $this->customerFirstname);
+        $query->bindParam(':customerMiddlename', $this->customerMiddlename);
         $query->bindParam(':customerLastname', $this->customerLastname);
         $query->bindParam(':customerDOB', $this->customerDOB);
         $query->bindParam(':customerCity', $this->customerCity);
@@ -51,10 +53,11 @@ Class Customer{
     
 
     function update(){
-        $sql = "UPDATE customer_record SET customerFirstname=:customerFirstname,  customerLastname=:customerLastname, customerDOB=:customerDOB, customerCity=:customerCity, customerAddress=:customerAddress, customerEmail=:customerEmail, customerState=:customerState, customerPostal=:customerPostal, customerPhone=:customerPhone WHERE customerID=:customerID;";
+        $sql = "UPDATE customer_record SET customerFirstname=:customerFirstname, customerMiddlename=:customerMiddlename, customerLastname=:customerLastname, customerDOB=:customerDOB, customerCity=:customerCity, customerAddress=:customerAddress, customerEmail=:customerEmail, customerState=:customerState, customerPostal=:customerPostal, customerPhone=:customerPhone WHERE customerID=:customerID;";
 
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':customerFirstname', $this->customerFirstname);
+        $query->bindParam(':customerMiddlename', $this->customerMiddlename);
         $query->bindParam(':customerLastname', $this->customerLastname);
         $query->bindParam(':customerDOB', $this->customerDOB);
         $query->bindParam(':customerCity', $this->customerCity);

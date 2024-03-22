@@ -8,6 +8,7 @@
         $user = new Register();
         //sanitize
         $user->firstname = htmlentities($_POST['firstname']);
+        $user->middlename = htmlentities($_POST['middlename']) ? $_POST['middlename'] : null;
         $user->lastname = htmlentities($_POST['lastname']);
         $user->email = htmlentities($_POST['email']);
         $user->password = htmlentities($_POST['password']);
@@ -53,29 +54,31 @@
                                 ?>
                                 <h1 class="h1 text-center mb-5" style="color: #5263AB; font-weight: bold;">Register</h1>
                                 <form action="" method="post">
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="firstname" class="form-label">First Name</label>
-                                            <input type="text" class="form-control" id="firstname" name="firstname" value="<?php if(isset($_POST['firstname'])){ echo $_POST['firstname']; } ?>">
-                                            <?php
-                                                if(isset($_POST['firstname']) && !validate_field($_POST['firstname'])){
-                                            ?>
-                                                    <p class="text-danger my-1">First name is required</p>
-                                            <?php
-                                                }
-                                            ?>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="lastname" class="form-label">Last Name</label>
-                                            <input type="text" class="form-control" id="lastname" name="lastname" value="<?php if(isset($_POST['lastname'])){ echo $_POST['lastname']; } ?>">
-                                            <?php
-                                                if(isset($_POST['lastname']) && !validate_field($_POST['lastname'])){
-                                            ?>
-                                                    <p class="text-danger my-1">Last name is required</p>
-                                            <?php
-                                                }
-                                            ?>
-                                        </div>
+                                    <div class="mb-3">
+                                        <label for="firstname" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" id="firstname" name="firstname" value="<?php if(isset($_POST['firstname'])){ echo $_POST['firstname']; } ?>">
+                                        <?php
+                                            if(isset($_POST['firstname']) && !validate_field($_POST['firstname'])){
+                                        ?>
+                                                <p class="text-danger my-1">First name is required</p>
+                                        <?php
+                                            }
+                                        ?>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="middlename" class="form-label">Middle Name (Optional)</label>
+                                        <input type="text" class="form-control" id="middlename" name="middlename" value="<?php if(isset($_POST['middlename'])){ echo $_POST['middlename']; } ?>">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="lastname" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" id="lastname" name="lastname" value="<?php if(isset($_POST['lastname'])){ echo $_POST['lastname']; } ?>">
+                                        <?php
+                                            if(isset($_POST['lastname']) && !validate_field($_POST['lastname'])){
+                                        ?>
+                                                <p class="text-danger my-1">Last name is required</p>
+                                        <?php
+                                            }
+                                        ?>
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>

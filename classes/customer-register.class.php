@@ -7,6 +7,7 @@ Class Register{
 
     public $id;
     public $firstname;
+    public $middlename;
     public $lastname;
     public $email;
     public $password;
@@ -21,11 +22,12 @@ Class Register{
     //Methods
 
     function add(){
-        $sql = "INSERT INTO customer (firstname, lastname, email, password) VALUES 
-        (:firstname, :lastname, :email, :password);";
+        $sql = "INSERT INTO customer (firstname, middlename, lastname, email, password) VALUES 
+        (:firstname, :middlename, :lastname, :email, :password);";
 
         $query=$this->db->connect()->prepare($sql);
         $query->bindParam(':firstname', $this->firstname);
+        $query->bindParam(':middlename', $this->middlename);
         $query->bindParam(':lastname', $this->lastname);
         $query->bindParam(':email', $this->email);
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);

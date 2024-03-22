@@ -18,27 +18,21 @@
                 <p>Schedule</p>
             </div>
         </section>
- <div class="button-time-container">
-  <button type="submit" class="save-cal-btn btn-secondary" id="addStaffButton">EDIT TIME AND DATE </button>
-  </div>
 
 <div class="white-container ">
  
     <div class="row justify-content-center align-items-center">
         <div class="col-md-6 calendar-container">
-        <div class="calendar-controls d-flex justify-content-center align-items-center p-3">
+            <h2 class="pt-5 pb-3">Calendar</h2>
+        <div class="calendar-controls d-flex justify-content-center align-items-center">
             <button onclick="previousMonth()"><</button>
-            <h3 id="month-name"></h3>
+            <h5 id="month-name"></h5>
             <button onclick="nextMonth()">></button>
             <select id="year"></select>
-            <button onclick="generateCalendar()" id="generate-calendar-btn">Generate Calendar</button>
         </div>
             <table id="calendar">
               
                 <thead>
-                <tr>
-                    <th colspan="7">Calendar</th>
-                </tr>
                 <tr>
                     <th>Sun</th>
                     <th>Mon</th>

@@ -80,7 +80,7 @@ require_once('./include/admin-head.php');
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Recently Added</th>
-                            <th scope="col" width="5%">Action</th>
+                            <th scope="col" width="5%" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody id="customerTableBody">
@@ -101,17 +101,17 @@ require_once('./include/admin-head.php');
                                     <td class="d-flex justify-content-end">
                                         <div class="crud-btn">
                                             <a href="update-customer.php?customerID=<?= $item['customerID'] ?>"
-                                                class="crud-icon-update"><i class="fa-solid fa-pen-to-square m-1"
+                                                class="crud-icon-update"><i class="fa-solid fa-pen-to-square"
                                                     aria-hidden="true"></i></a>
                                         </div>
                                         <div class="crud-btn">
                                             <a href="" class="crud-icon-delete" data-bs-toggle="modal"
                                                 data-bs-target="#deleteDModal" data-customer-id="<?= $item['customerID'] ?>"><i
-                                                    class="fa-solid fa-trash-can m-1" aria-hidden="true"></i></a>
+                                                    class="fa-solid fa-trash-can" aria-hidden="true"></i></a>
                                         </div>
                                         <div class="crud-btn">
                                             <a href="customer-info.php?customerID=<?= $item['customerID'] ?>" class=""><i
-                                                    class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                                                    class="fa fa-ellipsis-h me-2" aria-hidden="true"></i></a>
                                         </div>
                                     </td>
                                 </tr>
