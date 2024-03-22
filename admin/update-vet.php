@@ -56,19 +56,19 @@
               <div class="col-6">
                   <div class="ms-5">
                       <div class="mt-3">
-                          <label for="vetFirstname" class="forms-label">Firstname</label>
+                          <label for="vetFirstname" class="form-label">Firstname</label>
                           <input type="text" class="form-control" id="vetFirstname" name="vetFirstname" required>
                       </div>
                       <div>
-                          <label for="vetLastname" class="forms-label">Lastname</label>
+                          <label for="vetLastname" class="form-label">Lastname</label>
                           <input type="text" class="form-control" id="vetLastname" name="vetLastname" required>
                       </div>
                       <div>
-                          <label for="vetMiddlename" class="forms-label">Middle</label>
+                          <label for="vetMiddlename" class="form-label">Middle</label>
                           <input type="text" class="form-control" id="vetMiddlename" name="vetMiddlename" required>
                       </div>
                       <div>
-                          <label for="vetPhone" class="forms-label">Phone Number</label>
+                          <label for="vetPhone" class="form-label">Phone Number</label>
                           <input type="text" class="form-control" id="vetPhone" name="vetPhone" required>
                       </div>
                   </div>
@@ -76,22 +76,22 @@
               <div class="col-6">
                   <div class="ms-5">
                       <div class="mt-3">
-                          <label for="vetEmail" class="forms-label">Email Address</label>
+                          <label for="vetEmail" class="form-label">Email Address</label>
                           <input type="text" class="form-control" id="vetEmail" name="vetEmail" required>
                       </div>
                       <div>
-                          <label for="vetUsername" class="forms-label">Username</label>
+                          <label for="vetUsername" class="form-label">Username</label>
                           <input type="text" class="form-control" id="vetUsername" name="vetUsername" required>
                       </div>
                       <div>
-                          <label for="vetPassword" class="forms-label">Password</label>
+                          <label for="vetPassword" class="form-label">Password</label>
                           <div class="d-flex align-items-center">
                               <input type="password" class="form-control" id="vetPassword" name="vetPassword" required>
                               <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password pt-3"></span>
                           </div>
                       </div>
                       <div>
-                          <label for="vetRePassword" class="forms-label">Re-enter Password</label>
+                          <label for="vetRePassword" class="form-label">Re-enter Password</label>
                           <div class="d-flex align-items-center">
                               <input type="password" class="form-control" id="vetRePassword" name="vetRePassword" required>
                               <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password pt-3"></span>

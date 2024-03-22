@@ -85,7 +85,7 @@
               </div>
 
               <div class="address-form align-items-center col-12 ps-5">
-                <label for="address" class="forms-label ms-2">Address:</label>
+                <label for="address" class="forms-label">Address:</label>
                 <input type="text" class="form-control" id="address" name="address" required style="width: 82.5%;" value="<?php echo $customerData['customerAddress']; ?>">
             </div>
             

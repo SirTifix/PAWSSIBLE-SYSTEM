@@ -18,24 +18,31 @@
             </div>
         </section>
 
-   
-
-        <div class="vac-container d-flex align-items-center">
-        <div class="crud-btn col-11 justify-content-start">
-           <label for="petType" class="form-label-petType fw-bold">Pet Type</label>
-            <select class="form-select form-control-petType" id="petType" name="petType" required>
-                <option value="">Select Pet Type</option>
-                <option value="vaccine1">All</option>
-                <option value="vaccine2">Dog</option>
-                <option value="vaccine3">Cat</option>
-             </select>
-        </div>
-         <div class="crud-btn  justify-content-end">
-            <div class="add-annual">
-            <a href="" class="crud-text" data-bs-toggle="modal"data-bs-target="#addVaccineModal"><i class="fa-solid fa-circle-plus m-1 ml-2" aria-hidden="true"></i>Add</a>
+        <section class="filter-con row">
+            <div class="row col-7">
+                <div class="form-group col-6 col-sm-auto">
+                    <select id="dateRangeSelect" class="form-select">
+                        <option value="">Select Pet Type</option>
+                        <option value="all">All</option>
+                        <option value="dog">Dog</option>
+                        <option value="cat">Cat</option>
+                    </select>
             </div>
-        </div>
-        </div>
+
+            <div class="form-group col-6 col-sm-auto">
+                    <select name="status" class="form-select">
+                    <option value="">Select Vaccine Type</option>
+                    <option value="vaccine1">Annual Booster</option>
+                    <option value="vaccine2">Primary Series</option>
+                    <option value="vaccine3">Deworming</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="crud-btn col-5 justify-content-end">
+                <a href="" class="crud-text" data-bs-toggle="modal"data-bs-target="#addVaccineModal"><i class="fa-solid fa-circle-plus m-1 ml-2" aria-hidden="true"></i>Add Vaccine</a>
+            </div>
+        </section>
 
         <div class="vac-container">
       <div class="pet-information ">

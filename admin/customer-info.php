@@ -1,5 +1,5 @@
 <?php
-
+/*
 require_once('../classes/customer.class.php');
 require_once('../classes/pet.class.php');
 require_once('./tools/functions.php');
@@ -21,7 +21,7 @@ if (isset($_GET['customerID'])) {
 } else {
   echo "Customer ID is missing.";
   exit;
-} 
+} */
 ?>
 
 <!DOCTYPE html>

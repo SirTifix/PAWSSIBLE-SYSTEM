@@ -407,7 +407,10 @@ header {
     display: inline-block;
     margin-bottom: 5px;
     width: 150px;
+    margin-right: 20px;
+    text-align: right; /* Add this line to align the text to the right */
 }
+
 
 .form-control {
     width: 330px;
@@ -523,6 +526,10 @@ header {
     flex-direction: column;
     align-items: start;
     padding: 5px 0px 5px 10px;
+}
+
+.form-customer-info .d-flex {
+    align-items: baseline; /* Aligns items to the baseline of the container */
 }
 
 .create-vet-form-info {
@@ -641,7 +648,7 @@ header {
 }
 
 .add-appointment {
-    border-radius: 10px;
+    border-radius: 20px;
     width: 210px;
     background-color: #5263AB;
     display: flex;
@@ -653,8 +660,7 @@ header {
 .add-appointment a {
     text-decoration: none;
     color: white;
-    font-size: 1.2em;
-    font-weight: 500;
+    font-size: 1.1em;
 }
 
 .table-appointment{

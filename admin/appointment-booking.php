@@ -21,7 +21,7 @@ require_once('./include/admin-head.php');
           <p>Book Appointment</p>
         </div>
         <div>
-          <a href="appointment.php" class="top-back btn-secondary pe-5"><i class="fa-solid fa-chevron-left me-3"></i> BACK</a>
+          <a href="appointment.php" class="top-back btn-secondary"> BACK</a>
         </div>
       </div>
     </section>
@@ -136,15 +136,13 @@ require_once('./include/admin-head.php');
                   <div class="input-container  col-sm-3">
                     <label for="firstName">First Name:</label>
                     <input type="text" id="firstName" name="firstName" required>
-
                   </div>
 
                   <div class="input-container col-sm-3">
                     <label for="lastName">Last Name:</label>
                     <input type="text" id="lastName" name="lastName" required>
-
                   </div>
-
+                  
                   <div class="details col-sm">
                     <label for="lastName">Selected Date and Time</label>
                     <div class="col-sm">
@@ -156,7 +154,6 @@ require_once('./include/admin-head.php');
                     <div class="input-container col-6">
                       <label for="email">Email Address:</label>
                       <input type="email" id="email" name="email" required>
-
                     </div>
                   </div>
 

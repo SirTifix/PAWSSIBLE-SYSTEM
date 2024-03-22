@@ -111,7 +111,7 @@ if(isset($_POST['save'])){
                                     ?>
                                 </div>
                                 <div class="my-1 d-flex align-items-center col-6 ps-5">
-                                    <label for="customerMiddlename" class="form-label">Middle Name (Optional):</label>
+                                    <label for="customerMiddlename" class="forms-label">Middle Name (Optional):</label>
                                     <input type="text" class="form-control" id="customerMiddlename" name="customerMiddlename" value="<?php if(isset($_POST['customerMiddlename'])){ echo $_POST['customerMiddlename']; } ?>">
                                 </div>
                             </div>
@@ -141,8 +141,8 @@ if(isset($_POST['save'])){
                             </div>
                             <div class="d-flex align-items-center col-12 row">
                                 <div class="my-1 d-flex align-items-center col-6 ps-5">
-                                    <label for="customerAddress" class="forms-label ms-2">Address:</label>
-                                    <input type="text" class="form-control" id="customerAddress" name="customerAddress" style="width: 82.5%;" required value="<?php if(isset($_POST['customerAddress'])) { echo $_POST['customerAddress']; }?>">
+                                    <label for="customerAddress" class="forms-label">Address:</label>
+                                    <input type="text" class="form-control" id="customerAddress" name="customerAddress" required value="<?php if(isset($_POST['customerAddress'])) { echo $_POST['customerAddress']; }?>">
                                     <?php
                                         if(isset($_POST['customerAddress']) && !validate_field($_POST['customerAddress'])){
                                     ?>
