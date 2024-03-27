@@ -83,8 +83,11 @@
          <div class="row justify-content-center">
                 <div class="title-medical">
                   <h2> Medical Information</h2>
-               
-                <div class="dropdown">
+                  
+                  <div class="crud-btn col-5 justify-content-end">
+                <a class="add-med-btn" href="" data-bs-toggle="modal"data-bs-target="#addMedRecModal"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i></a>
+            </div>
+                <!-- <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="icon fa fa-bars" style="color: rgb(255, 251, 251);"></span>
                     </button>
@@ -92,7 +95,7 @@
                         <a class="dropdown-item" href="" data-bs-toggle="modal"data-bs-target="#addMedRecModal">Add</a>
                       
                     </div>
-                </div>
+                </div> -->
 
                 </div>
               
@@ -134,15 +137,13 @@
 
                   <div class="title-medical">
                     <h2 class="px-5"> Vaccine </h2>
-                    <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="icon fa fa-bars" style="color: rgb(255, 251, 251);"></span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                    <a href="#" data-bs-toggle="modal"data-bs-target="#addVaccineModal">
-                        <i class="fa-solid fa-circle-chevron-down ms-2 me-4"></i>Add</a>
+                    
+                    
+                    <div class="crud-btn col-5 justify-content-end">
+                        <a class="add-med-btn" href="" data-bs-toggle="modal"data-bs-target="#addVaccineModal"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i></a>
                     </div>
-                </div>
+
+                
                 </div>
 
                 
@@ -307,7 +308,7 @@
         <!-- Vaccine Add and Update Modal -->
         <section>
             <div class="modal fade" id="addVaccineModal" tabindex="-1" aria-labelledby="addDModalLabel"
-                aria-hidden="true">
+                aria-hidden="true" data-backdrop="false">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header d-flex justify-content-center align-items-center" 
@@ -372,7 +373,7 @@
 
         <section>
             <div class="modal fade" id="updateVaccineModal" tabindex="-1" aria-labelledby="updateDModalLabel"
-                aria-hidden="true">
+                aria-hidden="true" data-backdrop="false">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header d-flex justify-content-center align-items-center" 
@@ -438,7 +439,7 @@
 
         <section>
             <div class="modal fade" id="deleteMedRecModal" tabindex="-1" aria-labelledby="deleteDModalLabel"
-                aria-hidden="true">
+                aria-hidden="true" data-backdrop="false">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
@@ -455,7 +456,7 @@
 
         <section>
             <div class="modal fade" id="deleteVaccineModal" tabindex="-1" aria-labelledby="deleteDModalLabel"
-                aria-hidden="true">
+                aria-hidden="true" data-backdrop="false">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete

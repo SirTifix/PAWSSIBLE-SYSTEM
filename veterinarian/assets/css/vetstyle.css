@@ -566,7 +566,7 @@ button {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    max-width: 500px;
+    max-width: 00px;
   }
   
 
@@ -1295,7 +1295,7 @@ margin-left: 240px;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.518);
   }
   
   /* CSS */
@@ -1305,7 +1305,7 @@ margin-left: 240px;
     padding: 20px;
     border: 1px solid #888;
     width: 60%;
-    max-width: 500px;
+    max-width: 800px;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -1459,4 +1459,34 @@ margin-left: 240px;
   font-size: 1rem;
   font-weight: bold;
   color: #000000;
+}
+
+.modal-backdrop {
+  display: none !important;
+}
+
+.add-med-btn {
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: #ededed;
+  text-decoration: none;
+  font-size: 1.3em;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-control-medHis, .form-control-vaccine {
+  width: 350px;
+  border: 1px solid #888484;
+  padding: 8px 5px;
+  margin: 5px 0px;
+  border-radius: 5px;
+}
+
+.form-label-medHis, .form-label-vaccine{
+  width: 120px;
+  display: flex;
+  align-items: center;
+  font-size: 1.1em;
 }
