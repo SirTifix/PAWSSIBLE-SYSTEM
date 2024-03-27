@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php
-        require_once('./include/js.php')
-    ?>
+
 <?php
     
     require_once('./include/vet-head.php');
@@ -91,8 +89,8 @@
                         <span class="icon fa fa-bars" style="color: rgb(255, 251, 251);"></span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                        <a class="dropdown-item" href="add-medical.php">Add</a>
-                        <a class="dropdown-item" href="#">Edit</a>
+                        <a class="dropdown-item" href="" data-bs-toggle="modal"data-bs-target="#addMedRecModal">Add</a>
+                      
                     </div>
                 </div>
 
@@ -119,7 +117,16 @@
                         <td>Owner reports normal activity levels, playful behavior, and good socialization. Regular bowel movements, no signs of diarrhea or straining.</td>
                         <td>Dr.Anna Green</td>
                         <td>Administer first round of vaccinations (DHPP). Discuss future vaccination schedule.</td>
-                        <td class="crud-btn"><a href="edit-medical.php" class="crud-icon-update"><i class="fa-solid fa-pen-to-square m-1" aria-hidden="true"></i></a></td>
+                        <td class="d-flex justify-content-center align-items-center">
+                            <div class="crud-btn">
+                                <a href="" class="edit-btn" data-bs-toggle="modal"data-bs-target="#updateMedRecModal">
+                                    <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="crud-btn">
+                                <a href="" class="delete-btn" data-bs-toggle="modal"data-bs-target="#deleteMedRecModal">
+                                    <i class="fa-regular fa-trash-can" aria-hidden="true"></i></a>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -132,7 +139,8 @@
                         <span class="icon fa fa-bars" style="color: rgb(255, 251, 251);"></span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                    <a class="dropdown-item" href="primaryseries.php">View More</a>
+                    <a href="#" data-bs-toggle="modal"data-bs-target="#addVaccineModal">
+                        <i class="fa-solid fa-circle-chevron-down ms-2 me-4"></i>Add</a>
                     </div>
                 </div>
                 </div>
@@ -147,6 +155,7 @@
                         <th scope="col">Vaccine</th>
                         <th scope="col">Next Date</th>
                         <th scope="col">Veterinarian</th>
+                        <th scope="col" width="5%">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -157,6 +166,16 @@
                         <td>Distemper, Hepatitis, Parvovirus, Parainfluenza (DHPP)</td>
                         <td>January 8, 2024</td>
                         <td>Dr.Green</td>
+                        <td class="d-flex justify-content-center align-items-center">
+                            <div class="crud-btn">
+                                <a href="" class="edit-btn" data-bs-toggle="modal"data-bs-target="#updateVaccineModal">
+                                    <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="crud-btn">
+                                <a href="" class="delete-btn" data-bs-toggle="modal"data-bs-target="#deleteVaccineModal">
+                                    <i class="fa-regular fa-trash-can" aria-hidden="true"></i></a>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -167,9 +186,295 @@
           </div>
       </div>
     </div>
-            
+    <section>
+            <div class="modal fade" id="addMedRecModal" tabindex="-1" aria-labelledby="addDModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header d-flex justify-content-center align-items-center" 
+                        style="background-color: #303962; color: #fff; border-bottom: none; padding: 1rem;">
+                            <h2 class="modal-title">Medical History</h2>
+                            </button>
+                        </div>
+                        <div>
+                            <form action="" method="post">
+                                <div class="row p-3">
+                                    <div class="col-6">
+                                        <div class="d-flex mt-3">
+                                            <label for="age" class="form-label-medHis fw-bold">Age(weeks):</label>
+                                            <input type="text" class="form-control-medHis" id="age" name="age" required>
+                                        </div>
 
-    <script src="vendor/script.js"></script>
+                                        <div class="d-flex">
+                                            <label for="Date" class="form-label-medHis fw-bold">Date:</label>
+                                            <input type="Date" class="form-control-medHis" id="Date" name="Date" required>
+                                        </div>
+                                        
+                                        <div class="d-flex">
+                                            <label for="veterinarian" class="form-label-medHis fw-bold">Veterinarian:</label>
+                                            <input type="text" class="form-control-medHis" id="veterinarian" name="veterinarian" required>
+                                        </div>
 
+                                        <div class="d-flex">
+                                            <label for="history" class="form-label-medHis fw-bold">History:</label>
+                                            <textarea class="form-control-medHis" id="history" name="history" rows="6" required></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="d-flex mt-3">
+                                            <label for="physicalExam" class="form-label-medHis fw-bold">Physical Examination:</label>
+                                            <textarea class="form-control-medHis" id="physicalExam" name="physicalExam" rows="6" required></textarea>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="diagnosis" class="form-label-medHis fw-bold">Diagnosis/ Treatment Plan:</label>
+                                            <textarea class="form-control-medHis" id="diagnosis" name="diagnosis" rows="6" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+ 
+                            </form>
+                        </div>
+                        <div class="modal-footer justify-content-between" style="border: none;">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="modal fade" id="updateMedRecModal" tabindex="-1" aria-labelledby="updateDModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header d-flex justify-content-center align-items-center" 
+                        style="background-color: #303962; color: #fff; border-bottom: none; padding: 1rem;">
+                            <h2 class="modal-title">Medical History</h2>
+                            </button>
+                        </div>
+                        <div>
+                            <form action="" method="post">
+                                <div class="row p-3">
+                                    <div class="col-6">
+                                        <div class="d-flex mt-3">
+                                            <label for="age" class="form-label-medHis fw-bold">Age(weeks):</label>
+                                            <input type="text" class="form-control-medHis" id="age" name="age" required>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="Date" class="form-label-medHis fw-bold">Date:</label>
+                                            <input type="Date" class="form-control-medHis" id="Date" name="Date" required>
+                                        </div>
+                                        
+                                        <div class="d-flex">
+                                            <label for="veterinarian" class="form-label-medHis fw-bold">Veterinarian:</label>
+                                            <input type="text" class="form-control-medHis" id="veterinarian" name="veterinarian" required>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="history" class="form-label-medHis fw-bold">History:</label>
+                                            <textarea class="form-control-medHis" id="history" name="history" rows="6" required></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="d-flex mt-3">
+                                            <label for="physicalExam" class="form-label-medHis fw-bold">Physical Examination:</label>
+                                            <textarea class="form-control-medHis" id="physicalExam" name="physicalExam" rows="6" required></textarea>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="diagnosis" class="form-label-medHis fw-bold">Diagnosis/ Treatment Plan:</label>
+                                            <textarea class="form-control-medHis" id="diagnosis" name="diagnosis" rows="6" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+ 
+                            </form>
+                        </div>
+                        <div class="modal-footer justify-content-between" style="border: none;">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vaccine Add and Update Modal -->
+        <section>
+            <div class="modal fade" id="addVaccineModal" tabindex="-1" aria-labelledby="addDModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header d-flex justify-content-center align-items-center" 
+                        style="background-color: #303962; color: #fff; border-bottom: none; padding: 1rem;">
+                            <h2 class="modal-title">Vaccine</h2>
+                            </button>
+                        </div>
+                        <div>
+                            <form action="" method="post">
+                                <div class="mt-4 mx-5">
+                                        <div class="d-flex">
+                                            <label for="age" class="form-label-vaccine fw-bold p-2">Age(weeks):</label>
+                                            <input type="text" class="form-control-vaccine p-2" id="age" name="age" required>
+                                        </div>
+                                        
+                                        <div class="d-flex">
+                                            <label for="veterinarian" class="form-label-vaccine fw-bold">Veterinarian:</label>
+                                            <input type="text" class="form-control-vaccine" id="veterinarian" name="veterinarian" required>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="vaccine" class="form-label-vaccine fw-bold">Vaccine:</label>
+                                            <select class="form-select form-control-vaccine" id="vaccine" name="vaccine" required>
+                                                <option value="">Select Vaccine</option>
+                                                <option value="vaccine1">Vaccine 1</option>
+                                                <option value="vaccine2">Vaccine 2</option>
+                                                <option value="vaccine3">Vaccine 3</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="vaccineCateg" class="form-label-vaccine fw-bold">Vaccine Category:</label>
+                                            <select class="form-select form-control-vaccine" id="vaccineCateg" name="vaccineCateg" required>
+                                                <option value="">Select Vaccine Category</option>
+                                                <option value="vaccine1">Primary Series</option>
+                                                <option value="vaccine2">Annual Boosters</option>
+                                                <option value="vaccine3">Deworming</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="date" class="form-label-vaccine fw-bold">Date Given:</label>
+                                            <input type="date" class="form-control-vaccine" id="date" name="date" required>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="dueDate" class="form-label-vaccine fw-bold">Due Date:</label>
+                                            <div class="form-control-vaccine" id="dueDate">Due date automatically will be display after select the date given</div>
+                                        </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer justify-content-between" style="border: none;">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="modal fade" id="updateVaccineModal" tabindex="-1" aria-labelledby="updateDModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header d-flex justify-content-center align-items-center" 
+                        style="background-color: #303962; color: #fff; border-bottom: none; padding: 1rem;">
+                            <h2 class="modal-title">Vaccine</h2>
+                            </button>
+                        </div>
+                        <div>
+                            <form action="" method="post">
+                                <div class="mt-4 mx-5">
+                                        <div class="d-flex">
+                                            <label for="age" class="form-label-vaccine fw-bold p-2">Age(weeks):</label>
+                                            <input type="text" class="form-control-vaccine p-2" id="age" name="age" required>
+                                        </div>
+                                        
+                                        <div class="d-flex">
+                                            <label for="veterinarian" class="form-label-vaccine fw-bold">Veterinarian:</label>
+                                            <input type="text" class="form-control-vaccine" id="veterinarian" name="veterinarian" required>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="vaccine" class="form-label-vaccine fw-bold">Vaccine:</label>
+                                            <select class="form-select form-control-vaccine" id="vaccine" name="vaccine" required>
+                                                <option value="">Select Vaccine</option>
+                                                <option value="vaccine1">Vaccine 1</option>
+                                                <option value="vaccine2">Vaccine 2</option>
+                                                <option value="vaccine3">Vaccine 3</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="vaccineCateg" class="form-label-vaccine fw-bold">Vaccine Category:</label>
+                                            <select class="form-select form-control-vaccine" id="vaccineCateg" name="vaccineCateg" required>
+                                                <option value="">Select Vaccine Category</option>
+                                                <option value="vaccine1">Primary Series</option>
+                                                <option value="vaccine2">Annual Boosters</option>
+                                                <option value="vaccine3">Deworming</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="date" class="form-label-vaccine fw-bold">Date Given:</label>
+                                            <input type="date" class="form-control-vaccine" id="date" name="date" required>
+                                        </div>
+
+                                        <div class="d-flex">
+                                            <label for="dueDate" class="form-label-vaccine fw-bold">Due Date:</label>
+                                            <div class="form-control-vaccine" id="dueDate">Due date automatically will be display after select the date given</div>
+                                        </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer justify-content-between" style="border: none;">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section>
+            <div class="modal fade" id="deleteMedRecModal" tabindex="-1" aria-labelledby="deleteDModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
+                            this Medical Record?</h4>
+                        <div class="modal-footer justify-content-between" style="border: none;">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" id="confirmDelete" data-customer-id=""
+                                style="background-color: #FF0000; border: none;">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="modal fade" id="deleteVaccineModal" tabindex="-1" aria-labelledby="deleteDModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
+                            this Vaccine?</h4>
+                        <div class="modal-footer justify-content-between" style="border: none;">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" id="confirmDelete" data-customer-id=""
+                                style="background-color: #FF0000; border: none;">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </section>        
+
+
+    <?php
+    require_once('./include/js.php')
+    ?>
 </body>
 </php>
