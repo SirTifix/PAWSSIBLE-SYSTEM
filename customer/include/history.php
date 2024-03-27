@@ -20,8 +20,8 @@
                         <thead>
                             <tr>
                                 <th scope="col" style="padding-left:5em;">Pet Name</th>
+                                <th scope="col">status</th>
                                 <th scope="col">Date</th>
-                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody id="appointmentTableBody">
@@ -33,8 +33,8 @@
                                     </label>
                                     Belgy
                                 </td>
+                                <td>Done</td>
                                 <td> <strong> Jan 6,2024</strong></td>
-                                <td><a href="./review-appointment.php"> <button type="button" class="Review-button btn-sm">Review</button> </a> </td>
                             </tr>
                         </tbody>
 
@@ -47,8 +47,8 @@
                                     </label>
                                     Max
                                 </td>
+                                <td>Done</td>
                                 <td> <strong> March 6,2024</strong></td>
-                                <td><a href="./review-appointment.php"> <button type="button" class="Review-button btn-sm">Review</button> </a> </td>
                                 
 
                             </tr>
@@ -63,8 +63,8 @@
                                     </label>
                                     Saila
                                 </td>
+                                <td>Done</td>
                                 <td> <strong> Feb 6,2024</strong></td>
-                                <td><a href="./review-appointment.php"> <button type="button" class="Review-button btn-sm">Review</button> </a> </td>
 
                             </tr>
                         </tbody>
