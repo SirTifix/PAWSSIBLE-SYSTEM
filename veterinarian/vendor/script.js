@@ -191,3 +191,10 @@ function rowClicked(row) {
   // For example, you can navigate to a new page
   // window.location.href = "your_page_url";
 }
+const backdrop = document.querySelector('.modal-backdrop');
+
+// Check if the backdrop element exists and has the class
+if (backdrop) {
+    // Remove the class from the backdrop
+    backdrop.classList.remove('modal-backdrop', 'fade', 'show');
+}
