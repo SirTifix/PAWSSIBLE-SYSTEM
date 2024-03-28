@@ -201,7 +201,7 @@ if(isset($_POST['save'])){
                                 </div>
                                 <div class="my-1 d-flex align-items-center col-6 ps-5">
                                     <label for="customerPhone" class="forms-label">Phone Number:</label>
-                                    <input type="text" class="form-control" id="customerPhone" name="customerPhone" required value="<?php if(isset($_POST['customerPhone'])) { echo $_POST['customerPhone']; }?>">
+                                    <input type="number" class="form-control" id="customerPhone" name="customerPhone" required value="<?php if(isset($_POST['customerPhone'])) { echo $_POST['customerPhone']; }?>">
                                     <?php
                                         if(isset($_POST['customerPhone']) && !validate_field($_POST['customerPhone'])){
                                     ?>

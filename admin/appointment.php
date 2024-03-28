@@ -58,10 +58,10 @@
                     <td class="d-flex justify-content-center align-items-center">
                         <div class="crud-btn">
                             <a href="" class="delete-btn" data-bs-toggle="modal"data-bs-target="#deleteDModal">
-                                <i class="fa-solid fa-xmark pe-4" aria-hidden="true"></i></a>
+                                <i class="fa-solid fa-ban pe-4" aria-hidden="true"></i></a>
                         </div>
                         <div class="crud-btn">
-                            <a href="" class="check-btn" data-bs-toggle="modal"data-bs-target="#modal">
+                            <a href="" class="edit-btn" data-bs-toggle="modal"data-bs-target="#modal">
                               <i class="fa fa-ellipsis-h pe-5" aria-hidden="true"></i></a>
                         </div>
                     </td>

@@ -40,7 +40,7 @@
             </div>
 
             <div class="crud-btn col-5 justify-content-end">
-                <a href="" class="crud-text" data-bs-toggle="modal"data-bs-target="#addVaccineModal"><i class="fa-solid fa-circle-plus m-1 ml-2" aria-hidden="true"></i>Add Vaccine</a>
+                <a href="" class="crud-text" data-bs-toggle="modal"data-bs-target="#addVaccineModal"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Vaccine</a>
             </div>
         </section>
 
@@ -75,7 +75,7 @@
                         <td class="d-flex justify-content-center align-items-center">
                             <div class="crud-btn">
                                 <a href="" class="edit-btn" data-bs-toggle="modal"data-bs-target="#updateVaccineModal">
-                                    <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></a>
+                                    <i class="fa-regular fa-pen-to-square" aria-hidden="true"></i></a>
                             </div>
                             <div class="crud-btn">
                                 <a href="" class="delete-btn" data-bs-toggle="modal"data-bs-target="#deleteVaccineModal">

@@ -101,13 +101,13 @@ require_once('./include/admin-head.php');
                                     <td class="d-flex justify-content-end">
                                         <div class="crud-btn">
                                             <a href="update-customer.php?customerID=<?= $item['customerID'] ?>"
-                                                class="crud-icon-update"><i class="fa-solid fa-pen-to-square"
+                                                class="crud-icon-update"><i class="fa-regular fa-pen-to-square"
                                                     aria-hidden="true"></i></a>
                                         </div>
                                         <div class="crud-btn">
                                             <a href="" class="crud-icon-delete" data-bs-toggle="modal"
                                                 data-bs-target="#deleteDModal" data-customer-id="<?= $item['customerID'] ?>"><i
-                                                    class="fa-solid fa-trash-can" aria-hidden="true"></i></a>
+                                                    class="fa-regular fa-trash-can" aria-hidden="true"></i></a>
                                         </div>
                                         <div class="crud-btn">
                                             <a href="customer-info.php?customerID=<?= $item['customerID'] ?>" class=""><i

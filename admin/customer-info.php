@@ -39,12 +39,9 @@ require_once('./include/admin-head.php');
     require_once('./include/admin-sidepanel.php')
       ?>
     <section class="veterinarian-con">
-      <div class="d-flex justify-content-between align-items-center mb-4">
+      <div class="d-flex justify-content-start mb-4">
         <div class="veterinarian-head">
           <p>Customer Information</p>
-        </div>
-        <div>
-          <a href="customers.php" class="top-back btn-secondary"> BACK</a>
         </div>
       </div>
     </section>
@@ -56,11 +53,14 @@ require_once('./include/admin-head.php');
       </div>
 
       <div class="row">
-        <div class="col-lx-7 col-lg-8 col-md-12">
+        <div class="col-lx-7 col-lg-7 col-md-12">
           <div class="create-vet-form-info">
+            <div class="icon-expand d-flex justify-content-end">
+                <a href="customer-expand-info.php?customerID=<?= $customer_id ?>" class=""><i class="fa fa-expand" aria-hidden="true" style="color: black;"></i></a>
+            </div>
             <form action="" method="post">
               <div class="form-customer-info">
-                <div class="d-flex mt-3">
+                <div class="d-flex">
                   <label for="id" class="forms-label fw-bold">ID:</label>
                   <input type="text" class="form-control" id="id" name="id" required
                     value="<?php echo $customerData['customerID']; ?>">
@@ -86,7 +86,7 @@ require_once('./include/admin-head.php');
 
                 <div class="d-flex">
                   <label for="num" class="forms-label fw-bold">Phone Number:</label>
-                  <input type="text" class="form-control" id="num" name="num" required
+                  <input type="number" class="form-control" id="num" name="num" required
                     value="<?php echo $customerData['customerPhone']; ?>">
                 </div>
               </div>
@@ -94,12 +94,16 @@ require_once('./include/admin-head.php');
           </div>
         </div>
 
-        <div class="col-lx-5 col-lg-4 col-md-12">
+        <div class="col-lx-5 col-lg-5 col-md-12">
           <div class="create-vet-form-info-pet">
             <div class="d-flex justify-content-between">
-              <h3>Pets:</h3>
-              <button class="add-pet-btn-info" type="button" data-bs-toggle="modal" data-bs-target="#addPetModal">
+              <div class="pt-2">
+                <h3>Pets:</h3>
+              </div>
+              <div class="pt-2">
+                <button class="add-pet-btn-info" type="button" data-bs-toggle="modal" data-bs-target="#addPetModal">
                 <i class="fa-solid fa-circle-plus m-1" aria-hidden="true"></i> Add Pet</button>
+              </div>
             </div>
             <form action="" method="post">
               <?php
@@ -109,15 +113,15 @@ require_once('./include/admin-head.php');
                   ?>
                   <div class="form-pet-info">
                     <div class="pet-info-box">
-                      <div class="mb-3">
+                      <div class="mb-3 ps-3">
                         <div class="d-flex">
-                          <label for="petname" class="forms-label-pet">Name:</label>
-                          <input type="text" class="form-control-pet" id="petname" name="petname" required
+                          <label for="petName" class="forms-label-pet pe-5" style="font-weight: bold;">Name:</label>
+                          <input type="text" class="form-control-pet" id="petName" name="petName" required
                             value="<?php echo $petData['petName']; ?>">
                         </div>
                         <div class="d-flex">
-                          <label for="pettype" class="forms-label-pet">Pet Type:</label>
-                          <input type="text" class="form-control-pet" id="pettype" name="pettype" required
+                          <label for="petType" class="forms-label-pet pe-4" style="font-weight: bold;">Pet Type:</label>
+                          <input type="text" class="form-control-pet" id="petType" name="petType" required
                             value="<?php echo $petData['petType']; ?>">
                         </div>
                       </div>
@@ -134,10 +138,14 @@ require_once('./include/admin-head.php');
                 echo "No pets found for this customer.";
               } 
               ?>
-
-          </div>
           </form>
         </div>
+      </div>
+    </section>
+
+    <section class="">
+      <div class="d-flex justify-content-end me-4 pe-5 pt-3">
+          <a href="customers.php" class="top-back btn-secondary">Back</a>
       </div>
     </section>
 
@@ -166,43 +174,43 @@ require_once('./include/admin-head.php');
                 <form action="" method="post">
                   <div class="form-body">
                     <div class="d-flex mt-3">
-                      <label for="petname" class="forms-label fw-bold">Pet Name:</label>
-                      <input type="text" class="form-control" id="petname" name="petname" required value="<?php echo $petData['petName']; ?>">
+                      <label for="petName" class="forms-label fw-bold">Pet Name:</label>
+                      <input type="text" class="form-control" id="petName" name="petName" required value="<?php echo $petData['petName']; ?>">
                     </div>
 
                     <div class="d-flex">
-                      <label for="state" class="forms-label fw-bold">Birth Date:</label>
-                      <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petBirthdate']; ?>">
+                      <label for="petBirthdate" class="forms-label fw-bold">Birth Date:</label>
+                      <input type="date" class="form-control" id="petBirthdate" name="petBirthdate" required value="<?php echo $petData['petBirthdate']; ?>">
                     </div>
 
                     <div class="d-flex">
-                      <label for="state" class="forms-label fw-bold">Pet Age:</label>
-                      <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petAge']; ?>">
+                      <label for="petAge" class="forms-label fw-bold">Pet Age:</label>
+                      <input type="text" class="form-control" id="petAge" name="petAge" required value="<?php echo $petData['petAge']; ?>">
                     </div>
 
                     <div class="d-flex">
-                      <label for="state" class="forms-label fw-bold">Breed:</label>
-                      <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petBreed']; ?>">
+                      <label for="petBreed" class="forms-label fw-bold">Breed:</label>
+                      <input type="text" class="form-control" id="petBreed" name="petBreed" required value="<?php echo $petData['petBreed']; ?>">
                     </div>
 
                     <div class="d-flex">
-                      <label for="state" class="forms-label fw-bold">Pet Type:</label>
-                      <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petType']; ?>">
+                      <label for="petType" class="forms-label fw-bold">Pet Type:</label>
+                      <input type="text" class="form-control" id="petType" name="petType" required value="<?php echo $petData['petType']; ?>">
                     </div>
 
                     <div class="d-flex">
-                      <label for="state" class="forms-label fw-bold">Gender:</label>
-                      <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petGender']; ?>">
+                      <label for="petGender" class="forms-label fw-bold">Gender:</label>
+                      <input type="text" class="form-control" id="petGender" name="petGender" required value="<?php echo $petData['petGender']; ?>">
                     </div>
 
                     <div class="d-flex">
-                      <label for="state" class="forms-label fw-bold">Weight:</label>
-                      <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petWeight']; ?>">
+                      <label for="petWeight" class="forms-label fw-bold">Weight:</label>
+                      <input type="text" class="form-control" id="petWeight" name="petWeight" required value="<?php echo $petData['petWeight']; ?>">
                     </div>
 
                     <div class="d-flex">
-                      <label for="state" class="forms-label fw-bold">Color:</label>
-                      <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petColor']; ?>">
+                      <label for="petColor" class="forms-label fw-bold">Color:</label>
+                      <input type="text" class="form-control" id="petColor" name="petColor" required value="<?php echo $petData['petColor']; ?>">
                     </div>
                   </div>
               </div>
@@ -251,7 +259,7 @@ require_once('./include/admin-head.php');
 
                     <div class="d-flex">
                       <label for="state" class="forms-label fw-bold">Birth Date:</label>
-                      <input type="text" class="form-control" id="state" name="state" required value="<?php echo $petData['petBirthdate']; ?>">
+                      <input type="date" class="form-control" id="state" name="state" required value="<?php echo $petData['petBirthdate']; ?>">
                     </div>
 
                     <div class="d-flex">

@@ -84,10 +84,10 @@ require_once('../classes/veterinarian.class.php');
                             echo '<td>' . date('d M Y', strtotime($record['created_at'])) . '</td>';
                             echo '<td class="d-flex justify-content-end">';
                             echo '<div class="crud-btn">';
-                            echo '<a href="update-vet.php?vetID=' . $record['vetID'] . '" class="crud-icon-update"><i class="fa-solid fa-pen-to-square m-1" aria-hidden="true"></i></a>';
+                            echo '<a href="update-vet.php?vetID=' . $record['vetID'] . '" class="crud-icon-update"><i class="fa-regular fa-pen-to-square m-1" aria-hidden="true"></i></a>';
                             echo '</div>';
                             echo '<div class="crud-btn">';
-                            echo '<a href="" class="crud-icon-delete" data-bs-toggle="modal" data-bs-target="#deleteDModal" data-vet-id="' . $record['vetID'] . '"><i class="fa-solid fa-trash-can m-1" aria-hidden="true"></i></a>';
+                            echo '<a href="" class="crud-icon-delete" data-bs-toggle="modal" data-bs-target="#deleteDModal" data-vet-id="' . $record['vetID'] . '"><i class="fa-regular fa-trash-can m-1" aria-hidden="true"></i></a>';
                             echo '</div>';
                             echo '</td>';
                             echo '</tr>';
@@ -106,9 +106,9 @@ require_once('../classes/veterinarian.class.php');
                         <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
                             this Veterinarian?</h4>
                         <div class="modal-footer justify-content-between" style="border: none;">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
                             <button type="button" class="btn btn-primary" id="confirmDelete" data-vet-id=""
-                                style="background-color: #FF0000; border: none;">Delete</button>
+                                style="background-color: #FF0000; border: none;">DELETE</button>
 
                         </div>
                     </div>

@@ -281,7 +281,7 @@ header {
     background-color: #3A3F54;
     /* Change text color on hover */
     color: white;
-    border-radius: 50px;
+    border-radius: 20px;
 }
 
 .crud-btn a.crud-text:active {
@@ -424,7 +424,7 @@ header {
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 50px;
+    border-radius: 20px;
     margin: 10px;
 }
 
@@ -439,31 +439,31 @@ header {
     color: #3A3F54;
     text-decoration: none;
     border: 1px solid #4a4f63;
-    border-radius: 50px;
+    border-radius: 20px;
     padding: 10px 60px;
     margin: 10px;
     font-weight: bold;
 }
 
 .back-btn:hover {
-    background-color: #828aa9;
+    background-color: #3A3F54;
     /* Change text color on hover */
     color: white;
 }
 
 .top-back {
-    background-color: #3A3F54;
-    color: #fff;
+    background-color: #ffff;
+    color: #3A3F54;
+    border: 1px solid #3A3F54;
     text-decoration: none;
-    padding: 10px 40px;
-    margin: 10px 20px;
+    padding: 10px 60px;
+    margin: 10px;
     border-radius: 20px;
-    font-size: 1.1em;
-    font-weight: 500;
+    font-weight: bold;
 }
 
 .top-back:hover {
-    background-color: #CCCCCC;
+    background-color: #3A3F54;
     /* Change text color on hover */
     color: white;
 }
@@ -474,7 +474,7 @@ header {
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 50px;
+    border-radius: 20px;
     margin: 10px;
 }
 
@@ -487,12 +487,6 @@ header {
 .upload-pic-con {
     width: 100px;
     height: 400px;
-}
-
-.address-form {
-    margin-left: 0%;
-    display: flex;
-    width: 100%;
 }
 
 .field-icon {
@@ -509,7 +503,7 @@ header {
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 50px;
+    border-radius: 20px;
     margin: 10px;
     text-decoration: none;
 }
@@ -525,7 +519,6 @@ header {
     display: flex;
     flex-direction: column;
     align-items: start;
-    padding: 5px 0px 5px 10px;
 }
 
 .form-customer-info .d-flex {
@@ -536,14 +529,14 @@ header {
     margin-top: 10px;
     background-color: #fff;
     padding: 50px 50px;
-    border-radius: 50px;
+    border-radius: 10px;
     height: 350px;
 }
 
 .create-vet-form-info-pet {
     background-color: #fff;
     padding: 10px 40px;
-    border-radius: 30px;
+    border-radius: 10px;
     /* Set a fixed height */
     height: 350px;
     /* Adjust this height as needed */
@@ -564,7 +557,7 @@ header {
     background-color: #3A3F54;
     color: white;
     text-decoration: none;
-    border-radius: 50px;
+    border-radius: 20px;
     align-items: center;
     display: flex;
     font-weight: 500;
