@@ -98,7 +98,7 @@
     <section>
         <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
           <div class="modal-dialog">
-            <div class="modal-cont">
+            <div class="modal-con">
                 
                 <h2 class="align-self-center mb-3">Review Pending Appointment</h2>
                 <h3 class="align-self-center mb-4">Personal Information</h3>

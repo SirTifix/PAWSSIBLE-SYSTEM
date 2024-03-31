@@ -61,9 +61,11 @@ require_once ('./include/customer-header.php');
                                         <div class="details col-sm">
                                             <label for="lastName">Selected Date and Time</label>
                                             <div class="col-sm">
-                                                <p id="selectedDateTime"></p>
+                                                <p id="selectedDateTime"><i class="calendar-icon fa-regular fa-calendar"></i></p>
                                             </div>
                                         </div>
+
+                                        
                                     </div>
 
                                     <div class="row">
@@ -72,7 +74,17 @@ require_once ('./include/customer-header.php');
                                             <input type="tel" id="contactNumber" name="contactNumber" required>
 
                                         </div>
+
+                                        <div class="form-group col-sm-2">
+                                                    <label for="concerns">
+                                                        <h5>Reason for Rescheduling</h5>
+                                                    </label>
+                                                    <textarea style="height: 120px;" class="form-concerns"
+                                                        id="concerns"></textarea>
+                                                </div>
                                     </div>
+
+                                    
 
                                     <div class="row">
                                         <div class="input-container col-6">
@@ -96,21 +108,21 @@ require_once ('./include/customer-header.php');
                                                     <label for="petname">
                                                         <h5>Pet Name</h5>
                                                     </label>
-                                                    <input type="text" class="form-control" id="petname"
+                                                    <input type="text" class="forming-pets form-control" id="petname"
                                                         placeholder="Enter pet name" />
                                                 </div>
                                                 <div class="form-group col-sm-2 background-color">
                                                     <label for="pettype">
                                                         <h5>Pet Type</h5>
                                                     </label>
-                                                    <input type="text" class="form-control" id="pettype"
+                                                    <input type="text" class="forming-pets form-control" id="pettype"
                                                         placeholder="Enter pet type" />
                                                 </div>
                                                 <div class="form-group col-sm-2 background-color">
                                                     <label for="sex">
                                                         <h5>Sex</h5>
                                                     </label>
-                                                    <input type="text" class="form-control background-color" id="sex"
+                                                    <input type="text" class="forming-pets form-control background-color" id="sex"
                                                         placeholder="Enter sex" />
                                                 </div>
 
@@ -128,14 +140,14 @@ require_once ('./include/customer-header.php');
                                                     <label for="breed">
                                                         <h5>Breed</h5>
                                                     </label>
-                                                    <input type="text" class="form-control" id="breed"
+                                                    <input type="text" class="forming-pets form-control" id="breed"
                                                         placeholder="Enter breed" />
                                                 </div>
                                                 <div class="form-group col-sm-2">
                                                     <label for="services">
                                                         <h5>Select Services</h5>
                                                     </label>
-                                                    <select class="form-control" id="services">
+                                                    <select class="forming-pets form-control" id="services">
                                                         <option value="">Choose...</option>
                                                         <option value="Spay/Neuter">
                                                             Spay/Neuter<span class="price">PHP 1,000</span>
@@ -159,7 +171,7 @@ require_once ('./include/customer-header.php');
                                                     <label for="vet">
                                                         <h5>Select vet</h5>
                                                     </label>
-                                                    <select class="form-control" id="vet">
+                                                    <select class="forming-pets form-control" id="vet">
                                                         <option value="">Choose...</option>
                                                         <option value="vet1">Dr.Jasmin abayon</option>
                                                         <option value="vet2">Dr.Erwin roy jalao</option>
@@ -175,7 +187,7 @@ require_once ('./include/customer-header.php');
                                                     <label for="birthdate">
                                                         <h5>BirthDate</h5>
                                                     </label>
-                                                    <input type="date" class="form-control" id="birthdate" />
+                                                    <input type="date" class="forming-pets form-control" id="birthdate" />
                                                 </div>
                                             </div>
 

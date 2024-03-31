@@ -51,32 +51,12 @@
                 <div class="d-flex gap-5">
                     <div class=" text-center">
                         <button class="btn btn-primary profile-button" type="button">
-                            Save Profile
+                            Save Password
                         </button>
                     </div>
-                    <div class=" text-center">
-                        <button class="btn btn-primary profile-button px-4" type="button">
-                            Cancel
-                        </button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Font Awesome Script -->
-<script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-
-<script>
-    function togglePasswordVisibility(inputId) {
-        var input = document.getElementById(inputId);
-        if (input.type === "password") {
-            input.type = "text";
-        } else {
-            input.type = "password";
-        }
-    }
-</script>
