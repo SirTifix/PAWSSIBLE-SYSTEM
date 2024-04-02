@@ -348,7 +348,5 @@ require_once('./include/admin-head.php');
             reader.readAsDataURL(file);
         });
     </script>
-
 </body>
-
 </html>

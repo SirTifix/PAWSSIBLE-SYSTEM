@@ -9,14 +9,14 @@
 
                 <div class="row mt-2">
                     <div class="col-md-6"><label class="form-label"> First Name</label><input type="text"
-                            class="form-control" placeholder="First name" value=""></div>
+                            class="book-form-control" placeholder="First name" value=""></div>
                     <div class="col-md-6"><label class="form-label">Last Name</label><input type="text"
-                            class="form-control" value="" placeholder="Last Name"></div>
+                            class="book-form-control" value="" placeholder="Last Name"></div>
                 </div>
 
                 <div class="row mt-2">
                     <div class="col-md-6"><label class="form-label"> Username</label><input type="text"
-                            class="form-control" placeholder="Username" value=""></div>
+                            class="book-form-control" placeholder="Username" value=""></div>
 
                     <div class="col-md-6"><label class="form-label"> Gender</label><select class="form-select"
                             aria-label="Default select example">
@@ -29,9 +29,9 @@
 
                 <div class="row mt-3 mb-5">
                     <div class="col-md-6"><label class="form-label">Birth Date</label><input type="date"
-                            class="form-control" placeholder="Birth Date" value=""></div>
+                            class="book-form-control" placeholder="Birth Date" value=""></div>
                     <div class="col-md-6"><label class="form-label">Email</label><input type="email"
-                            class="form-control" value="" placeholder="Email"></div>
+                            class="book-form-control" value="" placeholder="Email"></div>
                 </div>
 
                 <div class="container mt-5">

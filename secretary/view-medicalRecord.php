@@ -2,15 +2,15 @@
 <html lang="en">
 <?php
     $title = 'Customer';
-    require_once('./include/admin-head.php');
+    require_once('./include/sec-head.php');
 ?>
 <body>
     <?php
-        require_once('./include/admin-header.php')
+        require_once('./include/sec-header.php')
     ?>
     <main>
     <?php
-        require_once('./include/admin-sidepanel.php')
+        require_once('./include/sec-sidepanel.php')
     ?>
 
     <section class="veterinarian-con">

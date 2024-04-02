@@ -20,9 +20,6 @@ require_once('./include/admin-head.php');
         <div class="veterinarian-head">
           <p>Book Appointment</p>
         </div>
-        <div>
-          <a href="appointment.php" class="top-back btn-secondary"> BACK</a>
-        </div>
       </div>
     </section>
 
@@ -215,7 +212,12 @@ require_once('./include/admin-head.php');
           </div>
         </div>
       </section>
+    </section>
 
+    <section class="">
+        <div class="d-flex justify-content-end me-5 pe-2">
+            <a href="appointment.php" class="top-back btn-secondary">Back</a>
+        </div>
     </section>
 
   </main>

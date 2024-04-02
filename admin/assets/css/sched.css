@@ -131,6 +131,7 @@ header {
     font-size: 1.2em;
     margin-bottom: 20px;
 }
+
 .side-panel-links{
     align-items: start;
 }
@@ -188,6 +189,7 @@ header {
 .chart-con{
     margin-left: 260px;
 }
+
 .chart-container{
     margin-top: 30px;
     display: flex;
@@ -263,6 +265,7 @@ header {
     background-color: #3A3F54;
     color: white;
 }
+
 .crud-icon-update {
     border-radius: 5px;
     padding: 5px 10px;
@@ -296,6 +299,7 @@ header {
     padding-top: 72px;
     margin-left: 260px;
 }
+
 .veterinarian-head p{
     margin-left: 15px;
 }
@@ -456,7 +460,7 @@ header {
     margin-top: -25px;
     position: relative;
     z-index: 2;
-  }
+}
 
 .transfer-btn {
     padding: 10px 70px;
@@ -692,49 +696,42 @@ header {
     margin-left: 380px;
     border: 20px;}
 
-    .calendar-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 630px; /* Ensure container takes up full height */
-    }
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 630px; /* Ensure container takes up full height */
+}
   
-  
-  table {
+table {
     width: 85%;
     border-collapse: collapse;
     height:200px;
     margin: 20px;
+}
 
-   
-  }
-  th, td {
+th, td {
     margin: 10px;
     padding: 10px;
     text-align: center;
     height: 30px;
+}
 
-    
-  }
-
-  td.available {
+td.available {
     border: 1px black;
     border-bottom: 5px solid green; 
     cursor: pointer;
     margin: 10px;
     background:  #ECEFF2  ;
-   
-  }
-  
-    td.unavailable {
-        border: 1px black;
-        border-bottom: 5px solid rgb(211, 24, 21); 
+}
+
+td.unavailable {
+    border: 1px black;
+    border-bottom: 5px solid rgb(211, 24, 21); 
     cursor: not-allowed;
     background:  #ECEFF2  ;
-
-  
-  }
+}
 
 .popup {
     display: none;
@@ -745,9 +742,9 @@ header {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
-  }
+}
   
-  .popup-content {
+.popup-content {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
@@ -755,29 +752,29 @@ header {
     border-radius: 20px;
     width: 20%;
     text-align: center;
-  }
+}
   
-  .close {
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-  }
+}
   
-  .close:hover,
-  .close:focus {
+.close:hover,
+.close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
+}
   
-  button {
+button {
     margin: 5px;
     padding:5px;
 
-  }
+}
 
-  .icons-circle {
+.icons-circle {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -786,10 +783,11 @@ header {
     justify-content: center;
     align-items: center;
     color: white;
-  }
-  .icons{
+}
+
+.icons{
     font-size: 1.5rem;
-  }
+}
   /*Appointment-booking */
 
 
@@ -798,187 +796,187 @@ header {
     margin-left: 260px;
   }
   
-  .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 700px;
-      overflow: auto;
-    }
-    
-    .container-box {
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    
-    .container-content {
-      padding: 20px;
-    }
-    
-    .prevnext-btn{
-      border: none;
-      background-color: transparent;
-      font-size: 1.5em;
-    }
-    .calendar-container {
-      margin-right: 20px; /* Add spacing between calendar and time container */
-      background-color: #ffffff;
-      border-radius: 15px;
-     
-      border: 1px solid #dee2e6; /* Border style */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    
-    .calendar {
-      height: 680px;
-      margin-left:300px ;
-      flex: 1;
-    }
-    
-    .calendar-header {
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    
-    .calendar-header h2 {
-      margin: 0;
-      font-size: 24px;
-    }
-    
-    .days-container {
-      text-align: center;
-    }
-    
-    .days-of-week {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-    
-    .days-of-week span {
-      flex: 1;
-    }
-    
-    .calendar-body {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 5px;
-    }
-    
-    .calendar-cell {
-      padding: 20px;
-      text-align: center;
-      background-color: #ECEFF2;
-      margin: 10px;
-      
-    }
-    
-    .calendar-cell:hover {
-      background-color: #eaeaea;
-      cursor: pointer;
-    }
-    
-    .separator {
-      border-top: 2px solid #ccc; /* Straight line separator */
-      margin: 10px 0; /* Adjust spacing */
-    }
-    
-    .style-date{
-      padding: 7px;
-    }
-    .time-container {
-        width: 400px; /* Match width of time container with calendar container */
-      background-color: #fffcfc;
-      flex-direction: column; 
-      border-radius: 15px;
-      height: 630px;
-    }
-    
-    .time-slots-container {
-      margin-bottom: 20px; /* Add spacing between time container and other content */
-    }
-    
-    .time-slot-heading {
-      text-align: center;
-      
-    }
-    
-    .time-slots {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
-      gap: 10px; /* Spacing between time slots */
-    }
-    
-    .time-slot {
-      padding: 10px;
-      text-align: center;
-      background-color: #ddd;
-      cursor: pointer;
-      margin: 5px;
-      width: 100px;
-    }
-    
-    .time-slot:hover {
-      background-color: #ccc;
-    }
-   
-  .close{
-      display: flex;
-      justify-content: end;
-      align-items: center;
-      font-size: 2em;
-    }
-  
-    .modal-content {
-      background-color: #fefefe;
-      margin: auto;
-      padding: 20px;
-      border: 1px solid #888;
-      max-width: 500px;
-    }
-    
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    overflow: auto;
+}
 
-    .underline {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background-color: #ccc;
-    }
+.container-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.container-content {
+    padding: 20px;
+}
+
+.prevnext-btn{
+    border: none;
+    background-color: transparent;
+    font-size: 1.5em;
+}
+
+.calendar-container {
+    margin-right: 20px; /* Add spacing between calendar and time container */
+    background-color: #ffffff;
+    border-radius: 15px;
     
-    #submitBtn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
+    border: 1px solid #dee2e6; /* Border style */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.calendar {
+    height: 680px;
+    margin-left:300px ;
+    flex: 1;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.days-container {
+    text-align: center;
+}
+
+.days-of-week {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.days-of-week span {
+    flex: 1;
+}
+
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-cell {
+    padding: 20px;
+    text-align: center;
+    background-color: #ECEFF2;
+    margin: 10px;
     
-    #submitBtn:hover {
-      background-color: #45a049;
-    }
+}
+
+.calendar-cell:hover {
+    background-color: #eaeaea;
+    cursor: pointer;
+}
+
+.separator {
+    border-top: 2px solid #ccc; /* Straight line separator */
+    margin: 10px 0; /* Adjust spacing */
+}
+
+.style-date{
+    padding: 7px;
+}
+.time-container {
+    width: 400px; /* Match width of time container with calendar container */
+    background-color: #fffcfc;
+    flex-direction: column; 
+    border-radius: 15px;
+    height: 630px;
+}
+
+.time-slots-container {
+    margin-bottom: 20px; /* Add spacing between time container and other content */
+}
+
+.time-slot-heading {
+    text-align: center;
     
-    #backBtn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #2A2F4F;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100px;
-    }
-    
-    #backBtn:hover {
-      background-color: #7d8091;
-    }
-  
-  .social-icons{
+}
+
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+    gap: 10px; /* Spacing between time slots */
+}
+
+.time-slot {
+    padding: 10px;
+    text-align: center;
+    background-color: #ddd;
+    cursor: pointer;
+    margin: 5px;
+    width: 100px;
+}
+
+.time-slot:hover {
+    background-color: #ccc;
+}
+
+.close{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-size: 2em;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    max-width: 500px;
+}
+
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+}
+
+#submitBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submitBtn:hover {
+    background-color: #45a049;
+}
+
+#backBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #2A2F4F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+}
+
+#backBtn:hover {
+    background-color: #7d8091;
+}
+
+.social-icons{
     content: "\f09a";
     width: 10px;
     font-size: 51px;
@@ -986,62 +984,62 @@ header {
     right: 5px;
     display: flex;
     flex-direction: column;
-  }
+}
   
-  .separator {
-      padding-top: 5px;
-      border-top: 2px solid #ccc; /* Straight line separator */
-      margin: 10px 0; /* Adjust spacing */
-    }
-  
-    td.selected {
-        background-color: red;
-        color: white;
-    }
-  
-    button {
-        margin: 5px;
-        padding: 5px;
-        border: none; /* Remove border */
-        background-color: transparent; /* Set background color to transparent */
-        box-shadow: none; /* Remove box shadow */
-        cursor: pointer;
-        outline: none; /* Remove outline */
-    }
+.separator {
+    padding-top: 5px;
+    border-top: 2px solid #ccc; /* Straight line separator */
+    margin: 10px 0; /* Adjust spacing */
+}
 
-    .button-time-container{
-        padding-top: 10px;
-        margin-left: 300px;
-    }
- 
-   #unavailableBtn {
+td.selected {
+    background-color: red;
+    color: white;
+}
+
+button {
+    margin: 5px;
+    padding: 5px;
+    border: none; /* Remove border */
+    background-color: transparent; /* Set background color to transparent */
+    box-shadow: none; /* Remove box shadow */
+    cursor: pointer;
+    outline: none; /* Remove outline */
+}
+
+.button-time-container{
+    padding-top: 10px;
+    margin-left: 300px;
+}
+
+#unavailableBtn {
     background-color: #F40F0F;
+}
 
-   }
-   #setAvailableBtn{
+#setAvailableBtn{
     background-color: #55CA6C;
-   }
-   #setAvailableBtn, #unavailableBtn {
+}
+
+#setAvailableBtn, #unavailableBtn {
     border: 1px solid #dee2e6; /* Border style */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 1rem;
     padding: 10px;
     border-radius: 15px;
 }
+
 #popup-date{
     font-size: 2rem;
 }
-   
 
 .white-container {
-padding-bottom: 20px;
-border-radius: 5px;
-padding-top : 40px;
-width: 75%;
-margin-left: 300px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    padding-top : 40px;
+    width: 75%;
+    margin-left: 300px;
 }
 
-   
 .save-cal-btn {
     padding: 10px 70px;
     background-color: #3A3F54;
@@ -1057,6 +1055,7 @@ margin-left: 300px;
     background-color: #828aa9; /* Change text color on hover */
     color: white;
 }
+
 #calendar{
     border-collapse: separate; /* Ensure cells are separate */
     border-spacing: 10px; 
@@ -1065,6 +1064,7 @@ margin-left: 300px;
 #calendar td {
     padding: 10px; /* Add padding to cells for better spacing */
 }
+
 .add-btn {
     border-radius: 5px;
     padding: 5px 10px;
@@ -1100,6 +1100,7 @@ margin-left: 300px;
     justify-content: center;
     align-items: center;
 }
+
 #generate-calendar-btn {
     border: none; /* Add a border around the button */
     padding: 5px 10px; /* Add padding to the button */

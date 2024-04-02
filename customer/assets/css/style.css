@@ -1168,7 +1168,7 @@ td {
 }
 
 /* for review-appointment-css */
-.forming-pets{
+.book-form-control{
   background-color: #c6c8d6 !important;
   border: none !important;
   border-bottom: 1.5px solid #04182d !important; /* gray border color */
@@ -1199,7 +1199,7 @@ td {
 }
 
 /* Remove background color and adjust border for select elements */
-select.form-control {
+select.book-form-control {
   background-color: transparent;
   border: 1px solid #ced4da; /* gray border color */
   border-radius: 0;

@@ -10,8 +10,7 @@
                     <div class="col-md-6">
                         <label class="form-label">Current Password</label>
                         <div class="input-group">
-                            <input id="currentPassword" type="password" class="form-control"
-                                placeholder="Current Password" value="">
+                            <input id="currentPassword" type="password" class="book-form-control" placeholder="Current Password" value="">
                             <span class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button"
                                     onclick="togglePasswordVisibility('currentPassword')">
@@ -26,8 +25,7 @@
                     <div class="col-md-6">
                         <label class="form-label">New Password</label>
                         <div class="input-group">
-                            <input id="newPassword" type="password" class="form-control" placeholder="New Password"
-                                value="">
+                            <input id="newPassword" type="password" class="book-form-control" placeholder="New Password" value="">
                             <span class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button"
                                     onclick="togglePasswordVisibility('newPassword')">
@@ -42,8 +40,7 @@
                     <div class="col-md-6">
                         <label class="form-label">Confirm Password</label>
                         <div class="input-group">
-                            <input id="confirmPassword" type="password" class="form-control"
-                                placeholder="Confirm Password" value="">
+                            <input id="confirmPassword" type="password" class="book-form-control" placeholder="Confirm Password" value="">
                             <span class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="button"
                                     onclick="togglePasswordVisibility('confirmPassword')">
