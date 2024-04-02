@@ -9,14 +9,14 @@
 
                 <div class="row mt-2">
                     <div class="col-md-6"><label class="form-label"> Pet Name</label><input type="text"
-                            class="form-control" placeholder="Pet name" value=""></div>
-                    <div class="col-md-6"><label class="form-label">Age</label><input type="number" class="form-control"
+                            class="book-form-control" placeholder="Pet name" value=""></div>
+                    <div class="col-md-6"><label class="form-label">Age</label><input type="number" class="book-form-control"
                             value="" placeholder="Age"></div>
                 </div>
 
                 <div class="row mt-2">
                     <div class="col-md-6"><label class="form-label"> Birth Date</label><input type="date"
-                            class="form-control" placeholder="Birth Date" value=""></div>
+                            class="book-form-control" placeholder="Birth Date" value=""></div>
 
                     <div class="col-md-6"><label class="form-label"> Gender</label><select class="form-select" aria-label="Default select example">
                             <option selected>Select your Gender</option>
@@ -27,17 +27,17 @@
                 </div>
 
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="form-label">Species</label><input type="text" class="form-control"
+                    <div class="col-md-6"><label class="form-label">Species</label><input type="text" class="book-form-control"
                             placeholder="Species" value=""></div>
                     <div class="col-md-6"><label class="form-label">Breed</label><input type="text"
-                            class="form-control" value="" placeholder="Breed"></div>
+                            class="book-form-control" value="" placeholder="Breed"></div>
                 </div>
 
                 <div class="row mt-2 mb-5">
-                    <div class="col-md-6"><label class="form-label">Weight</label><input type="text" class="form-control"
+                    <div class="col-md-6"><label class="form-label">Weight</label><input type="text" class="book-form-control"
                             placeholder="Weight" value=""></div>
                     <div class="col-md-6"><label class="form-label">Color</label><input type="text"
-                            class="form-control" value="" placeholder="Color"></div>
+                            class="book-form-control" value="" placeholder="Color"></div>
                 </div>
 
                 <div class="d-flex justify-content-between">

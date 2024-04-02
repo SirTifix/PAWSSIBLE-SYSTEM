@@ -38,9 +38,9 @@
         require_once('./include/sec-sidepanel.php')
     ?>
     <section class="veterinarian-con">
-      <div class="d-flex justify-content-start mb-4">
+      <div class="d-flex justify-content-between mb-4">
         <div class="veterinarian-head">
-          <p>Update Customer Information</p>
+          <p>Customer Information</p>
         </div>
       </div>
     </section>
@@ -197,15 +197,11 @@
     </section>
 
     <section class="">
-      <div class="d-flex justify-content-around align-items-center ms-5 ps-5 pt-2">
-        <div class="ms-5 ps-5">
-            <a href="customers.php" class="back-btn btn-secondary">Back</a>
-        </div>
-        <div class="ms-5 ps-5">
-            <button type="submit" name="save" class="save-vet-btn btn-secondary" id="addCustomerButton">Save</button>
-        </div>
+      <div class="d-flex justify-content-end me-4 pe-5 pt-3">
+          <a href="customers.php" class="top-back btn-secondary">Back</a>
       </div>
     </section>
+
   </main>
   <script>
            document.getElementById('fileInput').addEventListener('change', function (event) {

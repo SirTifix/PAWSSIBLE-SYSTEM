@@ -20,9 +20,6 @@ require_once('./include/sec-head.php');
         <div class="veterinarian-head">
           <p>Book Appointment</p>
         </div>
-        <div>
-          <a href="appointment.php" class="top-back btn-secondary pe-5"><i class="fa-solid fa-chevron-left me-3"></i> BACK</a>
-        </div>
       </div>
     </section>
 
@@ -136,15 +133,13 @@ require_once('./include/sec-head.php');
                   <div class="input-container  col-sm-3">
                     <label for="firstName">First Name:</label>
                     <input type="text" id="firstName" name="firstName" required>
-
                   </div>
 
                   <div class="input-container col-sm-3">
                     <label for="lastName">Last Name:</label>
                     <input type="text" id="lastName" name="lastName" required>
-
                   </div>
-
+                  
                   <div class="details col-sm">
                     <label for="lastName">Selected Date and Time</label>
                     <div class="col-sm">
@@ -156,7 +151,6 @@ require_once('./include/sec-head.php');
                     <div class="input-container col-6">
                       <label for="email">Email Address:</label>
                       <input type="email" id="email" name="email" required>
-
                     </div>
                   </div>
 
@@ -218,7 +212,12 @@ require_once('./include/sec-head.php');
           </div>
         </div>
       </section>
+    </section>
 
+    <section class="">
+        <div class="d-flex justify-content-end me-5 pe-2">
+            <a href="appointment.php" class="top-back btn-secondary">Back</a>
+        </div>
     </section>
 
   </main>
@@ -226,5 +225,4 @@ require_once('./include/sec-head.php');
   require_once('./include/js.php')
   ?>
 </body>
-
 </html>

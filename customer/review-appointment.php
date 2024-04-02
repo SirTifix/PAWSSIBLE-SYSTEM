@@ -96,21 +96,21 @@ require_once ('./include/customer-header.php');
                                                     <label for="petname">
                                                         <h5>Pet Name</h5>
                                                     </label>
-                                                    <input type="text" class="form-control" id="petname"
+                                                    <input type="text" class="book-form-control" id="petname"
                                                         placeholder="Enter pet name" />
                                                 </div>
                                                 <div class="form-group col-sm-2 background-color">
                                                     <label for="pettype">
                                                         <h5>Pet Type</h5>
                                                     </label>
-                                                    <input type="text" class="form-control" id="pettype"
+                                                    <input type="text" class="book-form-control" id="pettype"
                                                         placeholder="Enter pet type" />
                                                 </div>
                                                 <div class="form-group col-sm-2 background-color">
                                                     <label for="sex">
                                                         <h5>Sex</h5>
                                                     </label>
-                                                    <input type="text" class="form-control background-color" id="sex"
+                                                    <input type="text" class="book-form-control background-color" id="sex"
                                                         placeholder="Enter sex" />
                                                 </div>
 
@@ -128,14 +128,14 @@ require_once ('./include/customer-header.php');
                                                     <label for="breed">
                                                         <h5>Breed</h5>
                                                     </label>
-                                                    <input type="text" class="form-control" id="breed"
+                                                    <input type="text" class="book-form-control" id="breed"
                                                         placeholder="Enter breed" />
                                                 </div>
                                                 <div class="form-group col-sm-2">
                                                     <label for="services">
                                                         <h5>Select Services</h5>
                                                     </label>
-                                                    <select class="form-control" id="services">
+                                                    <select class="book-form-control" id="services">
                                                         <option value="">Choose...</option>
                                                         <option value="Spay/Neuter">
                                                             Spay/Neuter<span class="price">PHP 1,000</span>
@@ -159,7 +159,7 @@ require_once ('./include/customer-header.php');
                                                     <label for="vet">
                                                         <h5>Select vet</h5>
                                                     </label>
-                                                    <select class="form-control" id="vet">
+                                                    <select class="book-form-control" id="vet">
                                                         <option value="">Choose...</option>
                                                         <option value="vet1">Dr.Jasmin abayon</option>
                                                         <option value="vet2">Dr.Erwin roy jalao</option>
@@ -175,7 +175,7 @@ require_once ('./include/customer-header.php');
                                                     <label for="birthdate">
                                                         <h5>BirthDate</h5>
                                                     </label>
-                                                    <input type="date" class="form-control" id="birthdate" />
+                                                    <input type="date" class="book-form-control" id="birthdate" />
                                                 </div>
                                             </div>
 

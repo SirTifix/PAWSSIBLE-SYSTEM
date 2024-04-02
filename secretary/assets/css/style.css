@@ -270,7 +270,6 @@ header {
     color: white;
     text-decoration: none;
     font-size: 1.1em;
-    width: 80px;
     display: flex;
     justify-content: center;
     /* Horizontally center */
@@ -282,8 +281,7 @@ header {
     background-color: #3A3F54;
     /* Change text color on hover */
     color: white;
-    border-radius: 50px;
-    width: 80px;
+    border-radius: 20px;
 }
 
 .crud-btn a.crud-text:active {
@@ -409,7 +407,10 @@ header {
     display: inline-block;
     margin-bottom: 5px;
     width: 150px;
+    margin-right: 20px;
+    text-align: right; /* Add this line to align the text to the right */
 }
+
 
 .form-control {
     width: 330px;
@@ -423,7 +424,7 @@ header {
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 50px;
+    border-radius: 20px;
     margin: 10px;
 }
 
@@ -438,32 +439,31 @@ header {
     color: #3A3F54;
     text-decoration: none;
     border: 1px solid #4a4f63;
-    /* Add border property with black color */
-    border-radius: 50px;
+    border-radius: 20px;
     padding: 10px 60px;
     margin: 10px;
     font-weight: bold;
 }
 
 .back-btn:hover {
-    background-color: #828aa9;
+    background-color: #3A3F54;
     /* Change text color on hover */
     color: white;
 }
 
 .top-back {
-    background-color: #3A3F54;
-    color: #fff;
+    background-color: #ffff;
+    color: #3A3F54;
+    border: 1px solid #3A3F54;
     text-decoration: none;
-    padding: 10px 20px;
-    margin: 10px 20px;
+    padding: 10px 60px;
+    margin: 10px;
     border-radius: 20px;
-    font-size: 1.2em;
-    font-weight: 450;
+    font-weight: bold;
 }
 
 .top-back:hover {
-    background-color: #CCCCCC;
+    background-color: #3A3F54;
     /* Change text color on hover */
     color: white;
 }
@@ -474,7 +474,7 @@ header {
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 50px;
+    border-radius: 20px;
     margin: 10px;
 }
 
@@ -487,12 +487,6 @@ header {
 .upload-pic-con {
     width: 100px;
     height: 400px;
-}
-
-.address-form {
-    margin-left: 0%;
-    display: flex;
-    width: 100%;
 }
 
 .field-icon {
@@ -509,7 +503,7 @@ header {
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 50px;
+    border-radius: 20px;
     margin: 10px;
     text-decoration: none;
 }
@@ -525,21 +519,24 @@ header {
     display: flex;
     flex-direction: column;
     align-items: start;
-    padding: 5px 0px 5px 10px;
+}
+
+.form-customer-info .d-flex {
+    align-items: baseline; /* Aligns items to the baseline of the container */
 }
 
 .create-vet-form-info {
     margin-top: 10px;
     background-color: #fff;
     padding: 50px 50px;
-    border-radius: 50px;
+    border-radius: 10px;
     height: 350px;
 }
 
 .create-vet-form-info-pet {
     background-color: #fff;
     padding: 10px 40px;
-    border-radius: 30px;
+    border-radius: 10px;
     /* Set a fixed height */
     height: 350px;
     /* Adjust this height as needed */
@@ -560,7 +557,7 @@ header {
     background-color: #3A3F54;
     color: white;
     text-decoration: none;
-    border-radius: 50px;
+    border-radius: 20px;
     align-items: center;
     display: flex;
     font-weight: 500;
@@ -644,7 +641,7 @@ header {
 }
 
 .add-appointment {
-    border-radius: 10px;
+    border-radius: 20px;
     width: 210px;
     background-color: #5263AB;
     display: flex;
@@ -656,8 +653,7 @@ header {
 .add-appointment a {
     text-decoration: none;
     color: white;
-    font-size: 1.2em;
-    font-weight: 500;
+    font-size: 1.1em;
 }
 
 .table-appointment{
@@ -682,7 +678,7 @@ header {
     padding: 5px 10px;
     color: #488BBB;
     text-decoration: none;
-    font-size: 1.3em;
+    font-size: 1.1em;
     width: 30px;
     display: flex;
     justify-content: center; /* Horizontally center */
@@ -694,7 +690,7 @@ header {
     padding: 5px 10px;
     color: #C7353E;
     text-decoration: none;
-    font-size: 1.3em;
+    font-size: 1.1em;
     width: 30px;
     display: flex;
     justify-content: center; /* Horizontally center */
@@ -774,4 +770,213 @@ header {
     height: 35px;
     width: 35px;
     background: #C1CCF8;
+}
+
+/* Pet Medical History */
+.pet-medhist-con{
+    margin-left: 260px;
+    margin-right: 0%;
+}
+
+.pet-medhist-content{
+    padding: 10px 40px;
+}
+
+.petmed-body{
+    border: solid 1px #888484;
+    background-color: #fff;
+}
+
+.petmed-head{
+    margin-top: 50px;
+    color: #fff;
+    background-color: #303962;
+    padding: 10px 0px;
+}
+
+.form-control-medhist {
+    width: 350px;
+    border: 1px solid #888484;
+    padding: 8px 5px;
+    margin: 5px 0px;
+    border-radius: 5px;
+}
+
+.form-label-medhist{
+    width: 120px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+}
+
+.table-headpet th {
+    background-color: #8493D9;
+}
+
+.table-bodypet td {
+    background-color: white; /* Set background color to white */
+    color: black; /* Set text color to black */
+    font-size: 1.1em;
+}
+
+
+
+.hamburger-icon {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 1.3em;
+    position: relative;
+}
+
+.dropdown-vaccine {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.dropdown-vaccine a {
+    display: flex;
+    justify-content: start; 
+    align-items: center; 
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.hamburger-icon.active .dropdown-vaccine {
+    display: block;
+}
+
+.hamburger-icon-medhist{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 1.3em;
+    position: relative;
+    
+}
+.dropdown-medhist{
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.dropdown-medhist a {
+    display: flex;
+    justify-content: start; 
+    align-items: center; 
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.hamburger-icon-medhist.active .dropdown-medhist {
+    display: block;
+}
+
+.form-label-medHis {
+    width: 150px; /* Adjust the width as needed */
+    margin-top: 15px;
+    margin-right: 10px; /* Add margin to create space between label and control */
+    padding: 10px;
+}
+
+.form-label-vaccine {
+    width: 130px; /* Adjust the width as needed */
+    margin-top: 15px;
+    margin-right: 10px; /* Add margin to create space between label and control */
+    padding: 10px;
+}
+
+.form-control-medHis {
+    width: calc(100% - 160px); /* Adjust the width accounting for label width and margin */
+    margin-top: 15px;
+    margin-bottom: 15px; /* Add margin to the bottom of the control */
+    border-radius: 5px;
+    border: 2px solid #ccc; /* Add gray border */
+    transition: border-color 0.3s; /* Add transition effect for smoother color change */
+    padding: 10px;
+}
+
+.form-control-medHis:hover,
+.form-control-medHis:focus {
+    border-color: #85c5e8; /* Change border color to blue when focused */
+    outline: none; /* Remove default focus outline */
+    border-width: 2px;
+}
+
+.form-control-vaccine {
+    width: calc(100% - 100px); /* Adjust the width accounting for label width and margin */
+    margin-top: 15px;
+    margin-bottom: 15px; /* Add margin to the bottom of the control */
+    border-radius: 5px;
+    border: 2px solid #ccc; /* Add gray border */
+    transition: border-color 0.3s; /* Add transition effect for smoother color change */
+    padding: 10px;
+}
+
+.form-control-vaccine:hover,
+.form-control-vaccine:focus {
+    border-color: #85c5e8; /* Change border color to blue when focused */
+    outline: none; /* Remove default focus outline */
+    border-width: 2px;
+}
+
+.customDateContainer {
+    position: absolute;
+    top: 0;
+    left: 100px;
+    z-index: 999; /* Ensure it appears above other content */
+}
+
+.customDateRange{ 
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #fff;
+    position: absolute; 
+    z-index: 1000;  
+    display: none;
+}
+/* VACCINE FORM */
+.pet-information{
+    padding-left: 200px;
+
+}
+.vac-container{
+   margin:20px;
+   margin-left: 70px;
+}
+.form-label-petType {
+   
+    margin-top: 15px;
+    margin-left: 60px; /* Add margin to create space between label and control */
+    padding: 10px;
+}
+.form-control-petType{
+    margin-left: 60px; 
+    width: 330px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
 }
