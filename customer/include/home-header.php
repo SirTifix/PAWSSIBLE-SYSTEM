@@ -13,7 +13,7 @@
                 Veterinary Clinic</div>
         </div>
         <div class="navbar-links">
-            <a href="">Home</a>
+            <a href="home.php">Home</a>
             <a href="services.php">Services</a> 
             <a href="aboutus.php">About Us</a>
             <a href="booking.php">Booking</a>

@@ -1324,9 +1324,13 @@ border-radius: 10px !important;
   background-color: #c6c8d6;
 }
 
-.calendar-icon{
-  background-color: #5263AB;
-  padding: 5px;
+#openCalendarModalBtn{
+  padding: 3px;
+  padding-left: 7px !important;
+  padding-right: 7px !important;
+  margin-left: 3px;
   color: white;
   border-radius: 3px;
+  border-style: none;
+  background-color: #5263AB;
 }
