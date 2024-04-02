@@ -5,7 +5,14 @@
   min-height: 100vh;
   overflow: auto;
 }
+.logo-text-booking{
+  font-weight: bolder;
+  color: #2A2F4F;
+}
 
+.logo-text-booking {
+  font-size: 2.3rem;
+}
 .container-box {
   border: 1px solid #ccc;
   border-radius: 5px;

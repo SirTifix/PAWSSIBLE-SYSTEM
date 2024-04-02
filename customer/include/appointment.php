@@ -21,20 +21,19 @@
                             <tr>
                                 <th scope="col" style="padding-left:5em;">Pet Name</th>
                                 <th scope="col">Date</th>
-                                <th scope="col">Action</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody id="appointmentTableBody">
                             <tr class="table-row">
                                 <td>
                                     <label class="custom-checkbox">
-                                        <input type="checkbox" id="myCheckbox" name="myCheckbox">
                                         <span class="checkmark"></span>
                                     </label>
                                     Belgy
                                 </td>
                                 <td> <strong> Jan 6,2024</strong></td>
-                                <td><a href="./review-appointment.php"> <button type="button" class="Review-button btn-sm">Review</button> </a> </td>
+                                <td><a href="./review-appointment.php"> <button type="button" class="Review-button btn-sm"><i class="fa-solid fa-ellipsis"></i></button> </a> </td>
                             </tr>
                         </tbody>
 
@@ -42,13 +41,12 @@
                             <tr class="table-row">
                                 <td>
                                     <label class="custom-checkbox">
-                                        <input type="checkbox" id="myCheckbox" name="myCheckbox">
                                         <span class="checkmark"></span>
                                     </label>
                                     Max
                                 </td>
                                 <td> <strong> March 6,2024</strong></td>
-                                <td><a href="./review-appointment.php"> <button type="button" class="Review-button btn-sm">Review</button> </a> </td>
+                                <td><a href="./review-appointment.php"> <button type="button" class="Review-button btn-sm"><i class="fa-solid fa-ellipsis"></i></button> </a> </td>
                                 
 
                             </tr>
@@ -58,13 +56,12 @@
                             <tr class="table-row">
                                 <td>
                                     <label class="custom-checkbox">
-                                        <input type="checkbox" id="myCheckbox" name="myCheckbox">
                                         <span class="checkmark"></span>
                                     </label>
                                     Saila
                                 </td>
                                 <td> <strong> Feb 6,2024</strong></td>
-                                <td><a href="./review-appointment.php"> <button type="button" class="Review-button btn-sm">Review</button> </a> </td>
+                                <td><a href="./review-appointment.php"> <button type="button" class="Review-button btn-sm"><i class="fa-solid fa-ellipsis"></i></button> </a> </td>
 
                             </tr>
                         </tbody>

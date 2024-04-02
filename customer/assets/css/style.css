@@ -1173,6 +1173,7 @@ td {
   border: none !important;
   border-bottom: 1.5px solid #04182d !important; /* gray border color */
   border-radius: 0 !important; /* remove rounded borders */
+  
 }
 .form-row {
   display: flex;
@@ -1211,11 +1212,6 @@ select.book-form-control {
   margin-top: 50px;
 }
 
-.background-color-container {
-  background-color: #f1f1f2;
-  -webkit-box-shadow: 1px 7px 9px 0px rgba(0, 0, 0, 0.6);
-  box-shadow: 1px 7px 9px 0px rgba(0, 0, 0, 0.6);
-}
 
 .form-group {
   margin: 5px;
@@ -1257,9 +1253,6 @@ select:focus {
   height: 100%;
 }
 
-.Review-button {
-  background-color: #c4ccf4;
-}
 
 .profile-pictures {
   background-color: #eaeaea !important;

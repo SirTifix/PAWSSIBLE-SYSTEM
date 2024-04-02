@@ -28,7 +28,6 @@
                             <tr class="table-row">
                                 <td>
                                     <label class="custom-checkbox">
-                                        <input type="checkbox" id="myCheckbox" name="myCheckbox">
                                         <span class="checkmark"></span>
                                     </label>
                                     Belgy
@@ -42,7 +41,6 @@
                             <tr class="table-row">
                                 <td>
                                     <label class="custom-checkbox">
-                                        <input type="checkbox" id="myCheckbox" name="myCheckbox">
                                         <span class="checkmark"></span>
                                     </label>
                                     Max
@@ -58,7 +56,6 @@
                             <tr class="table-row">
                                 <td>
                                     <label class="custom-checkbox">
-                                        <input type="checkbox" id="myCheckbox" name="myCheckbox">
                                         <span class="checkmark"></span>
                                     </label>
                                     Saila

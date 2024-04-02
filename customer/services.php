@@ -249,5 +249,11 @@
   </script>
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
  <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
+
+
+ <?php
+        require_once('./include/footer.php');
+        require_once('./include/js.php');
+    ?>
 </body>
 </html>

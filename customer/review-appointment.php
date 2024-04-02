@@ -108,7 +108,7 @@ require_once ('./include/customer-header.php');
                                     </div>
 
 
-                                    <div class="pet-info-form background-color-container container bg-light mt-4 p-4">
+                                    <div class="pet-info-form background-color-container container mt-4 p-4">
                                         <h2 class="mb-4">Pet Information Form</h2>
                                         <form>
                                             <div class="form-row">
@@ -151,11 +151,11 @@ require_once ('./include/customer-header.php');
                                                     <input type="text" class="book-form-control" id="breed"
                                                         placeholder="Enter breed" />
                                                 </div>
-                                                <div class="form-group col-sm-2">
+                                                <div class="form-group col-sm-2 background-color">
                                                     <label for="services">
                                                         <h5>Select Services</h5>
                                                     </label>
-                                                    <select class="book-form-control" id="services">
+                                                    <select class="book-form-control " id="services">
                                                         <option value="">Choose...</option>
                                                         <option value="Spay/Neuter">
                                                             Spay/Neuter<span class="price">PHP 1,000</span>
@@ -175,7 +175,7 @@ require_once ('./include/customer-header.php');
                                                     </select>
                                                 </div>
 
-                                                <div class="form-group col-sm-2">
+                                                <div class="form-group col-sm-2 background-color">
                                                     <label for="vet">
                                                         <h5>Select vet</h5>
                                                     </label>
@@ -195,7 +195,7 @@ require_once ('./include/customer-header.php');
                                                     <label for="birthdate">
                                                         <h5>BirthDate</h5>
                                                     </label>
-                                                    <input type="date" class="book-form-control" id="birthdate" />
+                                                    <input type="date" class="book-form-control form-control" id="birthdate" />
                                                 </div>
                                             </div>
 

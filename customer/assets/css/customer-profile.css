@@ -72,3 +72,8 @@ border-radius: 0% !important;
 .Pet-name{
   padding-left: 11em;
 }
+
+.Review-button{
+  border-style: none;
+  background-color: transparent;
+}

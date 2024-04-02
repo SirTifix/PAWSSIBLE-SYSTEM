@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
 $title = 'Pawssible Solutions Veterinary';
-require_once ('./include/home-header.php');
+require_once ('./include/booking-header.php');
 require_once ('./tools/functions.php');
 ?>
 
@@ -38,7 +38,7 @@ require_once ('./tools/functions.php');
     </div>
   </section>
 
-  <div style="position: absolute; bottom: 69vh; left: 34vh; color: #FFFFFF;">
+  <div style="position: absolute; bottom: 69vh; left: 34vh; color: #2A2F4F;">
     <h2> <strong> AVAILABLE DATE </strong></h2>
   </div>
   <div style="position: absolute; bottom: 69vh; left: 107vh; color: #2A2F4F;">
@@ -275,6 +275,9 @@ require_once ('./tools/functions.php');
     });
   </script>
 
+ <?php
+        require_once('./include/footer.php');
+    ?>
 </body>
 
 </html>
