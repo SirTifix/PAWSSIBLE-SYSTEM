@@ -1086,7 +1086,6 @@ i .pet-pp-icon {
   overflow: hidden;
   padding: 4px 20px;
   width: 45%;
-
 }
 
 .search {
@@ -1154,7 +1153,7 @@ td {
   border-radius: 7px;
 }
 
-.modal-cont {
+.modal-con {
   background-color: #d9d9d9;
   border-radius: 7px;
 }
@@ -1175,7 +1174,6 @@ td {
   border-bottom: 1.5px solid #04182d !important; /* gray border color */
   border-radius: 0 !important; /* remove rounded borders */
 }
-
 .form-row {
   display: flex;
   flex-direction: row;
@@ -1259,7 +1257,76 @@ select:focus {
   height: 100%;
 }
 
+.Review-button {
+  background-color: #c4ccf4;
+}
 
-.Review-button{
-  background-color: #C4CCF4;
+.profile-pictures {
+  background-color: #eaeaea !important;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+  border-color: solid 3px #000000;
+  border-radius: 10px;
+}
+
+.pet-details-cont {
+  background-color: #e3e4ff;
+  margin: 5px;
+  border-radius: 5px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pets-container-details{
+  padding-left: 4em;
+  padding-right: 4em;
+}
+
+input[type="Petname"],
+input[type="Petcolor"],
+input[type="Petbirthdate"],
+input[type="Petage"],
+input[type="Petbreed"],
+input[type="Petspecies"],
+select {
+border-radius: 10px !important;
+}
+
+.pet-cont{
+  border-radius: 5px;
+}
+
+.profile-pic {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+  border-color: solid 3px #000000;
+}
+
+.upload-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  background: #C1CCF8;
+}
+
+.forming-pet{
+  background-color: #c6c8d6;
+}
+
+.calendar-icon{
+  background-color: #5263AB;
+  padding: 5px;
+  color: white;
+  border-radius: 3px;
 }

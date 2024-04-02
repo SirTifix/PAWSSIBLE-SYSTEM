@@ -189,6 +189,7 @@ require_once('./tools/functions.php');
               <div class="input-container col-6">
                 <label for="pets">Number of Pets:</label>
                 <select id="pets" name="pets">
+                  <option value="0">Select Number of Pets</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>

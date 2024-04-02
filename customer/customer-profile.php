@@ -3,7 +3,7 @@
 
 <?php
 $title = 'Pawssible Solutions Veterinary';
-require_once('./tools/functions.php');
+require_once ('./tools/functions.php');
 ?>
 
 <head>
@@ -22,7 +22,7 @@ require_once('./tools/functions.php');
 
 <body>
   <?php
-  require_once('./include/customer-header.php');
+  require_once ('./include/customer-header.php');
   ?>
   <div class="Profile container d-flex flex-row">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
@@ -62,7 +62,6 @@ require_once('./tools/functions.php');
     </div>
 
     <div class="content p-4 w-100">
-
     </div>
 
   </div>
@@ -107,25 +106,37 @@ require_once('./tools/functions.php');
           document.getElementById('profilePic').src = reader.result;
         };
         reader.readAsDataURL(file);
+        console.log
       }
     });
 
+    function togglePasswordVisibility(inputId) {
+        var input = document.getElementById(inputId);
+        if (input.type === "password") {
+            input.type = "text";
+        } else {
+            input.type = "password";
+        }
+    }
+
     // Automatically display profile page on page load
     window.onload = function () {
-      showContent('pet', document.querySelector('.nav-link.active'));
+      showContent('profile', document.querySelector('.nav-link.active'));
     };
   </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>\
 
-<script>
+  <script>
     $('#modal1, #modal2').on('show.bs.modal', function (e) {
       // Hide any previously opened modals
       $('.modal').not($(this)).modal('hide');
     });
   </script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
 </body>

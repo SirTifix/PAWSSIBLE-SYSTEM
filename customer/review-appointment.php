@@ -61,9 +61,11 @@ require_once ('./include/customer-header.php');
                                         <div class="details col-sm">
                                             <label for="lastName">Selected Date and Time</label>
                                             <div class="col-sm">
-                                                <p id="selectedDateTime"></p>
+                                                <p id="selectedDateTime"><i class="calendar-icon fa-regular fa-calendar"></i></p>
                                             </div>
                                         </div>
+
+                                        
                                     </div>
 
                                     <div class="row">
@@ -72,7 +74,17 @@ require_once ('./include/customer-header.php');
                                             <input type="tel" id="contactNumber" name="contactNumber" required>
 
                                         </div>
+
+                                        <div class="form-group col-sm-2">
+                                                    <label for="concerns">
+                                                        <h5>Reason for Rescheduling</h5>
+                                                    </label>
+                                                    <textarea style="height: 120px;" class="form-concerns"
+                                                        id="concerns"></textarea>
+                                                </div>
                                     </div>
+
+                                    
 
                                     <div class="row">
                                         <div class="input-container col-6">
@@ -229,24 +241,6 @@ require_once ('./include/customer-header.php');
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
