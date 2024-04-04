@@ -4,6 +4,7 @@
 <?php
 $title = 'Pawssible Solutions Veterinary';
 require_once ('./tools/functions.php');
+require_once ('./include/customer-header.php');
 ?>
 
 <head>
@@ -14,6 +15,7 @@ require_once ('./tools/functions.php');
     <?php echo $title ?>
   </title>
 
+  <link rel="stylesheet" href="../customer/assets/css/customer-dropdown.css">
   <link rel="stylesheet" href="../customer/assets/css/style.css">
   <link rel="stylesheet" href="../customer/assets/css/customer-profile.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -21,9 +23,6 @@ require_once ('./tools/functions.php');
 </head>
 
 <body>
-  <?php
-  require_once ('./include/customer-header.php');
-  ?>
   <div class="Profile container d-flex flex-row">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
       <div class="d-flex flex-column justify-content-center align-items-center">
@@ -111,12 +110,12 @@ require_once ('./tools/functions.php');
     });
 
     function togglePasswordVisibility(inputId) {
-        var input = document.getElementById(inputId);
-        if (input.type === "password") {
-            input.type = "text";
-        } else {
-            input.type = "password";
-        }
+      var input = document.getElementById(inputId);
+      if (input.type === "password") {
+        input.type = "text";
+      } else {
+        input.type = "password";
+      }
     }
 
     // Automatically display profile page on page load

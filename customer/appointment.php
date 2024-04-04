@@ -4,7 +4,6 @@
 <?php
 $title = 'Pawssible Solutions Veterinary';
 require_once('./tools/functions.php');
-require_once('./include/customer-header.php');
 ?>
 
 <head>
@@ -21,9 +20,9 @@ require_once('./include/customer-header.php');
 </head> 
 
 <body>
-  <!-- <?php
+   <?php
   require_once('./include/customer-header.php');
-  ?> -->
+  ?> 
   <div class="Profile container d-flex flex-row">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
       <div class="d-flex flex-column justify-content-center align-items-center">

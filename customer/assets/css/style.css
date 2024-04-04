@@ -1327,3 +1327,86 @@ border-radius: 10px !important;
   border-style: none;
   background-color: #5263AB;
 }
+
+
+#ProfileDropdown, #notificationDropdown{
+  background-color: #C1CCF8;
+  border-style: none;
+  color: #5263AB;
+  font-size: 20px;
+}
+
+.dropdown-cont:hover{
+  background-color: #8493D9;
+}
+
+#ProfileDropdown{
+border-left: solid 2px #5263AB;
+}
+
+.notif-container-dropdown{
+  max-width: 200px !important;
+}
+.notif-dropdown {
+  width: 400px; /* Adjust the width as needed */
+}
+
+.title-notifications{
+    font-size: 15px !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #2A2F4F;
+    padding-top: 10px;
+    border-radius: 15px;
+  }
+
+  .drop-cont:hover{
+background-color: #C9D0F2;
+  }
+.dropdown-divider{
+border: solid 1px #5263AB ;
+}
+
+.notif-dropdown {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 200px;
+  overflow-y: scroll;
+  border-bottom: 1px solid #efefef;
+  padding: 5px;
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
+  
+  
+}
+
+.notif-dropdown{
+  transform: translate3d(1px, 0px, 0px);
+}
+
+.account-drop{
+  transform: translate3d(-86px, 0px, 0px);
+}
+
+.text strong {
+  font-weight: 700;
+  font-size: 20px;
+  color: #000;
+}
+
+.text {
+  margin-top: 0px;
+  font-size: 20px;
+  display: flex;
+  padding: 15px;
+  word-wrap: break-word;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  
+  
+}
+
+.notif-dropdown a:hover{
+  color: #2a2f4f !important;
+  background-color: #C9D0F2 !important;
+}
