@@ -3,6 +3,7 @@
 <?php
     $title = 'Schedule';
     require_once('./include/sched.php');
+    require_once('./include/admin-head.php');
 ?>
 <body>
 <?php
