@@ -1,4 +1,5 @@
 <header class="row m-0 align-items-center fixed-top">
+
     <div class="logo col-4 align-items-center m-0 row">
         <img src="assets/img/Logo.png" alt="Logo" class="logosec col-6">
         <div class="logo-text col-6">PAWSsible Solutions <br> Veterinary Clinic</div>
@@ -11,37 +12,49 @@
         </div>
     </div>
 
-    <div class="bell-logout-con col-4 d-flex justify-content-end">
-        <div class="bell-btn">
-            <span class="notification-count">0</span>
-            <button><i class="bell-icon fa-solid fa-bell pe-4" aria-hidden="true"></i></button>
+    <div class="notification-dropdown col-4 d-flex justify-content-end" id="notificationDropdown">
+        <i class="fas fa-bell bell-icon pe-4" onclick="toggleDropdown(event)"></i>
+        <span class="notification-badge">5</span>
+
+        <div class="notification-dropdown-content dropdown-menu dropdown-menu-end dropdown-menu-lg-start"
+            id="notificationDropdownContent">
+            <p class="notification-title">Notifications</p>
+            <div class="container-fluid">
+                <p class="notification-title">Today</p>
+                <div class="notification-dropdown-content-item list-group">
+                    <a href="#" class="list-group-item list-group-item-action">New upcoming appointments for Dr. Chylle
+                        have been scheduled. <span class="time">- 26 minutes ago</span></a>
+                    <a href="#" class="list-group-item list-group-item-action">New upcoming appointments for Dr. Raf
+                        have been scheduled.
+                        <span class="time"> 15
+                            minutes ago</span></a>
+                    <a href="#" class="list-group-item list-group-item-action">New upcoming appointments for Dr. Chylle
+                        have been scheduled. <span class="time">- 26 minutes ago</span></a>
+                </div>
+                <div class="notification-divider"></div>
+                <p class="notification-title">Earlier</p>
+
+                <div class="notification-dropdown-content-item list-group">
+                    <a href="#" class="list-group-item list-group-item-action">New upcoming appointment for
+                        <strong>Jerry Santos</strong>
+                        for <strong>deworming</strong> today.<span class="time">Yesterday</span></a>
+                </div>
+
+                <div class="notification-dropdown-content-item list-group">
+                    <a href="#" class="list-group-item list-group-item-action">New upcoming appointment for
+                        <strong>Chylle Chile</strong>
+                        for <strong>Vaccination</strong> today.<span class="time">Yesterday</span></a>
+                </div>
+
+
+            </div>
         </div>
+
         <div class="logout-btn">
-            <button onclick="confirmLogout()"><i class="logout-icon fas fa-right-from-bracket pe-2" aria-hidden="true"></i></button>
+            <button onclick="confirmLogout()"><i class="logout-icon fas fa-right-from-bracket pe-2"
+                    aria-hidden="true"></i></button>
         </div>
+
     </div>
+
 </header>
-<script>
-    function confirmLogout() {
-        // Display a confirmation dialog
-        var confirmation = confirm("Are you sure you want to logout?");
-
-        // If user confirms, redirect to index.php
-        if (confirmation) {
-            window.location.href = "index.php";
-        }
-    }
-
-    function updateNotificationCount() {
-        // Fetch data from server/database to determine the count
-        // For demonstration, let's assume count is retrieved from server-side script
-        var notificationCount = 5; // Replace with actual count from database
-
-        // Update the notification count displayed
-        var notificationCountElement = document.querySelector('.notification-count');
-        notificationCountElement.textContent = notificationCount;
-    }
-
-    // Call the function to update notification count on page load
-    updateNotificationCount();
-</script>

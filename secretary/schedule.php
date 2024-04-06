@@ -3,6 +3,7 @@
 <?php
     $title = 'Schedule';
     require_once('./include/sched.php');
+    require_once('./include/sec-head.php')
 ?>
 <body>
 <?php

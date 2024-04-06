@@ -1,0 +1,115 @@
+ /* Scrollbar Styling */
+ ::-webkit-scrollbar {
+    width: 10px; /* Width of vertical scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of scrollbar track */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of scrollbar handle */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker color on hover */
+}
+
+.notification-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.notification-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 320px; /* Adjusted width */
+    max-height: 300px;
+    overflow-y: auto;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.notification-dropdown.active .notification-dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translate3d(0px, 42px, 0px) !important;
+}
+
+.notification-dropdown-content-item a {
+    color: #333333;
+    text-decoration: none;
+    display: block;
+    padding: 29px 9px 45px; /* Adjusted padding */
+    transition: background-color 0.3s ease;
+    position: relative; /* Added */
+}
+
+.notification-dropdown-content-item a:hover {
+    background-color: #C9D0F2;
+}
+
+.notification-dropdown-content-item a span.time {
+    position: absolute;
+    bottom: 8px;
+    right: 20px;
+    color: blue; /* Changed color to blue */
+}
+
+.bell-icon {
+    font-size: 24px;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, border-radius 0.3s ease;
+}
+
+.notification-badge {
+    position: absolute;
+    top: 4px;
+    right: 62px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+}
+
+.notification-title {
+    font-weight: bold;
+    padding: 8px 20px;
+    color: #666666;
+    margin: 0;
+}
+
+.notification-divider {
+    height: 1px;
+    background-color: #eeeeee;
+    margin: 10px 0;
+}
+
+/* Remove borders */
+.notification-dropdown-content {
+    border: none;
+}
+
+.list-group-item{
+    border-right: none;
+    border-left: none;
+    border-radius: 0%;
+}
