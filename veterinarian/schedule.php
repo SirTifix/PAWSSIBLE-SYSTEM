@@ -15,18 +15,13 @@
     
 
 
-<section class="customer-info-icon row">
-    <div class="head-form col-12 d-flex justify-content-between align-items-center">
-        <div class="icon-circle">
-            <i class="icon fa fa-solid  fa-user mr-2 mt-1" style="color: white;"></i> 
+    <section class="customer-title pt-4">
+ 
+        <div class="customer-info-head">
+            <h2>Calendar</h2>
         </div>
-        <div class=" col-12 d-flex justify-content-between align-items-center px-3">
-            <div class="customer-info-head">
-                <h2>Calendar</h2>
-            </div>
-        </div>
-    </div>    
-</section>
+    
+      </section>
   <div class="white-container d-flex justify-content-center align-items-center">
   
     <div class="calendar ">

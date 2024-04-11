@@ -14,7 +14,7 @@
         require_once('./include/vet-sidepanel.php')
     ?>
     <section class="customer-info-icon row  ">
-      <div class="head-form col-12 d-flex justify-content-between align-items-center mb-5">
+      <div class="head-form col-12 d-flex justify-content-between align-items-center mb-3">
           <div class="icon-circle">
               <i class="icon fa fa-solid  fa-user mr-2 mt-1" style="color: white;"></i> 
           </div>

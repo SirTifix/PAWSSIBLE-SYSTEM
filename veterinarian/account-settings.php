@@ -12,11 +12,12 @@
    <?php
         require_once('./include/vet-sidepanel.php')
     ?>
-         <section class="veterinarian-con">
-            <div class="veterinarian-head">
-                <p>Account Settings</p>
+             <section class="customer-title pt-4">
+ 
+            <div class="customer-info-head">
+                <h2>Account Settings</h2>
             </div>
-        </section>
+
         <section class="vet-form-con row">
             <div class="head-form col-12 d-flex justify-content-between align-items-center">
                 <i class="fa-solid fa-user " aria-hidden="true"></i>

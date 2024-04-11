@@ -12,9 +12,9 @@
    <?php
         require_once('./include/vet-sidepanel.php')
     ?>
-     <section class="dashboard-con mb-5">
+     <section class="dashboard-con mb-5 ">
         <div class="box">
-            <div class="dashboard-head mb-5">
+            <div class="dashboard-head mb-5 pt-3">
               <p>Welcome to Dashboard!</p>
             </div>
 

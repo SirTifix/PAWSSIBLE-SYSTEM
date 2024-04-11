@@ -441,7 +441,7 @@
             <div class="modal fade" id="deleteMedRecModal" tabindex="-1" aria-labelledby="deleteDModalLabel"
                 aria-hidden="true" data-backdrop="false">
                 <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                    <div class="modal-content-del">
                         <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
                             this Medical Record?</h4>
                         <div class="modal-footer justify-content-between" style="border: none;">
@@ -458,7 +458,7 @@
             <div class="modal fade" id="deleteVaccineModal" tabindex="-1" aria-labelledby="deleteDModalLabel"
                 aria-hidden="true" data-backdrop="false">
                 <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                    <div class="modal-content-del">
                         <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
                             this Vaccine?</h4>
                         <div class="modal-footer justify-content-between" style="border: none;">
