@@ -19,10 +19,10 @@
 
 
 
-
+ 
   <section class="customer-title ">
  
-    <div class="customer-info-head">
+    <div class="customer-info-head pt-4">
         <h2>Medical History</h2>
     </div>
 
