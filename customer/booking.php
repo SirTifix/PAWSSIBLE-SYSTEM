@@ -209,10 +209,7 @@ require_once('./tools/functions.php');
             </div>
           </div>
         </form>
-        <button type="submit" id="submitBtn" class="btn btn-primary" data-toggle="modal"
-          data-target="#confirmationModal" style="background-color:#2A2F4F" class="float-right">
-          Book Appointment
-        </button>
+        
 
 
         <!-- Confirmation Modal -->
@@ -251,28 +248,7 @@ require_once('./tools/functions.php');
 
         <script src="./assets/script/calendar.js"></script>
 
-        <script>
-          document.addEventListener("DOMContentLoaded", function () {
-            const submitBtn = document.getElementById("submitBtn");
-            submitBtn.addEventListener("click", function () {
-              const formData = new FormData(document.getElementById("bookingForm"));
-              fetch('submit-booking.php', {
-                method: 'POST',
-                body: formData
-              })
-                .then(response => response.json())
-                .then(data => {
-                  if (data.success) {
-                    document.getElementById("bookingID").textContent = data.bookingID;
-                    $('#confirmationModal').modal('show');
-                  } else {
-                    console.error("Failed to submit booking.");
-                  }
-                })
-                .catch(error => console.error('Error submitting booking:', error));
-            });
-          });
-        </script>
+       
 
 </body>
 

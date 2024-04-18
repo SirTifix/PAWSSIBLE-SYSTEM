@@ -1,7 +1,7 @@
 <?php
 require_once('../classes/booking.class.php');
 
-if (isset($_POST['submitBtn'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $booking = new Booking();
 
     $firstname = $_POST['firstName'];
@@ -21,24 +21,17 @@ if (isset($_POST['submitBtn'])) {
     $booking->bookingDate = $selectedDate;
     $booking->bookingTime = $selectedTime;
 
-    $petNames = array();
-    $petTypes = array();
-    $petBreeds = array();
-    $petBirthDates = array();
-    $serviceIDs = array();
-    $vetIDs = array();
-
-    for ($i = 1; $i <= $numberPets; $i++) {
-        $petNames[] = $_POST['petName' . $i];
-        $petTypes[] = $_POST['petType' . $i];
-        $petBreeds[] = $_POST['petBreed' . $i];
-        $petBirthDates[] = $_POST['petBirthDate' . $i];
-        $serviceIDs[] = $_POST['services' . $i];
-        $vetIDs[] = $_POST['vet' . $i];
-    }
+    $petNames = isset($_POST['petName']) ? $_POST['petName'] : [];
+    $petTypes = isset($_POST['petType']) ? $_POST['petType'] : [];
+    $sex = isset($_POST['sex']) ? $_POST['sex'] : [];
+    $petBreeds = isset($_POST['petBreed']) ? $_POST['petBreed'] : [];
+    $petBirthDates = isset($_POST['petBirthDate']) ? $_POST['petBirthDate'] : [];
+    $serviceIDs = isset($_POST['services']) ? $_POST['services'] : [];
+    $vetIDs = isset($_POST['vet']) ? $_POST['vet'] : [];
 
     $booking->petName = $petNames;
     $booking->petType = $petTypes;
+    $booking->sex = $sex;
     $booking->petBreed = $petBreeds;
     $booking->petBirthDate = $petBirthDates;
     $booking->serviceID = $serviceIDs;
@@ -47,12 +40,11 @@ if (isset($_POST['submitBtn'])) {
     $lastInsertedBookingId = $booking->add();
 
     if ($lastInsertedBookingId) {
-        header('Location: booking.php');
-        exit;
+        echo json_encode(array('success' => true, 'bookingID' => $lastInsertedBookingId));
     } else {
-        echo "Error adding booking.";
+        echo json_encode(array('success' => false));
     }
 } else {
-    echo "Invalid request method.";
+    echo json_encode(array('success' => false, 'message' => 'Invalid request method.'));
 }
 ?>

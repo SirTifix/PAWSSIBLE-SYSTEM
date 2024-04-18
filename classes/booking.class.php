@@ -71,46 +71,55 @@ class Booking
 
     function add()
     {
-        $bookingID = $this->generateUniqueBookingID();
-        $status = "Pending";
+        try {
+            $bookingID = $this->generateUniqueBookingID();
+            $status = "Pending";
 
-        $sql = "INSERT INTO booking (bookingID, firstName, lastName, emailAddress, contactNumber, status, bookingDate, bookingTime) VALUES 
+            $sql = "INSERT INTO booking (bookingID, firstName, lastName, emailAddress, contactNumber, status, bookingDate, bookingTime) VALUES 
         (:bookingID, :firstname, :lastname, :emailAddress, :contactNumber, :status, :bookingDate, :bookingTime);";
 
-        $query = $this->db->connect()->prepare($sql);
-        $query->bindParam(':bookingID', $bookingID);
-        $query->bindParam(':firstname', $this->firstname);
-        $query->bindParam(':lastname', $this->lastname);
-        $query->bindParam(':emailAddress', $this->email);
-        $query->bindParam(':contactNumber', $this->contactNumber);
-        $query->bindParam(':status', $status);
-        $query->bindParam(':bookingDate', $this->bookingDate);
-        $query->bindParam(':bookingTime', $this->bookingTime);
+            $query = $this->db->connect()->prepare($sql);
+            $query->bindParam(':bookingID', $bookingID);
+            $query->bindParam(':firstname', $this->firstname);
+            $query->bindParam(':lastname', $this->lastname);
+            $query->bindParam(':emailAddress', $this->email);
+            $query->bindParam(':contactNumber', $this->contactNumber);
+            $query->bindParam(':status', $status);
+            $query->bindParam(':bookingDate', $this->bookingDate);
+            $query->bindParam(':bookingTime', $this->bookingTime);
 
-        if ($query->execute()) {
-
-            $sqlPet = "INSERT INTO booking_pet (petName, petType, sex, petBreed, petBirthDate, bookingID, serviceID, vetID) VALUES 
+            if ($query->execute()) {
+                $sqlPet = "INSERT INTO booking_pet (petName, petType, sex, petBreed, petBirthDate, bookingID, serviceID, vetID) VALUES 
             (:petName, :petType, :sex, :petBreed, :petBirthDate, :bookingID, :serviceID, :vetID);";
-            $queryPet = $this->db->connect()->prepare($sqlPet);
+                $queryPet = $this->db->connect()->prepare($sqlPet);
 
-            foreach ($this->petName as $key => $name) {
-                $queryPet->bindParam(':petName', $this->petName[$key]);
-                $queryPet->bindParam(':petType', $this->petType[$key]);
-                $queryPet->bindParam(':sex', $this->sex[$key]);
-                $queryPet->bindParam(':petBreed', $this->petBreed[$key]);
-                $queryPet->bindParam(':petBirthDate', $this->petBirthDate[$key]);
-                $queryPet->bindParam(':bookingID', $this->bookingID[$key]);
-                $queryPet->bindParam(':serviceID', $this->serviceID[$key]);
-                $queryPet->bindParam(':vetID', $this->vetID[$key]);
-                $queryPet->bindParam(':bookingID', $bookingID);
-                $queryPet->execute();
+                for ($i = 0; $i < count($this->petName); $i++) {
+                    $queryPet->bindParam(':petName', $this->petName[$i]);
+                    $queryPet->bindParam(':petType', $this->petType[$i]);
+                    $queryPet->bindParam(':sex', $this->sex[$i]);
+                    $queryPet->bindParam(':petBreed', $this->petBreed[$i]);
+                    $queryPet->bindParam(':petBirthDate', $this->petBirthDate[$i]);
+                    $queryPet->bindParam(':bookingID', $bookingID);
+                    $queryPet->bindParam(':serviceID', $this->serviceID[$i]);
+                    $queryPet->bindParam(':vetID', $this->vetID[$i]);
+
+                    if (!$queryPet->execute()) {
+                        throw new Exception("Error inserting pet data for pet " . ($i + 1));
+                    }
+                }
+
+                return $bookingID;
+            } else {
+                throw new Exception("Error inserting booking data");
             }
-
-            return $bookingID;
-        } else {
+        } catch (Exception $e) {
+            error_log("Error in add(): " . $e->getMessage());
             return false;
         }
     }
+
+
+
     function showPending()
     {
         $sql = "SELECT bookingID, CONCAT(firstName, ' ', lastName) AS fullName, status, bookingDate, bookingTime FROM booking WHERE status ='Pending' ORDER BY bookingID ASC;";
@@ -136,11 +145,11 @@ class Booking
     {
         $sql = "SELECT * FROM booking WHERE bookingID = :bookingID;";
         $query = $this->db->connect()->prepare($sql);
-        $query->bindParam(':bookingID', $this->bookingID); 
+        $query->bindParam(':bookingID', $this->bookingID);
         if ($query->execute()) {
             $data = $query->fetch(PDO::FETCH_ASSOC);
         } else {
-            $data = null; 
+            $data = null;
         }
         return $data;
     }

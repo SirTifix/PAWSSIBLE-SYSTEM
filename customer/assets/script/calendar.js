@@ -2,7 +2,6 @@
 function displaySelectedDate(dateElement, selectedDate) {
   dateElement.textContent = "Selected Date: " + selectedDate;
 }
-
 document.addEventListener("DOMContentLoaded", function () {
   // Get the pets dropdown menu
   let numberOfPets;
@@ -23,14 +22,15 @@ document.addEventListener("DOMContentLoaded", function () {
       petForm.innerHTML = `
                 <div class="pet-info-form background-color-container" container bg-light mt-4 p-4">
                   <h2 class="mb-4">Pet ${i} Information Form</h2>
-                  <form>
+                  <form id="petForm-${i}"> 
                     <div class="form-row">
                       <div class="form-group col-sm-2  background-color">
                         <label for="petname"><h5>Pet Name</h5></label>
                         <input
                           type="text"
                           class="form-control"
-                          id="petname"
+                          id="petName-${i}"
+                          name = "petName[]"
                           placeholder="Enter pet name"
                         />
                       </div>
@@ -39,7 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         <input
                           type="text"
                           class="form-control"
-                          id="pettype"
+                          id="petType-${i}"
+                          name = "petType[]"
                           placeholder="Enter pet type"
                         />
                       </div>
@@ -48,7 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         <input
                           type="text"
                           class="form-control background-color"
-                          id="sex"
+                          id="sex-${i}"
+                          name = "sex[]"
                           placeholder="Enter sex"
                         />
                       </div>
@@ -65,20 +67,21 @@ document.addEventListener("DOMContentLoaded", function () {
                         <input
                           type="text"
                           class="form-control"
-                          id="breed"
+                          id="petBreed-${i}"
+                          name = "petBreed[]"
                           placeholder="Enter breed"
                         />
                       </div>
                       <div class="form-group col-sm-2">
                         <label for="services-${i}"> <h5>Select Services</h5></label>
-                        <select class="form-control" id="services-${i}" name="services">
+                        <select class="form-control" id="services-${i}" name="services[${i}]">
                         <option value="">Choose...</option>
                         </select>
                       </div>
 
                       <div class="form-group col-sm-2">
                       <label for="vet-${i}"><h5>Select vet</h5></label>
-                      <select class="form-control" id="vet-${i}">
+                      <select class="form-control" id="vet-${i}" name="vet[${i}]">
                           <option value="">Choose...</option>
                         </select>
                       </div>
@@ -87,77 +90,93 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="form-row">
                       <div class="form-group col-sm-2 background-color">
                         <label for="birthdate"> <h5>BirthDate</h5></label>
-                        <input type="date" class="form-control" id="birthdate" />
+                        <input type="date" class="form-control" id="petBirthDate-${i}" name="petBirthDate[]" />
                       </div>
-                    </div>
-
-                    <div class="select-ex-pet">
-                      <button
-                        type="submit"
-                        class="btn"
-                        style="background-color: #6075d1; float: right;"
-                      >
-                        Select Existing Pet
-                      </button>
                     </div>
                   </form>
                 </div>
-            `;
-            petFormsContainer.appendChild(petForm);
-          }
-          fetchServices(populateServicesDropdown);
-          fetchVets(populateVetDropdown);
-        });
-      
-        function fetchServices(callback) {
-          console.log("Fetching services...");
-          fetch('../customer/fetch-services.php')
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-              return response.json();
-            })
-            .then(data => {
-              callback(data, numberOfPets);
-            })
-            .catch(error => console.error('Error fetching services:', error));
-        }
-      
-        function populateServicesDropdown(services, numberOfPets) {
-          for (let i = 1; i <= numberOfPets; i++) {
-            const servicesSelect = document.getElementById(`services-${i}`);
-            servicesSelect.innerHTML = "<option value=''>Choose...</option>";
-            services.forEach(service => {
-              servicesSelect.innerHTML += `<option value="${service.serviceID}">${service.service}</option>`;
-            });
-          }
-        }
 
-        function fetchVets(callback) {
-          console.log("Fetching vets...");
-          fetch('../customer/fetch-vet.php')
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-              return response.json();
-            })
-            .then(data => {
-              callback(data, numberOfPets);
-            })
-            .catch(error => console.error('Error fetching vets:', error));
+                <div class="select-ex-pet">
+                <button type="submit" class="btn submit-pet-form" style="background-color: #6075d1; float: right;">Submit Pet Form</button>
+                    </div>
+            `;
+      petFormsContainer.appendChild(petForm);
+
+    }
+    fetchServices(populateServicesDropdown, numberOfPets);
+    fetchVets(populateVetDropdown, numberOfPets);
+  });
+  const petForm = document.getElementById(`petForm-${i}`);
+  petForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(this); 
+    for (const pair of formData.entries()) {
+      console.log(pair[0] + ": " + pair[1]);
+    }
+    fetch('submit-pet.php', {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+        } else {
+          console.error("Failed to submit pet form.");
         }
-      
-        function populateVetDropdown(vetsData, numberOfPets) {
-          for (let i = 1; i <= numberOfPets; i++) {
-          const vetSelect = document.getElementById(`vet-${i}`);
-          vetSelect.innerHTML = "<option value=''>Choose...</option>";
-          vetsData.forEach(vet => {
-            vetSelect.innerHTML += `<option value="${vet.vetID}">${vet.fullName}</option>`;
-          });
+      })
+      .catch(error => console.error('Error submitting pet form:', error));
+  });
+
+  function fetchServices(callback, numberOfPets) {
+    console.log("Fetching services...");
+    fetch('../customer/fetch-services.php')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
         }
+        return response.json();
+      })
+      .then(data => {
+        callback(data, numberOfPets);
+      })
+      .catch(error => console.error('Error fetching services:', error));
+  }
+
+  function populateServicesDropdown(services, numberOfPets) {
+    for (let i = 1; i <= numberOfPets; i++) {
+      const servicesSelect = document.getElementById(`services-${i}`);
+      servicesSelect.innerHTML = "<option value=''>Choose...</option>";
+      services.forEach(service => {
+        servicesSelect.innerHTML += `<option value="${service.serviceID}">${service.service}</option>`;
+      });
+    }
+  }
+
+  function fetchVets(callback, numberOfPets) {
+    console.log("Fetching vets...");
+    fetch('../customer/fetch-vet.php')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
         }
+        return response.json();
+      })
+      .then(data => {
+        callback(data, numberOfPets);
+      })
+      .catch(error => console.error('Error fetching vets:', error));
+  }
+
+  function populateVetDropdown(vetsData, numberOfPets) {
+    for (let i = 1; i <= numberOfPets; i++) {
+      const vetSelect = document.getElementById(`vet-${i}`);
+      vetSelect.innerHTML = "<option value=''>Choose...</option>";
+      vetsData.forEach(vet => {
+        vetSelect.innerHTML += `<option value="${vet.vetID}">${vet.fullName}</option>`;
+      });
+    }
+  }
 
   const prevMonthBtn = document.getElementById("prevMonthBtn");
   const nextMonthBtn = document.getElementById("nextMonthBtn");
