@@ -280,21 +280,21 @@ header {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 75%;
   margin-left: 300px;
-  height: 90vh;
+  height: 80vh;
   position: relative; /* Add relative positioning to container */
 }
 
 .calendar {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%; /* Make the calendar occupy the width of the container */
-  padding: 20px;
+  padding: 10px;
 }
 
 #calendar {
-  width: 100%;
+  width: 97%;
   background: rgb(253, 253, 253);
   
 }
@@ -331,10 +331,6 @@ header {
   padding: 10px; /* Adjust padding to create space around the icons */
   margin: 0 10px; /* Add margin between the icons */
 }
-
-
-
-
 
 table {
   border-collapse: collapse;
@@ -383,7 +379,7 @@ td.available {
   padding: 20px;
   border: 1px solid #111111;
   border-radius: 20px;
-  width: 40%;
+  width: 30%;
   text-align: center;
 }
 
@@ -566,7 +562,7 @@ button {
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    max-width: 500px;
+    max-width: 00px;
   }
   
 
@@ -802,6 +798,7 @@ button {
     margin-bottom: 10px;
     height: 80px;
     border-radius: 10px;
+    margin-top:30px;
 }
 
 .head-form i {
@@ -967,8 +964,12 @@ margin-left: 240px;
     height: 80px;
     width: 700px;
 }
-
-
+.pet-title th{
+  background-color: #8493D9;
+}
+.pet-con{
+  background-color: white;
+}
 .pet-btn {
     background-color: #fff;
     color: #3A3F54;
@@ -1000,16 +1001,40 @@ margin-left: 240px;
     margin-right: 0; 
 }
 /* Dropdown */
-.dropdown {
-    position: relative;
+.dropdown-toggle::after {
+  display: none;
 }
 
+/* Remove the highlight */
+.dropdown-toggle:focus {
+  outline: none;
+  box-shadow: none;
+}
+.dropdown-toggle {
+  background-color: transparent !important;
+  border: none; /* Remove border if needed */
+}
+.dropdown {
+    position: relative;
+    box-shadow: none;
+    background-color: none;
+}
+
+.btn {
+ 
+  background-color: none;
+}
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
     z-index: 1;
+}
+.dropdown-item:active {
+
+  background-color: #f9f9f9;
+
 }
 
 .dropdown-content a {
@@ -1267,23 +1292,28 @@ margin-left: 240px;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.518);
   }
   
   /* CSS */
-  .modal-content {
+  .modal-content, .modal-content-del {
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 60%;
-    max-width: 500px;
+ 
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  
+  .modal-content{
+    max-width: 800px;
+  }
+  .modal-content-del{
+    max-width: 400px;
+  }
   .input-container {
     margin-bottom: 15px;
     position: relative;
@@ -1333,7 +1363,7 @@ margin-left: 240px;
 
   /* Account Settings*/
 .account-settings-con{
-  background-color: #f5efef;
+  background-color: #ffffff;
   border: 1px solid #ccc;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -1408,4 +1438,173 @@ margin-left: 240px;
 .head-form .fa-paw {
   color: black;
   font-size: 2em;
+}
+
+.dropdown-vaccine {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.dropdown-vaccine a {
+  display: flex;
+  justify-content: start; 
+  align-items: center; 
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+.modal-backdrop {
+  display: none !important;
+}
+
+.add-med-btn {
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: #ededed;
+  text-decoration: none;
+  font-size: 1.3em;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-control-medHis, .form-control-vaccine {
+  width: 350px;
+  border: 1px solid #888484;
+  padding: 8px 5px;
+  margin: 5px 0px;
+  border-radius: 5px;
+}
+
+.form-label-medHis, .form-label-vaccine{
+  width: 120px;
+  display: flex;
+  align-items: center;
+  font-size: 1.1em;
+}
+/* NOTIFICATION */
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px; /* Width of vertical scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of scrollbar track */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of scrollbar handle */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker color on hover */
+}
+
+.notification-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.notification-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 320px; /* Adjusted width */
+  max-height: 300px;
+  overflow-y: auto;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+}
+
+.notification-dropdown.active .notification-dropdown-content {
+  display: block;
+  opacity: 1;
+  transform: translate3d(0px, 42px, 0px) !important;
+}
+
+.notification-dropdown-content-item a {
+  color: #333333;
+  text-decoration: none;
+  display: block;
+  padding: 29px 9px 45px; /* Adjusted padding */
+  transition: background-color 0.3s ease;
+  position: relative; /* Added */
+}
+
+.notification-dropdown-content-item a:hover {
+  background-color: #C9D0F2;
+}
+
+.notification-dropdown-content-item a span.time {
+  position: absolute;
+  bottom: 8px;
+  right: 20px;
+  color: blue; /* Changed color to blue */
+}
+
+.bell-icon {
+  font-size: 24px;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, border-radius 0.3s ease;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 4px;
+  right: 62px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+}
+
+.notification-title {
+  font-weight: bold;
+  padding: 8px 20px;
+  color: #666666;
+  margin: 0;
+}
+
+.notification-divider {
+  height: 1px;
+  background-color: #eeeeee;
+  margin: 10px 0;
+}
+
+/* Remove borders */
+.notification-dropdown-content {
+  border: none;
+}
+
+.list-group-item{
+  border-right: none;
+  border-left: none;
+  border-radius: 0%;
 }

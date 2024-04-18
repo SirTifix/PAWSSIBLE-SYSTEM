@@ -15,18 +15,13 @@
     
 
 
-<section class="customer-info-icon row">
-    <div class="head-form col-12 d-flex justify-content-between align-items-center">
-        <div class="icon-circle">
-            <i class="icon fa fa-solid  fa-user mr-2 mt-1" style="color: white;"></i> 
+    <section class="customer-title pt-4">
+ 
+        <div class="customer-info-head">
+            <h2>Calendar</h2>
         </div>
-        <div class=" col-12 d-flex justify-content-between align-items-center px-3">
-            <div class="customer-info-head">
-                <h2>Calendar</h2>
-            </div>
-        </div>
-    </div>    
-</section>
+    
+      </section>
   <div class="white-container d-flex justify-content-center align-items-center">
   
     <div class="calendar ">
@@ -59,7 +54,7 @@
 
   </div>
 <div id="popup" class="popup">
-    <div class="popup-content py-4">
+    <div class="popup-content px-4">
         <span class="close" onclick="closePopup()">&times;</span>
         <p id="popup-date"></p>
         <label for="unavailableStart">Unavailable from:</label>
@@ -98,9 +93,10 @@
             <option value="21">09:00 PM</option>
             <option value="22">10:00 PM</option>
         </select>
-        
+        <div class=" d-flex justify-content-center align-items-center sched-btn ">
         <button id="unavailableBtn" onclick="setUnavailable()">Set Unavailable</button>
         <button id="setAvailableBtn" onclick="setAvailable()">Set Available</button>
+        </div>
     </div>
 </div>
 

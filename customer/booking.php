@@ -2,8 +2,8 @@
 <html lang="en">
 <?php
 $title = 'Pawssible Solutions Veterinary';
-require_once('./include/home-header.php');
-require_once('./tools/functions.php');
+require_once ('./include/booking-header.php');
+require_once ('./tools/functions.php');
 ?>
 
 <head>
@@ -13,13 +13,14 @@ require_once('./tools/functions.php');
   <title>
     <?php echo $title ?>
   </title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/booking-style.css">
   <link rel="stylesheet" href="./assets/css/style.css">
-  <link rel="stylesheet" href="/assets/css/book-form.css">
+  <link rel="stylesheet" href="./assets/css/customer-profile.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
@@ -34,9 +35,10 @@ require_once('./tools/functions.php');
       <a href="#" title="twitter">
         <i class="fa-sharp fa-solid fa-x" aria-hidden="true"></i>
       </a>
+    </div>
   </section>
 
-  <div style="position: absolute; bottom: 69vh; left: 34vh; color: #FFFFFF;">
+  <div style="position: absolute; bottom: 69vh; left: 34vh; color: #2A2F4F;">
     <h2> <strong> AVAILABLE DATE </strong></h2>
   </div>
   <div style="position: absolute; bottom: 69vh; left: 107vh; color: #2A2F4F;">
@@ -89,7 +91,8 @@ require_once('./tools/functions.php');
         <div class="separator"></div>
         <div class="time-slots">
           <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-            data-time="08:00 AM - 09:00 AM">08:00 AM
+            data-time="08:00 AM - 09:00 AM">
+            <div> 08:00 AM</div>
             <div> 09:00 AM</div>
           </div>
 
@@ -159,8 +162,15 @@ require_once('./tools/functions.php');
                 <label for="firstName">First Name:</label>
                 <input type="text" id="firstName" name="firstName" required>
 
-              </div>
+            <div class="input-container col-sm-3">
+              <label for="middleName">Middle Name:</label>
+              <input type="text" id="middleName" name="middleName" required>
+            </div>
 
+            <div class="input-container col-sm-3">
+              <label for="lastName">Last Name:</label>
+              <input type="text" id="lastName" name="lastName" required>
+            </div>
               <div class="input-container col-sm-3">
                 <label for="lastName">Last Name:</label>
                 <input type="text" id="lastName" name="lastName" required>
@@ -181,8 +191,13 @@ require_once('./tools/functions.php');
                   <label for="email">Email Address:</label>
                   <input type="email" id="email" name="email" required>
 
+              <div class="details col-sm">
+                <label for="lastName">Selected Date and Time</label>
+                <div class="col-sm">
+                  <p id="selectedDateTime"></p>
                 </div>
               </div>
+            </div>
 
               <div class="row">
                 <div class="input-container col-6">
@@ -228,28 +243,50 @@ require_once('./tools/functions.php');
                       id="bookingID"></span></p>
                 </div>
 
-                <div class="modal-footer justify-content-center">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                    style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
-                    Booking</button>
+                    <div class="modal-footer justify-content-center">
+                      <button type="button" class="btn btn-secondary" id="finishBookingBtn" data-dismiss="modal"
+                        style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
+                        Booking</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-          crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        <script src="./assets/script/calendar.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
-       
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="./assets/script/calendar.js"></script>
 
+  <script>
+
+    $(document).ready(function () {
+      $('#anotherModal').on('show.bs.modal', function (e) {
+        $('.modal').modal('hide');
+      });
+    });
+
+
+    document.getElementById('finishBookingBtn').addEventListener('click', function () {
+      location.reload();
+    });
+  </script>
+
+ <?php
+        require_once('./include/footer.php');
+    ?>
 </body>
 
 </html>

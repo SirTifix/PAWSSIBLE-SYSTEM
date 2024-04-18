@@ -5,7 +5,14 @@
   min-height: 100vh;
   overflow: auto;
 }
+.logo-text-booking{
+  font-weight: bolder;
+  color: #2A2F4F;
+}
 
+.logo-text-booking {
+  font-size: 2.3rem;
+}
 .container-box {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -36,6 +43,10 @@
 .calendar-header h2 {
   margin: 0;
   font-size: 24px;
+}
+
+#profileModal{
+background: #646363d8 !important;
 }
 
 .days-container {
@@ -240,6 +251,10 @@ select:focus {
   float: right;
 }
 
+.Profile{
+width: 500vh;
+}
+
 .petFormsContainer {
   display: flex;
   flex-direction: column;
@@ -262,7 +277,7 @@ select:focus {
 }
 
 /* Add bottom border to form inputs */
-.form-control {
+.book-form-control {
   background-color: #c6c8d6 !important;
   border: none !important;
   border-bottom: 1.5px solid #04182d !important; /* gray border color */
@@ -293,7 +308,7 @@ select:focus {
 }
 
 /* Remove background color and adjust border for select elements */
-select.form-control {
+select.book-form-control {
   background-color: transparent;
   border: 1px solid #ced4da; /* gray border color */
   border-radius: 0;

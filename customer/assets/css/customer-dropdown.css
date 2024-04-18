@@ -1,0 +1,7 @@
+.notif-dropdown {
+  transform: translate3d(1px, 42px, 0px) !important;
+}
+
+.account-drop {
+  transform: translate3d(0px, 42px, 0px) !important;
+}

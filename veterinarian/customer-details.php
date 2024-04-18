@@ -12,8 +12,8 @@
    <?php
         require_once('./include/vet-sidepanel.php')
     ?>
- <section class="veterinarian-con">
-            <div class="veterinarian-head">
+ <section class="veterinarian-con ">
+            <div class="veterinarian-head pt-2">
                 <p>Customer Information</p>
             </div>
         </section>

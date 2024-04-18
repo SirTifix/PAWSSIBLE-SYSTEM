@@ -13,9 +13,7 @@ class Account{
     public $secretaryID;
     public $secretaryUsername;
     public $secretaryPassword;
-
     public $vetUsername;
-
     public $vetPassword;
 
     protected $db;

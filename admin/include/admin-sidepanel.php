@@ -3,7 +3,7 @@
     <div class="admin-header pt-2">Admin</div>
     <div class="border-line"></div>
     <div class="side-panel-links">
-      <a href="dashboard.php" class="sidebar-text align-items-center"><i class="fa fa-tasks" aria-hidden="true"></i> Dashboard</a>
+        <a href="dashboard.php" class="sidebar-text align-items-center"><i class="fa fa-tasks" aria-hidden="true"></i> Dashboard</a>
         <a href="veterinarians.php" class="sidebar-text align-items-center"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i></i> Veterinarians</a>
         <a href="customers.php" class="sidebar-text align-items-center"><i class="fa-solid fa-users" aria-hidden="true"></i> Customers</a>
         <a href="schedule.php" class="sidebar-text align-items-center"><i class="fa-solid fa-calendar" aria-hidden="true"></i> Schedule</a>

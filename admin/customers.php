@@ -1,5 +1,8 @@
 <?php
-
+    //session_start();
+    //if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
+        //header('location: ./index.php');
+    //}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,16 +27,33 @@ require_once('./include/admin-head.php');
 
         <section class="filter-con row">
             <div class="row col-7">
-                <div class="form-group col-6 col-sm-auto">
-                    <select name="year" class="form-select">
-                        <option value="">Today</option>
-                        <option value="Manager">This Year</option>
-                        <option value="Staff">Last Year</option>
-                        <option value="Cashier">Custom date range</option>
+                <div class="form-group col-8 col-sm-auto">
+                    <select id="dateRangeSelect" class="form-select">
+                        <option value="today">Today</option>
+                        <option value="thisYear">This Year</option>
+                        <option value="lastYear">Last Year</option>
+                        <option value="custom" class="custom-option">Custom date range</option>
                     </select>
-                </div>
+                
 
-                <div class="form-group col-6 col-sm-auto">
+                    <div id="customDateContainer">
+                        <div id="customDateRange" class="customDateRange">
+                            <label for="startDate" class="my-1">After:</label>
+                            <input type="date" id="startDate" class="my-1" name="startDate">
+
+                            <label for="endDate" class="my-2">Before:</label>
+                            <input type="date" id="endDate" name="endDate">
+
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                            <button type="button" class="btn btn-secondary">Cancel</button>
+                            <button type="button" class="btn btn-primary">Apply</button>
+                        </div>
+
+                    </div>
+                </div>  
+            </div>
+
+            <div class="form-group col-4 col-sm-auto">
                     <select name="status" class="form-select">
                         <option value="">All Status</option>
                         <option value="Active">Active</option>
@@ -43,9 +63,8 @@ require_once('./include/admin-head.php');
             </div>
 
             <div class="crud-btn col-5 justify-content-end">
-            <a href="add-customer.php" class="crud-text" style="width: 35%"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Customer</a>
+                <a href="add-customer.php" class="crud-text" style="width: 35%"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Customer</a>
             </div>
-
         </section>
 
         <section class="table-con">
@@ -64,7 +83,7 @@ require_once('./include/admin-head.php');
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Recently Added</th>
-                            <th scope="col" width="5%">Action</th>
+                            <th scope="col" width="5%" class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody id="customerTableBody">
@@ -85,17 +104,17 @@ require_once('./include/admin-head.php');
                                     <td class="d-flex justify-content-end">
                                         <div class="crud-btn">
                                             <a href="update-customer.php?customerID=<?= $item['customerID'] ?>"
-                                                class="crud-icon-update"><i class="fa-solid fa-pen-to-square m-1"
+                                                class="crud-icon-update"><i class="fa-regular fa-pen-to-square"
                                                     aria-hidden="true"></i></a>
                                         </div>
                                         <div class="crud-btn">
                                             <a href="" class="crud-icon-delete" data-bs-toggle="modal"
                                                 data-bs-target="#deleteDModal" data-customer-id="<?= $item['customerID'] ?>"><i
-                                                    class="fa-solid fa-trash-can m-1" aria-hidden="true"></i></a>
+                                                    class="fa-regular fa-trash-can" aria-hidden="true"></i></a>
                                         </div>
                                         <div class="crud-btn">
                                             <a href="customer-info.php?customerID=<?= $item['customerID'] ?>" class=""><i
-                                                    class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                                                    class="fa fa-ellipsis-h me-2" aria-hidden="true"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -146,11 +165,19 @@ require_once('./include/admin-head.php');
                 var customerID = this.getAttribute('data-customer-id');
                 document.getElementById('confirmDelete').setAttribute('data-customer-id', customerID);
             });
+
+            document.getElementById("dateRangeSelect").addEventListener("change", function() {
+                var customDateRange = document.getElementById("customDateRange");
+                if (this.value === "custom") {
+                    customDateRange.style.display = "block";
+                } else {
+                    customDateRange.style.display = "none";
+                }
+            });
         </script>
     </main>
     <?php
     require_once('./include/js.php')
         ?>
 </body>
-
 </html>

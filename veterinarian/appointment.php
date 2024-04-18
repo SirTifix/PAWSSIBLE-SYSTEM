@@ -14,7 +14,7 @@
         require_once('./include/vet-sidepanel.php')
     ?>
     <section class="customer-info-icon row  ">
-      <div class="head-form col-12 d-flex justify-content-between align-items-center">
+      <div class="head-form col-12 d-flex justify-content-between align-items-center mb-3">
           <div class="icon-circle">
               <i class="icon fa fa-solid  fa-user mr-2 mt-1" style="color: white;"></i> 
           </div>
@@ -23,39 +23,36 @@
                 <h2>Appointment</h2>
             </div>
         </div>
-      </div>    
-    
-    <div class="app-container app-center">
-      <div class="row justify-content-center ">
-        <div class="app-con col-md-7 ">
-      
-            <div class="row font-weight-bold py-4">
-            <div class="col">Book No.</div>
-              <div class="col">Name</div>
-              <div class="col">Date</div>
-              <div class="col">Time</div>
-            </div>
-            <div class="row py-3 row-divider">
-              <div class="col">01</div>
-              <div class="col">John Doe</div>
-              <div class="col">30</div>
-              <div class="col">New York</div>
-            </div>
-            <div class="row py-3">
-            <div class="col">02</div>
-              <div class="col">Jane Smith</div>
-              <div class="col">25</div>
-              <div class="col">Los Angeles</div>
-            </div>
-            <div class="row py-3">
-                <div class="col">03</div>
-                <div class="col">Michael Johnson</div>
-              <div class="col">40</div>
-              <div class="col">Chicago</div>
-            </div>
-          </div>
-        </div>
       </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 </body>
 </html>
