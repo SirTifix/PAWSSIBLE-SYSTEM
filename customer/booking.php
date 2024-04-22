@@ -165,8 +165,8 @@ require_once ('./tools/functions.php');
             </div>
 
             <div class="input-container col-sm-3">
-              <label for="middleName">Middle Name:</label>
-              <input type="text" id="middleName" name="middleName" required>
+              <label for="middleName">Middle Name (Optional):</label>
+              <input type="text" id="middleName" name="middleName">
             </div>
 
             <div class="input-container col-sm-3">

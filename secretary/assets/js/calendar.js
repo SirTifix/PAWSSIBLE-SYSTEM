@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         />
                       </div>
 
-                      <div class="form-group col-sm-2">
+                      <div class="form-group col-sm-2 ">
                         <label for="concerns"> <h5>Concerns</h5></label>
                         <textarea style="height: 200px;" class="form-concerns" id="concerns"></textarea>
                       </div>
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
                           placeholder="Enter breed"
                         />
                       </div>
-                      <div class="form-group col-sm-2">
+                      <div class="form-group col-sm-2 background-color">
                         <label for="services"> <h5>Select Services</h5></label>
                         <select class="book-form-control" id="services">
                           <option value="">Choose...</option>
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         </select>
                       </div>
 
-                      <div class="form-group col-sm-2">
+                      <div class="form-group col-sm-2 background-color">
                         <label for="vet"> <h5>Select vet</h5></label>
                         <select class="book-form-control" id="vet">
                           <option value="">Choose...</option>
