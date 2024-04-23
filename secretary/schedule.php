@@ -49,16 +49,17 @@
             </table>
             </div>
             <div id="popup" class="popup">
-                <div class="row popup-content py-4">
+                <div class="popup-content p-4">
                     <span class="close" onclick="closePopup()">&times;</span>
-                    <p id="popup-date"></p>        
-                    <div class="col">
-                        <button id="unavailableBtn" onclick="setUnavailable()">Unavailable</button>
-                    </div>
-                    <div class="col">
-                        <button id="setAvailableBtn" onclick="setAvailable()">Available</button>
-                    </div>
-            
+                    <p id="popup-date"></p>
+                    <div class=" d-flex justify-content-center align-items-center sched-btn">
+                        <div class="col pe-2">
+                            <button id="setAvailableBtn" onclick="setAvailable()">Available</button>
+                        </div>
+                        <div class="col">
+                            <button id="unavailableBtn" onclick="setUnavailable()">Unavailable</button>
+                        </div>
+                    </div>        
                 </div>
             </div>
         
