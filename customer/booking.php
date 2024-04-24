@@ -13,6 +13,7 @@ require_once ('./tools/functions.php');
   <title>
     <?php echo $title ?>
   </title>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/booking-style.css">
   <link rel="stylesheet" href="./assets/css/style.css">
@@ -24,24 +25,11 @@ require_once ('./tools/functions.php');
 </head>
 
 <body>
-  <section>
-    <div class="social-icons">
-      <a href="#" title="facebook">
-        <i class="fa-brands fa-facebook" aria-hidden="true"></i>
-      </a>
-      <a href="#" title="instagram">
-        <i class="fa fa-instagram" aria-hidden="true"></i>
-      </a>
-      <a href="#" title="twitter">
-        <i class="fa-sharp fa-solid fa-x" aria-hidden="true"></i>
-      </a>
-    </div>
-  </section>
 
-  <div style="position: absolute; bottom: 69vh; left: 34vh; color: #2A2F4F;">
+  <div class="avail-date">
     <h2> <strong> AVAILABLE DATE </strong></h2>
   </div>
-  <div style="position: absolute; bottom: 69vh; left: 107vh; color: #2A2F4F;">
+  <div class="avail-time">
     <h2> <strong> AVAILABLE TIME </strong></h2>
   </div>
   <div class="container">
@@ -225,9 +213,7 @@ require_once ('./tools/functions.php');
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                   <div class="modal-content text-center">
                     <div class="modal-header">
-                      
                       <h5 class="modal-title mx-auto" id="confirmationModalLabel">Appointment Confirmation</h5>
-                      
                     </div>
 
                     <div class="modal-body align-items-center justify-content-center d-flex flex-column">
@@ -253,9 +239,7 @@ require_once ('./tools/functions.php');
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
   <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -277,9 +261,9 @@ require_once ('./tools/functions.php');
     });
   </script>
 
- <?php
-        require_once('./include/footer.php');
-    ?>
+  <?php
+  require_once ('./include/footer.php');
+  ?>
 </body>
 
 </html>
