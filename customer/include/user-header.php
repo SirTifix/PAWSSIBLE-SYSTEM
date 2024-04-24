@@ -8,18 +8,29 @@
     <img class="fourth-lec" src="assets/img/Vector3.png" alt="img">
     <img class="fifth-lec" src="assets/img/vet-dog.png" alt="img">
 
-    <nav class="navbar">
+    <div class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
         <div class="logo p-3 d-flex align-items-center">
             <img class="logo-clinic" src="./assets/img/logo.png" alt="Logo" class="logosec">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
             
             <div class="logo-text px-3">PAWSsible Solutions <br>
                 Veterinary Clinic</div>
         </div>
-        <div class="navbar-links">
-            <a href="./index.php">Home</a>
-            <a href="./services.php">Services</a> 
-            <a href="./aboutus.php">About Us</a>
-            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <div class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <div class="navbar-links">
+                    <a href="./index.php">Home</a>
+                    <a href="./services.php">Services</a> 
+                    <a href="./aboutus.php">About Us</a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+                </div>
+            </div>
+        </div>
         </div>
     </nav>
+    </div>
 </header>

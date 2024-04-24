@@ -118,12 +118,12 @@ body {
   font-weight: bolder;
   color: #5263ab;
 }
-
+/*
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+} */
 
 .second-nav.navbar-links {
   color: white;
