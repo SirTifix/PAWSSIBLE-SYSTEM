@@ -44,8 +44,8 @@ require_once ('./include/customer-header.php');
                                     </div>
 
                                     <div class="input-container col-sm-3">
-                                        <label for="middleName">Middle Name:</label>
-                                        <input type="text" id="middleName" name="middleName" required>
+                                        <label for="middleName">Middle Name (Optional):</label>
+                                        <input type="text" id="middleName" name="middleName">
                                     </div>
 
                                     <div class="input-container col-sm-3">
@@ -239,6 +239,7 @@ require_once ('./include/customer-header.php');
                                                     </div>
                                                 </div>
                                             </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -446,5 +447,4 @@ require_once ('./include/customer-header.php');
         });
     </script>
 </body>
-
 </html>

@@ -351,3 +351,29 @@ select.book-form-control {
 #resched-btn:hover {
   background-color: #7d8091;
 }
+
+#done-btn{
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #2A2F4F;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 230px;
+}
+
+#done-btn:hover {
+  background-color: #7d8091;
+}
+
+#openCalendarModalBtn{
+  padding: 3px;
+  padding-left: 7px !important;
+  padding-right: 7px !important;
+  margin-left: 3px;
+  color: white;
+  border-radius: 3px;
+  border-style: none;
+  background-color: #5263AB;
+}
