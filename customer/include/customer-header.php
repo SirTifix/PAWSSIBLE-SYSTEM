@@ -1,18 +1,28 @@
 <header>
 
     <nav class="navbar">
-        <div class="logo p-3 d-flex align-items-center">
-            <img class="logo-clinic" src="assets/img/logo.png" alt="Logo" class="logosec">
+    <div class="sticky-top">
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <div class="logo p-3 d-flex align-items-center "> 
+                <img class="logo-clinic" src="./assets/img/logo.png" alt="Logo" class="logosec">
+                <div class="logo-text px-3">PAWSsible Solutions <br> Veterinary Clinic</div>
+            
 
-            <div class="logo-text-customer px-3">PAWSsible Solutions <br>
-                Veterinary Clinic</div>
+            <div class="navbar-toggle  "> 
+                <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+            </div>
+            </div>
+
+            <div class="navbar-links " id="navbar-links"> 
+                <a href="./index.php">Home</a> 
+                <a href="./services.php">Services</a>
+                <a href="./aboutus.php">About Us</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+            </div>
         </div>
-        <div class="navbar-links">
-            <a href="home.php">Home</a>
-            <a href="services.php">Services</a>
-            <a href="aboutus.php">About Us</a>
-            <a href="booking.php">Booking</a>
-
+    </nav>
+</div>
             <div class="customized-drop-customer btn-group m-3" role="group">
                 <div class="btn-group dropstart" role="group">
                     <button class="btn btn-primary" type="button" id="notificationDropdown" data-toggle="dropdown"
@@ -86,3 +96,8 @@
         </div>
     </nav>
 </header>
+<script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('navbar-links').classList.toggle('active');
+    });
+</script>

@@ -9,28 +9,32 @@
     <img class="fifth-lec" src="assets/img/vet-dog.png" alt="img">
 
     <div class="sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
-        <div class="logo p-3 d-flex align-items-center">
-            <img class="logo-clinic" src="./assets/img/logo.png" alt="Logo" class="logosec">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
+            <div class="logo p-3 d-flex align-items-center "> 
+                <img class="logo-clinic" src="./assets/img/logo.png" alt="Logo" class="logosec">
+                <div class="logo-text px-3">PAWSsible Solutions <br> Veterinary Clinic</div>
             
-            <div class="logo-text px-3">PAWSsible Solutions <br>
-                Veterinary Clinic</div>
-        </div>
-        <div class="collapse navbar-collapse " id="navbarSupportedContent">
-            <div class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <div class="navbar-links">
-                    <a href="./index.php">Home</a>
-                    <a href="./services.php">Services</a> 
-                    <a href="./aboutus.php">About Us</a>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-                </div>
+
+            <div class="navbar-toggle  "> 
+                <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+            </div>
+            </div>
+
+            <div class="navbar-links " id="navbar-links"> 
+                <a href="./index.php">Home</a> 
+                <a href="./services.php">Services</a>
+                <a href="./aboutus.php">About Us</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
             </div>
         </div>
-        </div>
     </nav>
-    </div>
+</div>
+
+
 </header>
+<script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('navbar-links').classList.toggle('active');
+    });
+</script>
