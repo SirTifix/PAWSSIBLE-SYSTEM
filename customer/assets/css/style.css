@@ -118,12 +118,12 @@ body {
   font-weight: bolder;
   color: #5263ab;
 }
-/*
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-} */
+} 
 
 .second-nav.navbar-links {
   color: white;
@@ -132,8 +132,9 @@ body {
 .logosec,
 .logo-clinic {
   height: auto;
-  width: 15%;
+  width: 100px; /* Adjust the width to occupy the entire space of its container */
 }
+
 
 .logo-image {
   width: 50px; /* Set your preferred size */
@@ -142,13 +143,10 @@ body {
 }
 
 .logo-text {
-  font-size: 2.3rem;
+  font-size: 1.5rem;
 }
 .logo-text-customer {
   font-size: 1.8rem;
-}
-.navbar-links {
-  padding-right: 35px;
 }
 
 .navbar-links a {
@@ -157,8 +155,8 @@ body {
   color: #5263ab;
   font-weight: 20px;
   text-decoration: none;
-  font-size: 28px;
-  padding: 18px;
+  font-size: 1.5em;
+  padding: 20px px  ;
   margin: 5px;
 }
 .navbar-links a:hover {
@@ -181,6 +179,42 @@ body {
 .navbar-links a:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+/* For Navbar collapse */
+.navbar-collapse.bg-color {
+  background: linear-gradient(rgba(217, 217, 217, 0.7), rgba(217, 217, 217, 0.7));
+  border-radius: 10px;
+}
+
+/* Responsive styles for navbar */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Adjust spacing for navbar links on smaller screens */
+  .navbar-links {
+    margin-top: 20px;
+    padding-left: 0; /* Reset padding for mobile layout */
+  }
+
+  /* Adjust margin for navbar links on smaller screens */
+  .navbar-links a {
+    margin: 5px 0;
+  }
+  /* Move toggler button to the right */
+  .navbar-toggler {
+    margin-left: auto;
+  }
+}
+
+/* Additional styles for screens with minimum width of 320px */
+@media (min-width: 320px) {
+  /* Adjust font size for navbar links */
+  .navbar-links a {
+    font-size: 1.2rem; /* Adjust font size as needed */
+  }
 }
 
 .dos {
@@ -417,21 +451,7 @@ img {
   font-weight: bold;
   color: #2a2f4f;
 }
-/* Responsive styles */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 
-  .navbar-links {
-    margin-top: 10px;
-  }
-
-  .navbar-links a {
-    margin: 5px 0;
-  }
-}
 .paw {
   float: left;
 }
