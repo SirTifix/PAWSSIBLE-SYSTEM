@@ -76,20 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         <label for="services-${i}"> <h5>Select Services</h5></label>
                         <select class="form-control" id="services-${i}" name="services[${i}]">
                           <option value="">Choose...</option>
-                          <option value="Spay/Neuter">
-                          Spay/Neuter<span class="price">PHP 1,000</span>
-                          </option>
-                          <option value="Eye Extraction">
-                          Eye Extraction<span class="price">PHP 4,500</span>
-                          </option>
-                          <option value="Imputation">
-                          Imputation<span class="price">PHP 2,500</span>
-                          </option>
-                          <option value="Caesarian">
-                          Caesarian<span class="price">PHP 1,000</span>
-                          </option><option value="Vaccination">
-                          Vaccination<span class="price">PHP 300</span>
-                          </option>
                         </select>
                       </div>
 
@@ -97,11 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
                       <label for="vet-${i}"><h5>Select vet</h5></label>
                       <select class="form-control" id="vet-${i}" name="vet[${i}]">
                           <option value="">Choose...</option>
-                          <option value="vet1">Dr.Jasmin abayon</option>
-                          <option value="vet2">Dr.Erwin roy jalao</option>
-                          <option value="vet3">Dr.Portia quintas</option>
-                          <option value="vet3">Dr.Roi-lee cataluna</option>
-                          <option value="vet3">Dr.France jalao</option>
                         </select>
                       </div>
                     </div>
@@ -117,8 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profileModal" style="background-color: #6075d1; float: right;">
                         Select Existing Pet
                       </button>
-
-
 
                       <!-- Profile Modal -->
                       <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
@@ -204,34 +183,80 @@ document.addEventListener("DOMContentLoaded", function () {
                 <button type="submit" class="btn submit-pet-form" style="background-color: #6075d1; float: right;">Submit Pet Form</button>
                     </div>
             `;
+
+
       petFormsContainer.appendChild(petForm);
 
     }
     fetchServices(populateServicesDropdown, numberOfPets);
     fetchVets(populateVetDropdown, numberOfPets);
-  });
-  const petForm = document.getElementById(`petForm-${i}`);
-  petForm.addEventListener("submit", function (event) {
-    event.preventDefault();
 
-    const formData = new FormData(this); 
-    for (const pair of formData.entries()) {
-      console.log(pair[0] + ": " + pair[1]);
-    }
-    fetch('submit-pet.php', {
-      method: 'POST',
-      body: formData
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-        } else {
-          console.error("Failed to submit pet form.");
-        }
+    const petForm = document.getElementById(`petForm-${i}`);
+    petForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(this);
+      for (const pair of formData.entries()) {
+        console.log(pair[0] + ": " + pair[1]);
+      }
+      fetch('submit-pet.php', {
+        method: 'POST',
+        body: formData
       })
-      .catch(error => console.error('Error submitting pet form:', error));
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+          } else {
+            console.error("Failed to submit pet form.");
+          }
+        })
+        .catch(error => console.error('Error submitting pet form:', error));
+    });
   });
 
+
+ // ALGO FOR BOOKING PROBLEM START
+  document.addEventListener('DOMContentLoaded', function () {
+    const submitButton = document.getElementById('submitBtn');
+    submitButton.addEventListener('click', submitBookingForm);
+  });
+
+  function submitBookingForm(event) {
+    event.preventDefault(); 
+
+    const bookingForm = document.getElementById('bookingForm');
+    const formData = new FormData(bookingForm);
+
+    const petFormsContainer = document.getElementById('petFormsContainer');
+    const petForms = petFormsContainer.querySelectorAll('.pet-info-form');
+
+    petForms.forEach(form => {
+        const serializedForm = new FormData(form);
+        serializedForm.forEach((value, key) => {
+            formData.append(key, value);
+        });
+    });
+
+    // Send formData to your PHP file using AJAX
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'submit-booking.php', true);
+    xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 400) {
+            // Handle success response from the server
+            console.log(xhr.responseText);
+        } else {
+            // Handle error response from the server
+            console.error('Error:', xhr.statusText);
+        }
+    };
+    xhr.onerror = function () {
+        // Handle connection error
+        console.error('Request failed');
+    };
+    xhr.send(formData);
+}
+
+// ALGO FOR BOOKING PROBLEM END
   function fetchServices(callback, numberOfPets) {
     console.log("Fetching services...");
     fetch('../customer/fetch-services.php')
@@ -422,3 +447,6 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+
+

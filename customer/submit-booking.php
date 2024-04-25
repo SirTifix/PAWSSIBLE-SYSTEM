@@ -21,30 +21,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $booking->bookingDate = $selectedDate;
     $booking->bookingTime = $selectedTime;
 
-    $petNames = isset($_POST['petName']) ? $_POST['petName'] : [];
-    $petTypes = isset($_POST['petType']) ? $_POST['petType'] : [];
-    $sex = isset($_POST['sex']) ? $_POST['sex'] : [];
-    $petBreeds = isset($_POST['petBreed']) ? $_POST['petBreed'] : [];
-    $petBirthDates = isset($_POST['petBirthDate']) ? $_POST['petBirthDate'] : [];
-    $serviceIDs = isset($_POST['services']) ? $_POST['services'] : [];
-    $vetIDs = isset($_POST['vet']) ? $_POST['vet'] : [];
-
-    $booking->petName = $petNames;
-    $booking->petType = $petTypes;
-    $booking->sex = $sex;
-    $booking->petBreed = $petBreeds;
-    $booking->petBirthDate = $petBirthDates;
-    $booking->serviceID = $serviceIDs;
-    $booking->vetID = $vetIDs;
-
+    // Add booking with personal information
     $lastInsertedBookingId = $booking->add();
 
+    // Check if booking was successfully added
     if ($lastInsertedBookingId) {
+        // Loop through pet data and add each pet
+        for ($i = 0; $i < $numberPets; $i++) {
+            // Assuming pet data is sent as arrays in $_POST
+            $petName = $_POST['petName'][$i];
+            $petType = $_POST['petType'][$i];
+            $sex = $_POST['sex'][$i];
+            $petBreed = $_POST['petBreed'][$i];
+            $petBirthDate = $_POST['petBirthDate'][$i];
+            $serviceID = $_POST['services'][$i]; // Assuming service ID is sent for each pet
+            $vetID = $_POST['vet'][$i]; // Assuming vet ID is sent for each pet
+
+            // Add pet with the associated booking ID
+            $booking->addPet($petName, $petType, $sex, $petBreed, $petBirthDate, $lastInsertedBookingId, $serviceID, $vetID);
+        }
+
+        // Return success response with booking ID
         echo json_encode(array('success' => true, 'bookingID' => $lastInsertedBookingId));
     } else {
+        // Return failure response if booking could not be added
         echo json_encode(array('success' => false));
     }
 } else {
+    // Return failure response for invalid request method
     echo json_encode(array('success' => false, 'message' => 'Invalid request method.'));
 }
 ?>

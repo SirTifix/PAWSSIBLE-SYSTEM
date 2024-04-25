@@ -76,7 +76,7 @@ class Booking
             $status = "Pending";
 
             $sql = "INSERT INTO booking (bookingID, firstName, lastName, emailAddress, contactNumber, status, bookingDate, bookingTime) VALUES 
-        (:bookingID, :firstname, :lastname, :emailAddress, :contactNumber, :status, :bookingDate, :bookingTime);";
+            (:bookingID, :firstname, :lastname, :emailAddress, :contactNumber, :status, :bookingDate, :bookingTime);";
 
             $query = $this->db->connect()->prepare($sql);
             $query->bindParam(':bookingID', $bookingID);
@@ -89,25 +89,6 @@ class Booking
             $query->bindParam(':bookingTime', $this->bookingTime);
 
             if ($query->execute()) {
-                $sqlPet = "INSERT INTO booking_pet (petName, petType, sex, petBreed, petBirthDate, bookingID, serviceID, vetID) VALUES 
-            (:petName, :petType, :sex, :petBreed, :petBirthDate, :bookingID, :serviceID, :vetID);";
-                $queryPet = $this->db->connect()->prepare($sqlPet);
-
-                for ($i = 0; $i < count($this->petName); $i++) {
-                    $queryPet->bindParam(':petName', $this->petName[$i]);
-                    $queryPet->bindParam(':petType', $this->petType[$i]);
-                    $queryPet->bindParam(':sex', $this->sex[$i]);
-                    $queryPet->bindParam(':petBreed', $this->petBreed[$i]);
-                    $queryPet->bindParam(':petBirthDate', $this->petBirthDate[$i]);
-                    $queryPet->bindParam(':bookingID', $bookingID);
-                    $queryPet->bindParam(':serviceID', $this->serviceID[$i]);
-                    $queryPet->bindParam(':vetID', $this->vetID[$i]);
-
-                    if (!$queryPet->execute()) {
-                        throw new Exception("Error inserting pet data for pet " . ($i + 1));
-                    }
-                }
-
                 return $bookingID;
             } else {
                 throw new Exception("Error inserting booking data");
@@ -119,6 +100,29 @@ class Booking
     }
 
 
+    function addPet($petName, $petType, $sex, $petBreed, $petBirthDate, $lastInsertedBookingId, $serviceID, $vetID)
+    {
+        try {
+            $sqlPet = "INSERT INTO booking_pet (petName, petType, sex, petBreed, petBirthDate, bookingID, serviceID, vetID) VALUES 
+                (:petName, :petType, :sex, :petBreed, :petBirthDate, :bookingID, :serviceID, :vetID);";
+            $queryPet = $this->db->connect()->prepare($sqlPet);
+
+            $queryPet->bindParam(':petName', $petName);
+            $queryPet->bindParam(':petType', $petType);
+            $queryPet->bindParam(':sex', $sex);
+            $queryPet->bindParam(':petBreed', $petBreed);
+            $queryPet->bindParam(':petBirthDate', $petBirthDate);
+            $queryPet->bindParam(':bookingID', $bookingID);
+            $queryPet->bindParam(':serviceID', $serviceID);
+            $queryPet->bindParam(':vetID', $vetID);
+
+            if (!$queryPet->execute()) {
+                throw new Exception("Error inserting pet data");
+            }
+        } catch (Exception $e) {
+            throw new Exception("Error adding pet: " . $e->getMessage());
+        }
+    }
 
     function showPending()
     {

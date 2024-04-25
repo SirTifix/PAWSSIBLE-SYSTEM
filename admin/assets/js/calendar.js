@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     for (let i = 1; i <= numberOfPets; i++) {
       const petForm = document.createElement("div");
       petForm.innerHTML = `
-                <div class="pet-info-form background-color-container" container bg-light mt-4 p-4">
+                <div class="pet-info-form background-color-container container bg-light mt-4 p-4">
                   <h2 class="mb-4">Pet ${i} Information Form</h2>
                   <form>
                     <div class="form-row">

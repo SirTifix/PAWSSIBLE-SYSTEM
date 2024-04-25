@@ -151,82 +151,76 @@ require_once ('./tools/functions.php');
   </div>
 
   <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-cont">
-        <h2>Personal Information</h2>
-        <form id="bookingForm" action="submit-booking.php" method="POST">
-          <div class="selected-details">
-            <div class="row">
-
-              <div class="input-container  col-sm-3">
-                <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="firstName" required>
-
+  <div class="modal-dialog">
+    <div class="modal-cont">
+      <h2>Personal Information</h2>
+      <form id="bookingForm" action="submit-booking.php" method="POST">
+        <div class="selected-details">
+          <div class="row">
+            <div class="input-container col-sm-3">
+              <label for="firstName">First Name:</label>
+              <input type="text" id="firstName" name="firstName" required>
+            </div>
             <div class="input-container col-sm-3">
               <label for="middleName">Middle Name:</label>
               <input type="text" id="middleName" name="middleName" required>
             </div>
-
             <div class="input-container col-sm-3">
               <label for="lastName">Last Name:</label>
               <input type="text" id="lastName" name="lastName" required>
             </div>
-              <div class="input-container col-sm-3">
-                <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="lastName" required>
-
-              </div>
-
-              <div class="details col-sm">
-                <label for="lastName">Selected Date and Time</label>
-                <div class="col-sm">
-                  <p id="selectedDateTime"></p>
-                  <input type="hidden" id="selectedDate" name="selectedDate">
-                  <input type="hidden" id="selectedTime" name="selectedTime">
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="input-container col-6">
-                  <label for="email">Email Address:</label>
-                  <input type="email" id="email" name="email" required>
-
-              <div class="details col-sm">
-                <label for="lastName">Selected Date and Time</label>
-                <div class="col-sm">
-                  <p id="selectedDateTime"></p>
-                </div>
-              </div>
-            </div>
-
-              <div class="row">
-                <div class="input-container col-6">
-                  <label for="contactNumber">Contact Number:</label>
-                  <input type="tel" id="contactNumber" name="contactNumber" required>
-
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="input-container col-6">
-                  <label for="pets">Number of Pets:</label>
-                  <select id="pets" name="pets">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
-                </div>
-              </div>
-
-              <div id="petFormsContainer" class="petFormsContainer"></div>
+            
+          <div class="row">
+            <div class="input-container col-6">
+              <label for="email">Email Address:</label>
+              <input type="email" id="email" name="email" required>
             </div>
           </div>
-        </form>
-        
 
+          <div class="details col-sm">
+            <label for="lastName">Selected Date and Time</label>
+            <div class="col-sm">
+              <p id="selectedDateTime"></p>
+              <input type="hidden" id="selectedDate" name="selectedDate">
+              <input type="hidden" id="selectedTime" name="selectedTime">
+            </div>
+          </div>
 
+          <div class="details col-sm">
+            <div class="col-sm">
+              <p id="selectedDateTime"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-container col-6">
+              <label for="contactNumber">Contact Number:</label>
+              <input type="tel" id="contactNumber" name="contactNumber" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-container col-6">
+              <label for="pets">Number of Pets:</label>
+              <select id="pets" name="pets">
+                <option value="1">Choose...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+          </div>
+          <div id="petFormsContainer" class="petFormsContainer"></div>
+          <button id="submitBtn">Book Appointment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+  
+
+      
         <!-- Confirmation Modal -->
         <div class="confirmation-modal">
           <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
@@ -248,15 +242,15 @@ require_once ('./tools/functions.php');
                         style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
                         Booking</button>
                     </div>
-                  </div>
                 </div>
+              </dfiv>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+           
+        
+      
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

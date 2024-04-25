@@ -210,7 +210,7 @@ select:focus {
 #submitBtn {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #4caf50;
+  background-color: #10325a;
   color: white;
   border: none;
   border-radius: 5px;
@@ -219,7 +219,7 @@ select:focus {
 }
 
 #submitBtn:hover {
-  background-color: #45a049;
+  background-color: #10325a;
 }
 
 .social-icons {

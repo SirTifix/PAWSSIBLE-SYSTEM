@@ -9,6 +9,7 @@ class Veterinarian
     public $vetID;
     public $vetFirstname;
     public $vetLastname;
+    public $vetMiddlename;
     public $vetPhone;
     public $vetEmail;
     public $vetUsername;
@@ -27,8 +28,8 @@ class Veterinarian
 
     function add()
     {
-        $sql = "INSERT INTO veterinarian (vetFirstname, vetLastname, vetPhone, vetEmail, vetUsername, vetPassword, created_at) VALUES 
-        (:vetFirstname, :vetLastname, :vetPhone, :vetEmail, :vetUsername, :vetPassword, :created_at);";
+        $sql = "INSERT INTO veterinarian (vetFirstname, vetLastname, vetMiddlename vetPhone, vetEmail, vetUsername, vetPassword, created_at) VALUES 
+        (:vetFirstname, :vetLastname, vetMiddlename, :vetPhone, :vetEmail, :vetUsername, :vetPassword, :created_at);";
 
         $hashedPassword = password_hash($this->vetPassword, PASSWORD_DEFAULT);
         $currentDateTime = date('Y-m-d H:i:s');
@@ -36,6 +37,7 @@ class Veterinarian
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':vetFirstname', $this->vetFirstname);
         $query->bindParam(':vetLastname', $this->vetLastname);
+        $query->bindParam(':vetMiddlename', $this->vetMiddlename);
         $query->bindParam(':vetPhone', $this->vetPhone);
         $query->bindParam(':vetEmail', $this->vetEmail);
         $query->bindParam(':vetUsername', $this->vetUsername);
@@ -49,23 +51,27 @@ class Veterinarian
     }
 
 
-    function update()
+    function update($vetID, $vetFirstname, $vetLastname, $vetMiddlename, $vetEmail, $vetUsername, $vetPhone, $vetPassword)
     {
-        $sql = "UPDATE veterinarian SET vetFirstname=:vetFirstname, vetLastname=:vetLastname, vetPhone=:vetPhone, vetEmail=:vetEmail, vetUsername=:vetUsername, vetPassword=:vetPassword WHERE vetID=:vetID;";
-
+        $sql = "UPDATE veterinarian SET vetFirstname=:vetFirstname, vetLastname=:vetLastname, vetMiddlename=:vetMiddlename, vetPhone=:vetPhone, vetEmail=:vetEmail, vetUsername=:vetUsername, vetPassword=:vetPassword WHERE vetID=:vetID;";
+        $hashedPassword = password_hash($this->vetPassword, PASSWORD_DEFAULT);
         $query = $this->db->connect()->prepare($sql);
-        $query->bindParam(':vetFirstname', $this->vetFirstname);
-        $query->bindParam(':vetLastname', $this->vetLastname);
-        $query->bindParam(':vetPhone', $this->vetPhone);
-        $query->bindParam(':vetEmail', $this->vetEmail);
-        $query->bindParam(':vetUsername', $this->vetUsername);
-        $query->bindParam(':vetPassword', $this->vetPassword);
+        $query->bindParam(':vetID', $vetID);
+        $query->bindParam(':vetFirstname', $vetFirstname);
+        $query->bindParam(':vetLastname', $vetLastname);
+        $query->bindParam(':vetMiddlename', $vetMiddlename);
+        $query->bindParam(':vetPhone', $vetPhone);
+        $query->bindParam(':vetEmail', $vetEmail);
+        $query->bindParam(':vetUsername', $vetUsername);
+        $query->bindParam(':vetPassword', $hashedPassword);
+
         if ($query->execute()) {
             return true;
         } else {
             return false;
         }
     }
+
 
     function delete($vetID)
     {

@@ -133,6 +133,7 @@
 
               <div class="form-body">
                 <?php
+                $pet = new Pet();
                 $pets = $pet->fetchByCustomerId($customer_id);
                 if ($pets) {
                   foreach ($pets as $petData) { 

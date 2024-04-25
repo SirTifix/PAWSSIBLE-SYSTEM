@@ -1,32 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    $title = 'Veterinarian';
-    require_once('./include/admin-head.php');
-    require_once('../classes/veterinarian.class.php');
-    $veterinarianClass = new Veterinarian();
-    
-    if(isset($_GET['vetID'])) {
-      $vetID = $_GET['vetID'];
-      $vetData = $veterinarianClass->fetch($vetID); // Fetch data from database
-      if($vetData) {
-          $vetFirstname = $vetData['vetFirstname'];
-          $vetLastname = $vetData['vetLastname'];
-          $vetEmail = $vetData['vetEmail'];
-          $vetUsername = $vetData['vetUsername'];
-          $vetPhone = $vetData['vetPhone'];
-      } else {
-          // Handle error if data not found
-          echo "Error: Veterinarian data not found.";
-          exit();
-      }
-  } else {
-      // Handle error if vetID not provided
-      echo "Error: vetID not provided.";
-      exit();
-  }
+$title = 'Veterinarian';
+require_once('./include/admin-head.php');
+require_once('../classes/veterinarian.class.php');
+require_once  './tools/functions.php';
+$veterinarianClass = new Veterinarian();
 
+// Start session if not already started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Fetch veterinarian data if vetID is provided via GET
+if (isset($_GET['vetID'])) {
+    $_SESSION['vetID'] = $_GET['vetID']; // Store vetID in session variable
+    $vetID = $_GET['vetID'];
+    $vetData = $veterinarianClass->fetch($vetID);
+    if ($vetData) {
+        $vetFirstname = $vetData['vetFirstname'];
+        $vetLastname = $vetData['vetLastname'];
+        $vetMiddlename = $vetData['vetMiddlename'];
+        $vetEmail = $vetData['vetEmail'];
+        $vetUsername = $vetData['vetUsername'];
+        $vetPhone = $vetData['vetPhone'];
+    } else {
+        // Handle error if data not found
+        echo "Error: Veterinarian data not found.";
+        exit();
+    }
+} else {
+    // Handle error if vetID not provided
+    echo "Error: vetID not provided.";
+    exit();
+}
+
+// Handle POST request to update veterinarian data
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Check if all necessary POST parameters are set
+    $requiredFields = ['vetFirstname', 'vetLastname', 'vetMiddlename', 'vetEmail', 'vetUsername', 'vetPhone'];
+    $missingFields = array_diff($requiredFields, array_keys($_POST));
+    if (!empty($missingFields)) {
+        // Log missing fields for debugging
+        error_log("Missing POST parameters: " . implode(', ', $missingFields));
+        echo "Error: Missing POST parameters.";
+        exit();
+    }
+
+    // Get vetID from session
+    $vetID = $_SESSION['vetID'];
+
+    // Assign POST data to variables
+    $vetFirstname = $_POST['vetFirstname'];
+    $vetLastname = $_POST['vetLastname'];
+    $vetMiddlename = $_POST['vetMiddlename']; 
+    $vetEmail = $_POST['vetEmail'];
+    $vetUsername = $_POST['vetUsername'];
+    $vetPhone = $_POST['vetPhone'];
+    $vetPassword = $_POST['vetPassword'];
+
+    // Update veterinarian data
+    $success = $veterinarianClass->update($vetID, $vetFirstname, $vetLastname, $vetMiddlename, $vetEmail, $vetUsername, $vetPhone, $vetPassword);
+    if ($success) {
+        // Redirect after successful update
+        header('Location: veterinarians.php');
+        exit();
+    } else {
+        echo "Error: Failed to update veterinarian data.";
+        exit();
+    }
+}
 ?>
+
+
 <body>
   <?php
       require_once('./include/admin-header.php')
@@ -57,19 +103,19 @@
                   <div class="ms-5">
                       <div class="mt-3">
                           <label for="vetFirstname" class="form-label">Firstname</label>
-                          <input type="text" class="form-control" id="vetFirstname" name="vetFirstname" required>
+                          <input type="text" class="form-control" id="vetFirstname" name="vetFirstname" value="<?php echo $vetFirstname?>" required>
                       </div>
                       <div>
                           <label for="vetLastname" class="form-label">Lastname</label>
-                          <input type="text" class="form-control" id="vetLastname" name="vetLastname" required>
+                          <input type="text" class="form-control" id="vetLastname" name="vetLastname" value="<?php echo $vetLastname?>" required>
                       </div>
                       <div>
-                          <label for="vetMiddlename" class="form-label">Middle</label>
-                          <input type="text" class="form-control" id="vetMiddlename" name="vetMiddlename" required>
+                          <label for="vetPhone" class="form-label">Middle name</label>
+                          <input type="text" class="form-control" id="vetMiddlename" name="vetMiddlename" value="<?php echo $vetMiddlename?>" required>
                       </div>
                       <div>
                           <label for="vetPhone" class="form-label">Phone Number</label>
-                          <input type="text" class="form-control" id="vetPhone" name="vetPhone" required>
+                          <input type="text" class="form-control" id="vetPhone" name="vetPhone" value="<?php echo $vetPhone?>" required>
                       </div>
                   </div>
               </div>
@@ -77,11 +123,11 @@
                   <div class="ms-5">
                       <div class="mt-3">
                           <label for="vetEmail" class="form-label">Email Address</label>
-                          <input type="text" class="form-control" id="vetEmail" name="vetEmail" required>
+                          <input type="text" class="form-control" id="vetEmail" name="vetEmail" value="<?php echo $vetEmail?>" required>
                       </div>
                       <div>
                           <label for="vetUsername" class="form-label">Username</label>
-                          <input type="text" class="form-control" id="vetUsername" name="vetUsername" required>
+                          <input type="text" class="form-control" id="vetUsername" name="vetUsername" value="<?php echo $vetUsername?>" required>
                       </div>
                       <div>
                           <label for="vetPassword" class="form-label">Password</label>
