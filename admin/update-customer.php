@@ -1,28 +1,87 @@
 <?php
-    require_once('../classes/customer.class.php');
-    require_once('../classes/pet.class.php');
-    require_once('./tools/functions.php');
+require_once('../classes/customer.class.php');
+require_once('../classes/pet.class.php');
+require_once('./tools/functions.php');
 
-    if(isset($_GET['customerID'])) {
-        $customer_id = $_GET['customerID'];
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
-        $customer = new Customer();
+if (isset($_GET['customerID'])) {
+    $_SESSION['customerID'] = $_GET['customerID'];
+    $customerID = $_GET['customerID'];
+    $customer = new Customer();
+    $customerData = $customer->fetch($customerID);
+    if (!$customerData) {
+        echo "Error: Customer data not found.";
+        exit();
+    }
+} else {
+    echo "Error: Customer ID not provided.";
+    exit();
+}
 
-        $customerData = $customer->fetch($customer_id);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $requiredFields = ['firstname', 'middlename', 'lastname', 'dob', 'city', 'address', 'email', 'state', 'code', 'num'];
+    $missingFields = array_diff($requiredFields, array_keys($_POST));
+    if (!empty($missingFields)) {
+        error_log("Missing POST parameters: " . implode(', ', $missingFields));
+        echo "Error: Missing POST parameters.";
+        exit();
+    }
 
-        if($customerData) {
-            $petClass = new Pet();
-            $petData = $petClass->fetchByCustomerId($customer_id);
-            
+    $customerID = $_SESSION['customerID'];
+
+    $customerFirstname = $_POST['firstname'];
+    $customerMiddlename = $_POST['middlename'];
+    $customerLastname = $_POST['lastname'];
+    $customerDOB = $_POST['dob'];
+    $customerCity = $_POST['city'];
+    $customerAddress = $_POST['address'];
+    $customerEmail = $_POST['email'];
+    $customerState = $_POST['state'];
+    $customerPostal = $_POST['code'];
+    $customerPhone = $_POST['num'];
+
+    $customer->customerID = $customerID;
+    $customer->customerFirstname = $customerFirstname;
+    $customer->customerMiddlename = $customerMiddlename;
+    $customer->customerLastname = $customerLastname;
+    $customer->customerDOB = $customerDOB;
+    $customer->customerCity = $customerCity;
+    $customer->customerAddress = $customerAddress;
+    $customer->customerEmail = $customerEmail;
+    $customer->customerState = $customerState;
+    $customer->customerPostal = $customerPostal;
+    $customer->customerPhone = $customerPhone;
+
+    $success = $customer->update();
+    if ($success) { 
+      $pet = new Pet();
+        $pet->petName = $_POST['petName'];
+        $pet->petBirthdate = $_POST['petBirthdate'];
+        $pet->petAge = $_POST['petAge'];
+        $pet->petBreed = $_POST['petBreed'];
+        $pet->petType = $_POST['petType'];
+        $pet->petGender = $_POST['petGender'];
+        $pet->petWeight = $_POST['petWeight'];
+        $pet->petColor = $_POST['petColor'];
+
+        $successPetUpdate = $pet->update();
+        if ($successPetUpdate) {
+            header('Location: customers.php');
+            exit();
         } else {
-            echo "Customer not found.";
-            exit;
+            echo "Error: Failed to update pet data.";
+            exit();
         }
     } else {
-        echo "Customer ID is missing.";
-        exit; 
+        echo "Error: Failed to update customer data.";
+        exit();
     }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -134,7 +193,7 @@
               <div class="form-body">
                 <?php
                 $pet = new Pet();
-                $pets = $pet->fetchByCustomerId($customer_id);
+                $pets = $pet->fetchByCustomerId($customerID);
                 if ($pets) {
                   foreach ($pets as $petData) { 
                     ?>
@@ -196,7 +255,7 @@
                 <a href="update-medicalRecord.php" class="back-btn btn-secondary">View Medical History</a>
               </div>
             </div>
-          </form>
+          
       </div>
     </section>
 
@@ -210,6 +269,7 @@
         </div>
       </div>
     </section>
+    </form>
   </main>
   <script>
            document.getElementById('fileInput').addEventListener('change', function (event) {

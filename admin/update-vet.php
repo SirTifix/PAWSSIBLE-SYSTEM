@@ -7,14 +7,12 @@ require_once('../classes/veterinarian.class.php');
 require_once  './tools/functions.php';
 $veterinarianClass = new Veterinarian();
 
-// Start session if not already started
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Fetch veterinarian data if vetID is provided via GET
 if (isset($_GET['vetID'])) {
-    $_SESSION['vetID'] = $_GET['vetID']; // Store vetID in session variable
+    $_SESSION['vetID'] = $_GET['vetID']; 
     $vetID = $_GET['vetID'];
     $vetData = $veterinarianClass->fetch($vetID);
     if ($vetData) {
@@ -25,23 +23,18 @@ if (isset($_GET['vetID'])) {
         $vetUsername = $vetData['vetUsername'];
         $vetPhone = $vetData['vetPhone'];
     } else {
-        // Handle error if data not found
         echo "Error: Veterinarian data not found.";
         exit();
     }
 } else {
-    // Handle error if vetID not provided
     echo "Error: vetID not provided.";
     exit();
 }
 
-// Handle POST request to update veterinarian data
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Check if all necessary POST parameters are set
     $requiredFields = ['vetFirstname', 'vetLastname', 'vetMiddlename', 'vetEmail', 'vetUsername', 'vetPhone'];
     $missingFields = array_diff($requiredFields, array_keys($_POST));
     if (!empty($missingFields)) {
-        // Log missing fields for debugging
         error_log("Missing POST parameters: " . implode(', ', $missingFields));
         echo "Error: Missing POST parameters.";
         exit();
