@@ -201,41 +201,30 @@
 
  <!-- Initialize Swiper -->
  <script>
-    function initializeSwiper() {
-  if (swiper !== undefined) {
-    swiper.destroy(true, true);
-  }
-  swiper = new Swiper(".mySwiper", {
-    slidesPerView: 3,
-    spaceBetween: 10,
-    loop: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    breakpoints: {
-      // when window width is <= 320px
-      320: {
-        slidesPerView: 'auto', // Show only one slide at a time
-        spaceBetween: 10
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 10,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
       },
-      // when window width is > 320px
-      321: {
-        slidesPerView: 3, // Show three slides at a time
-        spaceBetween: 10
-      }
-    }
-  });
-}
+        navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints:{
+        1024:{
+            slidesPerView: 3,
+            spaceBetween: 10,
 
+        }
+      }
+      });
 // Initialize Swiper
 initializeSwiper();
-
   </script>
+  
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
  <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
 

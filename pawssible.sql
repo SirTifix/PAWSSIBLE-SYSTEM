@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2024 at 09:57 PM
+-- Generation Time: Apr 18, 2024 at 02:29 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -36,6 +36,56 @@ CREATE TABLE `admin` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`adminID`, `adminUsername`, `adminPassword`, `adminEmail`, `created_at`, `updated_at`) VALUES
+(1, 'admin', '$2y$10$.NoS7kE5O3.hFsDlgMk/NeERDlJ5X9dG1uaR66xyTrky4tle.s6L.', 'admin@admin.com', '2024-02-29 00:24:43', '2024-02-29 00:24:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking`
+--
+
+CREATE TABLE `booking` (
+  `bookingID` int(10) NOT NULL,
+  `firstName` varchar(100) NOT NULL,
+  `lastName` varchar(100) NOT NULL,
+  `emailAddress` varchar(100) NOT NULL,
+  `contactNumber` varchar(12) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `bookingDate` varchar(50) NOT NULL,
+  `bookingTime` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `booking`
+--
+
+INSERT INTO `booking` (`bookingID`, `firstName`, `lastName`, `emailAddress`, `contactNumber`, `status`, `bookingDate`, `bookingTime`) VALUES
+(2443, 'awdawd', 'awdaw', 'dawdawd@acaw.com', '123123123', 'Pending', 'October 31, 2025', '11:00 AM 12:00 PM'),
+(6452, 'awdawd', 'awdaw', 'dawdawd@acaw.com', '123123123', 'Pending', 'October 31, 2025', '11:00 AM 12:00 PM');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking_pet`
+--
+
+CREATE TABLE `booking_pet` (
+  `bookingPetID` int(11) NOT NULL,
+  `petName` varchar(100) NOT NULL,
+  `petType` varchar(100) NOT NULL,
+  `sex` varchar(100) NOT NULL,
+  `petBreed` varchar(100) NOT NULL,
+  `petBirthDate` date NOT NULL,
+  `bookingID` int(11) NOT NULL,
+  `serviceID` int(11) NOT NULL,
+  `vetID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -51,6 +101,13 @@ CREATE TABLE `customer` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`id`, `firstname`, `lastname`, `email`, `password`, `created_at`, `updated_at`) VALUES
+(13, 'test', 'test', 'test@test.com', '$2y$10$CQh7F4D5R1UerGTqw0qcBO/nCNA8utVQOn6qPPE0wRb5Ujd6mlQoK', '2024-03-04 12:51:10', '2024-03-04 12:51:10');
 
 -- --------------------------------------------------------
 
@@ -72,6 +129,13 @@ CREATE TABLE `customer_record` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `customer_record`
+--
+
+INSERT INTO `customer_record` (`customerID`, `customerFirstname`, `customerLastname`, `customerDOB`, `customerAddress`, `customerCity`, `customerEmail`, `customerState`, `customerPostal`, `customerPhone`, `created_at`, `updated_at`) VALUES
+(26, 'Anton', 'Altair', '2024-03-13', 'test', 'test', 'test@test.com', 'Zamboanga City', 7000, 2147483647, '2024-03-03 08:59:04', '2024-03-03 08:59:04');
 
 -- --------------------------------------------------------
 
@@ -106,8 +170,28 @@ CREATE TABLE `pet` (
   `petGender` varchar(255) NOT NULL,
   `petWeight` float NOT NULL,
   `petColor` varchar(255) NOT NULL,
+  `customerID` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pet`
+--
+
+INSERT INTO `pet` (`petId`, `petName`, `petBirthdate`, `petAge`, `petBreed`, `petType`, `petGender`, `petWeight`, `petColor`, `customerID`, `created_at`, `updated_at`) VALUES
+(14, 'Gompi', '0000-00-00', 2, 'Siamese', 'Cat', 'Male', 140, 'Brown', 26, '2024-03-03 08:59:04', '2024-03-03 08:59:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schedule_status`
+--
+
+CREATE TABLE `schedule_status` (
+  `scheduleID` int(11) NOT NULL,
+  `scheduleDate` varchar(50) NOT NULL,
+  `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -124,6 +208,28 @@ CREATE TABLE `secretary` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `service`
+--
+
+CREATE TABLE `service` (
+  `serviceID` int(10) NOT NULL,
+  `serviceName` varchar(100) NOT NULL,
+  `serviceDescription` varchar(100) NOT NULL,
+  `servicePrice` double NOT NULL,
+  `created_at` date NOT NULL,
+  `updated_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `service`
+--
+
+INSERT INTO `service` (`serviceID`, `serviceName`, `serviceDescription`, `servicePrice`, `created_at`, `updated_at`) VALUES
+(2, 'Kapon', 'Low cost male', 1700, '2024-03-04', '2024-03-04');
 
 -- --------------------------------------------------------
 
@@ -163,6 +269,13 @@ CREATE TABLE `veterinarian` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `veterinarian`
+--
+
+INSERT INTO `veterinarian` (`vetID`, `vetFirstname`, `vetLastname`, `vetPhone`, `vetEmail`, `vetUsername`, `vetPassword`, `created_at`, `updated_at`) VALUES
+(4, 'Vet ', 'Test', 12314512, 'test@test.com', 'vet', '$2y$10$lL4yHJ.D6Z0WzlsZf0..CO1zEcLLY5Ts/SrGulWMkvZDvcWy0or7a', '2024-03-03 01:29:55', '2024-03-03 08:29:55');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -171,6 +284,18 @@ CREATE TABLE `veterinarian` (
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`adminID`);
+
+--
+-- Indexes for table `booking`
+--
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`bookingID`);
+
+--
+-- Indexes for table `booking_pet`
+--
+ALTER TABLE `booking_pet`
+  ADD PRIMARY KEY (`bookingPetID`);
 
 --
 -- Indexes for table `customer`
@@ -197,10 +322,22 @@ ALTER TABLE `pet`
   ADD PRIMARY KEY (`petId`);
 
 --
+-- Indexes for table `schedule_status`
+--
+ALTER TABLE `schedule_status`
+  ADD PRIMARY KEY (`scheduleID`);
+
+--
 -- Indexes for table `secretary`
 --
 ALTER TABLE `secretary`
   ADD PRIMARY KEY (`secretaryID`);
+
+--
+-- Indexes for table `service`
+--
+ALTER TABLE `service`
+  ADD PRIMARY KEY (`serviceID`);
 
 --
 -- Indexes for table `vaccines`
@@ -222,19 +359,25 @@ ALTER TABLE `veterinarian`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `adminID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `adminID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `booking_pet`
+--
+ALTER TABLE `booking_pet`
+  MODIFY `bookingPetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `customer_record`
 --
 ALTER TABLE `customer_record`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `medicalrecord`
@@ -246,13 +389,25 @@ ALTER TABLE `medicalrecord`
 -- AUTO_INCREMENT for table `pet`
 --
 ALTER TABLE `pet`
-  MODIFY `petId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `petId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `schedule_status`
+--
+ALTER TABLE `schedule_status`
+  MODIFY `scheduleID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `secretary`
 --
 ALTER TABLE `secretary`
   MODIFY `secretaryID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `service`
+--
+ALTER TABLE `service`
+  MODIFY `serviceID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `vaccines`
@@ -264,7 +419,7 @@ ALTER TABLE `vaccines`
 -- AUTO_INCREMENT for table `veterinarian`
 --
 ALTER TABLE `veterinarian`
-  MODIFY `vetID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `vetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
