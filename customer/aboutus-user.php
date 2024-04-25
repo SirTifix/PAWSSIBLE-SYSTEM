@@ -12,42 +12,14 @@
 </head>
 
 <body>
-    <header>
-        <img class="seventh-lec" src="./assets/img/Ellipse 17.png" alt="img">
-        <img class="eighth-lec" src="./assets/img/Vector 7.png" alt="img">
-        <img class="nignth-lec" src="./assetsimg/Ellipse 18.png" alt="img">
-        <img class="tenth-lec" src="./assets/img/Rectangle 10.png" alt="img">
-        <img class="twelveth-lec" src="./assets/img/multiple-pets2-Photoroom.png.png" alt="img">
-    
-
-        <div class="sticky-top">
-    <nav class="navbar navbar-expand-lg ">
-        <div class="container-fluid">
-            <div class="logo p-3 d-flex align-items-center "> 
-                <img class="logo-clinic" src="./assets/img/logo.png" alt="Logo" class="logosec">
-                <div class="logo-text px-3">PAWSsible Solutions <br> Veterinary Clinic</div>
-            
-
-            <div class="navbar-toggle  "> 
-                <button class="menu-toggle" id="menu-toggle" style="color: black;">&#9776;</button>
-            </div>
-            </div>
-
-            <div class="navbar-links " id="navbar-links"> 
-                <a href="./index.php">Home</a> 
-                <a href="./services.php">Services</a>
-                <a href="./aboutus.php">About Us</a>
-                <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-            </div>
-        </div>
-    </nav>
-</div>
-    </header>
+    <?php
+    $title = 'Pawssible Solutions Veterinary';
+    require_once('./include/aboutus-user-header.php');
+    ?>
 
     <div class="intro-title text-center">
         <h1> About Us </h1>
     </div>
-
 
     <section>
         <div class="about-us-description">
@@ -89,11 +61,11 @@
         require_once('./include/js.php');
     ?>
 
-<script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
-<script>
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-        document.getElementById('navbar-links').classList.toggle('active');
-    });
-</script>
+    <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('navbar-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

@@ -24,8 +24,8 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <div class="navbar-links navbar-nav navbar-nav align-items-center">
                     <a class="navbar-links" href="home.php">Home</a>
-                    <a class="navbar-links" href="services.php">Services</a>
-                    <a class="navbar-links" href="aboutus.php">About Us</a>
+                    <a class="navbar-links" href="services-user.php">Services</a>
+                    <a class="navbar-links" href="aboutus-user.php">About Us</a>
                     <a class="navbar-links" href="booking.php">Booking</a>
 
                     <div class="customized-drop-customer btn-group m-3" role="group">

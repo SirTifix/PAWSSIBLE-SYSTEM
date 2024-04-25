@@ -15,14 +15,15 @@
 </head>
 
 <body>
-<?php
-    $title = 'Pawssible Solutions Veterinary';
-    require_once('./include/services-user-header.php');
-    ?>
+  <?php
+      $title = 'Pawssible Solutions Veterinary';
+      require_once ('./include/customer-header.php');
+      ?>
+      <div class="intro-title text-center">
+      <h1> Our Services </h1>
+      </div>
 
-  <div class="intro-title text-center">
-  <h1> Our Services </h1>
-  </div>
+
 
 <div class="sliders">
      <!-- Swiper -->

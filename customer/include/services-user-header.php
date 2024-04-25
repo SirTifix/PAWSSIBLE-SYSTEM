@@ -1,4 +1,9 @@
 <header>
+    <img class="third-lec" src="assets/img/Vector2.png" alt="img">
+    <img class="fourth-lec" src="assets/img/Vector3.png" alt="img">
+    <img class="sixth-lec" src="assets/img/vector-4.png" alt="img">
+    <img class="eleventh-lec" src="assets/img/multiple-pets.png" alt="img">
+
     <div class="sticky-top">
     <nav class="navbar navbar-expand-lg navbar-light" style="background: none;">
         <div class="container-fluid align-items-center">
