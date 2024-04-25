@@ -4,7 +4,7 @@
         require_once('./include/js.php')
     ?>
 <?php
-    
+    $title = 'Medical History';
     require_once('./include/vet-head.php');
 ?>
 

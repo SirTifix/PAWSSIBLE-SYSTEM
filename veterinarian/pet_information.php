@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    
+    $title = 'Pet Information';
     require_once('./include/vet-head.php');
 ?>
 

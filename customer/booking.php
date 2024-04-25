@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
 $title = 'Pawssible Solutions Veterinary';
-require_once ('./include/booking-header.php');
+require_once ('./include/customer-header.php');
 require_once ('./tools/functions.php');
 ?>
 
@@ -13,6 +13,7 @@ require_once ('./tools/functions.php');
   <title>
     <?php echo $title ?>
   </title>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/booking-style.css">
   <link rel="stylesheet" href="./assets/css/style.css">
@@ -24,24 +25,11 @@ require_once ('./tools/functions.php');
 </head>
 
 <body>
-  <section>
-    <div class="social-icons">
-      <a href="#" title="facebook">
-        <i class="fa-brands fa-facebook" aria-hidden="true"></i>
-      </a>
-      <a href="#" title="instagram">
-        <i class="fa fa-instagram" aria-hidden="true"></i>
-      </a>
-      <a href="#" title="twitter">
-        <i class="fa-sharp fa-solid fa-x" aria-hidden="true"></i>
-      </a>
-    </div>
-  </section>
 
-  <div style="position: absolute; bottom: 69vh; left: 34vh; color: #2A2F4F;">
+  <div class="avail-date">
     <h2> <strong> AVAILABLE DATE </strong></h2>
   </div>
-  <div style="position: absolute; bottom: 69vh; left: 107vh; color: #2A2F4F;">
+  <div class="avail-time">
     <h2> <strong> AVAILABLE TIME </strong></h2>
   </div>
   <div class="container">
@@ -163,19 +151,18 @@ require_once ('./tools/functions.php');
             </div>
             <div class="input-container col-sm-3">
               <label for="middleName">Middle Name:</label>
-              <input type="text" id="middleName" name="middleName" required>
+              <input type="text" id="middleName" name="middleName">
             </div>
             <div class="input-container col-sm-3">
               <label for="lastName">Last Name:</label>
               <input type="text" id="lastName" name="lastName" required>
             </div>
-            
-          <div class="row">
-            <div class="input-container col-6">
-              <label for="email">Email Address:</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-          </div>
+
+            <div class="row">
+              <div class="email-text input-container col-6">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+              </div>
 
           <div class="details col-sm">
             <label for="lastName">Selected Date and Time</label>
@@ -254,9 +241,7 @@ require_once ('./tools/functions.php');
 
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
   <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -278,9 +263,9 @@ require_once ('./tools/functions.php');
     });
   </script>
 
- <?php
-        require_once('./include/footer.php');
-    ?>
+  <?php
+  require_once ('./include/footer.php');
+  ?>
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 , user-scalable=no">
     <title>Navbar Example</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
@@ -19,22 +19,28 @@
         <img class="twelveth-lec" src="./assets/img/multiple-pets2-Photoroom.png.png" alt="img">
     
 
-        <nav class="navbar">
-            <div class="logo p-3 d-flex align-items-center">
-                <img class="logo-clinic" src="./assets/img/clinic-logo.png" alt="Logo" class="logosec">
-                
-                <div class="logo-text px-3" style="color: #5263AB;">PAWSsible Solutions <br>
-                    Veterinary Clinic</div>
+        <div class="sticky-top">
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <div class="logo p-3 d-flex align-items-center "> 
+                <img class="logo-clinic" src="./assets/img/logo.png" alt="Logo" class="logosec">
+                <div class="logo-text px-3">PAWSsible Solutions <br> Veterinary Clinic</div>
+            
+
+            <div class="navbar-toggle  "> 
+                <button class="menu-toggle" id="menu-toggle" style="color: black;">&#9776;</button>
             </div>
-            <div class="navbar-links">
-                <a href="./index.php">Home</a>
-                <a href="./services.php">Services</a> 
+            </div>
+
+            <div class="navbar-links " id="navbar-links"> 
+                <a href="./index.php">Home</a> 
+                <a href="./services.php">Services</a>
                 <a href="./aboutus.php">About Us</a>
                 <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-
-                
             </div>
-        </nav>
+        </div>
+    </nav>
+</div>
     </header>
 
     <div class="intro-title text-center">
@@ -83,5 +89,10 @@
     ?>
 
 <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
+<script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('navbar-links').classList.toggle('active');
+    });
+</script>
 </body>
 </html>

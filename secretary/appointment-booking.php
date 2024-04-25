@@ -136,15 +136,13 @@ require_once('./include/sec-head.php');
                   </div>
 
                   <div class="input-container col-sm-3">
+                    <label for="middleName">Middle Name (Optional):</label>
+                    <input type="text" id="middleName" name="middleName">
+                  </div>
+
+                  <div class="input-container col-sm-3">
                     <label for="lastName">Last Name:</label>
                     <input type="text" id="lastName" name="lastName" required>
-                  </div>
-                  
-                  <div class="details col-sm">
-                    <label for="lastName">Selected Date and Time</label>
-                    <div class="col-sm">
-                      <p id="selectedDateTime"></p>
-                    </div>
                   </div>
 
                   <div class="row">
@@ -152,13 +150,18 @@ require_once('./include/sec-head.php');
                       <label for="email">Email Address:</label>
                       <input type="email" id="email" name="email" required>
                     </div>
+                    <div class="details col-sm">
+                      <label for="lastName">Selected Date and Time</label>
+                      <div class="col-sm">
+                        <p id="selectedDateTime"></p>
+                      </div>
+                    </div>
                   </div>
 
                   <div class="row">
                     <div class="input-container col-6">
                       <label for="contactNumber">Contact Number:</label>
                       <input type="tel" id="contactNumber" name="contactNumber" required>
-
                     </div>
                   </div>
 
@@ -166,6 +169,7 @@ require_once('./include/sec-head.php');
                     <div class="input-container col-6">
                       <label for="pets">Number of Pets:</label>
                       <select id="pets" name="pets">
+                        <option value="0">Select Number of Pets</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
