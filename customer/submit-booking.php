@@ -53,7 +53,7 @@
     }
 ?>
 <div class="pet-info-form background-color-container">
-    <h2 class="mb-4">Pet ${i} Information Form</h2>
+    <h2 class="mb-4">Pet Information Form</h2>
     <form>
     <div class="form-row">
         <div class="form-group col-sm-2  background-color">

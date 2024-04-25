@@ -66,7 +66,7 @@ if (isset($_POST['save'])) {
             <div class="col-5 d-flex justify-content-end">
                 <div class="crud-btn">
                     <a href="" class="crud-text" data-bs-toggle="modal" data-bs-target="#addServiceModal"><i
-                            class="fa-solid fa-circle-plus me-2" aria-hidden="true"></i> Add</a>
+                            class="fa-solid fa-circle-plus me-2" aria-hidden="true"></i> Add Service</a>
                 </div>
 
                 <form id="addServiceForm" method="post">

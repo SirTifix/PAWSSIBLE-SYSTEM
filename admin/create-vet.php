@@ -11,6 +11,7 @@
       $currentDateTime = date('Y-m-d H:i:s');
 
       $veterinarianClass->vetFirstname = htmlentities($_POST['vetFirstname']);
+      $veterinarianClass->vetMiddlename = htmlentities($_POST['vetMiddlename']);
       $veterinarianClass->vetLastname = htmlentities($_POST['vetLastname']);
       $veterinarianClass->vetPhone = htmlentities($_POST['vetPhone']);
       $veterinarianClass->vetEmail = htmlentities($_POST['vetEmail']);
@@ -66,16 +67,16 @@
               <div class="col-6">
                   <div class="ms-5">
                       <div class="mt-3">
-                          <label for="vetFirstname" class="form-label">Firstname</label>
+                          <label for="vetFirstname" class="form-label">First Name</label>
                           <input type="text" class="form-control" id="vetFirstname" name="vetFirstname" required>
                       </div>
                       <div>
-                          <label for="vetLastname" class="form-label">Lastname</label>
-                          <input type="text" class="form-control" id="vetLastname" name="vetLastname" required>
+                          <label for="vetMiddlename" class="form-label">Middle Name (Optional)</label>
+                          <input type="text" class="form-control" id="vetMiddlename" name="vetMiddlename">
                       </div>
                       <div>
-                          <label for="vetMiddlename" class="form-label">Middle</label>
-                          <input type="text" class="form-control" id="vetMiddlename" name="vetMiddlename" required>
+                          <label for="vetLastname" class="form-label">Last Name</label>
+                          <input type="text" class="form-control" id="vetLastname" name="vetLastname" required>
                       </div>
                       <div>
                           <label for="vetPhone" class="form-label">Phone Number</label>

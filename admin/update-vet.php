@@ -11,6 +11,7 @@
       $vetData = $veterinarianClass->fetch($vetID); // Fetch data from database
       if($vetData) {
           $vetFirstname = $vetData['vetFirstname'];
+          $vetMiddlename = $vetData['vetMiddlename'];
           $vetLastname = $vetData['vetLastname'];
           $vetEmail = $vetData['vetEmail'];
           $vetUsername = $vetData['vetUsername'];
@@ -56,16 +57,16 @@
               <div class="col-6">
                   <div class="ms-5">
                       <div class="mt-3">
-                          <label for="vetFirstname" class="form-label">Firstname</label>
+                          <label for="vetFirstname" class="form-label">First Name</label>
                           <input type="text" class="form-control" id="vetFirstname" name="vetFirstname" required>
                       </div>
                       <div>
-                          <label for="vetLastname" class="form-label">Lastname</label>
-                          <input type="text" class="form-control" id="vetLastname" name="vetLastname" required>
+                          <label for="vetMiddlename" class="form-label">Middle Name (Optional)</label>
+                          <input type="text" class="form-control" id="vetMiddlename" name="vetMiddlename">
                       </div>
                       <div>
-                          <label for="vetMiddlename" class="form-label">Middle</label>
-                          <input type="text" class="form-control" id="vetMiddlename" name="vetMiddlename" required>
+                          <label for="vetLastname" class="form-label">Last Name</label>
+                          <input type="text" class="form-control" id="vetLastname" name="vetLastname" required>
                       </div>
                       <div>
                           <label for="vetPhone" class="form-label">Phone Number</label>
@@ -105,7 +106,7 @@
                   <a href="veterinarians.php" class="back-btn btn-secondary">Cancel</a>
               </div>
               <div>
-                  <button type="submit" name="submit" class="create-vet-btn btn-secondary" id="addStaffButton">Save Account</button>
+                  <button type="submit" name="submit" class="create-vet-btn btn-secondary" id="addStaffButton">Save</button>
               </div>
           </div>
       </form>
