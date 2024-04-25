@@ -3,10 +3,8 @@
 ?>
 <header>
     <img class="circle" src="assets/img/circle-bg.png">
-    <img class="second-lec" src="assets/img/second-lec.png">
     <img class="third-lec" src="assets/img/Vector2.png" alt="img">
     <img class="fourth-lec" src="assets/img/Vector3.png" alt="img">
-    <img class="fifth-lec" src="assets/img/vet-dog.png" alt="img">
 
     <div class="sticky-top">
     <nav class="navbar navbar-expand-lg ">
