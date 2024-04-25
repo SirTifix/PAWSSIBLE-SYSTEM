@@ -200,7 +200,7 @@ require_once ('./tools/functions.php');
 
             <div id="petFormsContainer" class="petFormsContainer"></div>
 
-            <button type="button" id="submitBtn" class="btn btn-primary" data-toggle="modal"
+            <button type="submit" name= "REQUEST_METHOD" id="submitBtn" class="btn btn-primary" data-toggle="modal"
               data-target="#confirmationModal" style="background-color:#2A2F4F" class="float-right">
               Book Appointment
             </button>

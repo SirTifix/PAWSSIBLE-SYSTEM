@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Dynamically create and append pet info forms based on the selected number of pets
     for (let i = 1; i <= numberOfPets; i++) {
       // Fetch content from PHP file using AJAX
-      fetch('../customer/include/pet_form.php')
+      fetch('../customer/submit-booking.php')
         .then(response => response.text())
         .then(data => {
           const petForm = document.createElement("div");
