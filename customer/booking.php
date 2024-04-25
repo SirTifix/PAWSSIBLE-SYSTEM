@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$title = 'Pawssible Solutions Veterinary';
+$title = 'Booking';
 require_once ('./include/customer-header.php');
 require_once ('./tools/functions.php');
 ?>
@@ -13,7 +13,7 @@ require_once ('./tools/functions.php');
   <title>
     <?php echo $title ?>
   </title>
-
+  <link rel="website icon" type="png" href="./assets/img/logo.png">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/booking-style.css">
   <link rel="stylesheet" href="./assets/css/style.css">

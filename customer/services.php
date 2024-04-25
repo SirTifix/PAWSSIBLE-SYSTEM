@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services</title>
-    <link rel="website icon" type="png" href="./assets/img/logo.png">
     <script src="./script/script.js"></script>
+    <link rel="website icon" type="png" href="./assets/img/logo.png">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -17,7 +17,7 @@
 <body>
 <?php
     $title = 'Pawssible Solutions Veterinary';
-    require_once('./include/services-user-header.php');
+    require_once('./include/user-header.php');
     ?>
 
   <div class="intro-title text-center">
