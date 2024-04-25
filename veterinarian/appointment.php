@@ -24,35 +24,38 @@
             </div>
         </div>
       </div>
+      <div class="table-appointment">
+        <div class="row justify-content-start align-items-center">
+            <div class="col-auto my-1">
+                <div class="search-con">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search here...">
+                </div>
+            </div>
+        </div> 
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+          <th scope="col">Book No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Status</th>
+                
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>Mark Chi</td>
+            <td>Feb 23, 2023</td>
+            <td>3:00pm</td>
+            <td></td>
+            
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+      
         </tbody>
       </table>
+      </div>
     </section>
 </body>
 </html>

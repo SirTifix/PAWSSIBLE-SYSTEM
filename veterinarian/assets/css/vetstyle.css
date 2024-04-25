@@ -379,7 +379,7 @@ td.available {
   padding: 20px;
   border: 1px solid #111111;
   border-radius: 20px;
-  width: 30%;
+  width: 25%;
   text-align: center;
 }
 
@@ -953,6 +953,10 @@ margin-left: 240px;
 }
 .pet-bg , .pet-bg1{
    margin-top: 25px;
+}
+.pet-con-bg{
+  border: solid 1px #888484;
+    background-color: #fff;
 }
 
 .customer-title h2{
@@ -1607,4 +1611,61 @@ margin-left: 240px;
   border-right: none;
   border-left: none;
   border-radius: 0%;
+}
+/* ADDITIONAL */
+.filter-con {
+  margin-left: 260px;
+  margin-right: 0%;
+}
+
+.form-group-sel {
+  padding: 10px 10px;
+}
+.table-wrapper {
+  padding: 10px;
+  margin: 10px;
+  margin-left: 260px;
+}
+.customer-table-con {
+  margin-top: 30px;
+  margin-left: 260px;
+}
+
+.cust-table-wrapper {
+  background-color: #fff;
+  padding: 20px;
+  margin: 65px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px #bebebe;
+}
+
+.cust-text {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+.table-appointment {
+  padding: 2px 8px;
+  background: linear-gradient(to bottom, #bdbfde, #d7d7e0);
+}
+
+#customer tbody tr:hover {
+
+  cursor: pointer; /* Change cursor to pointer on hover */
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.back-btn-vet , .back-btn-med{
+  background-color: #fff;
+  color: #3A3F54;
+  text-decoration: none;
+  border: 1px solid #4a4f63; /* Add border property with black color */
+  border-radius: 50px;
+  padding: 10px 60px;
+  margin: 10px;
+  font-weight: bold;
+  margin-bottom: 160px;
+}
+
+.back-btn-med{
+  margin-left: 900px;
 }

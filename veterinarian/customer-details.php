@@ -54,7 +54,16 @@
                         </div> 
                    
                     </div> 
+                    
+                    
                     <div class="new-account-con col-lg-6 col-md-6">
+                        
+                        <div class="d-flex mt-3 align-items-center col-12">
+                            <div class="my-1 align-items-center ps-5">
+                            <label for="middlename" class="forms-label">Middle Name (Optional):</label>
+                            <input type="text" class="form-control" id="middlename" name="middlename">
+                            </div>
+                        </div>
                         <div class="d-flex mt-3 align-items-center col-12 ">
                             <div class="my-1 align-items-center ps-5">
                             <label for="last_name" class="form-label-setting">Last Name</label>
@@ -84,11 +93,9 @@
                     </div> 
                     <div class="d-flex justify-content-between align-items-center">
                   <div>
-                    <a href="customer_information.php" class="back-btn btn-secondary">Back</a>
+                    <a href="customer_information.php" class="back-btn-vet btn-secondary">Back</a>
                   </div>
-                <div>
-                  <button type="submit" class="create-vet-btn btn-secondary" id="addStaffButton">Save</button>
-                </div>
+               
                 </div>
                 </form>
             </div>
