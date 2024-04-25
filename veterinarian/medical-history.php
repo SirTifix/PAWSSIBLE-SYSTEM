@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-    
+    $title = 'Medical History';
     require_once('./include/vet-head.php');
 ?>
   

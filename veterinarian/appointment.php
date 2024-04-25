@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <?php
-    
+    $title = 'Appointment';
     require_once('./include/vet-head.php');
 ?>
 
