@@ -14,9 +14,35 @@
 </head>
 
 <body>
-<?php
-    require_once('./include/user-header.php')
-    ?>
+    <header>
+    <img class="third-lec" src="assets/img/Vector2.png" alt="img">
+    <img class="fourth-lec" src="assets/img/Vector3.png" alt="img">
+    <img class="sixth-lec" src="assets/img/vector-4.png" alt="img">
+    <img class="eleventh-lec" src="assets/img/multiple-pets.png" alt="img">
+
+
+
+    
+
+    <nav class="navbar">
+        <div class="logo p-3 d-flex align-items-center">
+            <img class="logo-clinic" src="assets/img/clinic-logo.png" alt="Logo" class="logosec">
+            
+            <div class="logo-text px-3" style="color: #5263AB;">PAWSsible Solutions <br>
+                Veterinary Clinic</div>
+        </div>
+        <div class="navbar-links">
+            <a href="./index.php">Home</a>
+            <a href="./services.php">Services</a> 
+            <a href="./aboutus.php">About Us</a>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+
+            
+        </div>
+    </nav>
+
+</header>
+
 <div class="intro-title text-center">
 <h1> Our Services </h1>
 </div>

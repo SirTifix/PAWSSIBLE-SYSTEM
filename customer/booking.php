@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
 $title = 'Pawssible Solutions Veterinary';
-require_once ('./include/booking-header.php');
+require_once ('./include/customer-header.php');
 require_once ('./tools/functions.php');
 ?>
 

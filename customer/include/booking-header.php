@@ -4,7 +4,7 @@
         <div class="logo p-3 d-flex align-items-center">
             <img class="logo-clinic" src="assets/img/logo.png" alt="Logo" class="logosec">
 
-            <div class="logo-text-booking px-3">PAWSsible Solutions <br>
+            <div class="logo-text-customer px-3">PAWSsible Solutions <br>
                 Veterinary Clinic</div>
         </div>
         <div class="navbar-links">
@@ -13,7 +13,7 @@
             <a href="aboutus.php">About Us</a>
             <a href="booking.php">Booking</a>
 
-            <div class="btn-group m-3" role="group">
+            <div class="customized-drop-customer btn-group m-3" role="group">
                 <div class="btn-group dropstart" role="group">
                     <button class="btn btn-primary" type="button" id="notificationDropdown" data-toggle="dropdown"
                         aria-expanded="false" aria-haspopup="true">
@@ -82,7 +82,6 @@
                     </div>
                 </div>
             </div>
-
 
         </div>
     </nav>
