@@ -63,7 +63,7 @@
                         </li>
                         <div class="dropdown-divider"></div>
                         <li>
-                            <a class="dropdown-item text-center" style="margin:0;font-size:90%;font-weight400"
+                            <a class="dropdown-item text-center" style="margin:0;font-size:90%;font-weight:400;"
                                 href="./appointment.php">View all</a>
                         </li>
                     </ul>
