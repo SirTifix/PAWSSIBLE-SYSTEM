@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    
+    $title = 'Dashboard';
     require_once('./include/vet-head.php');
 ?>
 

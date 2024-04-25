@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
                             <p class="text-center"> 
                                 <img src="./assets/img/clinic-logo.png" style="width: 300px" alt="">
                             </p>    
-                            <h1 class="h1 my-5 text-center" style="color: #5263AB; font-weight: bold;">VETERINARIAN LOGIN</h1>
+                            <h1 class="h1 my-5 text-center" style="color: #5263AB; font-weight: bold;">LOGIN</h1>
                             <form action="" method="post">
                                 <div class="mb-5 input-group">
                                     <span class="input-group-text pe-4" style="background-color: #C1CCF8;"><i class="fa fa-user ps-1"></i></span>

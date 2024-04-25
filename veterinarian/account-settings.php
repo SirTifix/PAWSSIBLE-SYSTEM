@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    
+    $title = 'Settings';
     require_once('./include/vet-head.php');
 ?>
 
