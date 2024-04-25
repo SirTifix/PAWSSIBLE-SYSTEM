@@ -3,11 +3,11 @@
     <img class="second-lec" src="assets/img/second-lec.png">
     <img class="third-lec" src="assets/img/Vector2.png" alt="img">
     <img class="fourth-lec" src="assets/img/Vector3.png" alt="img">
-    <img class="fifth-lec" src="assets/img/vet-dog.png" alt="img">
+    <!-- <img class="fifth-lec" src="assets/img/vet-dog.png" alt="img">  -->
 
     <div class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light" style="background: none;">
-            <div class="container-fluid align-items-center d-flex">
+            <div class="container-fluid align-items-center">
                 <!-- Logo -->
                 <div class="logo p-3 d-flex align-items-center">
                     <img class="logo-clinic" src="assets/img/logo.png" alt="Logo" class="logosec img-fluid">
@@ -22,8 +22,8 @@
                 </div>
 
                 <!-- Navbar links -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-links navbar-nav justify-content-center align-items-center">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-links navbar-nav align-items-center">
                         <li class="navbar-links">
                             <a href="home.php">Home</a>
                         </li>
