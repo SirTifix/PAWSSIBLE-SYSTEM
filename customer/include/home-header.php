@@ -54,12 +54,29 @@
 </header>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var navbarCollapse = document.getElementById("navbarSupportedContent");
-        var navbarToggler = document.querySelector(".navbar-toggler");
+   document.addEventListener("DOMContentLoaded", function() {
+    var navbarCollapse = document.getElementById("navbarSupportedContent");
+    var navbarToggler = document.querySelector(".navbar-toggler");
 
-        navbarToggler.addEventListener("click", function() {
-            navbarCollapse.classList.toggle("bg-color");
-        });
+    // Function to close navbar collapse when clicked outside
+    function closeNavbarCollapse(event) {
+        if (!navbarCollapse.contains(event.target) && !navbarToggler.contains(event.target)) {
+            navbarCollapse.classList.remove("show"); // Remove the 'show' class to hide the collapse menu
+            navbarCollapse.classList.remove("bg-color"); // Remove the background color
+        }
+    }
+
+    // Event listener to close navbar collapse when clicked outside
+    document.body.addEventListener("click", closeNavbarCollapse);
+
+    // Event listener to remove background color when collapse menu is hidden
+    navbarCollapse.addEventListener("hidden.bs.collapse", function () {
+        navbarCollapse.classList.remove("bg-color");
     });
+
+    navbarToggler.addEventListener("click", function() {
+        navbarCollapse.classList.toggle("bg-color");
+    });
+});
+
 </script>
