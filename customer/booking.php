@@ -153,7 +153,7 @@ require_once ('./tools/functions.php');
             </div>
 
             <div class="input-container col-sm-3">
-              <label for="middleName">Middle Name (Optional):</label>
+              <label for="middleName">Middle Name:</label>
               <input type="text" id="middleName" name="middleName">
             </div>
 
@@ -163,7 +163,7 @@ require_once ('./tools/functions.php');
             </div>
 
             <div class="row">
-              <div class="input-container col-6">
+              <div class="email-text input-container col-6">
                 <label for="email">Email Address:</label>
                 <input type="email" id="email" name="email" required>
               </div>
