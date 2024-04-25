@@ -1,15 +1,15 @@
 <header>
-    <img class="circle" src="assets/img/circle-bg.png">
-    <img class="second-lec" src="assets/img/second-lec.png">
-    <img class="third-lec" src="assets/img/Vector2.png" alt="img">
-    <img class="fourth-lec" src="assets/img/Vector3.png" alt="img">
+    <img class="circle img-fluid" src="assets/img/circle-bg.png">
+
+    <img class="third-lec img-fluid" src="assets/img/Vector2.png" alt="img">
+    <img class="fourth-lec img-fluid" src="assets/img/Vector3.png" alt="img">
 
     <div class="sticky-top">
     <nav class="navbar navbar-expand-lg navbar-light" style="background: none;">
         <div class="container-fluid align-items-center">
             <!-- Logo -->
             <div class="logo p-3 d-flex align-items-center">
-                    <img class="logo-clinic" src="assets/img/logo.png" alt="Logo" class="logosec img-fluid">
+                    <img class="logo-clinic img-fluid" src="assets/img/logo.png" alt="Logo" class="logosec img-fluid">
                     <div class="logo-text px-3">PAWSsible Solutions <br> Veterinary Clinic</div>
                 </div>
             

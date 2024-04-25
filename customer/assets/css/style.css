@@ -188,6 +188,13 @@ body {
 
 /* Responsive styles for navbar */
 @media (max-width: 768px) {
+  .circle {
+    position: absolute;
+    top: -10%;
+    left: -20%;
+    width: auto;
+    height: 120vh;
+  }
   .navbar {
     flex-direction: column;
     align-items: flex-start;
@@ -211,7 +218,6 @@ body {
 
 /* Additional styles for screens with minimum width of 320px */
 @media (min-width: 320px) {
-  /* Adjust font size for navbar links */
   .navbar-links a {
     font-size: 1.2rem; /* Adjust font size as needed */
   }
