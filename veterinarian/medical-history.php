@@ -30,7 +30,7 @@
 
   <div class="container">
   <div class="pet-information ">
-     <div class="row justify-content-center">
+     <div class="row justify-content-center pet-con-bg">
             <div class="title-medical">
                 <h2> Pet Information </h2>
             </div>
@@ -180,7 +180,9 @@
                     </tr>
                 </tbody>
             </table>
-
+                    <div>
+                    <a href="pet_information.php" class="back-btn-med btn-secondary">Back</a>
+                  </div>
                       
                   </div>
   

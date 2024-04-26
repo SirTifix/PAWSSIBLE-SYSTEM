@@ -23,7 +23,7 @@
   </section>
 <div class="container">
   <div class="pet-information">
-     <div class="row justify-content-center">
+     <div class="row justify-content-center pet-con-bg">
       <div class="title-medical">
         <h2> Pet Information </h2>
     </div>  

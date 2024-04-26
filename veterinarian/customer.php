@@ -20,11 +20,11 @@
         </div>
     
       </section>
-    <div class="container col-md-12">
+    
         
 
         
-        <div class="row justify-content-center">
+        <!-- <div class="row justify-content-center">
             
             <a href="customer_information.php" class="customer-button">
             <div class="col-md-12">
@@ -68,14 +68,48 @@
                 </div>
               </div>
               </a>
-          
-          
-
-          
-          
+           -->
+           <section class="filter-con row">
+            <div class="row col-7">
+                <div class="form-group-sel col-8 col-sm-auto">
+                    <select id="dateRangeSelect" class="form-select">
+                        <option value="today">Today</option>
+                        <option value="thisYear">This Year</option>
+                        <option value="lastYear">Last Year</option>
+                        <option value="custom" class="custom-option">Custom date range</option>
+                    </select>
+</section>   
+            <section class="table-con ">
+                
+                    <div class="table-wrapper ">
+                        <table id="customer" class="table table-striped table-sm">
+                            <thead>
+                                <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Recently Added</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody id="customerTableBody">
+                    <tr onclick="window.location.href='customer_information.php';">
+                        <th scope="col">1</th>
+                        <th scope="col">Maria Makiling</th>
+                        <th scope="col">Oct 20 2023</th>
+                    </tr>
+                    
+                               
+                    </tbody>
+                </table>
+                </div>
             </div>
-        </div>
+        </section>
 
+                    
+           
+
+            
+
+          
     
-</body>
-</html>
+    
