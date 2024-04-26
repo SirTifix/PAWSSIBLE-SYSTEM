@@ -9,4 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-xn538HYobU8Un3x+RmL7gg7pKViPIzhwFX+JGLaP6JZ1eG9MzHtlHjkE3vGbeD9L" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://use.fontawesome.com/releases/v4.7.0/js/all.js" integrity="sha384-wmJFVFK01zC5ZZ1LyU7IzNJ4eLTQuv0U6bF7VlD3PvVT6A6MpDqDIh0UCSNdU52Q" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
+
 </head>

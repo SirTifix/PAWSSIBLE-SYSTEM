@@ -16,6 +16,7 @@ require_once ('./include/customer-header.php');
     <link rel="stylesheet" href="../customer/assets/css/style.css">
     <link rel="stylesheet" href="../customer/assets/css/customer-profile.css">
     <link rel="stylesheet" href="../customer/assets/css/review-calendar.css">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 

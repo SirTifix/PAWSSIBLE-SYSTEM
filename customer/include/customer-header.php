@@ -26,7 +26,7 @@
                     <div class="customized-drop-customer btn-group m-3" role="group">
                         <div class="btn-group dropstart" role="group">
                             <button class="btn btn-primary" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-regular fa-bell position-relative">
+                                <i class="fa fa-bell position-relative" aria-hidden="true">
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px">
                                         3
                                     </span>
@@ -92,3 +92,4 @@
 });
 
 </script>
+<script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>

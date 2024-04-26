@@ -201,14 +201,14 @@
 
  <!-- Initialize Swiper -->
  <script>
-    var swiper = new Swiper(".mySwiper", {
+   var swiper = new Swiper(".mySwiper", {
       slidesPerView: 3,
       spaceBetween: 10,
       loop: true,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
-      },
+      }
         navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -221,10 +221,8 @@
         }
       }
       });
-// Initialize Swiper
-initializeSwiper();
+
   </script>
-  
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
  <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
 

@@ -18,6 +18,7 @@ require_once ('./include/customer-header.php');
   <link rel="stylesheet" href="../customer/assets/css/customer-dropdown.css">
   <link rel="stylesheet" href="../customer/assets/css/style.css">
   <link rel="stylesheet" href="../customer/assets/css/customer-profile.css">
+  <script src="https://use.fontawesome.com/releases/v4.7.0/js/all.js" integrity="sha384-wmJFVFK01zC5ZZ1LyU7IzNJ4eLTQuv0U6bF7VlD3PvVT6A6MpDqDIh0UCSNdU52Q" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
@@ -130,7 +131,6 @@ require_once ('./include/customer-header.php');
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>\
 
   <script>
     $('#modal1, #modal2').on('show.bs.modal', function (e) {
