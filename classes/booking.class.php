@@ -100,10 +100,10 @@ class Booking
     }
 
 
-    function addPet($petName, $petType, $sex, $petBreed, $petBirthDate, $lastInsertedBookingId, $serviceID, $vetID)
+    function addPet($petName, $petType, $sex, $petBreed, $petBirthDate, $lastInsertedBookingId, $service, $vet)
     {
         try {
-            $sqlPet = "INSERT INTO booking_pet (petName, petType, sex, petBreed, petBirthDate, bookingID, serviceID, vetID) VALUES 
+            $sqlPet = "INSERT INTO booking_pet (petName, petType, sex, petBreed, petBirthDate, bookingID, service, vet) VALUES 
                 (:petName, :petType, :sex, :petBreed, :petBirthDate, :bookingID, :serviceID, :vetID);";
             $queryPet = $this->db->connect()->prepare($sqlPet);
 
@@ -113,8 +113,8 @@ class Booking
             $queryPet->bindParam(':petBreed', $petBreed);
             $queryPet->bindParam(':petBirthDate', $petBirthDate);
             $queryPet->bindParam(':bookingID', $bookingID);
-            $queryPet->bindParam(':serviceID', $serviceID);
-            $queryPet->bindParam(':vetID', $vetID);
+            $queryPet->bindParam(':service', $service);
+            $queryPet->bindParam(':vet', $vet);
 
             if (!$queryPet->execute()) {
                 throw new Exception("Error inserting pet data");

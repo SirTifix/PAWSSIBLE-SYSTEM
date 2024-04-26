@@ -137,6 +137,7 @@ require_once ('./tools/functions.php');
         </div>
       </div>
     </div>
+
   </div>
 
   <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
@@ -144,23 +145,23 @@ require_once ('./tools/functions.php');
       <div class="modal-cont">
         <h2>Personal Information</h2>
 
+        <form action="submit-booking.php" method="POST">
+          <div class="selected-details">
+            <div class="row">
+              <div class="input-container col-sm-3">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+              </div>
 
-        <div class="selected-details">
-          <div class="row">
+              <div class="input-container col-sm-3">
+                <label for="middleName">Middle Name:</label>
+                <input type="text" id="middleName" name="middleName">
+              </div>
 
-            <div class="input-container  col-sm-3">
-              <label for="firstName">First Name:</label>
-              <input type="text" id="firstName" name="firstName" required>
-            </div>
-
-            <div class="input-container col-sm-3">
-              <label for="middleName">Middle Name:</label>
-              <input type="text" id="middleName" name="middleName">
-            </div>
-
-            <div class="input-container col-sm-3">
-              <label for="lastName">Last Name:</label>
-              <input type="text" id="lastName" name="lastName" required>
+              <div class="input-container col-sm-3">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+              </div>
             </div>
 
             <div class="row">
@@ -170,9 +171,11 @@ require_once ('./tools/functions.php');
               </div>
 
               <div class="details col-sm">
-                <label for="lastName">Selected Date and Time</label>
+                <label for="selectedDateTime">Selected Date and Time:</label>
                 <div class="col-sm">
                   <p id="selectedDateTime"></p>
+                  <input type="hidden" name="selectedDate" value="">
+                  <input type="hidden" name="selectedTime" value="">
                 </div>
               </div>
             </div>
@@ -181,7 +184,6 @@ require_once ('./tools/functions.php');
               <div class="input-container col-6">
                 <label for="contactNumber">Contact Number:</label>
                 <input type="tel" id="contactNumber" name="contactNumber" required>
-
               </div>
             </div>
 
@@ -200,35 +202,33 @@ require_once ('./tools/functions.php');
             </div>
 
             <div id="petFormsContainer" class="petFormsContainer"></div>
+          </div>
 
-            <button type="submit" name= "REQUEST_METHOD" id="submitBtn" class="btn btn-primary" data-toggle="modal"
-              data-target="#confirmationModal" style="background-color:#2A2F4F" class="float-right">
-              Book Appointment
-            </button>
+          <button type="submit" class="btn btn-primary" style="background-color:#2A2F4F; float:right;">
+            Book Appointment
+          </button>
+        </form>
 
+        <!-- Confirmation Modal -->
+        <div class="confirmation-modal">
+          <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
+            aria-labelledby="confirmationModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content text-center">
+                <div class="modal-header">
+                  <h5 class="modal-title mx-auto" id="confirmationModalLabel">Appointment Confirmation</h5>
+                </div>
 
-            <!-- Confirmation Modal -->
-            <div class="confirmation-modal">
-              <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
-                aria-labelledby="confirmationModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                  <div class="modal-content text-center">
-                    <div class="modal-header">
-                      <h5 class="modal-title mx-auto" id="confirmationModalLabel">Appointment Confirmation</h5>
-                    </div>
+                <div class="modal-body align-items-center justify-content-center d-flex flex-column">
+                  <i class="fas fa-check-circle text-success confirmation-circle mb-3" style="font-size: 80px;"></i>
+                  <p class="booking-number mb-2" style="font-size: 14px;">Your booking number:</p>
+                  <p class="mb-4">0001</p>
+                </div>
 
-                    <div class="modal-body align-items-center justify-content-center d-flex flex-column">
-                      <i class="fas fa-check-circle text-success confirmation-circle mb-3" style="font-size: 80px;"></i>
-                      <p class="booking-number mb-2" style="font-size: 14px;">Your booking number:</p>
-                      <p class="mb-4">0001</p>
-                    </div>
-
-                    <div class="modal-footer justify-content-center">
-                      <button type="button" class="btn btn-secondary" id="finishBookingBtn" data-dismiss="modal"
-                        style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
-                        Booking</button>
-                    </div>
-                  </div>
+                <div class="modal-footer justify-content-center">
+                  <button type="button" class="btn btn-secondary" id="finishBookingBtn" data-dismiss="modal"
+                    style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
+                    Booking</button>
                 </div>
               </div>
             </div>
@@ -236,6 +236,9 @@ require_once ('./tools/functions.php');
         </div>
       </div>
     </div>
+
+  </div>
+  </div>
   </div>
 
 

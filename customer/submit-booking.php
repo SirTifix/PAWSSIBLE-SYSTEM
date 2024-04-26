@@ -54,7 +54,7 @@
 ?>
 <div class="pet-info-form background-color-container">
     <h2 class="mb-4">Pet Information Form</h2>
-    <form>
+    <form action="" method="POST">
     <div class="form-row">
         <div class="form-group col-sm-2  background-color">
         <label for="petname"><h5>Pet Name</h5></label>
@@ -62,6 +62,7 @@
             type="text"
             class="form-control"
             id="petname"
+            name="petname[]"
             placeholder="Enter pet name"
         />
         </div>
@@ -71,6 +72,7 @@
             type="text"
             class="form-control"
             id="pettype"
+            name="pettype[]"
             placeholder="Enter pet type"
         />
         </div>
@@ -80,13 +82,14 @@
             type="text"
             class="form-control background-color"
             id="sex"
+            name="sex[]"
             placeholder="Enter sex"
         />
         </div>
 
         <div class="form-group col-sm-2">
         <label for="concerns"> <h5>Concerns</h5></label>
-        <textarea style="height: 200px;" class="form-concerns" id="concerns"></textarea>
+        <textarea style="height: 200px;" class="form-concerns" name="concerns[]" id="concerns"></textarea>
         </div>
     </div>
 
@@ -97,12 +100,13 @@
             type="text"
             class="form-control"
             id="breed"
+            name="petBreed[]"
             placeholder="Enter breed"
         />
         </div>
         <div class="form-group col-sm-2 background-color">
         <label for="services"> <h5>Select Services</h5></label>
-        <select class="form-control" id="services">
+        <select class="form-control" id="services" name="services[]">
             <option value="">Choose...</option>
             <option value="Spay/Neuter">
             Spay/Neuter<span class="price">PHP 1,000</span>
@@ -123,7 +127,7 @@
 
         <div class="form-group col-sm-2 background-color">
         <label for="vet"> <h5>Select vet</h5></label>
-        <select class="form-control" id="vet">
+        <select class="form-control" id="vet" name="vet[]">
             <option value="">Choose...</option>
             <option value="vet1">Dr.Jasmin abayon</option>
             <option value="vet2">Dr.Erwin roy jalao</option>
@@ -137,7 +141,7 @@
     <div class="form-row">
         <div class="form-group col-sm-2 background-color">
         <label for="birthdate"> <h5>BirthDate</h5></label>
-        <input type="date" class="form-control" id="birthdate" />
+        <input type="date" class="form-control" id="birthdate" name ="petBirthDate[]"/>
         </div>
     </div>
 

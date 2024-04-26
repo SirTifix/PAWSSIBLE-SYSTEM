@@ -12,6 +12,9 @@ Class Pet{
     public $petAge;
     public $petBreed;
     public $petType;
+    public $sex;
+    public $vet;
+    public $service;
     public $petGender;
     public $petWeight;
     public $petColor;
@@ -27,18 +30,17 @@ Class Pet{
     //Methods
 
     function add($customerId) {
-        $sql = "INSERT INTO pet (petName, petBirthdate, petAge, petBreed, petType, petGender, petWeight, petColor, customerID) VALUES 
-        (:petName, :petBirthdate, :petAge, :petBreed, :petType, :petGender, :petWeight, :petColor, :customerId);";
+        $sql = "INSERT INTO pet (petName, petBirthdate, petBreed, petType, petGender, sex, customerID, service, vet) VALUES 
+        (:petName, :petBirthdate,  :petBreed, :petType, :petGender, :sex, :customerId, :service, :vet);";
     
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':petName', $this->petName);
         $query->bindParam(':petBirthdate', $this->petBirthdate);
-        $query->bindParam(':petAge', $this->petAge);
         $query->bindParam(':petBreed', $this->petBreed);
         $query->bindParam(':petType', $this->petType);
-        $query->bindParam(':petGender', $this->petGender);
-        $query->bindParam(':petWeight', $this->petWeight);
-        $query->bindParam(':petColor', $this->petColor);
+        $query->bindParam(':sex', $this->sex);
+        $query->bindParam(':service', $this->service);
+        $query->bindParam(':petColor', $this->vet);
         $query->bindParam(':customerId', $customerId);
     
         if($query->execute()) {
