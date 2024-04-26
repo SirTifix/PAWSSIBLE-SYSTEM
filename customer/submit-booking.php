@@ -157,27 +157,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
             <div class="modal-body">
-                <div class="Profile select-container d-flex flex-row">
-                <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
-                    <div class="d-flex flex-column justify-content-center align-items-center">
-                    <div class="user-picture position-relative">
-                        <input type="file" id="fileInput" style="display: none;" accept="image/*">
-                        <img src="default-profile-pic.png" alt="" class="profile-pic" id="profilePic">
-                        </label>
-                    </div>
-                    <span class="text-black fs-5">Raf Saludo</span>
-                    </div>
-                    <hr>
-                    <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-black" style="color: black;">
-                        <i style="margin-right: 10px;" class="fa-solid fa-paw"></i> <strong>
-                            Pet
-                        </strong>
-                        </a>
-                    </li>
-                    </ul>
-                </div>
+
     
                 <div class="content p-4 w-100">
                 <table class="table table-striped">
