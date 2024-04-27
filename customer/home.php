@@ -89,8 +89,9 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
               <div class="responsive-container-block blocks">
                 <div class="responsive-cell-block wk-desk-1 wk-tab-1 wk-mobile-1 wk-ipadp-1 content">
                   <p class="text-blk info-block">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    Cursus elementum magna ut duis pulvinar tincidunt vivamus adipiscing quam. Eget dui quis etiam sed eget sed est.
+                  I can't thank Pawssible Solutions Veterinary Clinic enough for their exceptional service. From the moment 
+                  I walked in, I knew my pet was in good hands. The staff is friendly, knowledgeable, and genuinely cares about 
+                  the well-being of every animal they treat.
                   </p>
                   <div class="responsive-container-block person">
                     <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12 icon-block">
@@ -108,8 +109,8 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
                 </div>
                 <div class="responsive-cell-block wk-desk-1 wk-tab-1 wk-mobile-1 wk-ipadp-1 content">
                   <p class="text-blk info-block">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    Cursus elementum magna ut duis pulvinar tincidunt vivamus adipiscing quam. Eget dui quis etiam sed eget sed est.
+                  The team at Pawssible Solutions Veterinary Clinic is absolutely amazing! They took such great 
+                  care of my pet during his recent check-up. Their expertise and dedication to providing top-notch care truly set them apart.
                   </p>
                   <div class="responsive-container-block person">
                     <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12 icon-block">
@@ -127,7 +128,8 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
                 </div>
                 <div class="responsive-cell-block wk-desk-1 wk-tab-1 wk-mobile-1 wk-ipadp-1 content bottom">
                   <p class="text-blk info-block">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus elementum magna ut duis pulvinar tincidunt vivamus adipiscing quam. Eget dui quis etiam sed eget sed est.
+                  Choosing Pawssible Solutions Veterinary Clinic was the best decision for my pet's care. 
+                  The veterinarians here are skilled professionals who go above and beyond to ensure every pet's health and happiness. Highly recommended!
                   </p>
                   <div class="responsive-container-block person">
                     <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12 icon-block">
