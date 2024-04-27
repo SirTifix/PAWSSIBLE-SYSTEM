@@ -17,7 +17,6 @@
 <body>
 <header>
     <img class="eighth-lec" src="./assets/img/Vector 7.png" alt="img">
-    <img class="nignth-lec" src="./assetsimg/Ellipse 18.png" alt="img">
     <img class="twelveth-lec" src="./assets/img/multiple-pets2-Photoroom.png.png" alt="img">
 
     <div class="sticky-top">
