@@ -31,17 +31,6 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
   
         <a href="./booking.php" type="button" class="boton" style="background-color: #2A2F4F; color: white;">BOOK NOW</a>
   
-        <div class="social-icons col-2">
-          <a href="https://www.facebook.com/profile.php?id=61551085774858"  title="facebook"> 
-            <i class="fa-brands fa-facebook" aria-hidden="true"></i> 
-          </a>
-          <a href="#" title="instagram">  
-            <i class="fa fa-instagram" aria-hidden="true"></i>
-          </a>
-          <a href="#" title="twitter"> 
-            <i class="fa-sharp fa-solid fa-x" aria-hidden="true"></i>
-          </a>
-          </div>
     </section>
 
     <section class="dos">

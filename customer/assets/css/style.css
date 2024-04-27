@@ -160,6 +160,7 @@ body {
   font-size: 1.5em;
   padding: 10px 15px;
   margin: 5px;
+  text-wrap: nowrap;
 }
 .navbar-links a:hover {
   color: #2a2f4f;
@@ -238,12 +239,20 @@ body {
 .dos {
   padding-bottom: 200px;
 }
+ 
+.dropdown-item {
+text-wrap: wrap;
+}
 
 .dropdown {
   position: relative;
   display: inline-block;
 }
 
+.notif-dropdown li a {
+  text-wrap: wrap;
+  font-size: 15px;
+}
 .dropdown-content {
   display: none;
   position: absolute;
@@ -1424,6 +1433,7 @@ select {
   font-weight: 700;
   text-transform: uppercase;
   color: #2a2f4f;
+  padding-left: 0.5em;
   padding-top: 10px;
   border-radius: 15px;
 }
@@ -1441,13 +1451,14 @@ select {
   margin: 0;
   height: 200px;
   overflow-y: scroll;
+  overflow-x: hidden;
   border-bottom: 1px solid #efefef;
   padding: 5px;
   box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
 }
 
 .notif-dropdown {
-  transform: translate3d(1px, 0px, 0px);
+  transform: translate3d(4px, 42px, 0px);  
 }
 
 .account-drop {
