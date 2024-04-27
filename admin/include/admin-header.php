@@ -1,5 +1,4 @@
 <header class="row m-0 align-items-center fixed-top">
-
     <div class="logo col-4 align-items-center m-0 row">
         <img src="assets/img/Logo.png" alt="Logo" class="logosec col-6">
         <div class="logo-text col-6">PAWSsible Solutions <br> Veterinary Clinic</div>

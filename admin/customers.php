@@ -23,7 +23,7 @@ require_once('./include/admin-head.php');
         <section class="veterinarian-con">
             <div class="row mx-5 justify-content-end"> 
                 <div class="crud-btn-add col-4 col-sm-auto"> 
-                    <a href="add-customer.php" class="crud-text" "><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Customer</a>
+                    <a href="add-customer.php" class="crud-text"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Customer</a>
                 </div>
             </div>
         </section>

@@ -6,7 +6,7 @@
 
     <div class="search-container col-4 d-flex justify-content-center">
         <div class="search-wrapper d-flex align-items-center m-0 row">
-            <input type="text" class="search col-10" placeholder="search.....">
+            <input type="" class="search col-10" placeholder="search.....">
             <i class="search-icon fas fa-search col-2" aria-hidden="true"></i>
         </div>
     </div>

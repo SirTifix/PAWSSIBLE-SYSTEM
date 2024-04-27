@@ -14,7 +14,7 @@
     ?>
      <section class="dashboard-con mb-5 ">
         <div class="box">
-            <div class="dashboard-head mb-5 pt-3">
+            <div class="dashboard-head mb-5">
               <p>Welcome to Dashboard!</p>
             </div>
 

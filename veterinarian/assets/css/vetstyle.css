@@ -20,7 +20,7 @@ header {
   z-index: 1000; /* Ensure header stays above other content */
 }
 
-.logosec, img {
+.logosec{
     height: auto;
     width: 20%;
 }
@@ -39,13 +39,12 @@ header {
 
 .search-wrapper {
   display: flex;
-  flex-wrap: nowrap;
   border: 1px solid rgba(0, 0, 0, 0.276);
   align-items: center;
   border-radius: 50px;
   background-color: #fff;
   overflow: hidden;
-  padding: 4px 35px;
+  padding: 4px 20px;
 }
 
 .search {
@@ -79,7 +78,7 @@ header {
 /* Sidepanel styles */
 .side-panel {
    
-  padding-top: 70px;
+  padding-top: 100px;
   margin: 0%;
   width: 260px;
   position: fixed;
@@ -143,7 +142,7 @@ header {
 /* Dashboard */
 .dashboard-con {
   margin-left: 260px;
-  padding-top: 48px;
+  padding-top: 68px;
 }
 
 .dashboard-head p {
@@ -397,12 +396,6 @@ td.available {
   cursor: pointer;
 }
 
-button {
-  margin: 5px;
-  padding:5px;
-
-}
-
 .icons-circle {
   width: 50px;
   height: 50px;
@@ -626,8 +619,6 @@ button {
   }
 
   button {
-      margin: 5px;
-      padding: 5px;
       border: none; /* Remove border */
       background-color: transparent; /* Set background color to transparent */
       box-shadow: none; /* Remove box shadow */
