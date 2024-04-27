@@ -135,7 +135,7 @@ if (isset($_POST['save'])) {
                             ?>
                             <tr>
                                 <td>
-                                    <?php echo $counter; ?>
+                                    <?php echo $service['serviceID']; ?>
                                 </td>
                                 <td>
                                     <?php echo $service['serviceName']; ?>

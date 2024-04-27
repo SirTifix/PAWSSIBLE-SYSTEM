@@ -18,15 +18,15 @@
 <body>
 <?php 
 session_start();
-echo $_SESSION['noofpets'];
 ?>
 <h2 class="mb-4">Pet Information Form <?php echo $_SESSION['noofpets'].' pets';?> </h2>
 <?php for ($i = 0; $i < $_SESSION['noofpets']; $i++) {?>
 <div class="pet-info-form background-color-container">
     
-    <form action="" method="POST" >
-
+    <form action="submit-booking2.php" method="post" >
         <div class="form-row">
+        <input type="hidden" name="pet_index[]" value="<?php echo $i; ?>">
+        <input type="hidden" name="bookingID[]" value="<?php echo isset($_GET['bookingID']) ? $_GET['bookingID'] : ''; ?>">
             <div class="form-group col-sm-2  background-color">
                 <label for="petName">
                     <h5>Pet Name</h5>
@@ -45,8 +45,11 @@ echo $_SESSION['noofpets'];
                 <label for="sex_<?php echo $i; ?>">
                     <h5>Sex</h5>
                 </label>
-                <input type="text" class="form-control background-color" id="sex_<?php echo $i; ?>" name="sex[]"
-                    placeholder="Enter sex" />
+                <select class="form-control" id="services_<?php echo $i; ?>" name="sex[]">
+                    <option value="">Choose...</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
             </div>
 
             <div class="form-group col-sm-2">
@@ -72,21 +75,14 @@ echo $_SESSION['noofpets'];
                 </label>
                 <select class="form-control" id="services_<?php echo $i; ?>" name="services[]">
                     <option value="">Choose...</option>
-                    <option value="Spay/Neuter">
-                        Spay/Neuter<span class="price">PHP 1,000</span>
-                    </option>
-                    <option value="Eye Extraction">
-                        Eye Extraction<span class="price">PHP 4,500</span>
-                    </option>
-                    <option value="Imputation">
-                        Imputation<span class="price">PHP 2,500</span>
-                    </option>
-                    <option value="Caesarian">
-                        Caesarian<span class="price">PHP 1,000</span>
-                    </option>
-                    <option value="Vaccination">
-                        Vaccination<span class="price">PHP 300</span>
-                    </option>
+                    <?php
+                    require_once '../classes/service.class.php';
+                    $service = new Service();
+                    $services = $service->show();
+                    foreach ($services as $service) {
+                        echo '<option value="' . $service['serviceID'] . '">' . $service['serviceName'] . ' - &#8369;' . $service['servicePrice'] . '</option>';
+                    }
+                    ?>
                 </select>
             </div>
 
@@ -96,11 +92,14 @@ echo $_SESSION['noofpets'];
                 </label>
                 <select class="form-control" id="vet_<?php echo $i; ?>" name="vet[]">
                     <option value="">Choose...</option>
-                    <option value="vet1">Dr.Jasmin abayon</option>
-                    <option value="vet2">Dr.Erwin roy jalao</option>
-                    <option value="vet3">Dr.Portia quintas</option>
-                    <option value="vet3">Dr.Roi-lee cataluna</option>
-                    <option value="vet3">Dr.France jalao</option>
+                    <?php
+                    require_once '../classes/veterinarian.class.php';
+                    $vet = new Veterinarian();
+                    $vets = $vet->show();
+                    foreach ($vets as $vet) {
+                        echo '<option value="' . $vet['vetID'] . '">Dr. ' . $vet['vetFirstname'] . ' ' . $vet['vetLastname'] . '</option>';
+                    }
+                    ?>
                 </select>
             </div>
         </div>
@@ -115,13 +114,10 @@ echo $_SESSION['noofpets'];
         </div>
 
         <div class="select-ex-pet">
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#profileModal"
+            <button type="button" class="btn btn-primary select-button" data-bs-toggle="modal" data-bs-target="#profileModal"
                 style="background-color: #6075d1; float: right;">
                 Select Existing Pet
             </button>
-
-
-
 
             <!-- Profile Modal -->
             <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel"
@@ -183,9 +179,16 @@ echo $_SESSION['noofpets'];
             </div>
         </div>
 </div>
+
 <?php } ?>
 
+<div>
+    <button type="submit" value="Submit" class="btn btn-primary btn-lg" style="background-color:#2A2F4F; float:right; margin: 2em 1em">
+            Finish Booking
+    </button>
+</div>
 
+<script src="./assets/script/fetch.js"></script>
 
 </body>
 </html>

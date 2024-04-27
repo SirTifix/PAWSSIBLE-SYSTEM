@@ -19,14 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Dynamically create and append pet info forms based on the selected number of pets
     for (let i = 1; i <= numberOfPets; i++) {
       // Fetch content from PHP file using AJAX
-      fetch('../customer/submit-booking.php')
-        .then(response => response.text())
-        .then(data => {
+      fetch("../customer/submit-booking.php")
+        .then((response) => response.text())
+        .then((data) => {
           const petForm = document.createElement("div");
           petForm.innerHTML = data;
           petFormsContainer.appendChild(petForm);
         })
-        .catch(error => console.error('Error fetching pet form:', error));
+        .catch((error) => console.error("Error fetching pet form:", error));
     }
   });
 
@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentDate = new Date();
   let currentMonth = currentDate.getMonth();
   let currentYear = currentDate.getFullYear();
+  let formattedDate;
 
   function generateCalendar(month, year) {
     currentMonthYear.textContent = `${getMonthName(month)} ${year}`;
@@ -59,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       calendarCell.addEventListener("click", () => {
         const selectedDate = new Date(year, month, i);
-        const formattedDate = formatDate(selectedDate); // Format the selected date
+        formattedDate = formatDate(selectedDate); // Format the selected date
         alert(`You clicked on ${formattedDate}`);
       });
 
@@ -125,11 +126,19 @@ document.addEventListener("DOMContentLoaded", function () {
           parseInt(selectedDateCell.textContent)
         );
         const selectedTime = timeSlot.dataset.time; // Get the time from the data-time attribute
-        openModal(selectedDate, selectedTime); // Call the openModal function
+        openModal(formattedDate, selectedTime); // Call the openModal function
       } else {
         alert("Please select a date from the calendar first.");
       }
     });
+  });
+
+  $('#modal').on('show.bs.modal', function (event) {
+    const selectedDateCell = document.querySelector(".calendar-cell.selected");
+    if (!selectedDateCell) {
+      event.preventDefault();
+      return false;
+    }
   });
 
   calendarBody.addEventListener("click", (event) => {
@@ -143,11 +152,10 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function openModal(selectedDate, selectedTime) {
-    const formattedDate = formatDate(selectedDate); // Format the selected date
     document.getElementById("selectedDateTime").textContent =
-      "" + formattedDate + ", " + selectedTime;
-    document.getElementById("selectedDate").textContent=formattedDate;
-    document.getElementById("selectedTime").textContent=selectedTime;
+      "" + selectedDate + ", " + selectedTime;
+    document.getElementById("selectedDate").value = selectedDate;
+    document.getElementById("selectedTime").value = selectedTime;
   }
 
   // Function to format date in "Month Day, Year" format
@@ -172,3 +180,14 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
+document.addEventListener("DOMContentLoaded", function() {
+  const selectButton = document.querySelectorAll(".select-button");
+
+  selectButton.forEach((button) => {
+      button.addEventListener("click", function() {
+          const modal = new bootstrap.Modal(document.getElementById("profileModal"));
+          modal.show();
+      });
+  });
+});

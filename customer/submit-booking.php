@@ -25,36 +25,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $booking->bookingDate = $selectedDate;
     $booking->bookingTime = $selectedTime;
     
-    header('Location: ./booking2.php');
     // Add booking with personal information
-    /*$savedBookingId = $booking->add(); // Move this line up
+    $savedBookingId = $booking->add(); 
+    
+    header('Location: ./booking2.php?bookingID=' . $savedBookingId);
 
-    // Assuming pet data is sent as arrays in $_POST
-    for ($i = 0; $i < $numberPets; $i++) {
-        // Check if pet information is not empty
-        if (!empty($_POST['petName'][$i])) {
-            // Retrieve pet data for each index $i
-            $petName = $_POST['petName'][$i];
-            $petType = $_POST['petType'][$i] ?? null;
-            $sex = $_POST['sex'][$i] ?? null;
-            $petBreed = $_POST['petBreed'][$i] ?? null;
-            $petBirthDate = $_POST['petBirthDate'][$i] ?? null;
-            $serviceID = $_POST['services'][$i] ?? null;
-            $vetID = $_POST['vet'][$i] ?? null;
-
-            // Add pet with the associated booking ID
-            $booking->addPet($petName, $petType, $sex, $petBreed, $petBirthDate, $savedBookingId, $serviceID, $vetID);
-        }
-    }
-
-    // Return success response with booking ID
-    echo json_encode(array('success' => true, 'bookingID' => $savedBookingId));*/
-
+    // Return success response with booking ID*/
+    echo json_encode(array('success' => true, 'bookingID' => $savedBookingId));
 } else {
     // Return failure response for invalid request method
     echo json_encode(array('success' => false, 'message' => 'Invalid request method.'));
 }
 ?>
 
-
-</form>

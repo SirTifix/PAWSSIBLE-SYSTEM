@@ -145,7 +145,7 @@ require_once ('./tools/functions.php');
       <div class="modal-cont">
         <h2>Personal Information</h2>
 
-        <form action="submit-booking.php" method="POST">
+        <form action="submit-booking.php" method="post">
           <div class="selected-details">
             <div class="row">
               <div class="input-container col-sm-3">
@@ -174,8 +174,8 @@ require_once ('./tools/functions.php');
                 <label for="selectedDateTime">Selected Date and Time:</label>
                 <div class="col-sm">
                   <p id="selectedDateTime"></p>
-                  <input type="hidden" name="selectedDate" value="">
-                  <input type="hidden" name="selectedTime" value="">
+                  <input type="hidden" name="selectedDate" id="selectedDate" value="">
+                  <input type="hidden" name="selectedTime" id="selectedTime" value="">
                 </div>
               </div>
             </div>
@@ -201,39 +201,12 @@ require_once ('./tools/functions.php');
               </div>
             </div>
 
-            <div id="petFormsContainer" class="petFormsContainer"></div>
           </div>
 
-          <button type="submit" class="btn btn-primary" style="background-color:#2A2F4F; float:right;">
+          <button type="submit" value="Submit" class="btn btn-primary" style="background-color:#2A2F4F; float:right;">
             Book Appointment
           </button>
         </form>
-
-        <!-- Confirmation Modal -->
-        <div class="confirmation-modal">
-          <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
-            aria-labelledby="confirmationModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-              <div class="modal-content text-center">
-                <div class="modal-header">
-                  <h5 class="modal-title mx-auto" id="confirmationModalLabel">Appointment Confirmation</h5>
-                </div>
-
-                <div class="modal-body align-items-center justify-content-center d-flex flex-column">
-                  <i class="fas fa-check-circle text-success confirmation-circle mb-3" style="font-size: 80px;"></i>
-                  <p class="booking-number mb-2" style="font-size: 14px;">Your booking number:</p>
-                  <p class="mb-4">0001</p>
-                </div>
-
-                <div class="modal-footer justify-content-center">
-                  <button type="button" class="btn btn-secondary" id="finishBookingBtn" data-dismiss="modal"
-                    style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
-                    Booking</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 

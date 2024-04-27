@@ -100,16 +100,17 @@ class Booking
     }
 
 
-    function addPet($petName, $petType, $sex, $petBreed, $petBirthDate, $savedBookingId, $service, $vet)
+    function addPet($petName, $petType, $sex, $concerns, $petBreed, $petBirthDate, $savedBookingId, $service, $vet)
     {
         try {
-            $sqlPet = "INSERT INTO booking_pet (petName, petType, sex, petBreed, petBirthDate, bookingID, serviceID, vetID) VALUES 
-                (:petName, :petType, :sex, :petBreed, :petBirthDate, :bookingID, :serviceID, :vetID);";
+            $sqlPet = "INSERT INTO booking_pet (petName, petType, sex, concerns, petBreed, petBirthDate, bookingID, serviceID, vetID) VALUES 
+                (:petName, :petType, :sex, :concerns, :petBreed, :petBirthDate, :bookingID, :serviceID, :vetID);";
             $queryPet = $this->db->connect()->prepare($sqlPet);
 
             $queryPet->bindParam(':petName', $petName); 
             $queryPet->bindParam(':petType', $petType);
             $queryPet->bindParam(':sex', $sex);
+            $queryPet->bindParam(':concerns', $concerns);
             $queryPet->bindParam(':petBreed', $petBreed);
             $queryPet->bindParam(':petBirthDate', $petBirthDate);
             $queryPet->bindParam(':bookingID', $savedBookingId);
