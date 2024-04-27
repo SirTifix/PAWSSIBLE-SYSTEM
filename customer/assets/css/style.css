@@ -37,8 +37,9 @@ body {
   width: auto;
   height: 100vh;
   z-index: -4;
-  opacity: 0.6;
-}
+  opacity: 0.6;}
+  
+
 .fourth-lec {
   position: absolute;
   bottom: -205%;
@@ -710,6 +711,32 @@ img {
     margin-bottom: 25px;
     margin-left: 0px;
   }
+
+  .service-button{
+    background-color: #5263ab;
+    border-radius: 10px;
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+    box-shadow: 0 9px #999;
+  }
+
+  .content-background-border{
+    border: 5px solid white;
+    margin: 15px;
+    height: 30.8em;
+    border-radius: 20px;
+  }
+
+  .content-slider{
+    
+    
+    text-align: center;
+  }
 }
 
 @media (max-width: 768px) {
@@ -874,20 +901,27 @@ img {
   border-radius: 20px;
 }
 
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .content-slider {
-  border: 5px solid white;
   margin: 15px;
-  height: 30.8em;
+  height: 0%;
   border-radius: 20px;
   text-align: center;
 }
+
+.content-background-border h6{
+  font-size: 10px;
+}
+
+.content-background-border h3{
+  font-size: 25px
+}
+.content-background-border{
+  border: 5px solid white;
+  margin: 0;
+  height: auto;
+  border-radius: 20px;
+}
+
 
 .swiper-button-next,
 .swiper-button-prev {
@@ -1634,12 +1668,20 @@ select {
   }
 
   .content-slider{
-    border: 5px solid white;
     margin: 17px;
     height: 30.8em;
+    width: 100% ;
     border-radius: 20px;
     text-align: center;
   }
+
+  .content-background-border{
+    border: 5px solid white;
+    margin: 0;
+    height: auto;
+    border-radius: 20px;
+  }
+  
 }
 
 @media (max-width: 320px) {
@@ -1809,12 +1851,8 @@ select {
 
   /* services.php */
 
-  .content-slider {
-    border: 5px solid white;
-    margin: 15px;
-    height: 100.8em;
-    border-radius: 20px;
-    text-align: center;
+  .third-lec, .fourth-lec, .sixth-lec{
+    display: none;
   }
 
   .FAQS {
@@ -1825,25 +1863,41 @@ select {
     background-color: #66666672;
     padding: 15px;
   }
+  
   .swiper-button-prev,
   .swiper-button-next {
     position: absolute;
-    top: -80%;
+    top: 0;
     transform: translateY(1300%);
-    margin: 0 15em;
+    margin: 0;
   }
 
   .content-slider {
-    border: 5px solid white;
     margin: 15px;
-    height: 23em;
-    width: 300px;
+    height: 94%;
+    width: 90%;
     border-radius: 20px;
     text-align: center;
   }
 
+  .content-background-border{
+    margin: 0;
+    height: auto;
+    border-radius: 20px;
+  }
+  
+
+  .swiper-slide{
+    flex-shrink: 0;
+    width: 100%;
+    font-size: 11px;
+    height: 100%;
+    position: relative;
+    transition-property: transform;
+  }
+
   .swiper {
-    width: 50vh;
+    width: 100%;
     height: 70vh;
     margin: 50px;
     margin-top: 80px;
@@ -1853,10 +1907,5 @@ select {
     display: none;
   }
 
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 50%;
-    object-fit: cover;
-  }
+
 }
