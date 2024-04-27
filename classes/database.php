@@ -3,7 +3,7 @@
 class Database{
     private $host = 'localhost';
     private $username = 'root';
-    private $password = '1234';
+    private $password = '';
     private $database = 'pawssible';
     protected $connection;
 
