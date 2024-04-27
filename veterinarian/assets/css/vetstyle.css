@@ -817,11 +817,7 @@ td.available {
     border-bottom: 2px solid rgb(163, 158, 158);
 }
 /* Additional styles for form elements */
-.form-body{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-} 
+
  .form-label {
     display: block;
     margin-bottom: 5px;
@@ -1318,17 +1314,6 @@ margin-left: 240px;
     position: relative;
   }
   
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"]
-  {
-    border: none;
-    border-bottom: 1px solid #ccc;
-    width: 300px;
-    padding: 5px;
-    font-size: 16px;
-    outline: none;
-  }
   .year{
     border: none;
     border-bottom: 1px solid #ccc;

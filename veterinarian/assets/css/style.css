@@ -1,0 +1,1036 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+}
+
+body {
+    background-color: #EAEAEA;
+}
+
+/* Header */
+header {
+    display: flex;
+    align-items: center;
+    background-color: #2A2F4F;
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Ensure header stays above other content */
+}
+
+.logosec{
+    height: auto;
+    width: 20%;
+}
+
+.logo-text {
+    padding: 0px 0px 0px 5px;
+    font-weight: bold;
+    color: white;
+    font-size: 15px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    /* Center vertically */
+}
+
+.notification-count {
+    color: white;
+    background-color: red;
+    border-radius: 25%;
+    padding: 0.1em 0.3em;
+    font-size: 0.8em;
+}
+
+.search-wrapper {
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.276);
+    align-items: center;
+    border-radius: 50px;
+    background-color: #fff;
+    overflow: hidden;
+    padding: 4px 20px;
+}
+
+.search {
+    padding: 0px 20px 0px 0px;
+    border: none;
+}
+
+.search:focus {
+    outline: none;
+}
+
+.search-icon {
+    color: rgba(0, 0, 0, 0.564);
+}
+
+.logout-btn button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.bell-btn button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/* Sidepanel styles */
+.side-panel {
+    padding-top: 100px;
+    margin: 0%;
+    width: 260px;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    background-color: #39436C;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-panel a {
+    display: block;
+    color: white;
+    align-items: center;
+    padding: 5px 16px 5px 16px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 500;
+    width: 200px;
+}
+
+.side-panel a.active {
+    background-color: #3A3F54;
+    color: white;
+}
+
+.side-panel a:hover:not(.active) {
+    width: 200px;
+    background-color: #3A3F54;
+    color: white;
+    border-radius: 50px;
+}
+
+.admin-icon {
+    margin-top: 20px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    align-items: end;
+    font-size: 100px;
+    padding-right: 8px;
+}
+
+.sec-header {
+    color: #fff;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.side-panel-links {
+    align-items: start;
+}
+
+.border-line {
+    margin-bottom: 20px;
+    width: 200px;
+    border-bottom: 2px solid black;
+}
+
+/* Dashboard */
+.dashboard-con {
+    margin-left: 260px;
+    padding-top: 68px;
+}
+
+.dashboard-head p {
+    margin-left: 15px;
+}
+
+.dashboard-head {
+    font-size: 2.5em;
+    font-weight: 500;
+    background: linear-gradient(to right, #c0ccff, #EAEAEA);
+    margin: 0px 600px 0px 0px;
+}
+
+.dashboard-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.dashboard-box p {
+    display: flex;
+    justify-content: start;
+    padding-left: 10px;
+    color: #2A2F4F;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.dashboard-icon {
+    color: #85929E;
+    font-size: 2em;
+}
+
+.dashboard-box {
+    background-color: #ffff;
+    height: 50%;
+    width: 20%;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px #bebebe,
+                -5px -5px 10px #ffffff;
+    border-left: #2A2F4F 7px solid;
+}
+
+/* Chart */
+.chart-con {
+    margin-left: 260px;
+}
+
+.chart-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.chart-box {
+    background-color: #fff;
+    height: auto;
+    width: 40%;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px #bebebe;
+}
+
+.chart-box button {
+    height: auto;
+    border: none;
+    background-color: #fff;
+    border-radius: 0px 5px 5px 0px;
+}
+
+/*Recent Customer Table */
+.customer-table-con {
+    margin-top: 30px;
+    margin-left: 260px;
+}
+
+.cust-table-wrapper {
+    background-color: #fff;
+    padding: 20px;
+    margin: 65px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px #bebebe;
+}
+
+.cust-text {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+/* Filter*/
+.filter-con {
+    margin-left: 260px;
+    margin-right: 0%;
+}
+
+.form-group {
+    padding: 10px 10px;
+}
+
+.crud-btn {
+    display: flex;
+    justify-content: center;
+    /* Horizontally center */
+    align-items: center;
+    /* Vertically center */
+    padding-left: 10px;
+}
+
+.crud-text {
+    background-color: #5263AB;
+    border-radius: 50px;
+    padding: 5px 16px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    /* Horizontally center */
+    align-items: center;
+    /* Vertically center */
+}
+
+.crud-btn a.crud-text:hover {
+    background-color: #3A3F54;
+    /* Change text color on hover */
+    color: white;
+    border-radius: 20px;
+}
+
+.crud-btn a.crud-text:active {
+    background-color: #3A3F54;
+    color: white;
+}
+.crud-icon-update {
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: darkgreen;
+    text-decoration: none;
+    font-size: 1.1em;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    /* Horizontally center */
+    align-items: center;
+    /* Vertically center */
+}
+
+.crud-icon-delete {
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: darkred;
+    text-decoration: none;
+    font-size: 1.1em;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    /* Horizontally center */
+    align-items: center;
+    /* Vertically center */
+}
+
+/* Veterinarian Account Table */
+.table-con {
+    margin-left: 260px;
+}
+
+.veterinarian-con {
+    padding-top: 72px;
+    margin-left: 260px;
+}
+
+.veterinarian-head p {
+    margin-left: 15px;
+}
+
+.veterinarian-head {
+    font-size: 2.5em;
+    font-weight: 500;
+    background: linear-gradient(to right, #c0ccff, #EAEAEA);
+    margin: 0px 400px 0px 0px;
+}
+
+.table-wrapper {
+    padding: 10px;
+    margin: 10px;
+}
+
+/* Veterinarian Form */
+.vet-form-con {
+    display: flex;
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    width: 75%;
+    margin-left: 300px;
+}
+
+.head-form {
+    background: linear-gradient(to top, #c0ccff, #5263AB);
+    text-align: center;
+    margin-bottom: 10px;
+    height: 80px;
+    border-radius: 10px;
+}
+
+.head-form i {
+    border: 2px solid transparent;
+    /* Set a transparent border initially */
+    border-radius: 0;
+    /* Make the border square */
+    padding: 10px;
+    /* Adjust padding to create space around the icons */
+    margin: 0 10px;
+    /* Add margin between the icons */
+}
+
+.head-form .fa-user {
+    color: black;
+    font-size: 2em;
+}
+
+.head-form .fa-paw {
+    color: black;
+    font-size: 2em;
+}
+
+.create-vet-form {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.vet-head-form {
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: bold;
+    border-bottom: 2px solid rgb(163, 158, 158);
+}
+
+/* Additional styles for form elements */
+.forms-body {
+    display: flex;
+    align-items: center;
+}
+
+.forms-label {
+    display: inline-block;
+    margin-bottom: 5px;
+    width: 150px;
+    margin-right: 20px;
+    text-align: right; /* Add this line to align the text to the right */
+}
+
+
+.form-control {
+    width: 330px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.create-vet-btn {
+    padding: 10px 30px;
+    background-color: #3A3F54;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.create-vet-btn:hover {
+    background-color: #828aa9;
+    /* Change text color on hover */
+    color: white;
+}
+
+.back-btn {
+    background-color: #fff;
+    color: #3A3F54;
+    text-decoration: none;
+    border: 1px solid #4a4f63;
+    border-radius: 20px;
+    padding: 10px 60px;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.back-btn:hover {
+    background-color: #3A3F54;
+    /* Change text color on hover */
+    color: white;
+}
+
+.top-back {
+    background-color: #ffff;
+    color: #3A3F54;
+    border: 1px solid #3A3F54;
+    text-decoration: none;
+    padding: 10px 60px;
+    margin: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.top-back:hover {
+    background-color: #3A3F54;
+    /* Change text color on hover */
+    color: white;
+}
+
+.save-vet-btn {
+    padding: 10px 70px;
+    background-color: #3A3F54;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.save-vet-btn:hover {
+    background-color: #828aa9;
+    /* Change text color on hover */
+    color: white;
+}
+
+.upload-pic-con {
+    width: 100px;
+    height: 400px;
+}
+
+.field-icon {
+    float: right;
+    margin-left: -25px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+}
+
+.transfer-btn {
+    padding: 10px 70px;
+    background-color: #3A3F54;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.transfer-btn:hover {
+    background-color: #828aa9;
+    /* Change text color on hover */
+    color: white;
+}
+
+/* Customer Information */
+.form-customer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.form-customer-info .d-flex {
+    align-items: baseline; /* Aligns items to the baseline of the container */
+}
+
+.create-vet-form-info {
+    margin-top: 10px;
+    background-color: #fff;
+    padding: 50px 50px;
+    border-radius: 10px;
+    height: 350px;
+}
+
+.create-vet-form-info-pet {
+    background-color: #fff;
+    padding: 10px 40px;
+    border-radius: 10px;
+    /* Set a fixed height */
+    height: 350px;
+    /* Adjust this height as needed */
+    /* Add overflow-y: scroll to create a vertical scrollbar */
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+.form-pet-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 50px;
+    margin: 5px 0px
+}
+
+.add-pet-btn-info {
+    background-color: #3A3F54;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    align-items: center;
+    display: flex;
+    font-weight: 500;
+    padding: 5px 15px;
+    font-size: 1em;
+}
+
+.add-pet-btn-info i {
+    font-size: 1.2em;
+}
+
+.pet-info-box {
+    background-color: #C1CCF8;
+    margin: 10px 0px;
+    padding: 15px 8px;
+    border-radius: 10px;
+}
+
+.form-control-pet {
+    background-color: #C1CCF8;
+    border: none;
+    box-sizing: border-box;
+}
+
+.form-control-pet:focus {
+    outline: none;
+    /* Remove outline when input is focused */
+    border: none;
+    /* Remove border when input is focused */
+}
+
+.form-customer-info .form-control {
+    background-color: none;
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: 0%;
+}
+
+.form-label-pet {
+    width: 80px;
+    font-weight: bold;
+    padding: 0px 5px;
+}
+
+.pet-info-box a {
+    text-decoration: none;
+    background-color: #3A3F54;
+    color: #fff;
+    padding: 5px 20px;
+    float: right;
+    border-radius: 30px;
+}
+
+/* MOdal */
+.modal-header {
+    border-bottom: 2px solid #888484;
+}
+
+/* Account Settings*/
+.account-settings-con {
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Appointment Panel */
+.appointment-con{
+    margin-left: 260px;
+    margin-right: 0%;
+}
+
+.appointment-calendar-con{
+    margin-left: 260px;
+    margin-right: 0%;
+}
+
+.add-btn-con{
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+}
+
+.add-appointment {
+    border-radius: 20px;
+    width: 210px;
+    background-color: #5263AB;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 5px;
+}
+
+.add-appointment a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1em;
+}
+
+.table-appointment{
+    padding: 2px 8px;
+    background: linear-gradient(to bottom,  #bdbfde  ,#d7d7e0);
+}
+
+.check-btn{
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #277A63;
+    text-decoration: none;
+    font-size: 1.3em;
+    width: 30px;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+}
+
+.edit-btn{
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #488BBB;
+    text-decoration: none;
+    font-size: 1.1em;
+    width: 30px;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+}
+
+.delete-btn {
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: #C7353E;
+    text-decoration: none;
+    font-size: 1.1em;
+    width: 30px;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+}
+
+.appointment-btn {
+    background-color: #ffffff; /* White background color */
+    text-decoration: none;
+    color: black;
+    padding: 5px 0px; /* Adjust padding as needed */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px; /* Set a fixed width for both links */
+}
+
+.appointment-btn i {
+    margin-right: 5px; /* Adjust margin as needed */
+}
+
+.appointment-btn:hover {
+    background-color: #f0f0f0; /* Change background color on hover */
+}
+
+.appointment-active {
+    background-color: #277A63; /* Active background color */
+}
+
+.appointment-active:hover {
+    background-color: #277A63; /* Keep active background color on hover */
+}
+
+.appointment-btn:active {
+    background-color: #d0d0d0; /* Change background color on click */
+}
+
+.search-con {
+    background-color: #fff;
+    overflow: hidden;
+    padding: 5px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.276);
+    width: 300px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    flex-grow: 1; /* Allow the input to grow and take up remaining space */
+    width: 100%; /* Make the input take up 100% of the available space */
+    border: none;
+}
+
+.search-input:hover {
+    background-color: transparent; /* Remove yellow hover effect */
+}
+
+.profile-pic {
+    background-color: #EAEAEA !important;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+    border-color: solid 3px #000000;
+    border-radius: 10px;
+}
+  
+.upload-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    background: #C1CCF8;
+}
+
+/* Pet Medical History */
+.pet-medhist-con{
+    margin-left: 260px;
+    margin-right: 0%;
+}
+
+.pet-medhist-content{
+    padding: 10px 40px;
+}
+
+.petmed-body{
+    border: solid 1px #888484;
+    background-color: #fff;
+}
+
+.petmed-head{
+    margin-top: 50px;
+    color: #fff;
+    background-color: #303962;
+    padding: 10px 0px;
+}
+
+.form-control-medhist {
+    width: 350px;
+    border: 1px solid #888484;
+    padding: 8px 5px;
+    margin: 5px 0px;
+    border-radius: 5px;
+}
+
+.form-label-medhist{
+    width: 120px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+}
+
+.table-headpet th {
+    background-color: #8493D9;
+}
+
+.table-bodypet td {
+    background-color: white; /* Set background color to white */
+    color: black; /* Set text color to black */
+    font-size: 1.1em;
+}
+
+
+
+.hamburger-icon {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 1.3em;
+    position: relative;
+}
+
+.dropdown-vaccine {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.dropdown-vaccine a {
+    display: flex;
+    justify-content: start; 
+    align-items: center; 
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.hamburger-icon.active .dropdown-vaccine {
+    display: block;
+}
+
+.hamburger-icon-medhist{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 15px;
+    font-size: 1.3em;
+    position: relative;
+    
+}
+.dropdown-medhist{
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.dropdown-medhist a {
+    display: flex;
+    justify-content: start; 
+    align-items: center; 
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.hamburger-icon-medhist.active .dropdown-medhist {
+    display: block;
+}
+
+.form-label-medHis {
+    width: 150px; /* Adjust the width as needed */
+    margin-top: 15px;
+    margin-right: 10px; /* Add margin to create space between label and control */
+    padding: 10px;
+}
+
+.form-label-vaccine {
+    width: 130px; /* Adjust the width as needed */
+    margin-top: 15px;
+    margin-right: 10px; /* Add margin to create space between label and control */
+    padding: 10px;
+}
+
+.form-control-medHis {
+    width: calc(100% - 160px); /* Adjust the width accounting for label width and margin */
+    margin-top: 15px;
+    margin-bottom: 15px; /* Add margin to the bottom of the control */
+    border-radius: 5px;
+    border: 2px solid #ccc; /* Add gray border */
+    transition: border-color 0.3s; /* Add transition effect for smoother color change */
+    padding: 10px;
+}
+
+.form-control-medHis:hover,
+.form-control-medHis:focus {
+    border-color: #85c5e8; /* Change border color to blue when focused */
+    outline: none; /* Remove default focus outline */
+    border-width: 2px;
+}
+
+.form-control-vaccine {
+    width: calc(100% - 100px); /* Adjust the width accounting for label width and margin */
+    margin-top: 15px;
+    margin-bottom: 15px; /* Add margin to the bottom of the control */
+    border-radius: 5px;
+    border: 2px solid #ccc; /* Add gray border */
+    transition: border-color 0.3s; /* Add transition effect for smoother color change */
+    padding: 10px;
+}
+
+.form-control-vaccine:hover,
+.form-control-vaccine:focus {
+    border-color: #85c5e8; /* Change border color to blue when focused */
+    outline: none; /* Remove default focus outline */
+    border-width: 2px;
+}
+
+.customDateContainer {
+    position: absolute;
+    top: 0;
+    left: 100px;
+    z-index: 999; /* Ensure it appears above other content */
+}
+
+.customDateRange{ 
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+    background-color: #fff;
+    position: absolute; 
+    z-index: 1000;  
+    display: none;
+}
+/* VACCINE FORM */
+.pet-information{
+    padding-left: 200px;
+
+}
+.vac-container{
+   margin:20px;
+   margin-left: 70px;
+}
+.form-label-petType {
+   
+    margin-top: 15px;
+    margin-left: 60px; /* Add margin to create space between label and control */
+    padding: 10px;
+}
+.form-control-petType{
+    margin-left: 60px; 
+    width: 330px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+/* TABLE */
+.veterinarian-con {
+    padding-top: 72px;
+ 
+}
+.table-con-vet {
+    margin-left: 160px;
+}
+.table-wrapper {
+    padding: 10px; /* Add space around the table */
+
+}
+
+#customer th, #customer td {
+    padding: 15px; /* Add space around the text within cells */
+}
+
+#customer th.text-center, #customer td.text-center {
+    text-align: center; /* Center-align text within cells with class "text-center" */
+}
+    .cus-head-form{
+
+        background: rgb(119,132,190);
+       
+        text-align: center;
+       
+        height: 80px;
+        
+        margin-top:30px;
+        margin-left: 30px;
+    }
+    
+    .head-form i {
+   
+        padding: 10px; /* Adjust padding to create space around the icons */
+        margin: 0 10px; /* Add margin between the icons */
+    }
+
+.cus-head-form h2{
+    color: white;
+   
+}
+.customer-info-icon {
+    margin-bottom: -20px; /* Adjust as needed */
+}
+
+.table-wrapper {
+    margin-top: -36px; /* Adjust as needed */
+    margin-right: 60px;
+}
+.crud-btn-add {
+   padding-top: 20px;
+  
+}

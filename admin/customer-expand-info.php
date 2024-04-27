@@ -189,7 +189,7 @@
                 <a href="transfer-ownership.php" class="transfer-btn btn-secondary">Transfer Ownership</a>
               </div>
               <div>
-                <a href="update-medicalRecord.php" class="back-btn btn-secondary">View Medical History</a>
+                <a href="view-medicalRecord.php" class="back-btn btn-secondary">View Medical History</a>
               </div>
             </div>
           </form>
