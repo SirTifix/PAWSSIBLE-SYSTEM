@@ -2,15 +2,15 @@
 <html lang="en">
 <?php
     $title = 'Customer';
-    require_once('./include/admin-head.php');
+    require_once('./include/vet-head.php');
 ?>
 <body>
     <?php
-        require_once('./include/admin-header.php')
+        require_once('./include/vet-header.php')
     ?>
     <main>
     <?php
-        require_once('./include/admin-sidepanel.php')
+        require_once('./include/vet-sidepanel.php')
     ?>
 
     <section class="veterinarian-con">
@@ -186,10 +186,13 @@
         </div>
     </section>
 
-    <section class="">
-      <div class="d-flex justify-content-end me-3 pe-3">
-          <a href="customer-expand-info.php" class="top-back btn-secondary">Back</a>
-      </div>
+    <section class="m-4 d-flex justify-content-around align-items-center">
+        <div style="margin-left: 200px;">
+            <a href="update-medicalRecord.php" class="transfer-btn btn-secondary">Update Medical Record</a>
+        </div>
+        <div style="margin-left: 30%;">
+            <a href="customer_information.php" class="top-back btn-secondary">Back</a>
+        </div>
     </section>
 
 <?php
