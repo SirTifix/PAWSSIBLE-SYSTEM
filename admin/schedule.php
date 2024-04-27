@@ -29,11 +29,12 @@
             <button onclick="previousMonth()"><</button>
             <h5 id="month-name"></h5>
             <button onclick="nextMonth()">></button>
-            <select id="year"></select>
+            <select id="year" onchange="generateCalendar()">
+</select>
         </div>
             <table id="calendar">
               
-                <thead>
+                <thead> 
                 <tr>
                     <th>Sun</th>
                     <th>Mon</th>

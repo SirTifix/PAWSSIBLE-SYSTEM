@@ -75,10 +75,14 @@ function closePopup() {
 function selectDate(date) {
     selectedDate = date;
 }
+// Function to generate the years range and populate the dropdown
 function generateYearDropdown() {
     const yearSelect = document.getElementById('year');
     const currentYear = new Date().getFullYear();
     const yearsRange = 10; // You can adjust this range as needed
+
+    // Clear existing options
+    yearSelect.innerHTML = '';
 
     // Populate the dropdown with options for each year in the range
     for (let i = currentYear - yearsRange; i <= currentYear + yearsRange; i++) {
@@ -88,9 +92,15 @@ function generateYearDropdown() {
         yearSelect.appendChild(option);
     }
 
-    // Set the default selected year
+    // Set the default selected year to the current year
     yearSelect.value = currentYear;
+
+    // Generate the calendar for the default selected year (current year)
+    generateCalendar();
 }
+
+
+
 
 // Call the function to generate the year dropdown
 generateYearDropdown()
@@ -146,7 +156,8 @@ function updateSelectedDate(date) {
 
 
 
-
+// Call the function to generate the year dropdown initially
+generateYearDropdown();
 generateCalendar();
 updateMonthName();
 

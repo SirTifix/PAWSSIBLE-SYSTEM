@@ -12,13 +12,9 @@
     <?php
         require_once('./include/admin-sidepanel.php')
     ?>
-        <section class="veterinarian-con">
-            <div class="veterinarian-head">
-                <p>Vaccines</p>
-            </div>
-        </section>
+     
 
-        <section class="filter-con row">
+        <!-- <section class="filter-con row">
             <div class="row col-7">
                 <div class="form-group col-6 col-sm-auto">
                     <select id="dateRangeSelect" class="form-select">
@@ -37,18 +33,61 @@
                     <option value="vaccine3">Deworming</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="crud-btn col-5 justify-content-end">
+
+            <section class="veterinarian-con">
+            <div class="row mx-5 justify-content-end"> 
+                <div class="crud-btn-add col-4 col-sm-auto"> 
                 <a href="" class="crud-text" data-bs-toggle="modal"data-bs-target="#addVaccineModal"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Vaccine</a>
             </div>
+            </div>
+            </section>
+        
+            <section class="table-con">
+        <section class="customer-info-icon row  ">
+                <div class="cus-head-form col-11 d-flex justify-content-between align-items-center mb-3">
+                <div class="col-12 d-flex justify-content-between align-items-center px-3">
+                <div class="customer-info-head">
+                    <h2>Vaccine</h2>
+                </div>
+
+                <div class="row">
+                <div class="form-group col-6 col-sm-auto">
+                    <select id="dateRangeSelect" class="form-select">
+                        <option value="">Select Pet Type</option>
+                        <option value="all">All</option>
+                        <option value="dog">Dog</option>
+                        <option value="cat">Cat</option>
+                    </select>
+                  </div>
+
+                <div class="form-group col-6 col-sm-auto"> 
+                    <select name="status" class="form-select">
+                        <option value="">Select Vaccine Type</option>
+                        <option value="vaccine1">Annual Booster</option>
+                        <option value="vaccine2">Primary Series</option>
+                        <option value="vaccine3">Deworming</option>
+                    </select>
+                </div>
+                </div>
+
+
+        </div> 
+            </div>
+       
+
+
         </section>
 
+      
+   </section>
+   <div class="table-wrapper ">
         <div class="vac-container">
       <div class="pet-information ">
       
         <div class="d-flex justify-content-around">
-            <table class="table table-bordered">
+            <table id="customer"class="table table-bordered">
                 <thead>
                     <tr class="table-headpet text-center">
                         <th scope="col"> Vaccine ID</th>

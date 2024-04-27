@@ -14,30 +14,37 @@
         require_once('./include/sec-sidepanel.php')
     ?>
 
-    <section class="veterinarian-con">
-        <div class="veterinarian-head">
-            <p>Appointments</p>
-        </div>
-    </section>
-
-   <section class="appointment-con">
-    <div class="add-btn-con">
-    <div class="add-appointment ">
-        <a href="appointment-booking.php"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Appointment</a>
-    </div>
-    </div>
-
-    <div class="table-appointment">
-    <div class="row justify-content-start align-items-center">
-        <div class="col-auto my-1">
-            <div class="search-con">
-                <input type="text" id="searchInput" class="search-input" placeholder="Search here...">
+<section class="veterinarian-con">   
+<div class="row mx-5 justify-content-end"> 
+          <div class="crud-btn-add col-4 col-sm-auto"> 
+        <a href="appointment-booking.php"  class="crud-text"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Appointment</a>
+          </div>
+      </div>
+</section>
+  
+<section class="table-con">
+    <section class="customer-info-icon row  ">
+                <div class="cus-head-form col-11 d-flex justify-content-between align-items-center mb-3">
+                <div class="col-12 d-flex justify-content-between align-items-center px-3">
+                <div class="customer-info-head">
+                    <h2>Appointment </h2>
+                </div>
+                <div class="row col-4">
+                <div class="row justify-content-start align-items-center">
+            <div class="col-auto my-1">
+                <div class="search-con">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search here...">
+                </div>
+            </div>
+    </div> 
             </div>
         </div>
-    </div> 
 
 
-    <table class="table table-striped table-sm">
+        </section>
+
+        <div class="table-wrapper">   
+    <table id="customer" class="table table-striped table-sm">
         <thead>
             <tr>
                 <th scope="col">Book No.</th>
@@ -64,6 +71,7 @@
                             <a href="" class="edit-btn" data-bs-toggle="modal"data-bs-target="#modal">
                               <i class="fa fa-ellipsis-h pe-5" aria-hidden="true"></i></a>
                         </div>
+                        
                     </td>
             </tr>
         </tbody>

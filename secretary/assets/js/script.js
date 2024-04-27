@@ -75,10 +75,14 @@ function closePopup() {
 function selectDate(date) {
     selectedDate = date;
 }
+// Function to generate the years range and populate the dropdown
 function generateYearDropdown() {
     const yearSelect = document.getElementById('year');
     const currentYear = new Date().getFullYear();
     const yearsRange = 10; // You can adjust this range as needed
+
+    // Clear existing options
+    yearSelect.innerHTML = '';
 
     // Populate the dropdown with options for each year in the range
     for (let i = currentYear - yearsRange; i <= currentYear + yearsRange; i++) {
@@ -88,9 +92,15 @@ function generateYearDropdown() {
         yearSelect.appendChild(option);
     }
 
-    // Set the default selected year
+    // Set the default selected year to the current year
     yearSelect.value = currentYear;
+
+    // Generate the calendar for the default selected year (current year)
+    generateCalendar();
 }
+
+
+
 
 // Call the function to generate the year dropdown
 generateYearDropdown()
@@ -144,32 +154,9 @@ function updateSelectedDate(date) {
     selectedDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
 }
 
-// const deleteModal = document.getElementById('deleteModal');
-//     deleteModal.addEventListener('hidden.bs.modal', function () {
-//         // Navigate back in the browser history when the modal is closed
-//         window.history.back();
-//     });
 
-//     const addTimeSlotModal = document.getElementById('addTimeSlotModal');
-//     addTimeSlotModal.addEventListener('hidden.bs.modal', function () {
-//         // Navigate back in the browser history when the modal is closed
-//         window.history.back();
-//     });
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('.add-btn').addEventListener('click', function() {
-        const addTimeSlotModal = new bootstrap.Modal(document.getElementById('addTimeSlotModal'));
-        addTimeSlotModal.show();
-    });
-
-    document.querySelectorAll('.delete-btn').forEach(item => {
-        item.addEventListener('click', event => {
-            event.preventDefault(); // Prevent default link behavior
-            const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
-            deleteModal.show();
-        });
-    });
-});
-
+// Call the function to generate the year dropdown initially
+generateYearDropdown();
 generateCalendar();
 updateMonthName();

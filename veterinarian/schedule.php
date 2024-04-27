@@ -29,8 +29,9 @@
         <button onclick="previousMonth()"><</button>
         <h3 id="month-name"></h3>
         <button onclick="nextMonth()">></button>
-        <input type="number" id="year" value="2024">
-        <button onclick="generateCalendar()">Generate Calendar</button>
+        
+        <select id="year" class="yearbtn" onchange="generateCalendar()">
+</select>
       </div>
           <table id="calendar">
             <thead>

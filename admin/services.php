@@ -44,13 +44,24 @@ if (isset($_POST['save'])) {
         <?php
         require_once('./include/admin-sidepanel.php')
             ?>
-        <section class="veterinarian-con">
-            <div class="veterinarian-head">
-                <p>Services</p>
-            </div>
-        </section>
 
-        <section class="filter-con row">
+           <section class="veterinarian-con">
+           <div class="row mx-5 justify-content-end"> 
+                <div class="crud-btn-add col-4 col-sm-auto"> 
+                    <a href="" class="crud-text" data-bs-toggle="modal" data-bs-target="#addServiceModal"><i
+                            class="fa-solid fa-circle-plus me-2" aria-hidden="true"></i> Add Service</a>
+                </div>
+           </div>
+           </section>
+   <section class="table-con">
+        <section class="customer-info-icon row  ">
+                <div class="cus-head-form col-11 d-flex justify-content-between align-items-center mb-3">
+                <div class="col-12 d-flex justify-content-between align-items-center px-3">
+                <div class="customer-info-head">
+                    <h2>Services </h2>
+                </div>
+                <div class="row ">
+                <section class="filter-con row">
             <div class="row col-7">
                 <div class="form-group ps-4 col-sm-auto">
                     <select name="status" class="form-select">
@@ -62,12 +73,9 @@ if (isset($_POST['save'])) {
                     </select>
                 </div>
             </div>
+        </div>
 
-            <div class="col-5 d-flex justify-content-end">
-                <div class="crud-btn">
-                    <a href="" class="crud-text" data-bs-toggle="modal" data-bs-target="#addServiceModal"><i
-                            class="fa-solid fa-circle-plus me-2" aria-hidden="true"></i> Add Service</a>
-                </div>
+        </section>
 
                 <form id="addServiceForm" method="post">
                     <div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel"
@@ -110,7 +118,7 @@ if (isset($_POST['save'])) {
 
         <section class="table-con">
             <div class="table-wrapper">
-                <table class="table table-bordered" style="background-color: white; text-align: center;">
+                <table id="customer" class="table table-bordered" style="background-color: white; text-align: center;">
                     <thead>
                         <tr>
                             <th scope="col">Service ID</th>

@@ -254,7 +254,7 @@ header {
     padding: 10px 10px;
 }
 
-.crud-btn {
+.crud-btn , .crud-btn-add{
     display: flex;
     justify-content: center;
     /* Horizontally center */
@@ -810,7 +810,7 @@ header {
 }
 
 .table-headpet th {
-    background-color: #8493D9;
+    background-color: #8493d991;
 }
 
 .table-bodypet td {
@@ -965,8 +965,9 @@ header {
 
 }
 .vac-container{
-   margin:20px;
-   margin-left: 70px;
+   margin-top: 10px;
+   margin-left: 56px;
+   
 }
 .form-label-petType {
    
@@ -979,4 +980,53 @@ header {
     width: 330px;
     margin-bottom: 10px;
     box-sizing: border-box;
+}
+
+/* TABLE */
+
+.table-wrapper {
+    padding: 10px; /* Add space around the table */
+
+}
+
+#customer th, #customer td {
+    padding: 15px; /* Add space around the text within cells */
+}
+
+#customer th.text-center, #customer td.text-center {
+    text-align: center; /* Center-align text within cells with class "text-center" */
+}
+    .cus-head-form{
+
+        background: rgb(119,132,190);
+       
+        text-align: center;
+       
+        height: 80px;
+        
+        margin-top:30px;
+        margin-left: 30px;
+    }
+    
+    .head-form i {
+   
+        padding: 10px; /* Adjust padding to create space around the icons */
+        margin: 0 10px; /* Add margin between the icons */
+    }
+
+.cus-head-form h2{
+    color: white;
+   
+}
+.customer-info-icon {
+    margin-bottom: -20px; /* Adjust as needed */
+}
+
+.table-wrapper {
+    margin-top: -36px; /* Adjust as needed */
+    margin-right: 60px;
+}
+.crud-btn-add {
+   padding-top: 20px;
+   
 }

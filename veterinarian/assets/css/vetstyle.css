@@ -852,6 +852,10 @@ button {
     flex-direction: row;
 }
 
+.form-group-vet {
+  padding: 10px 10px;
+}
+
 .back-btn, .cus-btn {
     background-color: #fff;
     color: #3A3F54;
@@ -1325,8 +1329,8 @@ margin-left: 240px;
   
   input[type="text"],
   input[type="email"],
-  input[type="tel"],
-  select {
+  input[type="tel"]
+  {
     border: none;
     border-bottom: 1px solid #ccc;
     width: 300px;
@@ -1334,7 +1338,28 @@ margin-left: 240px;
     font-size: 16px;
     outline: none;
   }
-  
+  .year{
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 100px;
+    padding: 5px;
+    font-size: 16px;
+    outline: none;
+    background-color:rgb(225, 234, 251);
+  }
+  .yearbtn{
+    border:1px solid #000000;
+  }
+  .yearbtn a {
+    padding: 10px 20px; /* Adjust padding */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.yearbtn a:hover {
+    background-color: #007bff; /* Darker primary color on hover */
+    color: #fff; /* Text color on hover */
+}
   input[type="text"]:focus,
   input[type="email"]:focus,
   input[type="tel"]:focus,
@@ -1648,7 +1673,7 @@ margin-left: 240px;
   background: linear-gradient(to bottom, #bdbfde, #d7d7e0);
 }
 
-#customer tbody tr:hover {
+#customers tbody tr:hover {
 
   cursor: pointer; /* Change cursor to pointer on hover */
   box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
@@ -1668,4 +1693,103 @@ margin-left: 240px;
 
 .back-btn-med{
   margin-left: 900px;
+}
+
+.profile-pic {
+  background-color: #EAEAEA !important;
+  width: 50px;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+  border-color: solid 3px #000000;
+  border-radius: 10px;
+}
+.upload-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  background: #C1CCF8;
+}
+/* TABLE */
+
+.table-wrapper-vet {
+  padding: 10px; /* Add space around the table */
+
+}
+
+#customer th, #customer td ,#customers th, #customers td {
+  padding: 15px; /* Add space around the text within cells */
+}
+
+#customer th.text-center, #customer td.text-center,#customers th.text-center, #customers td.text-center {
+  text-align: center; /* Center-align text within cells with class "text-center" */
+}
+  .cus-head-form{
+
+      background: rgb(119,132,190);
+     
+      text-align: center;
+     
+      height: 80px;
+      
+      margin-top:30px;
+      margin-left: 30px;
+  }
+  
+  .head-form i {
+ 
+      padding: 10px; /* Adjust padding to create space around the icons */
+      margin: 0 10px; /* Add margin between the icons */
+  }
+
+.cus-head-form h2{
+  color: white;
+ 
+}
+.customer-info-icon-vet {
+  padding-top: 60px;
+  margin-bottom: -20px; /* Adjust as needed */
+}
+
+.table-wrapper-vet {
+  margin-top: -36px; /* Adjust as needed */
+  margin-right: 60px;
+}
+.table-wrapper-vett {
+  margin-top: -26px;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 93%;
+}
+.crud-btn-add {
+ padding-top: 20px;
+ 
+}
+.table-con-vet {
+  margin-left: 160px;
+}
+.table-con {
+  margin-left: 260px;
+}
+.customDateContainer {
+  position: absolute;
+  top: 0;
+  left: 100px;
+  z-index: 999; /* Ensure it appears above other content */
+}
+.customDateRange{ 
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  width: 200px;
+  background-color: #fff;
+  position: absolute; 
+  z-index: 1000;  
+  display: none;
 }

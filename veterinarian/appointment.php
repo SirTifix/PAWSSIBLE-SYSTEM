@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <?php
@@ -13,26 +13,31 @@
    <?php
         require_once('./include/vet-sidepanel.php')
     ?>
-    <section class="customer-info-icon row  ">
-      <div class="head-form col-12 d-flex justify-content-between align-items-center mb-3">
-          <div class="icon-circle">
-              <i class="icon fa fa-solid  fa-user mr-2 mt-1" style="color: white;"></i> 
-          </div>
-          <div class=" col-12 d-flex justify-content-between align-items-center px-3">
-            <div class="customer-info-head">
-                <h2>Appointment</h2>
-            </div>
-        </div>
-      </div>
-      <div class="table-appointment">
-        <div class="row justify-content-start align-items-center">
+
+  
+<section class="table-con ">
+    <section class="customer-info-icon-vet row  ">
+                <div class="cus-head-form col-11 d-flex justify-content-between align-items-center mb-3">
+                <div class="col-12 d-flex justify-content-between align-items-center px-3">
+                <div class="customer-info-head">
+                    <h2>Appointment </h2>
+                </div>
+                <div class="row col-4">
+                <div class="row justify-content-start align-items-center">
             <div class="col-auto my-1">
                 <div class="search-con">
                     <input type="text" id="searchInput" class="search-input" placeholder="Search here...">
                 </div>
             </div>
-        </div> 
-      <table class="table table-hover">
+    </div> 
+            </div>
+        </div>
+
+
+        </section>
+
+        <div class="table-wrapper-vet">  
+      <table id ="customer"class="table table-hover">
         <thead>
           <tr>
           <th scope="col">Book No.</th>
@@ -45,7 +50,7 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">1</th>
+            <td scope="row">1</td>
             <td>Mark Chi</td>
             <td>Feb 23, 2023</td>
             <td>3:00pm</td>
@@ -56,7 +61,9 @@
         </tbody>
       </table>
       </div>
+</section>
     </section>
+    
 </body>
 </html>
 

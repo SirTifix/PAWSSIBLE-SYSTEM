@@ -13,89 +13,62 @@
         require_once('./include/vet-sidepanel.php')
     ?>
 
-    <section class="customer-title pt-4">
- 
-        <div class="customer-info-head">
-            <h2>Customer Handled</h2>
-        </div>
-    
-      </section>
-    
-        
 
-        
-        <!-- <div class="row justify-content-center">
-            
-            <a href="customer_information.php" class="customer-button">
-            <div class="col-md-12">
-                <div class="customer">
-                    <div class="icon-circle">
-                    <i class="icon fa fa-solid fa-user mr-2 mt-1"></i> 
-                    </div>
-                    <div class="customer-title mx-3">
-                        <h3>Maria Mercedes</h3>
-                    </div>
-                
-                </div>
-                </div>
-                </a>
-                
-             
-                <a href="customer_information.php" class="customer-button">
-                    <div class="col-md-12">
-                        <div class="customer">
-                            <div class="icon-circle">
-                            <i class="icon fa fa-solid fa-user mt-1"></i> 
-                            </div>
-                            <div class="customer-title mx-3">
-                                <h3>Juan Dela Cruz</h3>
-                            </div>
-                        
-                        </div>
-                        </div>
-                        </a>
+  
 
-              <a href="customer_information.php" class="customer-button">
-              <div class="col-md-12">
-                <div class="customer">
-                    <div class="icon-circle">
-                        <i class="icon fa fa-solid fa-user mt-1"></i> 
-                        </div>
-                    <div class="customer-title mx-3">
-                        <h3>Maria Makiling</h3>
-                    </div>
-                    
+        <section class="table-con">
+        <section class="customer-info-icon-vet row  ">
+                <div class="cus-head-form col-11 d-flex justify-content-between align-items-center mb-3">
+                <div class="col-12 d-flex justify-content-between align-items-center px-3">
+                <div class="customer-info-head">
+                    <h2>Customer Records </h2>
                 </div>
-              </div>
-              </a>
-           -->
-           <section class="filter-con row">
-            <div class="row col-7">
-                <div class="form-group-sel col-8 col-sm-auto">
+                <div class="row">
+                <div class="form-group-vet col-8 col-sm-auto">
                     <select id="dateRangeSelect" class="form-select">
                         <option value="today">Today</option>
                         <option value="thisYear">This Year</option>
                         <option value="lastYear">Last Year</option>
                         <option value="custom" class="custom-option">Custom date range</option>
                     </select>
-</section>   
-            <section class="table-con ">
                 
-                    <div class="table-wrapper ">
-                        <table id="customer" class="table table-striped table-sm">
+
+                    <div id="customDateContainer">
+                        <div id="customDateRange" class="customDateRange">
+                            <label for="startDate" class="my-1">After:</label>
+                            <input type="date" id="startDate" class="my-1" name="startDate">
+
+                            <label for="endDate" class="my-2">Before:</label>
+                            <input type="date" id="endDate" name="endDate">
+
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                            <button type="button" class="btn btn-secondary">Cancel</button>
+                            <button type="button" class="btn btn-primary">Apply</button>
+                            </div>
+
+                         </div>
+                    </div>  
+                </div>
+                </div>
+                </div>
+                </div>
+          
+                
+                    <div class="table-wrapper-vett ">
+                        <table id="customers" class="table  table-hover">
                             <thead>
                                 <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Recently Added</th>
                            
-                        </tr>
-                    </thead>
+                                </tr>
+                            </thead>
                     <tbody id="customerTableBody">
                     <tr onclick="window.location.href='customer_information.php';">
-                        <th scope="col">1</th>
-                        <th scope="col">Maria Makiling</th>
-                        <th scope="col">Oct 20 2023</th>
+                        <td >1</td>
+                        <td >Maria Makiling</td>
+                        <td >Oct 20 2023</td>
                     </tr>
                     
                                
@@ -103,6 +76,8 @@
                 </table>
                 </div>
             </div>
+            
+        </section>
         </section>
 
                     
