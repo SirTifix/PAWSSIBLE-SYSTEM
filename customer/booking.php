@@ -145,12 +145,12 @@ require_once ('./tools/functions.php');
       <div class="modal-cont">
         <h2>Personal Information</h2>
 
-        <form action="submit-booking.php" method="post">
+        <form action="submit-booking.php" class="needs-validation" method="post" novalidate>
           <div class="selected-details">
             <div class="row">
               <div class="input-container col-sm-3">
                 <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="firstName" required>
+                <input type="text" class="form-control" id="firstName" name="firstName" required>
               </div>
 
               <div class="input-container col-sm-3">
@@ -160,14 +160,14 @@ require_once ('./tools/functions.php');
 
               <div class="input-container col-sm-3">
                 <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="lastName" required>
+                <input type="text" class="form-control" id="lastName" name="lastName" required>
               </div>
             </div>
 
             <div class="row">
               <div class="email-text input-container col-6">
                 <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email" required>
               </div>
 
               <div class="details col-sm">
@@ -183,15 +183,15 @@ require_once ('./tools/functions.php');
             <div class="row">
               <div class="input-container col-6">
                 <label for="contactNumber">Contact Number:</label>
-                <input type="tel" id="contactNumber" name="contactNumber" required>
+                <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
               </div>
             </div>
 
             <div class="row">
               <div class="input-container col-6">
                 <label for="pets">Number of Pets:</label>
-                <select id="pets" name="pets">
-                  <option value="0">Select Number of Pets</option>
+                <select id="pets" class="form-control" name="pets" required>
+                  <option value="">Select Number of Pets</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -222,6 +222,7 @@ require_once ('./tools/functions.php');
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="./assets/script/calendar.js"></script>
+  <script src="./assets/script/validation.js"></script>
 
   <script>
 
