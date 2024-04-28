@@ -108,6 +108,19 @@ class Veterinarian
         }
         return $data;
     }
+    
+    function showVetByID($vetID)
+{
+    $sql = "SELECT vetID, CONCAT(vetFirstname, ' ', vetLastname) AS fullName, created_at FROM veterinarian WHERE vetID = :vetID ORDER BY vetLastname ASC, vetFirstname ASC;";
+    $query = $this->db->connect()->prepare($sql);
+    $query->bindParam(':vetID', $vetID);
+    $data = null;
+    if ($query->execute()) {
+        $data = $query->fetch(); 
+    }
+    return $data;
+}
+
 }
 
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2024 at 08:59 PM
+-- Generation Time: Apr 29, 2024 at 12:20 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -66,7 +66,7 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`bookingID`, `firstName`, `lastName`, `emailAddress`, `contactNumber`, `status`, `bookingDate`, `bookingTime`, `resched_reason`) VALUES
-(4875, 'Test', 'Test', 'test@test.com', '123123412', 'Done', 'April 11, 2024', '08:00 AM - 09:00 AM', NULL);
+(4875, 'Test', 'Test', 'test@test.com', '123123412', 'Pending', 'April 3, 2024', '09:00 AM 10:00 AM', 'No time and no money hehe');
 
 -- --------------------------------------------------------
 

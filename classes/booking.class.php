@@ -215,7 +215,26 @@ class Booking
         return $petInfo;
     }
 
+    function populateAppointment($bookingID)
+    {
+        $appointmentInfo = array();
 
+        $sql = "SELECT bp.*, b.* 
+                FROM booking_pet bp 
+                JOIN booking b ON bp.bookingID = b.bookingID
+                WHERE b.bookingID = :bookingID";
+    
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':bookingID', $bookingID);
+    
+        if ($query->execute()) {
+            $appointmentInfo['appointmentData'] = $query->fetchAll();
+        }
+
+        return $appointmentInfo;
+    }
+
+    
 
     function fetchNameViaEmail($email)
     {
@@ -228,6 +247,30 @@ class Booking
         return $data;
     }
 
+    function rescheduleAppointment($bookingID, $newDate, $newTime, $reason) {
+        try {
+            $sql = "UPDATE booking 
+                    SET bookingDate = :newDate, 
+                        bookingTime = :newTime, 
+                        resched_reason = :reason 
+                    WHERE bookingID = :bookingID";
 
+            $query = $this->db->connect()->prepare($sql);
+
+            $query->bindParam(':newDate', $newDate);
+            $query->bindParam(':newTime', $newTime);
+            $query->bindParam(':reason', $reason);
+            $query->bindParam(':bookingID', $bookingID);
+
+            if ($query->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
 }
 ?>

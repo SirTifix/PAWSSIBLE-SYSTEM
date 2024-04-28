@@ -2,9 +2,51 @@
 <html lang="en">
 
 <?php
+session_start();
 $title = 'Pawssible Solutions Veterinary';
 require_once ('./tools/functions.php');
 require_once ('./include/customer-header.php');
+require_once '../classes/veterinarian.class.php';
+require_once '../classes/service.class.php';
+require_once '../classes/booking.class.php'; 
+
+$veterinarian = new Veterinarian();
+$service = new Service();
+$booking = new Booking();
+
+
+if (isset($_GET['bookingID'])) {
+    $bookingID = $_GET['bookingID'];
+    $_SESSION['bookingID'] = $bookingID;
+} else {
+    echo "BookingID is not set in the URL.";
+}
+
+$appointmentInfo = $booking->populateAppointment($bookingID);
+
+if (!empty($appointmentInfo['appointmentData'])) {
+    $bookingData = $appointmentInfo['appointmentData'][0];
+    $firstName = $bookingData['firstName'];
+    $lastName = $bookingData['lastName'];
+    $email = $bookingData['emailAddress'];
+    $contactNumber = $bookingData['contactNumber'];
+    $selectedDate = $bookingData['bookingDate'];
+    $selectedTime = $bookingData['bookingTime'];
+    $reason = $bookingData['resched_reason'];
+    $concerns = $bookingData['concerns'];
+    $petName = $bookingData['petName'];
+    $petType = $bookingData['petType'];
+    $sex = $bookingData['sex'];
+    $breed = $bookingData['petBreed'];
+    $birthdate = $bookingData['petBirthDate'];
+    $serviceID = $bookingData['serviceID'];
+    $vetID = $bookingData['vetID'];
+
+    $vets = $veterinarian->showVetByID($vetID);
+    $serviceName = $service->fetch($serviceID);
+} else {
+    echo "No appointment data found for the given bookingID.";
+}
 ?>
 
 
@@ -16,7 +58,7 @@ require_once ('./include/customer-header.php');
     <link rel="stylesheet" href="../customer/assets/css/style.css">
     <link rel="stylesheet" href="../customer/assets/css/customer-profile.css">
     <link rel="stylesheet" href="../customer/assets/css/review-calendar.css">
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -35,104 +77,109 @@ require_once ('./include/customer-header.php');
                         <div class="form-appointment-review">
                             <h4>Personal Information</h4>
 
-
-                            <div class="selected-details">
-                                <div class="row">
-
-                                    <div class="input-container  col-sm-3">
-                                        <label for="firstName">First Name:</label>
-                                        <input type="text" id="firstName" name="firstName" required>
-                                    </div>
-
-                                    <div class="input-container col-sm-3">
-                                        <label for="middleName">Middle Name (Optional):</label>
-                                        <input type="text" id="middleName" name="middleName">
-                                    </div>
-
-                                    <div class="input-container col-sm-3">
-                                        <label for="lastName">Last Name:</label>
-                                        <input type="text" id="lastName" name="lastName" required>
-                                    </div>
-
+                            <form method="POST" action="reschedule-appointment.php">
+                                <div class="selected-details">
                                     <div class="row">
-                                        <div class="input-container col-6">
-                                            <label for="email">Email Address:</label>
-                                            <input type="email" id="email" name="email" required>
+
+                                        <div class="input-container  col-sm-3">
+                                            <label for="firstName">First Name:</label>
+                                            <input type="text" id="firstName" name="firstName"
+                                                value="<?php echo $firstName; ?>" required>
                                         </div>
 
-                                        <div class="details col-sm">
-                                            <label for="lastName">Selected Date and Time</label>
-                                            
-                                            <div class="d-flex">
-                                                <p id="selectedDateTime"></p>
-                                                
-                                                <button id="openCalendarModalBtn"
-                                                    class="Calendar-review-button">
-                                                    <i class="calendar-icon fa-regular fa-calendar"></i>
-                                                </button>
+                                        <div class="input-container col-sm-3">
+                                            <label for="middleName">Middle Name (Optional):</label>
+                                            <input type="text" id="middleName" name="middleName">
+                                        </div>
 
+                                        <div class="input-container col-sm-3">
+                                            <label for="lastName">Last Name:</label>
+                                            <input type="text" id="lastName" name="lastName"
+                                                value="<?php echo $lastName; ?>" required>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="input-container col-6">
+                                                <label for="email">Email Address:</label>
+                                                <input type="email" id="email" name="email"
+                                                    value="<?php echo $email; ?>" required>
+                                            </div>
+
+                                            <div class="details col-sm">
+                                                <label for="lastName">Selected Date and Time</label>
+
+                                                <div class="d-flex">
+                                                    <p id="selectedDateTime"></p>
+
+                                                    <input type="hidden" name="selectedDate" id="selectedDate" value="">
+                                                    <input type="hidden" name="selectedTime" id="selectedTime" value="">
+
+                                                    <button id="openCalendarModalBtn" class="Calendar-review-button"
+                                                        type="button">
+                                                        <i class="calendar-icon fa-regular fa-calendar"></i>
+                                                    </button>
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="input-container col-6">
+                                                <label for="contactNumber">Contact Number:</label>
+                                                <input type="tel" id="contactNumber" name="contactNumber"
+                                                    value="<?php echo $contactNumber; ?>" required>
+
+                                            </div>
+
+                                            <div class="form-group col-sm-2">
+                                                <label for="concerns">
+                                                    <h5>Reason for Rescheduling</h5>
+                                                </label>
+                                                <textarea style="height: 120px;" class="form-concerns" id="reason" name="reason"><?php echo $reason; ?></textarea>
                                             </div>
                                         </div>
 
 
-                                    </div>
 
-                                    <div class="row">
-                                        <div class="input-container col-6">
-                                            <label for="contactNumber">Contact Number:</label>
-                                            <input type="tel" id="contactNumber" name="contactNumber" required>
-
+                                        <div class="row">
+                                            <div class="input-container col-6">
+                                                <label for="pets">Number of Pets:</label>
+                                                <select id="pets" name="pets">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
                                         </div>
 
-                                        <div class="form-group col-sm-2">
-                                            <label for="concerns">
-                                                <h5>Reason for Rescheduling</h5>
-                                            </label>
-                                            <textarea style="height: 120px;" class="form-concerns"
-                                                id="concerns"></textarea>
-                                        </div>
-                                    </div>
 
-
-
-                                    <div class="row">
-                                        <div class="input-container col-6">
-                                            <label for="pets">Number of Pets:</label>
-                                            <select id="pets" name="pets">
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="pet-info-form background-color-container container mt-4 p-4">
-                                        <h2 class="mb-4">Pet Information Form</h2>
-                                        <form>
+                                        <div class="pet-info-form background-color-container container mt-4 p-4">
+                                            <h2 class="mb-4">Pet Information Form</h2>
                                             <div class="form-row">
                                                 <div class="form-group col-sm-2  background-color">
                                                     <label for="petname">
                                                         <h5>Pet Name</h5>
                                                     </label>
                                                     <input type="text" class="book-form-control" id="petname"
-                                                        placeholder="Enter pet name" />
+                                                        value="<?php echo $petName; ?>" placeholder="Enter pet name" />
                                                 </div>
                                                 <div class="form-group col-sm-2 background-color">
                                                     <label for="pettype">
                                                         <h5>Pet Type</h5>
                                                     </label>
                                                     <input type="text" class="book-form-control" id="pettype"
-                                                        placeholder="Enter pet type" />
+                                                        value="<?php echo $petType; ?>" placeholder="Enter pet type" />
                                                 </div>
                                                 <div class="form-group col-sm-2 background-color">
                                                     <label for="sex">
                                                         <h5>Sex</h5>
                                                     </label>
-                                                    <input type="text" class="book-form-control background-color" id="sex"
-                                                        placeholder="Enter sex" />
+                                                    <input type="text" class="book-form-control background-color"
+                                                        value="<?php echo $sex; ?>" id="sex" placeholder="Enter sex" />
                                                 </div>
 
                                                 <div class="form-group col-sm-2">
@@ -140,7 +187,7 @@ require_once ('./include/customer-header.php');
                                                         <h5>Concerns</h5>
                                                     </label>
                                                     <textarea style="height: 200px;" class="form-concerns"
-                                                        id="concerns"></textarea>
+                                                        value="<?php echo $concerns; ?>" id="concerns"></textarea>
                                                 </div>
                                             </div>
 
@@ -150,28 +197,19 @@ require_once ('./include/customer-header.php');
                                                         <h5>Breed</h5>
                                                     </label>
                                                     <input type="text" class="book-form-control" id="breed"
-                                                        placeholder="Enter breed" />
+                                                        value="<?php echo $breed; ?>" placeholder="Enter breed" />
                                                 </div>
+
                                                 <div class="form-group col-sm-2 background-color">
                                                     <label for="services">
                                                         <h5>Select Services</h5>
                                                     </label>
-                                                    <select class="book-form-control " id="services">
-                                                        <option value="">Choose...</option>
-                                                        <option value="Spay/Neuter">
-                                                            Spay/Neuter<span class="price">PHP 1,000</span>
-                                                        </option>
-                                                        <option value="Eye Extraction">
-                                                            Eye Extraction<span class="price">PHP 4,500</span>
-                                                        </option>
-                                                        <option value="Imputation">
-                                                            Imputation<span class="price">PHP 2,500</span>
-                                                        </option>
-                                                        <option value="Caesarian">
-                                                            Caesarian<span class="price">PHP 1,000</span>
-                                                        </option>
-                                                        <option value="Vaccination">
-                                                            Vaccination<span class="price">PHP 300</span>
+                                                    <select class="book-form-control" id="services">
+                                                        <option value="<?php echo $serviceName['serviceID']; ?>"
+                                                            selected>
+                                                            <?php echo $serviceName['serviceName']; ?>
+                                                            <span class="price">PHP
+                                                                <?php echo $serviceName['servicePrice']; ?></span>
                                                         </option>
                                                     </select>
                                                 </div>
@@ -181,12 +219,9 @@ require_once ('./include/customer-header.php');
                                                         <h5>Select vet</h5>
                                                     </label>
                                                     <select class="book-form-control" id="vet">
-                                                        <option value="">Choose...</option>
-                                                        <option value="vet1">Dr.Jasmin abayon</option>
-                                                        <option value="vet2">Dr.Erwin roy jalao</option>
-                                                        <option value="vet3">Dr.Portia quintas</option>
-                                                        <option value="vet3">Dr.Roi-lee cataluna</option>
-                                                        <option value="vet3">Dr.France jalao</option>
+                                                        <option value="<?php echo $vets['vetID']; ?>" selected>
+                                                            <?php echo $vets['fullName']; ?>
+                                                        </option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -196,11 +231,12 @@ require_once ('./include/customer-header.php');
                                                     <label for="birthdate">
                                                         <h5>BirthDate</h5>
                                                     </label>
-                                                    <input type="date" class="book-form-control form-control" id="birthdate" />
+                                                    <input type="date" class="book-form-control form-control" value="<?php echo $birthdate; ?>
+                                                        id=" birthdate" />
                                                 </div>
                                             </div>
 
-                                            <button type="button" id="submitBtn" class="btn btn-primary"
+                                            <button type="submit" id="submitBtn" class="btn btn-primary"
                                                 data-toggle="modal" data-target="#confirmModal"
                                                 style="background-color:#2A2F4F" class="float-right">
                                                 Reschedule Appointment
@@ -240,15 +276,15 @@ require_once ('./include/customer-header.php');
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
+    </div>
     </div>
 
 
@@ -259,7 +295,7 @@ require_once ('./include/customer-header.php');
             <div class="modal-content">
                 <div class="modal-body">
                     <!-- Calendar content goes here -->
-                    
+
                     <div class="review-calendar container">
                         <div class="calendar-container cont-box">
                             <div class="calendar cont-content">
@@ -400,39 +436,40 @@ require_once ('./include/customer-header.php');
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="./assets/script/review-appointment.js"></script>
 
     <script>
-        $(document).ready(function () {
-            // Function to open the calendar modal
-            $("#openCalendarModalBtn").click(function () {
-                $("#calendarModal").modal('show');
-            });
-
-            document.getElementById('finishBookingBtn').addEventListener('click', function () {
-                location.reload();
-            });
-
-            // Function to handle reschedule appointment button click
-            $("#submitBtn").click(function () {
-                // Perform any necessary actions here, such as submitting the form data
-                // For demonstration purposes, let's just log a message
-                console.log("Reschedule appointment button clicked");
-
-                // Show the confirmation modal
-                $("#confirmModal").modal('show');
-            });
-
-            // Function to handle confirmation of reschedule appointment
-            $("#confirmSelectionBtn").click(function () {
-                // Perform any necessary actions upon confirmation
-                // For demonstration purposes, let's reload the page
-                location.reload();
-            });
+    $(document).ready(function() {
+        // Function to open the calendar modal
+        $("#openCalendarModalBtn").click(function() {
+            $("#calendarModal").modal('show');
         });
+
+        document.getElementById('finishBookingBtn').addEventListener('click', function() {
+            location.reload();
+        });
+
+        // Function to handle reschedule appointment button click
+        $("#submitBtn").click(function() {
+            // Perform any necessary actions here, such as submitting the form data
+            // For demonstration purposes, let's just log a message
+            console.log("Reschedule appointment button clicked");
+
+            // Show the confirmation modal
+            $("#confirmModal").modal('show');
+        });
+
+        // Function to handle confirmation of reschedule appointment
+        $("#confirmSelectionBtn").click(function() {
+            // Perform any necessary actions upon confirmation
+            // For demonstration purposes, let's reload the page
+            location.reload();
+        });
+    });
     </script>
 </body>
+
 </html>
