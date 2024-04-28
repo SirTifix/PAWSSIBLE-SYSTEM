@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Apr 28, 2024 at 12:00 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Host: 127.0.0.1
+-- Generation Time: Apr 28, 2024 at 08:59 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -66,12 +66,7 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`bookingID`, `firstName`, `lastName`, `emailAddress`, `contactNumber`, `status`, `bookingDate`, `bookingTime`, `resched_reason`) VALUES
-(2443, 'awdawd', 'awdaw', 'dawdawd@acaw.com', '123123123', 'Pending', 'October 31, 2025', '11:00 AM 12:00 PM', NULL),
-(3029, 'joy', 'pioquinto', 'joypioquinto1017@gmail.ph', '09278894171', 'Pending', 'April 6, 2024', '08:00 AM - 09:00 AM', NULL),
-(3519, 'RAF', 'SALUDO', 'raf_saludo@yahoo.com.ph', '09979784700', 'Pending', 'April 6, 2024', '08:00 AM - 09:00 AM', NULL),
-(4566, 'RAF', 'SALUDO', 'raf_saludo@yahoo.com.ph', '09979784700', 'Pending', 'April 6, 2024', '08:00 AM - 09:00 AM', NULL),
-(5333, 'RAF', 'SALUDO', 'raf_saludo@yahoo.com.ph', '09979784700', 'Pending', 'April 6, 2024', '08:00 AM - 09:00 AM', NULL),
-(8383, 'Carl', 'Katalbas', 'paldokings@opo.com', '099757123', 'Pending', 'April 6, 2024', '08:00 AM - 09:00 AM', NULL);
+(4875, 'Test', 'Test', 'test@test.com', '123123412', 'Done', 'April 11, 2024', '08:00 AM - 09:00 AM', NULL);
 
 -- --------------------------------------------------------
 
@@ -89,17 +84,16 @@ CREATE TABLE `booking_pet` (
   `petBirthDate` date NOT NULL,
   `bookingID` int(11) NOT NULL,
   `serviceID` int(11) NOT NULL,
-  `vetID` int(11) NOT NULL
+  `vetID` int(11) NOT NULL,
+  `customerID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `booking_pet`
 --
 
-INSERT INTO `booking_pet` (`bookingPetID`, `petName`, `petType`, `sex`, `concerns`, `petBreed`, `petBirthDate`, `bookingID`, `serviceID`, `vetID`) VALUES
-(26, 'Max', 'Dog', 'Female', 'asdasdf', 'Doberman', '2024-04-28', 7817, 4, 5),
-(27, 'Maximus', 'Cat', 'Male', 'sdfs', 'Sphinx', '2024-04-28', 7817, 2, 5),
-(28, 'Paldo', 'Halimaw', 'Male', 'asdasdas', 'Mamaw', '2024-04-28', 8383, 4, 5);
+INSERT INTO `booking_pet` (`bookingPetID`, `petName`, `petType`, `sex`, `concerns`, `petBreed`, `petBirthDate`, `bookingID`, `serviceID`, `vetID`, `customerID`) VALUES
+(32, 'Kongkik', 'Cat', 'Male', 'Cat neuter', 'Siamese', '2024-04-18', 4875, 2, 5, 13);
 
 -- --------------------------------------------------------
 
@@ -383,7 +377,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `booking_pet`
 --
 ALTER TABLE `booking_pet`
-  MODIFY `bookingPetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `bookingPetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `customer`
