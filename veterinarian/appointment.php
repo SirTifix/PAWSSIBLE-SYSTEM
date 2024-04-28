@@ -37,7 +37,7 @@
         </section>
 
         <div class="table-wrapper-vet">  
-      <table id ="customer"class="table table-hover">
+      <table id ="customer"class="table table table-striped table-hover">
         <thead>
           <tr>
           <th scope="col">Book No.</th>

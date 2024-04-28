@@ -24,7 +24,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    $title = '';
+    $title = 'Pawssible Solutions Veterinary';
 ?>
 <body>
     <main>

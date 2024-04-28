@@ -49,7 +49,7 @@
             </div>
     
             <div class="table-wrapper-vett ">
-                <table id="customers" class="table  table-hover">
+                <table id="customers" class="table table table-striped table-hover">
                     <thead>
                         <tr>
                             <th scope="col">#</th>

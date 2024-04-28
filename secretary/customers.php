@@ -98,6 +98,8 @@ require_once('./include/sec-head.php');
                         </tr>
                     </thead>
                     <tbody id="customerTableBody">
+                 
+                        
                         <?php
                         if ($customerArray) {
                             foreach ($customerArray as $item) {

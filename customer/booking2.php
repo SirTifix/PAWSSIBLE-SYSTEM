@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pawssible Solutions Veterinary</title>
     <link rel="website icon" type="png" href="./assets/img/logo.png">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/booking-style.css">
@@ -19,7 +19,7 @@
 <?php 
 session_start();
 ?>
-<h2 class="mb-4">Pet Information Form <?php echo $_SESSION['noofpets'].' pets';?> </h2>
+<h2 class="pet-form-style mb-4">Pet Information Form <?php echo $_SESSION['noofpets'].' pets';?> </h2>
 <?php for ($i = 0; $i < $_SESSION['noofpets']; $i++) {?>
 <div class="pet-info-form background-color-container">
     
@@ -56,7 +56,7 @@ session_start();
                 <label for="concerns_<?php echo $i; ?>">
                     <h5>Concerns</h5>
                 </label>
-                <textarea style="height: 100%;" class="form-concerns" name="concerns[]"
+                <textarea class="form-concerns" name="concerns[]"
                     id="concerns_<?php echo $i; ?>"></textarea>
             </div>
         </div>
@@ -189,7 +189,7 @@ session_start();
 </div>
 
 <script src="./assets/script/fetch.js"></script>
-<script>
+ <script>
     $(document).ready(function () {
       $('#anotherModal').on('show.bs.modal', function (e) {
         $('.modal').modal('hide');
@@ -201,7 +201,6 @@ session_start();
       location.reload();
     });
   </script>
-  
 
 </body>
 </html>

@@ -85,7 +85,7 @@ require_once('./include/admin-head.php');
 
         </section>
             <div class="table-wrapper ">
-                <table id="customer" class="table  table-sm">
+                <table id="customer" class="table table-striped table-sm">
                     <thead>
                         <tr>
                             <th scope="col">#</th>

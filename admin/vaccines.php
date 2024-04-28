@@ -14,26 +14,7 @@
     ?>
      
 
-        <!-- <section class="filter-con row">
-            <div class="row col-7">
-                <div class="form-group col-6 col-sm-auto">
-                    <select id="dateRangeSelect" class="form-select">
-                        <option value="">Select Pet Type</option>
-                        <option value="all">All</option>
-                        <option value="dog">Dog</option>
-                        <option value="cat">Cat</option>
-                    </select>
-            </div>
-
-            <div class="form-group col-6 col-sm-auto">
-                    <select name="status" class="form-select">
-                    <option value="">Select Vaccine Type</option>
-                    <option value="vaccine1">Annual Booster</option>
-                    <option value="vaccine2">Primary Series</option>
-                    <option value="vaccine3">Deworming</option>
-                    </select>
-                </div>
-            </div> -->
+ 
 
 
             <section class="veterinarian-con">
@@ -80,14 +61,10 @@
 
         </section>
 
-      
-   </section>
+
    <div class="table-wrapper ">
-        <div class="vac-container">
-      <div class="pet-information ">
       
-        <div class="d-flex justify-content-around">
-            <table id="customer"class="table table-bordered">
+            <table id="customer"class="table table-striped table-sm">
                 <thead>
                     <tr class="table-headpet text-center">
                         <th scope="col"> Vaccine ID</th>

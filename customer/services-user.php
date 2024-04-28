@@ -1,10 +1,19 @@
+<?php
+// Resume the session to fetch or create the cart
+    session_start();
+
+if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
+    header('location: index.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services</title>
+  <title>Pawssible Solutions Veterinary</title>
   <link rel="website icon" type="png" href="./assets/img/logo.png">
   <script src="./script/script.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
