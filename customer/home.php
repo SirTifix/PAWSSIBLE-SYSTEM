@@ -9,7 +9,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    $title = 'Home';
+    $title = 'Pawssible Solutions Veterinary';
     require_once('./include/user-head.php');
     require_once('./tools/functions.php');
 ?>

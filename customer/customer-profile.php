@@ -14,7 +14,7 @@ require_once ('./include/customer-header.php');
   <title>
     <?php echo $title ?>
   </title>
-
+  <link rel="website icon" type="png" href="../customer/assets/img/logo.png">
   <link rel="stylesheet" href="../customer/assets/css/customer-dropdown.css">
   <link rel="stylesheet" href="../customer/assets/css/style.css">
   <link rel="stylesheet" href="../customer/assets/css/customer-profile.css">

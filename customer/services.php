@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services</title>
+    <title>Pawssible Solutions Veterinary</title>
     <script src="./script/script.js"></script>
     <link rel="website icon" type="png" href="./assets/img/logo.png">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -208,7 +208,7 @@
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
-      }
+      },
         navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
