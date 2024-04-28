@@ -24,7 +24,7 @@ require_once('./include/sec-head.php');
     </section>
 
     <section class="appointment-calendar-con">
-    <div class="container">
+    <div class="container cal">
       <div class="calendar-container container-box">
         <div class="calendar container-content">
           <div class="calendar-header">

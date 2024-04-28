@@ -35,9 +35,7 @@
       </div>
           <table id="calendar">
             <thead>
-              <tr>
-                <th colspan="7">Calendar</th>
-              </tr>
+     
               <tr>
                 <th>Sun</th>
                 <th>Mon</th>
