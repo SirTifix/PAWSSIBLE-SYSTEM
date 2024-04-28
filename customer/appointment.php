@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <?php
 $title = 'Pawssible Solutions Veterinary';
 require_once('./tools/functions.php');

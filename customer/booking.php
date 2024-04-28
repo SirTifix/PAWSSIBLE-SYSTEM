@@ -1,8 +1,16 @@
+<?php
+// Resume the session to fetch or create the cart
+    session_start();
+
+if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
+    header('location: index.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php
 $title = 'Pawssible Solutions Veterinary';
-require_once ('./include/customer-header.php');
 require_once ('./tools/functions.php');
 ?>
 
@@ -25,6 +33,9 @@ require_once ('./tools/functions.php');
 
 </head>
 
+<?php
+require_once ('./include/customer-header.php');
+?>
 <body>
 
   <div class="avail-date">
