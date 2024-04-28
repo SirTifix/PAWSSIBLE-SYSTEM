@@ -259,20 +259,7 @@ require_once ('./include/customer-header.php');
             <div class="modal-content">
                 <div class="modal-body">
                     <!-- Calendar content goes here -->
-                    <div style="
-                position: absolute;
-                bottom: 90vh;
-                left: 6vh;
-                color: #2a2f4f;">
-                        <h2><strong> AVAILABLE DATE </strong></h2>
-                    </div>
-                    <div style="
-                position: absolute;
-                bottom: 90vh;
-                left: 77vh;
-                color: #2a2f4f;">
-                        <h2><strong> AVAILABLE TIME </strong></h2>
-                    </div>
+                    
                     <div class="review-calendar container">
                         <div class="calendar-container cont-box">
                             <div class="calendar cont-content">
