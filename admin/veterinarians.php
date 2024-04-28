@@ -72,7 +72,7 @@ require_once('../classes/veterinarian.class.php');
 
       
             <div class="table-wrapper">
-                <table id="customer"class="table table-hover">
+                <table id="customer"class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
