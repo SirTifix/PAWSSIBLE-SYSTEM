@@ -56,7 +56,7 @@ session_start();
                 <label for="concerns_<?php echo $i; ?>">
                     <h5>Concerns</h5>
                 </label>
-                <textarea style="height: 200px;" class="form-concerns" name="concerns[]"
+                <textarea style="height: 100%;" class="form-concerns" name="concerns[]"
                     id="concerns_<?php echo $i; ?>"></textarea>
             </div>
         </div>
@@ -189,6 +189,19 @@ session_start();
 </div>
 
 <script src="./assets/script/fetch.js"></script>
+<script>
+    $(document).ready(function () {
+      $('#anotherModal').on('show.bs.modal', function (e) {
+        $('.modal').modal('hide');
+      });
+    });
+
+
+    document.getElementById('finishBookingBtn').addEventListener('click', function () {
+      location.reload();
+    });
+  </script>
+  
 
 </body>
 </html>
