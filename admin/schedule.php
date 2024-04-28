@@ -3,7 +3,7 @@
 <?php
     $title = 'Schedule';
     require_once('./include/sched.php');
-    require_once('./include/admin-head.php');
+
 ?>
 <body>
 <?php
@@ -22,15 +22,15 @@
 
 <div class="white-container ">
  
-    <div class="row justify-content-center align-items-center">
+    <div class="row cal justify-content-center align-items-center">
         <div class="col-md-6 calendar-container">
-            <h2 class="pt-5 pb-3">Calendar</h2>
+            <h2>Calendar</h2>
         <div class="calendar-controls d-flex justify-content-center align-items-center">
             <button onclick="previousMonth()"><</button>
             <h5 id="month-name"></h5>
             <button onclick="nextMonth()">></button>
             <select id="year" onchange="generateCalendar()">
-</select>
+        </select>
         </div>
             <table id="calendar">
               
@@ -184,7 +184,7 @@
                 </div>
             </div>
         </section>
-<div class="d-flex justify-content-end align-items-center pt-3">
+<div class="d-flex cal justify-content-end align-items-center pt-3">
 <button type="submit" class="save-cal-btn btn-secondary" id="addStaffButton">Done </button>
 </div>
 
