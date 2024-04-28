@@ -15,6 +15,7 @@
 <body>
     
 <script>
+
     function confirmLogout() {
         // Display a confirmation dialog
         var confirmation = confirm("Are you sure you want to logout?");
@@ -50,6 +51,8 @@
             dropdown.classList.remove("active");
         }
     });
+
+    
 
 </script>
 </body>
