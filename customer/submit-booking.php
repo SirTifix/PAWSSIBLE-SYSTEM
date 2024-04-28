@@ -5,6 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $booking = new Booking();
 
     $firstname = $_POST['firstName'];
+    $middlename = $_POST['middleName'];
     $lastname = $_POST['lastName'];
     $email = $_POST['email'];
     $contactNumber = $_POST['contactNumber'];
@@ -18,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $selectedTime = $_POST['selectedTime'];
 
     $booking->firstname = $firstname;
+    $booking->middlename = $middlename;
     $booking->lastname = $lastname;
     $booking->email = $email;
     $booking->contactNumber = $contactNumber;
