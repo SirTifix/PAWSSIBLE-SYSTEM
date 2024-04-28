@@ -10,7 +10,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$title = 'Pawssible Solutions Veterinary';
+$title = 'Booking';
 require_once ('./tools/functions.php');
 ?>
 
