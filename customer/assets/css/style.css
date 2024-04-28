@@ -1284,8 +1284,8 @@ select.book-form-control {
 
 .pet-info-form {
   border-radius: 10px;
-  padding: 2em 1em;
   margin-top: 50px;
+  margin: 2em 4em;
 }
 
 .form-group {
@@ -1776,6 +1776,10 @@ select {
     border-width: 8px;
     border-color: #c6c6c6;
     border-radius: 20px;
+  }
+
+  .sliders{
+    padding: 0 2em;
   }
 
   .container-description {
