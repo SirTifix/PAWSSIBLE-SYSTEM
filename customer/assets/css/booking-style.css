@@ -327,7 +327,10 @@ select.book-form-control {
   color: #2a2f4f;
 }
 
-
+.pet-form-style{
+text-align: center;
+padding-top: 2em;
+}
 
 /* Mobile Phones (up to 320px) */
 @media (max-width: 320px) {

@@ -19,7 +19,7 @@
 <?php 
 session_start();
 ?>
-<h2 class="mb-4">Pet Information Form <?php echo $_SESSION['noofpets'].' pets';?> </h2>
+<h2 class="pet-form-style mb-4">Pet Information Form <?php echo $_SESSION['noofpets'].' pets';?> </h2>
 <?php for ($i = 0; $i < $_SESSION['noofpets']; $i++) {?>
 <div class="pet-info-form background-color-container">
     
