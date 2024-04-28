@@ -1,19 +1,10 @@
-<?php
-// Resume the session to fetch or create the cart
-    session_start();
-
-if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
-    header('location: index.php');
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pawssible Solutions Veterinary</title>
+  <title>Services</title>
   <link rel="website icon" type="png" href="./assets/img/logo.png">
   <script src="./script/script.js"></script>
   <link rel="stylesheet" href="assets/css/style.css">
@@ -345,8 +336,12 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
     initializeSwiper();
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
+  <script>
+      document.getElementById('menu-toggle').addEventListener('click', function() {
+          document.getElementById('navbar-links').classList.toggle('active');
+      });
+  </script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       var navbarCollapse = document.getElementById("navbarSupportedContent");
