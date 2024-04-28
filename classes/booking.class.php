@@ -5,7 +5,7 @@ class Booking
 {
 
     public $bookingID;
-
+    public $customerID;
     public $firstname;
     public $lastname;
     public $email;
@@ -100,11 +100,11 @@ class Booking
     }
 
 
-    function addPet($petName, $petType, $sex, $concerns, $petBreed, $petBirthDate, $savedBookingId, $service, $vet)
+    function addPet($petName, $petType, $sex, $concerns, $petBreed, $petBirthDate, $savedBookingId, $service, $vet,$customerID)
     {
         try {
-            $sqlPet = "INSERT INTO booking_pet (petName, petType, sex, concerns, petBreed, petBirthDate, bookingID, serviceID, vetID) VALUES 
-                (:petName, :petType, :sex, :concerns, :petBreed, :petBirthDate, :bookingID, :serviceID, :vetID);";
+            $sqlPet = "INSERT INTO booking_pet (petName, petType, sex, concerns, petBreed, petBirthDate, bookingID, serviceID, vetID, customerID) VALUES 
+                (:petName, :petType, :sex, :concerns, :petBreed, :petBirthDate, :bookingID, :serviceID, :vetID, :customerID);";
             $queryPet = $this->db->connect()->prepare($sqlPet);
 
             $queryPet->bindParam(':petName', $petName); 
@@ -116,7 +116,8 @@ class Booking
             $queryPet->bindParam(':bookingID', $savedBookingId);
             $queryPet->bindParam(':serviceID', $service);
             $queryPet->bindParam(':vetID', $vet);
-
+            $queryPet->bindParam(':customerID', $customerID);
+            
             if (!$queryPet->execute()) {
                 throw new Exception("Error inserting pet data");
             }
@@ -171,6 +172,62 @@ class Booking
         }
         return $data;
     }
+
+    function populatePetInfo($customerID)
+    {
+        $petInfo = array();
+
+        $sql = "SELECT * FROM booking_pet WHERE customerID = :customerID";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':customerID', $customerID);
+        if ($query->execute()) {
+            $petInfo['petNames'] = $query->fetchAll();
+        }
+
+        foreach ($petInfo['petNames'] as &$pet) {
+            $bookingID = $pet['bookingID'];
+            $sql = "SELECT * FROM booking WHERE bookingID = :bookingID";
+            $query = $this->db->connect()->prepare($sql);
+            $query->bindParam(':bookingID', $bookingID);
+            if ($query->execute()) {
+                $pet['bookingDate'] = $query->fetchAll();
+            }
+        }
+        return $petInfo;
+    }
+
+    function populatePetInfoHistory($customerID)
+    {
+        $petInfo = array();
+
+        $sql = "SELECT bp.*, b.status, b.bookingDate 
+                FROM booking_pet bp 
+                JOIN booking b ON bp.bookingID = b.bookingID
+                WHERE bp.customerID = :customerID AND b.status = 'Done'";
+    
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':customerID', $customerID);
+    
+        if ($query->execute()) {
+            $petInfo['petNames'] = $query->fetchAll();
+        }
+
+        return $petInfo;
+    }
+
+
+
+    function fetchNameViaEmail($email)
+    {
+        $sql = "SELECT CONCAT(firstName, ' ', lastName) AS fullName FROM booking WHERE emailAddress = :emailAddress";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':emailAddress', $email);
+        if ($query->execute()) {
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
 
 }
 ?>

@@ -4,6 +4,7 @@ require_once 'database.php';
 
 class Account{
 
+    public $customerID;
     public $id;
     public $email;
     public $password;
@@ -32,12 +33,26 @@ class Account{
             $accountData = $query->fetch(PDO::FETCH_ASSOC);
     
             if ($accountData && password_verify($this->password, $accountData['password'])) {
-                $this->id = $accountData['customerID'];
+                $this->id = $accountData['id'];
+                $this->getCustomerID();
                 return true;
             }
         }
     
         return false;
+    }
+
+    function getCustomerID()
+    {
+        $sql = "SELECT id FROM customer WHERE email = :email LIMIT 1;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':email', $this->email); 
+
+        if ($query->execute()) {
+            $accountData = $query->fetch(PDO::FETCH_ASSOC);
+            $this->customerID = $accountData['id'];
+            return true;
+        }
     }
     
     function sign_in_admin(){

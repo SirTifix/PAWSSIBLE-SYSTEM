@@ -12,6 +12,8 @@
         $user->password = htmlentities($_POST['password']);
         if($user->sign_in_customer()){
             $_SESSION['user'] = 'customer';
+            $_SESSION['email'] = $user->email;
+            $_SESSION['customerID'] = $user->customerID;
             header('location: home.php');
         }else{
             $error = 'Invalid email/password. Try Again.';

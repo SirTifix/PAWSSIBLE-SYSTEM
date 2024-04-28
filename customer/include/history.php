@@ -1,3 +1,17 @@
+<?php
+session_start();
+require_once 'C:\xampp\htdocs\PAWSSIBLE-SYSTEM\classes\booking.class.php';
+
+$booking = new Booking();
+
+if(isset($_SESSION['customerID'])) {
+    $customerID = $_SESSION['customerID'];
+    $petInfo = $booking->populatePetInfoHistory($customerID);
+} else {
+    $petInfo = array(); 
+}
+?>
+
 <div class="Rounded-container-form container rounded mt-2">
     <div class="Pet-mail-table row">
         <div class="Pet-mail-table col-md-12 border-right">
@@ -25,47 +39,18 @@
                             </tr>
                         </thead>
                         <tbody id="appointmentTableBody">
+                            <?php foreach ($petInfo['petNames'] as $pet) : ?>
                             <tr class="table-row">
                                 <td>
                                     <label class="custom-checkbox">
                                         <span class="checkmark"></span>
                                     </label>
-                                    Belgy
+                                    <?php echo $pet['petName']; ?>
                                 </td>
-                                <td>Done</td>
-                                <td> <strong> Jan 6,2024</strong></td>
+                                <td><?php echo $pet['status']; ?></td>
+                                <td><strong><?php echo $pet['bookingDate']; ?></strong></td>
                             </tr>
-                        </tbody>
-
-                        <tbody id="appointmentTableBody">
-                            <tr class="table-row">
-                                <td>
-                                    <label class="custom-checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    Max
-                                </td>
-                                <td>Done</td>
-                                <td> <strong> March 6,2024</strong></td>
-                                
-
-                            </tr>
-                        </tbody>
-
-                        <tbody id="appointmentTableBody">
-                            <tr class="table-row">
-                                <td>
-                                    <label class="custom-checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    Saila
-                                </td>
-                                <td>Done</td>
-                                <td> <strong> Feb 6,2024</strong></td>
-
-                            </tr>
-                        </tbody>
-
+                            <?php endforeach; ?>
                     </table>
                 </div>
 
