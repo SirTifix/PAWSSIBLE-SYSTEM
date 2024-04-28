@@ -11,15 +11,44 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
   <?php
   $title = 'Pawssible Solutions Veterinary';
-  require_once ('./include/user-header.php');
   ?>
+
+  <header>
+    <img class="third-lec" src="assets/img/Vector2.png" alt="img">
+    <img class="fourth-lec" src="assets/img/Vector3.png" alt="img">
+    <img class="sixth-lec" src="assets/img/vector-4.png" alt="img">
+    <img class="eleventh-lec" src="assets/img/multiple-pets.png" alt="img">
+
+
+    <div class="sticky-top">
+      <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+          <div class="logo p-3 d-flex align-items-center ">
+            <img class="logo-clinic" src="assets/img/logo.png" alt="Logo">
+            <div class="logo-text-customer px-3">PAWSsible Solutions <br> Veterinary Clinic</div>
+
+
+            <div class="navbar-toggle  ">
+              <button class="menu-toggle" id="menu-toggle" style="color: black;">&#9776;</button>
+            </div>
+          </div>
+
+          <div class="navbar-links " id="navbar-links">
+            <a href="./index.php">Home</a>
+            <a href="./services.php">Services</a>
+            <a href="./aboutus.php">About Us</a>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
 
   <div class="intro-title text-center">
     <h1> Our Services </h1>
@@ -150,8 +179,7 @@
       <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
               How do I schedule an appointment for my pet?
             </button>
           </h2>
@@ -161,8 +189,7 @@
         </div>
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
               What information do I need to schedule an appointment online?
             </button>
           </h2>
@@ -173,8 +200,7 @@
         </div>
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
               Can I schedule appointments for multiple pets in one session?
             </button>
           </h2>
@@ -185,8 +211,7 @@
         </div>
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
               How far in advance can I schedule an appointment online?
             </button>
           </h2>
@@ -197,8 +222,7 @@
         </div>
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
               Is there a cancellation fee for missed appointments?
             </button>
           </h2>
@@ -242,7 +266,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
       var navbarCollapse = document.getElementById("navbarSupportedContent");
       var navbarToggler = document.querySelector(".navbar-toggler");
 
@@ -258,20 +282,20 @@
       document.body.addEventListener("click", closeNavbarCollapse);
 
       // Event listener to remove background color when collapse menu is hidden
-      navbarCollapse.addEventListener("hidden.bs.collapse", function () {
+      navbarCollapse.addEventListener("hidden.bs.collapse", function() {
         navbarCollapse.classList.remove("bg-color");
       });
 
-      navbarToggler.addEventListener("click", function () {
+      navbarToggler.addEventListener("click", function() {
         navbarCollapse.classList.toggle("bg-color");
       });
     });
-
   </script>
 
   <?php
-  require_once ('./include/footer.php');
-  require_once ('./include/js.php');
+  require_once('./include/footer.php');
+  require_once('./include/js.php');
+  require_once('./include/login-modal.php');
   ?>
 </body>
 
