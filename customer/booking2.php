@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pawssible Solutions Veterinary</title>
+    <title>Booking</title>
     <link rel="website icon" type="png" href="./assets/img/logo.png">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/booking-style.css">
@@ -19,11 +19,12 @@
 <?php 
 session_start();
 ?>
-<h2 class="pet-form-style mb-4">Pet Information Form <?php echo $_SESSION['noofpets'].' pets';?> </h2>
+<h2 class="pet-form-style mb-4">Number of Pets: <?php echo $_SESSION['noofpets'].'';?> </h2>
 <?php for ($i = 0; $i < $_SESSION['noofpets']; $i++) {?>
 <div class="pet-info-form background-color-container">
     
     <form action="submit-booking2.php" method="post" >
+        <h2>Pet Information Form</h2>
         <div class="form-row">
         <input type="hidden" name="pet_index[]" value="<?php echo $i; ?>">
         <input type="hidden" name="bookingID[]" value="<?php echo isset($_GET['bookingID']) ? $_GET['bookingID'] : ''; ?>">

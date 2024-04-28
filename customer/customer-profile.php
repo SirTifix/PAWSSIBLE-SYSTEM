@@ -2,7 +2,7 @@
 <html lang="en">
 
 <?php
-$title = 'Pawssible Solutions Veterinary';
+$title = 'My Profile';
 require_once ('./tools/functions.php');
 ?>
 

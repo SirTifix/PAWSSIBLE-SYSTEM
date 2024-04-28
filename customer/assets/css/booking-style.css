@@ -159,7 +159,7 @@
 .modal-cont {
   display: flex;
   flex-direction: column;
-  width: 250%;
+  width: 200%;
   pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;
@@ -170,7 +170,7 @@
   align-items: center;
   align-items: flex-start;
   position: absolute;
-  right: -72%;
+  right: -50%;
   margin-top: 10%;
 }
 
@@ -179,9 +179,9 @@
   position: relative;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
+.input-container input[type="text"],
+.input-container input[type="email"],
+.input-container input[type="tel"],
 select {
   border: none;
   border-bottom: 1px solid #ccc;
@@ -191,9 +191,9 @@ select {
   outline: none;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="tel"]:focus,
+.input-container input[type="text"]:focus,
+.input-container input[type="email"]:focus,
+.input-container input[type="tel"]:focus,
 select:focus {
   border-bottom: 1px solid #007bff;
 }
@@ -330,6 +330,17 @@ select.book-form-control {
 .pet-form-style{
 text-align: center;
 padding-top: 2em;
+}
+
+.close {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 2em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
 }
 
 /* Mobile Phones (up to 320px) */

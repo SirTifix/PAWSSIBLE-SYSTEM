@@ -10,7 +10,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$title = 'Pawssible Solutions Veterinary';
+$title = 'Booking';
 require_once ('./tools/functions.php');
 ?>
 
@@ -154,6 +154,7 @@ require_once ('./include/customer-header.php');
   <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-cont">
+        <span data-bs-dismiss="modal" class="close"><i class="fa-solid fa-circle-xmark"></i></span>
         <h2>Personal Information</h2>
 
         <form action="submit-booking.php" class="needs-validation" method="post" novalidate>
@@ -161,7 +162,7 @@ require_once ('./include/customer-header.php');
             <div class="row">
               <div class="input-container col-sm-3">
                 <label for="firstName">First Name:</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                <input type="text" id="firstName" name="firstName" required>
               </div>
 
               <div class="input-container col-sm-3">
@@ -171,14 +172,14 @@ require_once ('./include/customer-header.php');
 
               <div class="input-container col-sm-3">
                 <label for="lastName">Last Name:</label>
-                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                <input type="text" id="lastName" name="lastName" required>
               </div>
             </div>
 
             <div class="row">
               <div class="email-text input-container col-6">
                 <label for="email">Email Address:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" id="email" name="email" required>
               </div>
 
               <div class="details col-sm">
@@ -194,14 +195,14 @@ require_once ('./include/customer-header.php');
             <div class="row">
               <div class="input-container col-6">
                 <label for="contactNumber">Contact Number:</label>
-                <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
+                <input type="tel" id="contactNumber" name="contactNumber" required>
               </div>
             </div>
 
             <div class="row">
               <div class="input-container col-6">
                 <label for="pets">Number of Pets:</label>
-                <select id="pets" class="form-control" name="pets" required>
+                <select id="pets" name="pets" required>
                   <option value="">Select Number of Pets</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -215,7 +216,7 @@ require_once ('./include/customer-header.php');
           </div>
 
           <button type="submit" value="Submit" class="btn btn-primary" style="background-color:#2A2F4F; float:right;">
-            Book Appointment
+            Next
           </button>
         </form>
       </div>

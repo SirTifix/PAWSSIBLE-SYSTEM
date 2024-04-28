@@ -13,7 +13,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 , user-scalable=no">
-    <title>Pawssible Solutions Veterinary</title>
+    <title>About Us</title>
     <link rel="website icon" type="png" href="./assets/img/logo.png">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-xn538HYobU8Un3x+RmL7gg7pKViPIzhwFX+JGLaP6JZ1eG9MzHtlHjkE3vGbeD9L" crossorigin="anonymous">
