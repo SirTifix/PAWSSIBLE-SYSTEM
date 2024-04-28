@@ -17,6 +17,7 @@
 <body>
   <?php
   $title = 'Pawssible Solutions Veterinary';
+  require_once('./include/login-modal.php');
   ?>
 
   <header>
@@ -310,7 +311,6 @@
   <?php
   require_once('./include/footer.php');
   require_once('./include/js.php');
-  require_once('./include/login-modal.php');
   ?>
 </body>
 

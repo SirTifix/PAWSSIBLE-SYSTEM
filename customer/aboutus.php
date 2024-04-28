@@ -14,6 +14,9 @@
 </head>
 
 <body>
+    <?php
+    require_once('./include/login-modal.php');
+    ?>
     <header>
         <img class="seventh-lec" src="./assets/img/Ellipse 17.png" alt="img">
         <img class="eighth-lec" src="./assets/img/Vector 7.png" alt="img">
@@ -89,7 +92,6 @@
     <?php
     require_once('./include/footer.php');
     require_once('./include/js.php');
-    require_once('./include/login-modal.php');
     ?>
 
     <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
