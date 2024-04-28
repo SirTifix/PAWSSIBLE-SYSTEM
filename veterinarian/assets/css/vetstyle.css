@@ -337,7 +337,6 @@ table {
   margin: 10px; 
 }
 th, td {
-  margin: 10px;
   padding: 10px;
   text-align: center;
   height: 20px;
@@ -789,7 +788,6 @@ td.available {
     margin-bottom: 10px;
     height: 80px;
     border-radius: 10px;
-    margin-top:30px;
 }
 
 .head-form i {
@@ -831,12 +829,6 @@ td.available {
     width: 230px;
     margin-left:10px;
     box-sizing: border-box;
-}
-
-.form-group  {
-    margin-bottom: 10px; /* Adjust this value as needed */
-    display: flex;
-    flex-direction: row;
 }
 
 .form-group-vet {
@@ -1380,7 +1372,7 @@ margin-left: 240px;
   margin-right: 0%;
 }
 .veterinarian-con{
-  padding-top: 49px;
+  padding-top: 72px;
   margin-left: 260px;
 }
 
