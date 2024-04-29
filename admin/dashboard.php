@@ -168,7 +168,7 @@ require_once ('./include/admin-head.php');
           },
           title: {
             display: true,
-            text: 'Weekly Customer'
+            text: 'Monthly Customer'
           }
         }
       }

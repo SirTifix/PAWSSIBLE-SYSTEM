@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <?php
-session_start();
 $title = 'Welcome to PAWSsible Solution Veterinary Clinic';
-
 require_once('./include/admin-index.php');
 require_once '../classes/account.class.php';
 
@@ -13,6 +10,8 @@ if (isset($_POST['submit'])) {
     $user->adminUsername = htmlentities($_POST['username']);
     $user->adminPassword = htmlentities($_POST['password']);
     if ($user->sign_in_admin()) {
+        $_SESSION['user'] = 'admin';
+        $_SESSION['username'] = $user->adminUsername;
         header('location: dashboard.php');
     } else {
         $error = 'Invalid email/password. Try Again.';
