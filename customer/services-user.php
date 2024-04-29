@@ -1,3 +1,15 @@
+<<<<<<< Updated upstream
+=======
+<?php
+// Resume the session to fetch or create the cart
+session_start();
+
+if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
+  header('location: index.php');
+}
+?>
+
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,10 +23,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-    integrity="sha384-xn538HYobU8Un3x+RmL7gg7pKViPIzhwFX+JGLaP6JZ1eG9MzHtlHjkE3vGbeD9L" crossorigin="anonymous">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-xn538HYobU8Un3x+RmL7gg7pKViPIzhwFX+JGLaP6JZ1eG9MzHtlHjkE3vGbeD9L" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
@@ -35,9 +45,7 @@
 
           <!-- Navbar toggler button -->
           <div class=" d-flex justify-content-end align-items-center">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-              aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
           </div>
@@ -52,17 +60,14 @@
 
               <div class="customized-drop-customer btn-group m-3" role="group">
                 <div class="btn-group dropstart" role="group">
-                  <button class="btn btn-primary" type="button" id="notificationDropdown" data-bs-toggle="dropdown"
-                    aria-expanded="false">
+                  <button class="btn btn-primary" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-regular fa-bell position-relative">
-                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                        style="font-size: 10px">
+                      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px">
                         3
                       </span>
                     </i>
                   </button>
-                  <ul class="notif-dropdown dropdown-menu dropdown-menu-end" style="left: auto; right: 0;"
-                    aria-labelledby="notificationDropdown">
+                  <ul class="notif-dropdown dropdown-menu dropdown-menu-end" style="left: auto; right: 0;" aria-labelledby="notificationDropdown">
                     <li>
                       <div class="title-notifications title-wrap d-flex align-items-center">
                         <h3 class="title-notifications">Notifications</h3>
@@ -71,23 +76,18 @@
                     <div class="drop-cont">
 
                     </div>
-                    <li><a class="dropdown-item" href="#"><strong>Belgy</strong> Has a <strong> Consultation
-                        </strong>Appointment on <strong> Jan 13, 2024 </strong></a></li>
-                    <li><a class="dropdown-item" href="#"><strong>Max</strong> Has a <strong> Vaccination
-                        </strong>Appointment on <strong> Jan 13, 2024 </strong></a></li>
-                    <li><a class="dropdown-item" href="#"><strong>Kebies</strong> Has a <strong> Imputation
-                        </strong>Appointment on <strong> Jan 13, 2024 </strong></a></li>
+                    <li><a class="dropdown-item" href="#"><strong>Belgy</strong> Has a <strong> Consultation </strong>Appointment on <strong> Jan 13, 2024 </strong></a></li>
+                    <li><a class="dropdown-item" href="#"><strong>Max</strong> Has a <strong> Vaccination </strong>Appointment on <strong> Jan 13, 2024 </strong></a></li>
+                    <li><a class="dropdown-item" href="#"><strong>Kebies</strong> Has a <strong> Imputation </strong>Appointment on <strong> Jan 13, 2024 </strong></a></li>
                     <div class="dropdown-divider"></div>
                     <li><a class="dropdown-item text-center" href="./appointment.php">View all</a></li>
                   </ul>
                 </div>
                 <div class="btn-group" role="group">
-                  <button class="btn btn-primary dropdown-toggle" type="button" id="ProfileDropdown"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="ProfileDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Account
                   </button>
-                  <div class="dropdown-menu dropdown-menu-end" style="left: auto; right: 0;"
-                    aria-labelledby="ProfileDropdown">
+                  <div class="dropdown-menu dropdown-menu-end" style="left: auto; right: 0;" aria-labelledby="ProfileDropdown">
                     <a class="dropdown-item" style="margin:0;" href="./customer-profile.php">My Profile</a>
                     <a class="dropdown-item" style="margin:0;" href="./appointment.php">Appointments</a>
                     <a class="dropdown-item" style="margin:0;" href="./logout.php">Logout</a>
@@ -131,7 +131,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="swiper-slide">
           <div class="content-slider">
             <div class="content-background-border">
@@ -246,8 +246,7 @@
       <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
               How do I schedule an appointment for my pet?
             </button>
           </h2>
@@ -257,8 +256,7 @@
         </div>
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
               What information do I need to schedule an appointment online?
             </button>
           </h2>
@@ -269,8 +267,7 @@
         </div>
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
               Can I schedule appointments for multiple pets in one session?
             </button>
           </h2>
@@ -281,8 +278,7 @@
         </div>
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
               How far in advance can I schedule an appointment online?
             </button>
           </h2>
@@ -293,8 +289,7 @@
         </div>
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
               Is there a cancellation fee for missed appointments?
             </button>
           </h2>
@@ -338,12 +333,16 @@
 
   <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
   <script>
+<<<<<<< Updated upstream
       document.getElementById('menu-toggle').addEventListener('click', function() {
           document.getElementById('navbar-links').classList.toggle('active');
       });
   </script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+=======
+    document.addEventListener("DOMContentLoaded", function() {
+>>>>>>> Stashed changes
       var navbarCollapse = document.getElementById("navbarSupportedContent");
       var navbarToggler = document.querySelector(".navbar-toggler");
 
@@ -359,20 +358,19 @@
       document.body.addEventListener("click", closeNavbarCollapse);
 
       // Event listener to remove background color when collapse menu is hidden
-      navbarCollapse.addEventListener("hidden.bs.collapse", function () {
+      navbarCollapse.addEventListener("hidden.bs.collapse", function() {
         navbarCollapse.classList.remove("bg-color");
       });
 
-      navbarToggler.addEventListener("click", function () {
+      navbarToggler.addEventListener("click", function() {
         navbarCollapse.classList.toggle("bg-color");
       });
     });
-
   </script>
 
   <?php
-  require_once ('./include/footer.php');
-  require_once ('./include/js.php');
+  require_once('./include/footer.php');
+  require_once('./include/js.php');
   ?>
 </body>
 

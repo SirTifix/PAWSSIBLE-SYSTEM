@@ -1,3 +1,11 @@
+<?php
+// Resume the session to fetch or create the cart
+    session_start();
+
+if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
+    header('location: index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,7 +66,10 @@ if (!empty($appointmentInfo['appointmentData'])) {
     <link rel="stylesheet" href="../customer/assets/css/style.css">
     <link rel="stylesheet" href="../customer/assets/css/customer-profile.css">
     <link rel="stylesheet" href="../customer/assets/css/review-calendar.css">
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 

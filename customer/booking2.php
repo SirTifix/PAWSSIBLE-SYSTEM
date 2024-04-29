@@ -1,3 +1,11 @@
+<?php
+// Resume the session to fetch or create the cart
+    session_start();
+
+if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
+    header('location: index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +31,7 @@ session_start();
 <?php for ($i = 0; $i < $_SESSION['noofpets']; $i++) {?>
 <div class="pet-info-form background-color-container">
     
-    <form action="submit-booking2.php" method="post" >
+    <form action="submit-booking2.php" class="needs-validation" method="post" novalidate>
         <h2>Pet Information Form</h2>
         <div class="form-row">
         <input type="hidden" name="pet_index[]" value="<?php echo $i; ?>">
@@ -33,20 +41,20 @@ session_start();
                     <h5>Pet Name</h5>
                 </label>
                 <input type="text" class="form-control" id="petname_<?php echo $i; ?>" name="petName[]" 
-                    placeholder="Enter pet name" />
+                    placeholder="Enter pet name" required/>
             </div>
             <div class="form-group col-sm-2 background-color">
                 <label for="petType_<?php echo $i; ?>">
                     <h5>Pet Type</h5>
                 </label>
                 <input type="text" class="form-control" id="pettype_<?php echo $i; ?>" name="petType[]"
-                    placeholder="Enter pet type" />
+                    placeholder="Enter pet type" required/>
             </div>
             <div class="form-group col-sm-2 background-color">
                 <label for="sex_<?php echo $i; ?>">
                     <h5>Sex</h5>
                 </label>
-                <select class="form-control" id="services_<?php echo $i; ?>" name="sex[]">
+                <select class="form-control" id="services_<?php echo $i; ?>" name="sex[]" required>
                     <option value="">Choose...</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -68,13 +76,13 @@ session_start();
                     <h5>Breed</h5>
                 </label>
                 <input type="text" class="form-control" id="breed_<?php echo $i; ?>" name="petBreed[]"
-                    placeholder="Enter breed" />
+                    placeholder="Enter breed" required/>
             </div>
             <div class="form-group col-sm-2 background-color">
                 <label for="services_<?php echo $i; ?>">
                     <h5>Select Services</h5>
                 </label>
-                <select class="form-control" id="services_<?php echo $i; ?>" name="services[]">
+                <select class="form-control" id="services_<?php echo $i; ?>" name="services[]" required>
                     <option value="">Choose...</option>
                     <?php
                     require_once '../classes/service.class.php';
@@ -91,7 +99,7 @@ session_start();
                 <label for="vet_<?php echo $i; ?>">
                     <h5>Select vet</h5>
                 </label>
-                <select class="form-control" id="vet_<?php echo $i; ?>" name="vet[]">
+                <select class="form-control" id="vet_<?php echo $i; ?>" name="vet[]" required>
                     <option value="">Choose...</option>
                     <?php
                     require_once '../classes/veterinarian.class.php';
@@ -110,7 +118,7 @@ session_start();
                 <label for="birthdate_<?php echo $i; ?>">
                     <h5>BirthDate</h5>
                 </label>
-                <input type="date" class="form-control" id="birthdate_<?php echo $i; ?>" name="petBirthDate[]" />
+                <input type="date" class="form-control" id="birthdate_<?php echo $i; ?>" name="petBirthDate[]" required/>
             </div>
         </div>
 
@@ -144,7 +152,7 @@ session_start();
                                             <td>Max</td>
                                             <td>Dog</td>
                                             <td> <button type="button"
-                                                    class="Select-button btn btn-primary aria-expanded=" false">
+                                                    class="Select-button btn btn-primary" aria-expanded="false">
                                                     Select
                                                 </button>
                                             </td>
@@ -154,7 +162,7 @@ session_start();
                                             <td>Max</td>
                                             <td>Dog</td>
                                             <td> <button type="button"
-                                                    class="Select-button btn btn-primary aria-expanded=" false">
+                                                    class="Select-button btn btn-primary" aria-expanded="false">
                                                     Select
                                                 </button>
                                             </td>
@@ -164,7 +172,7 @@ session_start();
                                             <td>Kebies</td>
                                             <td>Cat</td>
                                             <td> <button type="button"
-                                                    class="Select-button btn btn-primary aria-expanded=" false">
+                                                    class="Select-button btn btn-primary" aria-expanded="requiredfalse">
                                                     Select
                                                 </button>
                                             </td>
@@ -189,7 +197,7 @@ session_start();
     </button>
 </div>
 
-<script src="./assets/script/fetch.js"></script>
+<script src="./assets/script/validation.js"></script>
  <script>
     $(document).ready(function () {
       $('#anotherModal').on('show.bs.modal', function (e) {

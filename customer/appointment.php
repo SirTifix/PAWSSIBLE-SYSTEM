@@ -1,3 +1,16 @@
+<<<<<<< Updated upstream
+=======
+<?php
+// Resume the session to fetch or create the cart
+    session_start();
+
+if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
+    header('location: index.php');
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+>>>>>>> Stashed changes
 <?php
 session_start();
 $title = 'Appointment';
