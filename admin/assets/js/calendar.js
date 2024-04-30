@@ -66,8 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Create and append the "10 slots" text below each calendar cell
       const slotsText = document.createElement("div");
-      // slotsText.textContent = "10 slots";
-      // slotsText.classList.add("slots-text");
+      slotsText.textContent = "10 slots";
+      slotsText.classList.add("slots-text");
       calendarCell.appendChild(slotsText);
 
       calendarBody.appendChild(calendarCell);
