@@ -7,19 +7,21 @@
 
     <div class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light" style="background: none;">
-            <div class="container-fluid align-items-center">
-                <!-- Logo -->
-                <div class="logo p-3 d-flex align-items-center">
-                    <img class="logo-clinic img-fluid" src="assets/img/logo.png" alt="Logo" class="logosec img-fluid">
-                    <div class="logo-text px-3">PAWSsible Solutions <br> Veterinary Clinic</div>
+            <div class="container-fluid">
+               <div class="d-flex justify-content-between align-items-center w-100">
+                 <!-- Logo -->
+                 <div class="logo p-3 d-flex align-items-center">
+                    <img class="logo-clinic img-fluid" src="assets/img/logo.png" alt="Logo" class="logosec">
+                    <div class="logo-text ps-1">PAWSsible Solutions <br> Veterinary Clinic</div>
                 </div>
 
                 <!-- Navbar toggler button -->
-                <div class=" d-flex justify-content-end align-items-center">
+                <div class=" d-flex align-items-center">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
+               </div>
 
                 <!-- Navbar links -->
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">

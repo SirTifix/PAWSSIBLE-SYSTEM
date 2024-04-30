@@ -333,16 +333,12 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
 
   <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
   <script>
-<<<<<<< Updated upstream
       document.getElementById('menu-toggle').addEventListener('click', function() {
           document.getElementById('navbar-links').classList.toggle('active');
       });
   </script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-=======
-    document.addEventListener("DOMContentLoaded", function() {
->>>>>>> Stashed changes
       var navbarCollapse = document.getElementById("navbarSupportedContent");
       var navbarToggler = document.querySelector(".navbar-toggler");
 
