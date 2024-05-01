@@ -1,6 +1,3 @@
-<?php
-require_once('./include/login-modal.php');
-?>
 <header>
     <img class="circle" src="assets/img/circle-bg.png">
     <img class="second-lec" src="assets/img/second-lec.png">
@@ -30,11 +27,4 @@ require_once('./include/login-modal.php');
             </div>
         </nav>
     </div>
-
-
 </header>
-<script>
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-        document.getElementById('navbar-links').classList.toggle('active');
-    });
-</script>

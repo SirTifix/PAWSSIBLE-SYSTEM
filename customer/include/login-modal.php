@@ -1,33 +1,18 @@
 <?php
-    session_start();
-
-    if(isset($_SESSION['user']) && $_SESSION['user'] == 'customer'){
-        header('location: home.php');
+require_once '../classes/account.class.php';
+if (isset($_POST['login'])) {
+    $user = new Account();
+    $user->email = htmlentities($_POST['email2']);
+    $user->password = htmlentities($_POST['password2']);
+    if ($user->sign_in_customer()) {
+        $_SESSION['user'] = 'customer';
+        $_SESSION['email2'] = $user->email;
+        $_SESSION['customerID'] = $user->customerID;
+    } else {
+        $error = 'Invalid email/password. Try Again.';
     }
-
-    require_once '../classes/account.class.php';
-    if(isset($_POST['login'])){
-        $user = new Account();
-        $user->email = htmlentities($_POST['email']);
-        $user->password = htmlentities($_POST['password']);
-        if($user->sign_in_customer()){
-            $_SESSION['user'] = 'customer';
-            $_SESSION['email'] = $user->email;
-            $_SESSION['customerID'] = $user->customerID;
-            header('location: home.php');
-        }else{
-            $error = 'Invalid email/password. Try Again.';
-        }
-    }
+}
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<?php
-    $title = 'Pawssible Solutions Veterinary';
-?>
-<body>
-    <main>
         <!-- Modal -->
         <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -41,14 +26,18 @@
                                     <img src="./assets/img/clinic-logo.png" class="h-100 d-inline-block" style="width: 150px" alt="">
                                 </p>    
                                 <h1 class="h2 mb-5 text-center" style="color: #5263AB; font-weight: bold;">LOGIN</h1>
-                                <form action="" method="post">
+                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                     <div class="mb-5 input-group">
                                         <span class="input-group-text" style="background-color: #ffffff;"><i class="fa fa-user"></i></span>
-                                        <input type="email" class="form-control" style="border-left: none;" id="email" name="email" placeholder="Email" value="<?php if(isset($_POST['email'])){ echo $_POST['email']; } ?>">
+                                        <input type="email" class="form-control" style="border-left: none;" id="email2" name="email2" placeholder="Email" value="<?php if (isset($_POST['email2'])) {
+                                            echo $_POST['email2'];
+                                        } ?>">
                                     </div>
                                     <div class="mb-4 input-group">
                                         <span class="input-group-text" style="background-color: #ffffff;"><i class="fa fa-lock"></i></span>
-                                        <input type="password" class="form-control" style="border-left: none;" id="password" name="password" placeholder="Password" value="<?php if(isset($_POST['password'])){ echo $_POST['password']; } ?>">
+                                        <input type="password" class="form-control" style="border-left: none;" id="password2" name="password2" placeholder="Password" value="<?php if (isset($_POST['password2'])) {
+                                            echo $_POST['password2'];
+                                        } ?>">
                                     </div>
                                     <div class="form-group text-end">
                                         <a href="#" id="forgotpasswordLink" style="color: #8A8A8A;" data-bs-toggle="modal" data-bs-target="#forgotpasswordModal">Forgot Password?</a>
@@ -58,14 +47,14 @@
                                     </div>
                                 </form>
                                 <?php
-                                if(isset($_POST['login']) && isset($error)){
-                                ?>
-                                    <div>
-                                        <p class="text-danger text-center">
-                                            <?= $error ?>
-                                        </p>
-                                    </div>
-                                <?php
+                                if (isset($_POST['login']) && isset($error)) {
+                                    ?>
+                                        <div>
+                                            <p class="text-danger text-center">
+                                                <?= $error ?>
+                                            </p>
+                                        </div>
+                                    <?php
                                 }
                                 ?>
                             </div>
@@ -74,7 +63,6 @@
                 </div>
             </div>
         </div>
-    </main>
     <!--Forgot Password Modal-->
     <div class="modal fade" id="forgotpasswordModal" tabindex="-1" aria-labelledby="forgotpasswordModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -86,8 +74,8 @@
                             <p class="mb-5" style="color: #293566;">Enter the email associated with your account and we’ll send an email with details to reset your password. </p>
                             <form action="" method="post">
                                 <div class="mb-3">
-                                    <label for="email" class="form-label" style="color: #293566;"><b>Email Address</b></label>
-                                    <input type="email" class="form-control" id="email" name="email">
+                                    <label for="email3" class="form-label" style="color: #293566;"><b>Email Address</b></label>
+                                    <input type="email" class="form-control" id="email3" name="email3">
                                 </div>
                                 <div class="col-12 col-md-6 col-md-4 my-5 mx-auto text-center w-auto">
                                     <button type="button" id="resetPasswordBtn" class="btn btn-reset-password py-2 px-3" style="background-color: #5263AB; color: white; font-weight: bold; border-radius: 10px;">Reset your password</button>
@@ -176,41 +164,3 @@
             </div>
         </div>
     </div>
-    <?php
-        require_once('./include/js.php')
-    ?>
-<script>
-    $(document).ready(function() {
-        // Close the login modal when the "Forgot Password?" link is clicked
-        $('#forgotpasswordLink').on('click', function() {
-            $('#loginModal').modal('hide');
-            $('#forgotpasswordModal').modal('show');
-        });
-
-        // Trigger the second modal when the "Reset your password" button is clicked
-        $('#resetPasswordBtn').on('click', function() {
-            $('#forgotpasswordModal').modal('hide');
-            $('#forgotpassword2Modal').modal('show');
-        });
-
-        // Trigger the third modal when the "Resend" button is clicked
-        $('#resendBtn').on('click', function() {
-            $('#forgotpassword2Modal').modal('hide');
-            $('#forgotpassword3Modal').modal('show');
-        });
-
-        // Trigger the fourth modal when the "Reset Password" button is clicked
-        $('#resetPasswordBtn2').on('click', function() {
-            $('#forgotpassword3Modal').modal('hide');
-            $('#forgotpassword4Modal').modal('show');
-        });
-
-        // Handle the "Login" button click in the fourth modal
-        $('#loginBtn').on('click', function() {
-            $('#forgotpassword4Modal').modal('hide');
-            $('#loginModal').modal('show');
-        });
-    });
-</script>
-</body>
-</html>

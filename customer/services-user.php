@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 <?php
 // Resume the session to fetch or create the cart
 session_start();
@@ -9,7 +7,6 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
 }
 ?>
 
->>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 

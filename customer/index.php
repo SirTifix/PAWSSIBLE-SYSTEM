@@ -1,14 +1,20 @@
+<?php
+session_start();
+if (isset($_SESSION['user']) && $_SESSION['user'] == 'customer') {
+  header('location: home.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    $title = 'Pawssible Solutions Veterinary';
-    require_once('./include/user-head.php');
-    require_once('./tools/functions.php');
+$title = 'Pawssible Solutions Veterinary';
+require_once ('./include/user-head.php');
+require_once ('./tools/functions.php');
 ?>
 <body>
     <?php
-    require_once('./include/user-header.php')
-    ?>
+    require_once ('./include/user-header.php')
+      ?>
     <section class="uno d-flex col-12">
         <div class="intro col-11"> 
             <h1>Your Pet's Health,</h1>
@@ -129,10 +135,15 @@
           </div>
     </section>
     <?php
-        require_once('./include/footer.php');
-        require_once('./include/js.php');
-        require_once('./include/register-modal.php');
+    require_once ('./include/login-modal.php');
+    require_once ('./include/register-modal.php');
+    require_once ('./include/footer.php');
+    require_once ('./include/js.php');
     ?>
-    <script src="./script/calendar.js"></script>
+    <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('navbar-links').classList.toggle('active');
+    });
+</script>
 </body>
 </html>
