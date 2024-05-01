@@ -1,19 +1,17 @@
 <?php
-// Resume the session to fetch or create the cart
 session_start();
 
 if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
   header('location: index.php');
 }
+require_once('./tools/functions.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
 $title = 'Home';
 require_once('./include/user-head.php');
-require_once('./tools/functions.php');
 ?>
-
 <body>
   <?php
   require_once('./include/home-header.php')

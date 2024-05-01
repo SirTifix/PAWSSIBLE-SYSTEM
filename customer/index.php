@@ -3,13 +3,13 @@ session_start();
 if (isset($_SESSION['user']) && $_SESSION['user'] == 'customer') {
   header('location: home.php');
 }
+require_once ('./tools/functions.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
 $title = 'Pawssible Solutions Veterinary';
 require_once ('./include/user-head.php');
-require_once ('./tools/functions.php');
 ?>
 <body>
     <?php
@@ -139,11 +139,27 @@ require_once ('./tools/functions.php');
     require_once ('./include/register-modal.php');
     require_once ('./include/footer.php');
     require_once ('./include/js.php');
+
     ?>
     <script>
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-        document.getElementById('navbar-links').classList.toggle('active');
-    });
-</script>
+      document.getElementById('menu-toggle').addEventListener('click', function() {
+          document.getElementById('navbar-links').classList.toggle('active');
+      });
+
+      const forms = document.querySelectorAll('.needs-validation')
+
+      // Loop over them and prevent submission
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+
+    </script>
 </body>
 </html>

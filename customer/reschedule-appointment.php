@@ -1,6 +1,5 @@
 <?php
 require_once '../classes/booking.class.php';
-
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -15,8 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $booking->rescheduleAppointment($bookingID, $newDate, $newTime, $reason);
 
         if ($result) {
-            header('Location: appointment.php');
-            exit();
+            echo "<script>window.location.href = 'resched-req-sent.php?bookingID=$bookingID';</script>";
         } else {
             echo "Failed to reschedule appointment.";
         }

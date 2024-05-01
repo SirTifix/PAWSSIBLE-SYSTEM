@@ -1,21 +1,17 @@
 <?php
-// Resume the session to fetch or create the cart
-    session_start();
+session_start();
 
-if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
-    header('location: index.php');
+if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
+  header('location: index.php');
 }
+require_once('./tools/functions.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <?php
 $title = 'Booking';
-require_once ('./tools/functions.php');
 ?>
-
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
@@ -212,7 +208,6 @@ require_once ('./include/customer-header.php');
                 </select>
               </div>
             </div>
-
           </div>
 
           <button type="submit" value="Submit" class="btn btn-primary" style="background-color:#2A2F4F; float:right;">
@@ -227,6 +222,9 @@ require_once ('./include/customer-header.php');
   </div>
 
 
+  <?php
+  require_once ('./include/footer.php');
+  ?>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -249,9 +247,7 @@ require_once ('./include/customer-header.php');
     });
   </script>
 
-  <?php
-  require_once ('./include/footer.php');
-  ?>
+  
 </body>
 
 </html>

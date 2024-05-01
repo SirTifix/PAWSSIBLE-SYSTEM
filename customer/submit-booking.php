@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once ('../classes/booking.class.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -10,19 +11,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $contactNumber = $_POST['contactNumber'];
     $numberPets = $_POST['pets'];
-    echo $_POST['pets'];
-    session_start();
-
-    $_SESSION['noofpets']= $_POST['pets'];
+    $_SESSION['noofpets'] = $_POST['pets'];
     $status = 'Pending';
     $selectedDate = $_POST['selectedDate'];
     $selectedTime = $_POST['selectedTime'];
-
     $booking->firstname = $firstname;
     $booking->middlename = $middlename;
     $booking->lastname = $lastname;
     $booking->email = $email;
     $booking->contactNumber = $contactNumber;
+    $booking->numberPets = $numberPets;
     $booking->status = $status;
     $booking->bookingDate = $selectedDate;
     $booking->bookingTime = $selectedTime;
@@ -30,8 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Add booking with personal information
     $savedBookingId = $booking->add(); 
     
-    header('Location: ./booking2.php?bookingID=' . $savedBookingId);
-
+    echo "<script>window.location.href = './booking2.php?bookingID={$savedBookingId}';</script>";
     // Return success response with booking ID*/
     echo json_encode(array('success' => true, 'bookingID' => $savedBookingId));
 } else {

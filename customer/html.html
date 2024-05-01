@@ -57,8 +57,7 @@ if (!empty($appointmentInfo['appointmentData'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review Appointment</title>
-    <link rel="website icon" type="png" href="../customer/assets/img/logo.png">
+    <title>review-appointment</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../customer/assets/css/style.css">
     <link rel="stylesheet" href="../customer/assets/css/customer-profile.css">
@@ -89,25 +88,25 @@ if (!empty($appointmentInfo['appointmentData'])) {
                                         <div class="input-container  col-sm-3">
                                             <label for="firstName">First Name:</label>
                                             <input type="text" id="firstName" name="firstName"
-                                                value="<?php echo $firstName; ?>" disabled/>
+                                                value="<?php echo $firstName; ?>" required>
                                         </div>
 
                                         <div class="input-container col-sm-3">
                                             <label for="middleName">Middle Name (Optional):</label>
-                                            <input type="text" id="middleName" name="middleName" value="<?php echo $middleName; ?>" disabled/>
+                                            <input type="text" id="middleName" name="middleName" value="<?php echo $middleName; ?>">
                                         </div>
 
                                         <div class="input-container col-sm-3">
                                             <label for="lastName">Last Name:</label>
                                             <input type="text" id="lastName" name="lastName"
-                                                value="<?php echo $lastName; ?>" disabled/>
+                                                value="<?php echo $lastName; ?>" required>
                                         </div>
 
                                         <div class="row">
                                             <div class="input-container col-6">
                                                 <label for="email">Email Address:</label>
                                                 <input type="email" id="email" name="email"
-                                                    value="<?php echo $email; ?>" disabled/>
+                                                    value="<?php echo $email; ?>" required>
                                             </div>
 
                                             <div class="details col-sm m-4">
@@ -116,7 +115,7 @@ if (!empty($appointmentInfo['appointmentData'])) {
                                                 <div class="d-flex gap-3">
                                                     <div class="d-flex flex-column"> 
                                                         <p id="currentDateTime"><?php echo $selectedDate; ?> - <?php echo $selectedTime; ?></p>
-                                                        <h5>To be change: </h5><p id="selectedDateTime" style="background:yellow; border-radius:5px;"></p>
+                                                        <h5>To be change: </h5><p id="selectedDateTime"></p>
                                                         <input type="hidden" name="selectedDate" id="selectedDate" value="">
                                                         <input type="hidden" name="selectedTime" id="selectedTime" value="">
                                                     </div>
@@ -134,7 +133,7 @@ if (!empty($appointmentInfo['appointmentData'])) {
                                             <div class="input-container col-6">
                                                 <label for="contactNumber">Contact Number:</label>
                                                 <input type="tel" id="contactNumber" name="contactNumber"
-                                                    value="<?php echo $contactNumber; ?>" disabled/>
+                                                    value="<?php echo $contactNumber; ?>" required>
 
                                             </div>
 
@@ -142,15 +141,16 @@ if (!empty($appointmentInfo['appointmentData'])) {
                                                 <label for="concerns">
                                                     <h5>Reason for Rescheduling</h5>
                                                 </label>
-                                                <textarea style="height: 120px;" class="form-concerns" id="reason" name="reason" ><?php echo $reason; ?></textarea>
+                                                <textarea style="height: 120px;" class="form-concerns" id="reason" name="reason"><?php echo $reason; ?></textarea>
                                             </div>
                                         </div>
+
 
 
                                         <div class="row">
                                             <div class="input-container col-6">
                                                 <label for="pets">Number of Pets:</label>
-                                                <select id="pets" name="pets" disabled>
+                                                <select id="pets" name="pets">
                                                     <option value="<?php echo $numberPets; ?>"><?php echo $numberPets; ?></option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -162,143 +162,128 @@ if (!empty($appointmentInfo['appointmentData'])) {
                                         </div>
 
 
-                                        <?php
-                                        // your existing code...
-                                        
-                                        // Check if appointment data exists
-                                        if (!empty($appointmentInfo['appointmentData'])) {
-                                            // Loop through each appointment data
-                                            foreach ($appointmentInfo['appointmentData'] as $bookingData) {
-                                                // Extract pet information for each booking
-                                                $bookingPetID = $bookingData['bookingPetID'];
-                                                $petName = $bookingData['petName'];
-                                                $petType = $bookingData['petType'];
-                                                $sex = $bookingData['sex'];
-                                                $concerns = $bookingData['concerns'];
-                                                $breed = $bookingData['petBreed'];
-                                                $birthdate = $bookingData['petBirthDate'];
-                                                $serviceID = $bookingData['serviceID'];
-                                                $vetID = $bookingData['vetID'];
+                                        <div class="pet-info-form background-color-container container mt-4 p-4">
+                                            <h2 class="mb-4">Pet Information Form</h2>
+                                            <div class="form-row">
+                                                <div class="form-group col-sm-2  background-color">
+                                                    <label for="petname">
+                                                        <h5>Pet Name</h5>
+                                                    </label>
+                                                    <input type="text" class="book-form-control" id="petname"
+                                                        value="<?php echo $petName; ?>" placeholder="Enter pet name" />
+                                                </div>
+                                                <div class="form-group col-sm-2 background-color">
+                                                    <label for="pettype">
+                                                        <h5>Pet Type</h5>
+                                                    </label>
+                                                    <input type="text" class="book-form-control" id="pettype"
+                                                        value="<?php echo $petType; ?>" placeholder="Enter pet type" />
+                                                </div>
+                                                <div class="form-group col-sm-2 background-color">
+                                                    <label for="sex">
+                                                        <h5>Sex</h5>
+                                                    </label>
+                                                    <input type="text" class="book-form-control background-color"
+                                                        value="<?php echo $sex; ?>" id="sex" placeholder="Enter sex" />
+                                                </div>
 
-                                                // Fetch service and veterinarian information
-                                                $serviceName = $service->fetch($serviceID);
-                                                $vets = $veterinarian->showVetByID($vetID);
-                                                ?>
-                                                        <!-- Start of pet information form -->
-                                                        <div class="pet-info-form background-color-container container mt-4 p-4">
-                                                            <h2 class="mb-4">Pet Information Form #<?php echo $bookingPetID; ?></h2>
-                                                            <div class="form-row">
-                                                                <div class="form-group col-sm-2 background-color">
-                                                                    <label for="petname">
-                                                                        <h5>Pet Name</h5>
-                                                                    </label>
-                                                                    <input type="text" class="book-form-control" id="petname"
-                                                                        value="<?php echo $petName; ?>" placeholder="Enter pet name" disabled/>
-                                                                </div>
-                                                                <div class="form-group col-sm-2 background-color">
-                                                                    <label for="pettype">
-                                                                        <h5>Pet Type</h5>
-                                                                    </label>
-                                                                    <input type="text" class="book-form-control" id="pettype"
-                                                                        value="<?php echo $petType; ?>" placeholder="Enter pet type" disabled/>
-                                                                </div>
-                                                                <div class="form-group col-sm-2 background-color">
-                                                                    <label for="sex">
-                                                                        <h5>Sex</h5>
-                                                                    </label>
-                                                                    <input type="text" class="book-form-control background-color"
-                                                                        value="<?php echo $sex; ?>" id="sex" placeholder="Enter sex" disabled/>
-                                                                </div>
+                                                <div class="form-group col-sm-2">
+                                                    <label for="concerns">
+                                                        <h5>Concerns</h5>
+                                                    </label>
+                                                    <textarea style="height: 200px;" class="form-concerns"
+                                                        value="<?php echo $concerns; ?>" id="concerns"></textarea>
+                                                </div>
+                                            </div>
 
-                                                                <div class="form-group col-sm-2">
-                                                                    <label for="concerns">
-                                                                        <h5>Concerns</h5>
-                                                                    </label>
-                                                                    <textarea style="height: 200px;" class="form-concerns"
-                                                                        id="concerns" disabled><?php echo $concerns; ?></textarea>
-                                                                </div>
-                                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-sm-2 background-color">
+                                                    <label for="breed">
+                                                        <h5>Breed</h5>
+                                                    </label>
+                                                    <input type="text" class="book-form-control" id="breed"
+                                                        value="<?php echo $breed; ?>" placeholder="Enter breed" />
+                                                </div>
 
-                                                            <div class="form-row">
-                                                                <div class="form-group col-sm-2 background-color">
-                                                                    <label for="breed">
-                                                                        <h5>Breed</h5>
-                                                                    </label>
-                                                                    <input type="text" class="book-form-control" id="breed"
-                                                                        value="<?php echo $breed; ?>" placeholder="Enter breed" disabled/>
-                                                                </div>
+                                                <div class="form-group col-sm-2 background-color">
+                                                    <label for="services">
+                                                        <h5>Select Services</h5>
+                                                    </label>
+                                                    <select class="book-form-control" id="services">
+                                                        <option value="<?php echo $serviceName['serviceID']; ?>"
+                                                            selected>
+                                                            <?php echo $serviceName['serviceName']; ?>
+                                                            <span class="price">PHP
+                                                                <?php echo $serviceName['servicePrice']; ?></span>
+                                                        </option>
+                                                    </select>
+                                                </div>
 
-                                                                <div class="form-group col-sm-2 background-color">
-                                                                    <label for="services">
-                                                                        <h5>Select Services</h5>
-                                                                    </label>
-                                                                    <select class="book-form-control" id="services" disabled>
-                                                                        <option value="<?php echo $serviceName['serviceID']; ?>"
-                                                                            selected>
-                                                                            <?php echo $serviceName['serviceName']; ?>
-                                                                            <span class="price">PHP
-                                                                                <?php echo $serviceName['servicePrice']; ?></span>
-                                                                        </option>
-                                                                    </select>
-                                                                </div>
+                                                <div class="form-group col-sm-2 background-color">
+                                                    <label for="vet">
+                                                        <h5>Select vet</h5>
+                                                    </label>
+                                                    <select class="book-form-control" id="vet">
+                                                        <option value="<?php echo $vets['vetID']; ?>" selected>
+                                                            <?php echo $vets['fullName']; ?>
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
 
-                                                                <div class="form-group col-sm-2 background-color">
-                                                                    <label for="vet">
-                                                                        <h5>Select vet</h5>
-                                                                    </label>
-                                                                    <select class="book-form-control" id="vet" disabled>
-                                                                        <option value="<?php echo $vets['vetID']; ?>" selected>
-                                                                            <?php echo $vets['fullName']; ?>
-                                                                        </option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="form-row">
-                                                                <div class="form-group col-sm-2 background-color">
-                                                                    <label for="birthdate">
-                                                                        <h5>BirthDate</h5>
-                                                                    </label>
-                                                                    <input type="date" class="book-form-control form-control" value="<?php echo $birthdate; ?>"
-                                                                        id="birthdate" disabled/>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- End of pet information form -->
-                                                        <?php
-                                            }
-                                        } else {
-                                            // If no appointment data found
-                                            echo "No appointment data found for the given bookingID.";
-                                        }
-                                        ?>
-
-                                        <button type="button" id="requestBtn" class="btn btn-primary"
-                                            data-toggle="modal" data-target="#rescheduleConfirmModal"
-                                            style="background-color:#2A2F4F" class="float-right">
-                                            Reschedule Appointment
-                                        </button>
-                                        <!-- Reschedule Confirmation Modal -->
-                                        <div class="modal fade" id="rescheduleConfirmModal" tabindex="-1" role="dialog" aria-labelledby="rescheduleConfirmModalLabel"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="rescheduleConfirmModalLabel">Confirm Reschedule</h5>
-                                                        <button type="button" class="close" id="closeRequest" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body d-flex text-center my-3">
-                                                        <h5>Are you sure you want to request for appointment reschedule?</h5>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <button type="submit" type="button" class="btn btn-primary" id="sendRequestBtn">Send Request</button>
-                                                    </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-sm-2 background-color">
+                                                    <label for="birthdate">
+                                                        <h5>BirthDate</h5>
+                                                    </label>
+                                                    <input type="date" class="book-form-control form-control" value="<?php echo $birthdate; ?>"
+                                                        id="birthdate" />
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <button type="submit" id="submitBtn" class="btn btn-primary"
+                                            data-toggle="modal" data-target="#confirmModal"
+                                            style="background-color:#2A2F4F" class="float-right">
+                                            Reschedule Appointment
+                                        </button>
+
+                                            <!-- Confirmation Modal -->
+                                            <div class="confirmation-modal">
+                                                <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog"
+                                                    aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg"
+                                                        role="document">
+                                                        <div class="modal-content text-center">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title mx-auto"
+                                                                    id="confirmationModalLabel">Your Appointment
+                                                                    Rescheduling Request Has Been Sent!
+                                                                </h5>
+                                                                </button>
+                                                            </div>
+
+                                                            <div
+                                                                class="modal-body align-items-center justify-content-center d-flex flex-column">
+                                                                <i class="fas fa-check-circle text-success confirmation-circle mb-3"
+                                                                    style="font-size: 80px;"></i>
+                                                                <p class="booking-number mb-2" style="font-size: 14px;">
+                                                                    Your booking number:</p>
+                                                                <p class="mb-4">0001</p>
+                                                            </div>
+
+                                                            <div class="modal-footer justify-content-center">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    id="finishBookingBtn" data-dismiss="modal"
+                                                                    style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
+                                                                    Booking</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            
+                                         
                         </form>
                     </div>
                 </div>
@@ -309,7 +294,6 @@ if (!empty($appointmentInfo['appointmentData'])) {
     </div>
     </div>
 
-    
 
     <!-- Modal -->
     <div id="calendarModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="calendarModalLabel"
@@ -317,6 +301,8 @@ if (!empty($appointmentInfo['appointmentData'])) {
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-body">
+                    <!-- Calendar content goes here -->
+
                     <div class="review-calendar container">
                         <div class="calendar-container cont-box">
                             <div class="calendar cont-content">
@@ -364,55 +350,55 @@ if (!empty($appointmentInfo['appointmentData'])) {
                                 </h6>
                                 <div class="separator"></div>
                                 <div class="time-slots">
-                                    <div class="time-slot" id="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
+                                    <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
                                         data-time="08:00 AM - 09:00 AM">
                                         <div> 08:00 AM</div>
                                         <div> 09:00 AM</div>
                                     </div>
 
-                                    <div class="time-slot" id="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
+                                    <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
                                         data-time="09:00 AM 10:00 AM">
                                         <div>09:00 AM</div>
                                         <div>10:00 AM</div>
                                     </div>
 
-                                    <div class="time-slot" id="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
+                                    <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
                                         data-time="10:00 AM 11:00 AM">
                                         <div>10:00 AM</div>
                                         <div>11:00 AM</div>
                                     </div>
 
-                                    <div class="time-slot" id="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
+                                    <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
                                         data-time="11:00 AM 12:00 PM">
                                         <div>11:00 AM</div>
                                         <div>12:00 PM</div>
                                     </div>
 
-                                    <div class="time-slot" id="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
+                                    <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
                                         data-time="12:00 AM 01:00 PM">
                                         <div>12:00 PM</div>
                                         <div>01:00 PM</div>
                                     </div>
 
-                                    <div class="time-slot" id="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
+                                    <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
                                         data-time="01:00 AM 02:00 PM">
                                         <div>01:00 AM</div>
                                         <div>02:00 AM</div>
                                     </div>
 
-                                    <div class="time-slot" id="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
+                                    <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
                                         data-time="02:00 AM 03:00 PM">
                                         <div>02:00 AM</div>
                                         <div>03:00 AM</div>
                                     </div>
 
-                                    <div class="time-slot" id="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
+                                    <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
                                         data-time="03:00 AM 04:00 PM">
                                         <div>03:00 AM</div>
                                         <div>04:00 AM</div>
                                     </div>
 
-                                    <div class="time-slot" id="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
+                                    <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
                                         data-time="04:00 AM 05:00 PM">
                                         <div>04:00 AM</div>
                                         <div>05:00 AM</div>
@@ -421,6 +407,34 @@ if (!empty($appointmentInfo['appointmentData'])) {
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmselectdt" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">
+                        Confirm Selection
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to select this date and time?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                        No
+                    </button>
+                    <button type="button" class="btn btn-primary" id="confirmSelectionBtn">
+                        Yes
+                    </button>
                 </div>
             </div>
         </div>
@@ -439,13 +453,26 @@ if (!empty($appointmentInfo['appointmentData'])) {
         $("#openCalendarModalBtn").click(function() {
             $("#calendarModal").modal('show');
         });
-        
-        $("#requestBtn").click(function() {
-            $("#rescheduleConfirmModal").modal('show');
+
+        document.getElementById('finishBookingBtn').addEventListener('click', function() {
+            location.reload();
         });
 
-        $("#closeRequest").click(function() {
-            $("#rescheduleConfirmModal").modal('hide');
+        // Function to handle reschedule appointment button click
+        $("#submitBtn").click(function() {
+            // Perform any necessary actions here, such as submitting the form data
+            // For demonstration purposes, let's just log a message
+            console.log("Reschedule appointment button clicked");
+
+            // Show the confirmation modal
+            $("#confirmModal").modal('show');
+        });
+
+        // Function to handle confirmation of reschedule appointment
+        $("#confirmSelectionBtn").click(function() {
+            // Perform any necessary actions upon confirmation
+            // For demonstration purposes, let's reload the page
+            location.reload();
         });
     });
     </script>

@@ -75,15 +75,17 @@ class Booking
             $bookingID = $this->generateUniqueBookingID();
             $status = "Pending";
 
-            $sql = "INSERT INTO booking (bookingID, firstName, lastName, emailAddress, contactNumber, status, bookingDate, bookingTime) VALUES 
-            (:bookingID, :firstname, :lastname, :emailAddress, :contactNumber, :status, :bookingDate, :bookingTime);";
+            $sql = "INSERT INTO booking (bookingID, firstName, middleName, lastName, emailAddress, contactNumber, numberPets, status, bookingDate, bookingTime) VALUES 
+            (:bookingID, :firstname, :middlename, :lastname,:emailAddress, :contactNumber, :numberPets, :status, :bookingDate, :bookingTime);";
 
             $query = $this->db->connect()->prepare($sql);
             $query->bindParam(':bookingID', $bookingID);
             $query->bindParam(':firstname', $this->firstname);
+            $query->bindParam(':middlename', $this->middlename);
             $query->bindParam(':lastname', $this->lastname);
             $query->bindParam(':emailAddress', $this->email);
             $query->bindParam(':contactNumber', $this->contactNumber);
+            $query->bindParam(':numberPets', $this->numberPets);
             $query->bindParam(':status', $status);
             $query->bindParam(':bookingDate', $this->bookingDate);
             $query->bindParam(':bookingTime', $this->bookingTime);

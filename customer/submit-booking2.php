@@ -2,12 +2,14 @@
 session_start();
 require_once '../classes/booking.class.php';
 
+$customerID = $_SESSION['customerID'];
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $booking2 = new Booking();
     $bookingIDs = [];
     
     if(isset($_SESSION['customerID'])) {
-        $customerID = $_SESSION['customerID'];
+        
 
         for ($i = 0; $i < count($_POST['pet_index']); $i++) {
             $petIndex = $_POST['pet_index'][$i];
@@ -32,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
         
-        header('Location: ./finished-booking.php?bookingID=' . $bookingIDIndex0);
+        echo "<script>window.location.href = './finished-booking.php?bookingID={$bookingIDIndex0}';</script>";
     } else {
         echo json_encode(array('success' => false, 'message' => 'Customer ID is not set in session.'));
     }

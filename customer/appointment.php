@@ -1,36 +1,27 @@
-<<<<<<< Updated upstream
-=======
 <?php
-// Resume the session to fetch or create the cart
-    session_start();
+session_start();
 
 if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
     header('location: index.php');
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
->>>>>>> Stashed changes
-<?php
-session_start();
-$title = 'Appointment';
-require_once('./tools/functions.php');
-require_once '../classes/booking.class.php';
+require_once ('../classes/account.class.php');
+require_once ('./tools/functions.php');
 
-$booking = new Booking();
+if(isset($_SESSION['email2'])) {
+  $email = $_SESSION['email2'];
 
-if(isset($_SESSION['email'])) {
-    $email = $_SESSION['email'];
-    $nameData = $booking->fetchNameViaEmail($email);
-    $fullName = $nameData[0]['fullName']; 
+  $customer = new Account(); 
+  $customerData = $customer->getCustomerData($email); 
+
 } else {
-    $email = '';
-    $fullName = ''; 
+  echo "Session email not set.";
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
+<?php
+$title = 'Appointment';
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,7 +44,7 @@ if(isset($_SESSION['email'])) {
                     <i class="fa-solid fa-plus"></i>
                 </label>
             </div>
-            <span class="text-black fs-5"><?php echo $fullName; ?></span>
+            <span class="text-black fs-5"><?php echo $customerData['firstname']. " " . $customerData['lastname']; ?></span>
         </div>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">

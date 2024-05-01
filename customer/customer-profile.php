@@ -1,21 +1,26 @@
 <?php
-// Resume the session to fetch or create the cart
-    session_start();
+session_start();
 
 if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
     header('location: index.php');
 }
+$title = 'My Profile';
+require_once ('../classes/account.class.php');
+require_once ('./tools/functions.php');
+
+if(isset($_SESSION['email2'])) {
+  $email = $_SESSION['email2'];
+
+  $customer = new Account(); 
+  $customerData = $customer->getCustomerData($email); 
+
+} else {
+  echo "Session email not set.";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<?php
-$title = 'My Profile';
-require_once ('./tools/functions.php');
-?>
-
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
@@ -46,7 +51,7 @@ require_once ('./include/customer-header.php');
           </label>
         </div>
 
-        <span class="text-black fs-5">Raf Saludo</span>
+        <span class="text-black fs-5"><?php echo $customerData['firstname']. " " . $customerData['lastname']; ?></span>
       </div>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">

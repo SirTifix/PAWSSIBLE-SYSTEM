@@ -127,13 +127,16 @@ document.addEventListener("DOMContentLoaded", function () {
         );
         const selectedTime = timeSlot.dataset.time; // Get the time from the data-time attribute
         openModal(formattedDate, selectedTime); // Call the openModal function
+        $(document).ready(function () {
+            $("#calendarModal").modal("hide");
+        });
       } else {
         alert("Please select a date from the calendar first.");
       }
     });
   });
 
-  $('#modal').on('show.bs.modal', function (event) {
+  $("#modal").on("show.bs.modal", function (event) {
     const selectedDateCell = document.querySelector(".calendar-cell.selected");
     if (!selectedDateCell) {
       event.preventDefault();
@@ -165,29 +168,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Get the modal
-var modal = document.getElementById("registrationModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("registerBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 };
-
-document.addEventListener("DOMContentLoaded", function() {
-  const selectButton = document.querySelectorAll(".select-button");
-
-  selectButton.forEach((button) => {
-      button.addEventListener("click", function() {
-          const modal = new bootstrap.Modal(document.getElementById("profileModal"));
-          modal.show();
-      });
-  });
-});

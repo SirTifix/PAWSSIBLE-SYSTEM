@@ -8,6 +8,7 @@ if (isset($_POST['login'])) {
         $_SESSION['user'] = 'customer';
         $_SESSION['email2'] = $user->email;
         $_SESSION['customerID'] = $user->customerID;
+        echo "<script>window.location.href = './home.php';</script>";
     } else {
         $error = 'Invalid email/password. Try Again.';
     }

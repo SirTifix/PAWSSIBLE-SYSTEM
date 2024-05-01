@@ -5,7 +5,7 @@ if (isset($_POST['register'])) {
     $user = new Register();
     //sanitize
     $user->firstname = htmlentities($_POST['firstname']);
-    $user->middlename = htmlentities($_POST['middlename']) ? $_POST['middlename'] : null;
+    $user->middlename = htmlentities($_POST['middlename']) ? $_POST['middlename'] : "";
     $user->lastname = htmlentities($_POST['lastname']);
     $user->email = htmlentities($_POST['email']);
     $user->password = htmlentities($_POST['password']);
@@ -23,6 +23,7 @@ if (isset($_POST['register'])) {
     ) {
         if ($user->add()) {
             $message = 'Account successfully created!';
+            echo "<script>window.location.href = './include/success-registered.php';</script>";
         } else {
             echo 'An error occurred while adding in the database.';
         }
@@ -39,25 +40,21 @@ if (isset($_POST['register'])) {
                         <section class="p-sm-3 d-flex justify-content-center align-items-center">
                             <div class="col-12 col-lg-10 col-lg-4">
                             <?php if (isset($form_submission_failed) && $form_submission_failed): ?>
-                                            <!-- Display error message here -->
-                                            <div class="alert alert-danger my-1 mb-3 text-center" role="alert">
-                                                Please fill the required forms.
-                                            </div>
+                                                    <!-- Display error message here -->
+                                                    <div class="alert alert-danger my-1 mb-3 text-center" role="alert">
+                                                        Please fill the required forms.
+                                                    </div>
                             <?php endif; ?>
                                 <h1 class="h1 text-center mb-5" style="color: #5263AB; font-weight: bold;">Register</h1>
-                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="needs-validation" id="registrationForm" method="post" novalidate>
                                     <div class="mb-3">
                                         <label for="firstname" class="form-label">First Name</label>
                                         <input type="text" class="form-control" id="firstname" name="firstname" value="<?php if (isset($_POST['firstname'])) {
                                             echo $_POST['firstname'];
-                                        } ?>">
-                                        <?php
-                                        if (isset($_POST['firstname']) && !validate_field($_POST['firstname'])) {
-                                            ?>
-                                                            <p class="text-danger my-1">First name is required</p>
-                                                    <?php
-                                        }
-                                        ?>
+                                        } ?>" required>
+                                        <div class="invalid-feedback">
+                                          Please input first name.
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="middlename" class="form-label">Middle Name (Optional)</label>
@@ -69,20 +66,16 @@ if (isset($_POST['register'])) {
                                         <label for="lastname" class="form-label">Last Name</label>
                                         <input type="text" class="form-control" id="lastname" name="lastname" value="<?php if (isset($_POST['lastname'])) {
                                             echo $_POST['lastname'];
-                                        } ?>">
-                                        <?php
-                                        if (isset($_POST['lastname']) && !validate_field($_POST['lastname'])) {
-                                            ?>
-                                                            <p class="text-danger my-1">Last name is required</p>
-                                                    <?php
-                                        }
-                                        ?>
+                                        } ?>" required>
+                                        <div class="invalid-feedback">
+                                          Please input last name.
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="email" class="form-control" id="email" name="email" value="<?php if (isset($_POST['email'])) {
                                             echo $_POST['email'];
-                                        } ?>">
+                                        } ?>" required>
                                         <?php
                                         $new_user = new Register();
                                         if (isset($_POST['email'])) {
@@ -93,12 +86,14 @@ if (isset($_POST['register'])) {
 
                                         if (isset($_POST['email']) && strcmp(validate_email($_POST['email']), 'success') != 0) {
                                             ?>
-                                                            <p class="text-danger my-1"><?php echo validate_email($_POST['email']) ?></p>
-                                                    <?php
+                                                                    <p class="text-danger my-1"><?php echo validate_email($_POST['email']) ?></p>
+                                                            <?php
                                         } else if ($new_user->is_email_exist() && $_POST['email']) {
                                             ?>
-                                                                        <p class="text-danger my-1">Email already exist</p>
-                                                <?php
+                                                <div class="invalid-feedback">
+                                                  Email already exist.
+                                                </div>
+                                                        <?php
                                         }
                                         ?>
                                     </div>
@@ -106,25 +101,21 @@ if (isset($_POST['register'])) {
                                         <label for="password" class="form-label">Password</label>
                                         <input type="password" class="form-control" id="password" name="password" value="<?php if (isset($_POST['password'])) {
                                             echo $_POST['password'];
-                                        } ?>">
-                                        <?php
-                                        if (isset($_POST['password']) && validate_password($_POST['password']) !== "success") {
-                                            ?>
-                                                            <p class="text-danger my-1"><?= validate_password($_POST['password']) ?></p>
-                                                    <?php
-                                        }
-                                        ?>
+                                        } ?>" required>
+                                        <div class="invalid-feedback">
+                                          Please input password.
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="confirmpassword" class="form-label">Confirm Password</label>
                                         <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" value="<?php if (isset($_POST['confirmpassword'])) {
                                             echo $_POST['confirmpassword'];
-                                        } ?>">
+                                        } ?>" required>
                                         <?php
                                         if (isset($_POST['password']) && isset($_POST['confirmpassword']) && !validate_cpw($_POST['password'], $_POST['confirmpassword'])) {
                                             ?>
-                                                            <p class="text-danger my-1">Your confirm password didn't match</p>
-                                                    <?php
+                                                                    <p class="text-danger my-1">Your confirm password didn't match</p>
+                                                            <?php
                                         }
                                         ?>
                                     </div>

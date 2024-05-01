@@ -1,10 +1,11 @@
 <?php
-// Resume the session to fetch or create the cart
-    session_start();
+session_start();
 
-if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
-    header('location: index.php');
+if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
+  header('location: index.php');
 }
+
+require_once('./tools/functions.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,9 +25,6 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
 
 </head>
 <body>
-<?php 
-session_start();
-?>
 <h2 class="pet-form-style mb-4">Number of Pets: <?php echo $_SESSION['noofpets'].'';?> </h2>
 <?php for ($i = 0; $i < $_SESSION['noofpets']; $i++) {?>
 <div class="pet-info-form background-color-container">

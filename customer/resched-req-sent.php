@@ -34,12 +34,12 @@ $title = 'Pawssible Solutions Veterinary';
         require_once ('./include/customer-header.php');
       ?>
         <div class="container-sm d-flex my-5" style="padding:0; background:#EEE5FF; flex-direction:column; align-items:center; text-align:center; border-radius:10px;">
-            <h2 style="width:100%; background:#C1CCF8; padding:1em 0; border-radius:10px 10px 0 0;">Appointment Confirmation</h2>
+            <h2 style="width:100%; background:#C1CCF8; padding:1em 0; border-radius:10px 10px 0 0;">Your appointment rescheduling request has been sent!</h2>
             <div style="padding:4em 0;">
                 <h4>Your booking number:</h4>
                 <h1><?php echo isset($_GET['bookingID']) ? $_GET['bookingID'] : ''; ?></h1>
             </div>
-            <a href="home.php" class="btn btn-success btn-lg mb-5">Finish</a>
+            <a href="appointment.php" class="btn btn-success btn-lg mb-5">Finish</a>
         </div>
 
   <?php
