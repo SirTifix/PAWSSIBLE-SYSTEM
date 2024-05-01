@@ -17,7 +17,7 @@ require_once('../classes/veterinarian.class.php');
      <section class="veterinarian-con">
                 <div class="row mx-5 justify-content-end"> 
                 <div class="crud-btn-add col-4 col-sm-auto"> 
-                <a href="create-vet.php" class="crud-text" style="width: 100%"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Veterinary</a>
+                <a href="create-vet.php" class="crud-text" style="width: 100%"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Veterinarian</a>
             </div>
                 </div>
         
@@ -27,7 +27,7 @@ require_once('../classes/veterinarian.class.php');
                 <div class="cus-head-form col-11 d-flex justify-content-between align-items-center mb-3">
                 <div class="col-12 d-flex justify-content-between align-items-center px-3">
                 <div class="customer-info-head">
-                    <h2>Veterinarian Account </h2>
+                    <h2>Veterinarian Accounts </h2>
                 </div>
                 <div class="row ">
                 <div class="form-group col-8 col-sm-auto">
@@ -59,8 +59,8 @@ require_once('../classes/veterinarian.class.php');
                     <div class="form-group col-4 col-sm-auto">
                             <select name="status" class="form-select">
                                 <option value="">All Status</option>
-                                <option value="Active">Active</option>
-                                <option value="Deactivated">Deactivated</option>
+                                <option value="Available">Available</option>
+                                <option value="Unavailable">Unavailable</option>
                             </select>
                         </div>
                     </div>
@@ -78,6 +78,7 @@ require_once('../classes/veterinarian.class.php');
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Recently Added</th>
+                            <th scope="col">Status</th>
                             <th scope="col" width="5%">Action</th>
                         </tr>
                     </thead>
@@ -90,6 +91,7 @@ require_once('../classes/veterinarian.class.php');
                             echo '<th scope="row">' . $record['vetID'] . '</th>';
                             echo '<td>' . $record['fullName'] . '</td>';
                             echo '<td>' . date('d M Y', strtotime($record['created_at'])) . '</td>';
+                            echo '<td>' . $record['vetStatus'] . '</td>';
                             echo '<td class="d-flex justify-content-end">';
                             echo '<div class="crud-btn">';
                             echo '<a href="update-vet.php?vetID=' . $record['vetID'] . '" class="crud-icon-update"><i class="fa-regular fa-pen-to-square m-1" aria-hidden="true"></i></a>';
