@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 29, 2024 at 12:20 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- Host: 127.0.0.1:3306
+-- Generation Time: May 01, 2024 at 10:23 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,9 +52,11 @@ INSERT INTO `admin` (`adminID`, `adminUsername`, `adminPassword`, `adminEmail`, 
 CREATE TABLE `booking` (
   `bookingID` int(10) NOT NULL,
   `firstName` varchar(100) NOT NULL,
+  `middlename` varchar(255) NOT NULL,
   `lastName` varchar(100) NOT NULL,
   `emailAddress` varchar(100) NOT NULL,
   `contactNumber` varchar(12) NOT NULL,
+  `numberPets` int(11) NOT NULL,
   `status` varchar(100) NOT NULL,
   `bookingDate` varchar(50) NOT NULL,
   `bookingTime` varchar(50) NOT NULL,
@@ -65,8 +67,9 @@ CREATE TABLE `booking` (
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`bookingID`, `firstName`, `lastName`, `emailAddress`, `contactNumber`, `status`, `bookingDate`, `bookingTime`, `resched_reason`) VALUES
-(4875, 'Test', 'Test', 'test@test.com', '123123412', 'Pending', 'April 3, 2024', '09:00 AM 10:00 AM', 'No time and no money hehe');
+INSERT INTO `booking` (`bookingID`, `firstName`, `middlename`, `lastName`, `emailAddress`, `contactNumber`, `numberPets`, `status`, `bookingDate`, `bookingTime`, `resched_reason`) VALUES
+(4875, 'Test', '', 'Test', 'test@test.com', '123123412', 1, 'Pending', 'May 9, 2024', '02:00 AM 03:00 PM', 'No time and no money hehe'),
+(5577, 'Batman', 'Bin', 'Suparman', 'kryptonite@luthor.com', '12312', 2, 'Pending', 'May 1, 2024', '03:00 AM 04:00 PM', 'dugay kaayo sila');
 
 -- --------------------------------------------------------
 
@@ -93,7 +96,9 @@ CREATE TABLE `booking_pet` (
 --
 
 INSERT INTO `booking_pet` (`bookingPetID`, `petName`, `petType`, `sex`, `concerns`, `petBreed`, `petBirthDate`, `bookingID`, `serviceID`, `vetID`, `customerID`) VALUES
-(32, 'Kongkik', 'Cat', 'Male', 'Cat neuter', 'Siamese', '2024-04-18', 4875, 2, 5, 13);
+(32, 'Kongkik', 'Cat', 'Male', 'Cat neuter', 'Siamese', '2024-04-18', 4875, 2, 5, 13),
+(45, 'Barry', 'Tortor', 'Male', '', 'Mabilis', '2024-05-25', 5577, 5, 4, 13),
+(46, 'Cyborg', 'Bakal', 'Female', 'wala lng mahina kasi', 'Mamaw', '2024-05-16', 5577, 2, 5, 13);
 
 -- --------------------------------------------------------
 
@@ -104,6 +109,7 @@ INSERT INTO `booking_pet` (`bookingPetID`, `petName`, `petType`, `sex`, `concern
 CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
   `firstname` varchar(255) NOT NULL,
+  `middlename` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -115,8 +121,9 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `firstname`, `lastname`, `email`, `password`, `created_at`, `updated_at`) VALUES
-(13, 'test', 'test', 'test@test.com', '$2y$10$CQh7F4D5R1UerGTqw0qcBO/nCNA8utVQOn6qPPE0wRb5Ujd6mlQoK', '2024-03-04 12:51:10', '2024-03-04 12:51:10');
+INSERT INTO `customer` (`id`, `firstname`, `middlename`, `lastname`, `email`, `password`, `created_at`, `updated_at`) VALUES
+(13, 'test', '', 'test', 'test@test.com', '$2y$10$CQh7F4D5R1UerGTqw0qcBO/nCNA8utVQOn6qPPE0wRb5Ujd6mlQoK', '2024-03-04 12:51:10', '2024-03-04 12:51:10'),
+(27, 'joy', '', 'pioquinto', 'joypioquinto1017@gmail.ph', '$2y$10$butq3BTeLUdhhjqdbwUGnOTFC45iQ/oe.Evk2Rq18CkH4tyWiA.FO', '2024-05-01 09:28:39', '2024-05-01 09:28:39');
 
 -- --------------------------------------------------------
 
@@ -377,13 +384,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `booking_pet`
 --
 ALTER TABLE `booking_pet`
-  MODIFY `bookingPetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `bookingPetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `customer_record`
