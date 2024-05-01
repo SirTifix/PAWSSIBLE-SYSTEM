@@ -1,3 +1,23 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer'){
+    header('location: index.php');
+}
+$title = 'My Profile';
+require_once ('../../classes/account.class.php');
+require_once ('../tools/functions.php');
+
+if(isset($_SESSION['email2'])) {
+  $email = $_SESSION['email2'];
+
+  $customer = new Account(); 
+  $customerData = $customer->getCustomerData($email); 
+
+} else {
+  echo "Session email not set.";
+}
+?>
 <div class="container rounded mt-2 mb-5">
     <div class="row">
         <div class="col-md-12 border-right">
@@ -9,30 +29,14 @@
 
                 <div class="row mt-2">
                     <div class="col-md-6"><label class="form-label"> First Name</label><input type="text"
-                            class="form-control" placeholder="First name" value=""></div>
+                            class="form-control" placeholder="First name" value="<?php echo $customerData['firstname']; ?>"></div>
                     <div class="col-md-6"><label class="form-label">Last Name</label><input type="text"
-                            class="form-control" value="" placeholder="Last Name"></div>
+                            class="form-control" value="<?php echo $customerData['lastname']; ?>" placeholder="Last Name"></div>
                 </div>
 
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="form-label"> Username</label><input type="text"
-                            class="form-control" placeholder="Username" value=""></div>
-
-                    <div class="col-md-6"><label class="form-label"> Gender</label><select class="form-select"
-                            aria-label="Default select example">
-                            <option selected>Select your Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="N/A">N/A</option>
-                        </select></div>
-                </div>
-
-                <div class="row mt-2">
-                    <div class="col-md-6"><label class="form-label">Birth Date</label><input type="date"
-                            class="form-control" placeholder="Birth Date" value=""></div>
-                            
-                    <div class="col-md-6"><label class="form-label">Email</label><input type="email"
-                            class="form-control" value="" placeholder="Email"></div>
+                    <div class="col-md-6"><label class="form-label"> Email</label><input type="text"
+                            class="form-control" placeholder="Email" value="<?php echo $customerData['email']; ?>"></div>
                 </div>
 
                 <div class="container mt-5">

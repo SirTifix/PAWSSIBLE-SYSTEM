@@ -63,12 +63,6 @@ require_once ('./include/customer-header.php');
           </a>
         </li>
         <li>
-          <a onclick="showContent('pet', this)" class="nav-link text-black" style="color: black;">
-            <i style="margin-right: 10px;" class="fa-solid fa-paw"></i>
-            Pet
-          </a>
-        </li>
-        <li>
           <a onclick="showContent('privacy', this)" class="nav-link text-black" style="color: black;">
             <i style="margin-right: 10px;" class="fa-solid fa-lock"></i>
             Privacy
@@ -82,8 +76,14 @@ require_once ('./include/customer-header.php');
 
   </div>
 
-
-
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script>
     function showContent(page, link) {
 
@@ -91,9 +91,6 @@ require_once ('./include/customer-header.php');
       switch (page) {
         case 'profile':
           content = './include/profile.php';
-          break;
-        case 'pet':
-          content = './include/pet.php';
           break;
         case 'privacy':
           content = './include/privacy.php';
@@ -139,16 +136,7 @@ require_once ('./include/customer-header.php');
     window.onload = function () {
       showContent('profile', document.querySelector('.nav-link.active'));
     };
-  </script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-
-  <script>
+  
     $('#modal1, #modal2').on('show.bs.modal', function (e) {
       // Hide any previously opened modals
       $('.modal').not($(this)).modal('hide');
