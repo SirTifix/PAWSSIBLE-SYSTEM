@@ -324,7 +324,6 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
     // Initialize Swiper
     initializeSwiper();
   </script>
-
   <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
   <script>
     document.getElementById('menu-toggle').addEventListener('click', function() {
