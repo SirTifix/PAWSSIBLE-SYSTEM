@@ -18,6 +18,7 @@ Class Pet{
     public $petGender;
     public $petWeight;
     public $petColor;
+    public $created_at;
     public $updated_at;
 
     protected $db;
@@ -29,20 +30,23 @@ Class Pet{
 
     //Methods
 
-    function add($customerId) {
-        $sql = "INSERT INTO pet (petName, petBirthdate, petBreed, petType, petGender, sex, customerID, service, vet) VALUES 
-        (:petName, :petBirthdate,  :petBreed, :petType, :petGender, :sex, :customerId, :service, :vet);";
+    function add() {
+        $sql = "INSERT INTO pet (petName, petBirthdate, petAge, petBreed, petType, petGender, petWeight, petColor, customerID, created_at, updated_at) VALUES 
+        (:petName, :petBirthdate, :petAge, :petBreed, :petType, :petGender, :petWeight, :petColor, :customerId, :created_at, :updated_at);";
     
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':petName', $this->petName);
         $query->bindParam(':petBirthdate', $this->petBirthdate);
+        $query->bindParam(':petAge', $this->petAge);
         $query->bindParam(':petBreed', $this->petBreed);
         $query->bindParam(':petType', $this->petType);
-        $query->bindParam(':sex', $this->sex);
-        $query->bindParam(':service', $this->service);
-        $query->bindParam(':petColor', $this->vet);
-        $query->bindParam(':customerId', $customerId);
-    
+        $query->bindParam(':petGender', $this->petGender);
+        $query->bindParam(':petWeight', $this->petWeight);
+        $query->bindParam(':petColor', $this->petColor);
+        $query->bindParam(':customerId', $this->customerID);
+        $query->bindParam(':created_at', $this->created_at);
+        $query->bindParam(':updated_at', $this->updated_at);
+
         if($query->execute()) {
             return true;
         } else {
@@ -50,8 +54,9 @@ Class Pet{
         }
     }
 
+    
     function update(){
-        $sql = "UPDATE pet SET petName=:petName,  petBirthdate=:petBirthdate, petAge=:petAge, petBreed=:petBreed, petType=:petType, petGender=:petGender, petWeight=:petWeight, petColor=:petColor WHERE petID=:petID;";
+        $sql = "UPDATE pet SET petName=:petName,  petBirthdate=:petBirthdate, petAge=:petAge, petBreed=:petBreed, petType=:petType, petGender=:petGender, petWeight=:petWeight, petColor=:petColor WHERE customerID=:customerID;";
 
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':petName', $this->petName);
@@ -62,7 +67,7 @@ Class Pet{
         $query->bindParam(':petGender', $this->petGender);
         $query->bindParam(':petWeight', $this->petWeight);
         $query->bindParam(':petColor', $this->petColor);
-        $query->bindParam(':petID', $this->petID);
+        $query->bindParam(':customerID', $this->customerID);
         if ($query->execute()){
             return true;
         }
@@ -86,7 +91,7 @@ Class Pet{
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':petID', $record_id);
         if ($query->execute()) {
-            $data = $query->fetch();
+            $data = $query->fetchAll();
         }
         return $data;
     }

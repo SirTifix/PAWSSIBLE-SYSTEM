@@ -78,7 +78,6 @@ require_once('../classes/veterinarian.class.php');
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Recently Added</th>
-                            <th scope="col">Status</th>
                             <th scope="col" width="5%">Action</th>
                         </tr>
                     </thead>
@@ -86,12 +85,12 @@ require_once('../classes/veterinarian.class.php');
                         <?php
                         $veterinarianClass = new Veterinarian();
                         $vetRecords = $veterinarianClass->showVet();
+                        $id = 1;
                         foreach ($vetRecords as $record) {
                             echo '<tr>';
-                            echo '<th scope="row">' . $record['vetID'] . '</th>';
+                            echo '<th scope="row">' . $id . '</th>';
                             echo '<td>' . $record['fullName'] . '</td>';
                             echo '<td>' . date('d M Y', strtotime($record['created_at'])) . '</td>';
-                            echo '<td>' . $record['vetStatus'] . '</td>';
                             echo '<td class="d-flex justify-content-end">';
                             echo '<div class="crud-btn">';
                             echo '<a href="update-vet.php?vetID=' . $record['vetID'] . '" class="crud-icon-update"><i class="fa-regular fa-pen-to-square m-1" aria-hidden="true"></i></a>';
@@ -101,6 +100,7 @@ require_once('../classes/veterinarian.class.php');
                             echo '</div>';
                             echo '</td>';
                             echo '</tr>';
+                            $id++;
                         }
                         ?>
                     </tbody>

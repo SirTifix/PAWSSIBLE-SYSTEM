@@ -7,7 +7,6 @@ $customerID = $_SESSION['customerID'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $booking2 = new Booking();
     $bookingIDs = [];
-    
     if(isset($_SESSION['customerID'])) {
         
 

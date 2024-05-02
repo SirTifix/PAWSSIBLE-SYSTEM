@@ -21,11 +21,12 @@
           echo "Error: Veterinarian data not found.";
           exit();
       }
-  } else {
+    } else {
       // Handle error if vetID not provided
       echo "Error: vetID not provided.";
       exit();
-  }
+    }
+    
 
 ?>
 <body>
@@ -58,19 +59,19 @@
                   <div class="ms-5">
                       <div class="mt-3">
                           <label for="vetFirstname" class="form-label">First Name</label>
-                          <input type="text" class="form-control" id="vetFirstname" name="vetFirstname" required>
+                          <input type="text" class="form-control" id="vetFirstname" name="vetFirstname" required value="<?php echo $vetData['vetFirstname']; ?>">
                       </div>
                       <div>
                           <label for="vetMiddlename" class="form-label">Middle Name (Optional)</label>
-                          <input type="text" class="form-control" id="vetMiddlename" name="vetMiddlename">
+                          <input type="text" class="form-control" id="vetMiddlename" name="vetMiddlename" required value="<?php echo $vetData['vetMiddlename']; ?>">
                       </div>
                       <div>
                           <label for="vetLastname" class="form-label">Last Name</label>
-                          <input type="text" class="form-control" id="vetLastname" name="vetLastname" required>
+                          <input type="text" class="form-control" id="vetLastname" name="vetLastname" required value="<?php echo $vetData['vetLastname']; ?>">
                       </div>
                       <div>
                           <label for="vetPhone" class="form-label">Phone Number</label>
-                          <input type="text" class="form-control" id="vetPhone" name="vetPhone" required>
+                          <input type="text" class="form-control" id="vetPhone" name="vetPhone" required value="<?php echo $vetData['vetPhone']; ?>">
                       </div>
                   </div>
               </div>
@@ -78,11 +79,11 @@
                   <div class="ms-5">
                       <div class="mt-3">
                           <label for="vetEmail" class="form-label">Email Address</label>
-                          <input type="text" class="form-control" id="vetEmail" name="vetEmail" required>
+                          <input type="text" class="form-control" id="vetEmail" name="vetEmail" required value="<?php echo $vetData['vetEmail']; ?>">
                       </div>
                       <div>
                           <label for="vetUsername" class="form-label">Username</label>
-                          <input type="text" class="form-control" id="vetUsername" name="vetUsername" required>
+                          <input type="text" class="form-control" id="vetUsername" name="vetUsername" required value="<?php echo $vetData['vetUsername']; ?>">
                       </div>
                       <div>
                           <label for="vetPassword" class="form-label">Password</label>

@@ -5,7 +5,7 @@ $title = 'Welcome to PAWSsible Solution Veterinary Clinic';
 require_once('./include/admin-index.php');
 require_once '../classes/account.class.php';
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['login'])) {
     $user = new Account();
     $user->adminUsername = htmlentities($_POST['username']);
     $user->adminPassword = htmlentities($_POST['password']);
