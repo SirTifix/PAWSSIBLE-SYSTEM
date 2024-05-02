@@ -24,7 +24,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
 </head>
 
 <body>
-    <header>
+    <!-- <header>
         <img class="seventh-lec" src="./assets/img/Ellipse 17.png" alt="img">
         <img class="eighth-lec" src="./assets/img/Vector 7.png" alt="img">
         <img class="nignth-lec" src="./assetsimg/Ellipse 18.png" alt="img">
@@ -33,23 +33,18 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
 
         <div class="sticky-top">
             <nav class="navbar navbar-expand-lg navbar-light" style="background: none;">
-                <div class="container-fluid">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                        <!-- Logo -->
-                        <div class="logo p-3 d-flex align-items-center">
-                            <img class="logo-clinic img-fluid" src="assets/img/logo.png" alt="Logo">
-                            <div class="logo-text-customer ps-1">PAWSsible Solutions <br> Veterinary Clinic</div>
-                        </div>
-
-                        <!-- Navbar toggler button -->
-                        <div class=" d-flex align-items-center">
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                        </div>
+                <div class="container-fluid align-items-center">
+                    <div class="logo p-3 d-flex align-items-center">
+                        <img class="logo-clinic" src="assets/img/logo.png" alt="Logo">
+                        <div class="logo-text-customer px-3">PAWSsible Solutions <br> Veterinary Clinic</div>
                     </div>
 
-                    <!-- Navbar links -->
+                    <div class=" d-flex justify-content-end align-items-center">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+
                     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                         <div class="navbar-links navbar-nav navbar-nav align-items-center">
                             <a class="navbar-links" href="home.php">Home</a>
@@ -93,7 +88,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
                 </div>
             </nav>
         </div>
-    </header>
+    </header> -->
+    <?php
+    require_once ('./include/customer-header.php');
+    ?>
 
     <div class="intro-title text-center">
         <h1> About Us </h1>
@@ -135,8 +133,8 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
     </section>
 
     <?php
-    require_once('./include/footer.php');
-    require_once('./include/js.php');
+    require_once ('./include/footer.php');
+    require_once ('./include/js.php');
     ?>
 
     <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>

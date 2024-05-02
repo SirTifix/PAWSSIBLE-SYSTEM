@@ -1,3 +1,34 @@
+<?php
+require_once '../classes/booking.class.php';
+require_once '../classes/service.class.php';
+
+$booking = new Booking();
+$service = new Service();
+
+$bookingInfo = $booking->showAllAppointments();
+$notificationCount = 0;
+foreach ($bookingInfo as $bookingRecord) {
+    $serviceID = $bookingRecord['serviceID'];
+    $bookingID = $bookingRecord['bookingID'];
+    $serviceData = $service->fetch($serviceID);
+    $bookingData = $booking->show($bookingID);
+    $currentDate = date('Y-m-d');
+
+    if ($serviceData && $bookingData) {
+        $twoDaysBeforeBooking = date('Y-m-d', strtotime($currentDate . ' +2 days'));
+
+        if ($twoDaysBeforeBooking == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
+            $notificationCount++;
+        }
+        if ($currentDate == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
+            $notificationCount++;
+        }
+    } else {
+        echo "Service data not found for Service ID: " . $serviceID . "<br>";
+    }
+}
+?>
+
 <header>
     <div class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-light" style="background: none;">
@@ -25,41 +56,72 @@
                         <a class="navbar-links" href="aboutus-user.php">About Us</a>
                         <a class="navbar-links" href="booking.php">Booking</a>
 
-                        <div class="customized-drop-customer btn-group m-3" role="group">
-                            <div class="btn-group dropstart" role="group">
-                                <button class="btn btn-primary" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-regular fa-bell position-relative">
+                    <div class="customized-drop-customer btn-group m-3" role="group">
+                        <div class="btn-group dropstart" role="group">
+                            <button class="btn btn-primary" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-bell position-relative" aria-hidden="true">
+                                    <!-- number of li in notifications -->
+                                    <?php if ($notificationCount > 0): ?>
                                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px">
-                                            3
+                                            <?php echo $notificationCount; ?>
                                         </span>
-                                    </i>
-                                </button>
-                                <ul class="notif-dropdown dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown">
-                                    <li>
-                                        <h3 class="title-notifications dropdown-header">Notifications</h3>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#"><strong>Belgy</strong> Has a <strong> Consultation </strong>Appointment on <strong> Jan 13, 2024 </strong></a></li>
-                                    <li><a class="dropdown-item" href="#"><strong>Max</strong> Has a <strong> Vaccination </strong>Appointment on <strong> Jan 13, 2024 </strong></a></li>
-                                    <li><a class="dropdown-item" href="#"><strong>Kebies</strong> Has a <strong> Imputation </strong>Appointment on <strong> Jan 13, 2024 </strong></a></li>
-                                    <div class="dropdown-divider"></div>
-                                    <li><a class="dropdown-item text-center" href="./appointment.php">View all</a></li>
-                                </ul>
+                                    <?php endif; ?>
+                                </i>
+                            </button>
+                            <ul class="notif-dropdown dropdown-menu dropdown-menu-end" style="left: auto; right: 0;" aria-labelledby="notificationDropdown">
+                                <li><div class="title-notifications title-wrap d-flex align-items-center">
+                                        <h3 class="title-notifications">Notifications</h3>
+                                    </div>
+                                </li>
+                                <div class="drop-cont">
+
                             </div>
-                            <div class="btn-group" role="group">
-                                <button class="btn btn-primary dropdown-toggle" type="button" id="ProfileDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Account
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="ProfileDropdown">
-                                    <a class="dropdown-item" href="./customer-profile.php">My Profile</a>
-                                    <a class="dropdown-item" href="./appointment.php">Appointments</a>
-                                    <a class="dropdown-item" href="./logout.php">Logout</a>
-                                </div>
+                            <?php
+                            foreach ($bookingInfo as $bookingRecord) {
+                                $serviceID = $bookingRecord['serviceID'];
+                                $bookingID = $bookingRecord['bookingID'];
+                                $serviceData = $service->fetch($serviceID);
+                                $bookingData = $booking->show($bookingID);
+                                $currentDate = date('Y-m-d');
+
+                                if ($serviceData && $bookingData) {
+                                    // Calculate the date two days before the booking date
+                                    $twoDaysBeforeBooking = date('Y-m-d', strtotime($currentDate . ' +2 days'));
+
+                                    // Check if the current date is within two days before the booking date
+                                    if ($twoDaysBeforeBooking == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
+                                        echo "<li><a class='dropdown-item' href='#'><strong>" . $bookingRecord['petName'] . "</strong> Has a <strong>" . $serviceData['serviceName'] . "</strong> Appointment on <strong>" . $bookingData['bookingDate'] . "</strong></a></li>";
+                                        $notificationCount++;
+                                    }
+                                    if ($currentDate == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
+                                        echo "<li><a class='dropdown-item' href='#'><strong>" . $bookingRecord['petName'] . "</strong> Has a <strong>" . $serviceData['serviceName'] . "</strong> Appointment on <strong>" . $bookingData['bookingDate'] . "</strong></a></li>";
+                                        $notificationCount++;
+                                    }
+                                } else {
+                                    echo "Service data not found for Service ID: " . $serviceID . "<br>";
+                                }
+                            }
+                            ?>
+
+                                <div class="dropdown-divider"></div>
+                                <li><a class="dropdown-item text-center" href="./appointment.php">View all</a></li>
+                            </ul>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="ProfileDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Account
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end" style="left: auto; right: 0;" aria-labelledby="ProfileDropdown">
+                                <a class="dropdown-item" style="margin:0;" href="./customer-profile.php">My Profile</a>
+                                <a class="dropdown-item" style="margin:0;" href="./appointment.php">Appointments</a>
+                                <a class="dropdown-item" style="margin:0;" href="./logout.php">Logout</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
     </div>
 </header>
 

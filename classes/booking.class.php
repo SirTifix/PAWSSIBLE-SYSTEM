@@ -149,13 +149,35 @@ class Booking
         return $data;
     }
 
-    function show()
+    function showAllBooking()
+    {
+        $sql = "SELECT * FROM booking";
+        $query = $this->db->connect()->prepare($sql);
+        if ($query->execute()) {
+            $data = $query->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            $data = null;
+        }
+        return $data;
+    }
+    function show($bookingID)
     {
         $sql = "SELECT * FROM booking WHERE bookingID = :bookingID;";
         $query = $this->db->connect()->prepare($sql);
-        $query->bindParam(':bookingID', $this->bookingID);
+        $query->bindParam(':bookingID', $bookingID);
         if ($query->execute()) {
             $data = $query->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $data = null;
+        }
+        return $data;
+    }
+    function showAllAppointments()
+    {
+        $sql = "SELECT * FROM booking_pet";
+        $query = $this->db->connect()->prepare($sql);
+        if ($query->execute()) {
+            $data = $query->fetchAll(PDO::FETCH_ASSOC);
         } else {
             $data = null;
         }

@@ -1,110 +1,50 @@
 <?php
-    require_once('../classes/customer.class.php');
-    require_once('../classes/pet.class.php');
-    require_once('./tools/functions.php');
+require_once ('../classes/customer.class.php');
+require_once ('../classes/pet.class.php');
+require_once ('./tools/functions.php');
 
-    if(isset($_GET['customerID'])) {
-        $customer_id = $_GET['customerID'];
+if (isset($_GET['customerID'])) {
+  $customer_id = $_GET['customerID'];
 
-        $customer = new Customer();
+  $customer = new Customer();
 
-        $customerData = $customer->fetch($customer_id);
+  $customerData = $customer->fetch($customer_id);
 
-        if($customerData) {
-            $pet = new Pet();
-            $petData = $pet->fetchByCustomerId($customer_id);
-        } else {
-            echo "Customer not found.";
-            exit;
-        }
-    } else {
-        echo "Customer ID is missing.";
-        exit; 
-    }
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-          
-          $customer = new Customer();
-  
-          $customerFirstname = $_POST['customerFirstname'];
-          $customerMiddlename = $_POST['customerMiddlename'];
-          $customerLastname = $_POST['customerLastname'];
-          $customerDOB = $_POST['customerDOB'];
-          $customerCity = $_POST['customerCity'];
-          $customerAddress = $_POST['customerAddress'];
-          $customerEmail = $_POST['customerEmail'];
-          $customerState = $_POST['customerState'];
-          $customerPostal = $_POST['customerPostal'];
-          $customerPhone = $_POST['customerPhone'];
-
-          $customer->customerFirstname = $customerFirstname;
-          $customer->customerMiddlename = $customerMiddlename;
-          $customer->customerLastname = $customerLastname;
-          $customer->customerDOB = $customerDOB;
-          $customer->customerCity = $customerCity;
-          $customer->customerAddress = $customerAddress;
-          $customer->customerEmail = $customerEmail;
-          $customer->customerState = $customerState;
-          $customer->customerPostal = $customerPostal;
-          $customer->customerPhone = $customerPhone;
-          $customer->customerID = $customer_id;
-
-          $customerUpdateResult = $customer->update();
-          if ($customerUpdateResult) {
-              $pet = new Pet();
-  
-              $petName = $_POST['petName'];
-              $petBirthdate = $_POST['petBirthdate'];
-              $petAge = $_POST['petAge'];
-              $petBreed = $_POST['petBreed'];
-              $petType = $_POST['petType'];
-              $petGender = $_POST['petGender'];
-              $petWeight = $_POST['petWeight'];
-              $petColor = $_POST['petColor'];
-  
-              $pet->petName = $petName;
-              $pet->petBirthdate = $petBirthdate;
-              $pet->petAge = $petAge;
-              $pet->petBreed = $petBreed;
-              $pet->petType = $petType;
-              $pet->petGender = $petGender;
-              $pet->petWeight = $petWeight;
-              $pet->petColor = $petColor;
-              $pet->customerID = $customer_id;
-
-              $petUpdateResult = $pet->update();
-              header('location: customers.php');
-              exit;
-          }
-          else
-          {
-
-          }
+  if ($customerData) {
+    $pet = new Pet();
+    $petData = $pet->fetchByCustomerId($customer_id);
+  } else {
+    echo "Customer not found.";
+    exit;
   }
+} else {
+  echo "Customer ID is missing.";
+  exit;
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    $title = 'Customer';
-    require_once('./include/admin-head.php');
+$title = 'Customer';
+require_once ('./include/admin-head.php');
 ?>
 
 <body>
     <?php
-        require_once('./include/admin-header.php')
-    ?>
+    require_once ('./include/admin-header.php')
+      ?>
     <main>
-        <?php
-        require_once('./include/admin-sidepanel.php')
-    ?>
-        <section class="veterinarian-con">
-            <div class="d-flex justify-content-start mb-4">
-                <div class="veterinarian-head">
-                    <p>Update Customer Information</p>
-                </div>
-            </div>
-        </section>
+    <?php
+    require_once ('./include/admin-sidepanel.php')
+      ?>
+    <section class="veterinarian-con">
+      <div class="d-flex justify-content-start mb-4">
+        <div class="veterinarian-head">
+          <p>Update Customer Information</p>
+        </div>
+      </div>
+    </section>
 
         <section class="vet-form-con row">
             <div class="head-form col-12 d-flex justify-content-between align-items-center">
@@ -181,97 +121,92 @@
                                     value="<?php echo $customerData['customerPostal']; ?>">
                             </div>
 
-                            <div class="my-1 d-flex align-items-center col-6 ps-5">
-                                <label for="num" class="forms-label">Phone Number:</label>
-                                <input type="number" class="form-control" id="customerPhone" name="customerPhone" required
-                                    value="<?php echo $customerData['customerPhone']; ?>">
-                            </div>
+                <div class="my-1 d-flex align-items-center col-6 ps-5">
+                  <label for="num" class="forms-label">Phone Number:</label>
+                  <input type="number" class="form-control" id="num" name="num" required value="<?php echo $customerData['customerPhone']; ?>">
+                </div>
+              </div>
+            </div>
+            
+          <?php
+          $pets = $pet->fetchByCustomerId($customer_id);
+          if ($pets) {
+            foreach ($pets as $petData) {
+              ?>
+                <div class="vet-head-form mt-4">
+                  <p>Pet Information</p>
+                </div>
+
+                <div class="d-flex justify-content-around">
+                  <div class="position-relative mt-5">
+                      <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                      <img src="./assets/img/upload-photo.png" alt="Profile Picture" class="profile-pic" id="profilePic">
+                      <label for="fileInput" class="upload-icon"><i class="fa-solid fa-plus"></i>
+                      </label>
+                  </div>
+
+                  <div class="form-body">
+                
+                        <div class="d-flex mt-3">
+                          <label for="petName" class="forms-label fw-bold">Pet Name:</label>
+                          <input type="text" class="form-control" id="petName" name="petName" required value="<?php echo $petData['petName']; ?>">
                         </div>
-                    </div>
 
-                    <div class="vet-head-form mt-4">
-                        <p>Pet Information</p>
-                    </div>
-
-                    <div class="d-flex justify-content-around">
-                        <div class="position-relative mt-5">
-                            <input type="file" id="fileInput" style="display: none;" accept="image/*">
-                            <img src="./assets/img/upload-photo.png" alt="Profile Picture" class="profile-pic"
-                                id="profilePic">
-                            <label for="fileInput" class="upload-icon"><i class="fa-solid fa-plus"></i>
-                            </label>
+                        <div class="d-flex">
+                          <label for="petBirthdate" class="forms-label fw-bold">Birth Date:</label>
+                          <input type="date" class="form-control" id="petBirthdate" name="petBirthdate" required value="<?php echo $petData['petBirthdate']; ?>">
                         </div>
 
-                        <div class="form-body">
-                            <?php
-                $pets = $pet->fetchByCustomerId($customer_id);
-                if ($pets) {
-                  foreach ($pets as $petData) { 
-                    ?>
-                            <div class="d-flex mt-3">
-                                <label for="petName" class="forms-label fw-bold">Pet Name:</label>
-                                <input type="text" class="form-control" id="petName" name="petName" required
-                                    value="<?php echo $petData['petName']; ?>">
-                            </div>
-
-                            <div class="d-flex">
-                                <label for="petBirthdate" class="forms-label fw-bold">Birth Date:</label>
-                                <input type="date" class="form-control" id="petBirthdate" name="petBirthdate" required
-                                    value="<?php echo $petData['petBirthdate']; ?>">
-                            </div>
-
-                            <div class="d-flex">
-                                <label for="petAge" class="forms-label fw-bold">Pet Age:</label>
-                                <input type="text" class="form-control" id="petAge" name="petAge" required
-                                    value="<?php echo $petData['petAge']; ?>">
-                            </div>
-
-                            <div class="d-flex">
-                                <label for="petBreed" class="forms-label fw-bold">Breed:</label>
-                                <input type="text" class="form-control" id="petBreed" name="petBreed" required
-                                    value="<?php echo $petData['petBreed']; ?>">
-                            </div>
-
-                            <div class="d-flex">
-                                <label for="petType" class="forms-label fw-bold">Pet Type:</label>
-                                <input type="text" class="form-control" id="petType" name="petType" required
-                                    value="<?php echo $petData['petType']; ?>">
-                            </div>
-
-                            <div class="d-flex">
-                                <label for="petGender" class="forms-label fw-bold">Gender:</label>
-                                <input type="text" class="form-control" id="petGender" name="petGender" required
-                                    value="<?php echo $petData['petGender']; ?>">
-                            </div>
-
-                            <div class="d-flex">
-                                <label for="petWeight" class="forms-label fw-bold">Weight:</label>
-                                <input type="text" class="form-control" id="petWeight" name="petWeight" required
-                                    value="<?php echo $petData['petWeight']; ?>">
-                            </div>
-
-                            <div class="d-flex">
-                                <label for="petColor" class="forms-label fw-bold">Color:</label>
-                                <input type="text" class="form-control" id="petColor" name="petColor" required
-                                    value="<?php echo $petData['petColor']; ?>">
-                            </div>
-                            <?php
-                    }
-                } else {
-                    echo "No pets found for this customer.";
-                }
-                ?>
+                        <div class="d-flex">
+                          <label for="petAge" class="forms-label fw-bold">Pet Age:</label>
+                          <input type="text" class="form-control" id="petAge" name="petAge" required value="<?php echo $petData['petAge']; ?>">
                         </div>
+
+                        <div class="d-flex">
+                          <label for="petBreed" class="forms-label fw-bold">Breed:</label>
+                          <input type="text" class="form-control" id="petBreed" name="petBreed" required value="<?php echo $petData['petBreed']; ?>">
+                        </div>
+
+                        <div class="d-flex">
+                          <label for="petType" class="forms-label fw-bold">Pet Type:</label>
+                          <input type="text" class="form-control" id="petType" name="petType" required value="<?php echo $petData['petType']; ?>">
+                        </div>
+
+                        <div class="d-flex">
+                          <label for="petGender" class="forms-label fw-bold">Gender:</label>
+                          <input type="text" class="form-control" id="petGender" name="petGender" required value="<?php echo $petData['petGender']; ?>">
+                        </div>
+
+                        <div class="d-flex">
+                          <label for="petWeight" class="forms-label fw-bold">Weight:</label>
+                          <input type="text" class="form-control" id="petWeight" name="petWeight" required value="<?php echo $petData['petWeight']; ?>">
+                        </div>
+
+                        <div class="d-flex">
+                          <label for="petColor" class="forms-label fw-bold">Color:</label>
+                          <input type="text" class="form-control" id="petColor" name="petColor" required value="<?php echo $petData['petColor']; ?>">
+                        </div>
+                
+                      </div>
                     </div>
 
                     <div class="m-4 d-flex justify-content-between align-items-center">
-                        <div>
-                            <a href="transfer-ownership.php?petID=<?php $customer_id?>" class="transfer-btn btn-secondary">Transfer Ownership</a>
-                        </div>
+                      <div>
+                        <a href="transfer-ownership.php" class="transfer-btn btn-secondary">Transfer Ownership</a>
+                      </div>
+                      <div>
+                        <a href="update-medicalRecord.php" class="back-btn btn-secondary">View Medical History</a>
+                      </div>
                     </div>
-                
-            </div>
-        </section>
+                    <?php
+  }
+} else {
+  echo "No pets found for this customer.";
+}
+?>
+          </form>
+      </div>
+    </section>
 
         <section class="">
             <div class="d-flex justify-content-around align-items-center ms-5 ps-5 pt-2">
