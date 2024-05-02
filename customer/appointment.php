@@ -62,7 +62,7 @@ $title = 'Appointment';
             </li>
         </ul>
     </div>
-    <div class="content p-4 w-100"></div>
+    <div class="customer-prof-content content"></div>
 </div>
 
 <script>
