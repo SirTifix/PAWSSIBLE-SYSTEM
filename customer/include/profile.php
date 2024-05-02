@@ -18,9 +18,9 @@ if(isset($_SESSION['email2'])) {
   echo "Session email not set.";
 }
 ?>
-<div class="container rounded mt-2 mb-5">
+<div class="ron-cont container rounded mt-2 mb-5">
     <div class="row">
-        <div class="col-md-12 border-right">
+        <div class="col-md-12">
             <div class="p-3 py-5">
 
                 <div class="Title d-flex justify-content-between align-items-center mb-3">

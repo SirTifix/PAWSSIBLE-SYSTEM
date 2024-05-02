@@ -17,9 +17,9 @@ body {
 .circle {
   position: absolute;
   top: -10%;
-  left: -20%;
+  left: -15%;
   width: auto;
-  height: 120vh;
+  height: 137vh;
 }
 
 .second-lec {
@@ -2006,3 +2006,4 @@ select {
     padding: 15px 5px;
   }
 }
+
