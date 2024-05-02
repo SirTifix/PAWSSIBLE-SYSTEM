@@ -1752,7 +1752,6 @@ select {
 
   /*index.php */
   .navbar-links a {
-    display: none;
     position: relative;
     color: #0b0b0b;
     font-weight: 20px;
