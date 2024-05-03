@@ -1,3 +1,33 @@
+<?php
+require_once '../classes/booking.class.php';
+require_once '../classes/service.class.php';
+
+$booking = new Booking();
+$service = new Service();
+
+$bookingInfo = $booking->showAllAppointments();
+$notificationCount = 0;
+foreach ($bookingInfo as $bookingRecord) {
+    $serviceID = $bookingRecord['serviceID'];
+    $bookingID = $bookingRecord['bookingID'];
+    $serviceData = $service->fetch($serviceID);
+    $bookingData = $booking->show($bookingID);
+    $currentDate = date('Y-m-d');
+
+    if ($serviceData && $bookingData) {
+        $twoDaysBeforeBooking = date('Y-m-d', strtotime($currentDate . ' +2 days'));
+
+        if ($twoDaysBeforeBooking == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
+            $notificationCount++;
+        }
+        if ($currentDate == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
+            $notificationCount++;
+        }
+    } else {
+        echo "Service data not found for Service ID: " . $serviceID . "<br>";
+    }
+}
+?>
 <header>
     <img class="circle" src="assets/img/circle-bg.png">
     <img class="second-lec" src="assets/img/second-lec.png">
@@ -35,20 +65,40 @@
                             <div class="btn-group dropstart" role="group">
                                 <button class="btn btn-primary" type="button" id="notificationDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-regular fa-bell position-relative">
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px">
-                                            3
-                                        </span>
+                                        <?php if ($notificationCount > 0): ?>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px">
+                                                <?php echo $notificationCount; ?>
+                                            </span>
+                                        <?php endif; ?>
                                     </i>
                                 </button>
                                 <ul class="notif-dropdown dropdown-menu dropdown-menu-end" aria-labelledby="notificationDropdown">
-                                    <li>
-                                        <h3 class="title-notifications dropdown-header">Notifications</h3>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#"><strong>Belgy</strong> Has a <strong> Consultation </strong>Appointment on <strong> Jan 13, 2024 </strong></a></li>
-                                    <li><a class="dropdown-item" href="#"><strong>Max</strong> Has a <strong> Vaccination </strong>Appointment on <strong> Jan 13, 2024 </strong></a></li>
-                                    <li><a class="dropdown-item" href="#"><strong>Kebies</strong> Has a <strong> Imputation </strong>Appointment on <strong> Jan 13, 2024 </strong></a></li>
-                                    <div class="dropdown-divider"></div>
-                                    <li><a class="dropdown-item text-center" href="./appointment.php">View all</a></li>
+                                <?php
+                                foreach ($bookingInfo as $bookingRecord) {
+                                    $serviceID = $bookingRecord['serviceID'];
+                                    $bookingID = $bookingRecord['bookingID'];
+                                    $serviceData = $service->fetch($serviceID);
+                                    $bookingData = $booking->show($bookingID);
+                                    $currentDate = date('Y-m-d');
+
+                                    if ($serviceData && $bookingData) {
+                                        // Calculate the date two days before the booking date
+                                        $twoDaysBeforeBooking = date('Y-m-d', strtotime($currentDate . ' +2 days'));
+
+                                        // Check if the current date is within two days before the booking date
+                                        if ($twoDaysBeforeBooking == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
+                                            echo "<li><a class='dropdown-item' href='#'><strong>" . $bookingRecord['petName'] . "</strong> Has a <strong>" . $serviceData['serviceName'] . "</strong> Appointment on <strong>" . $bookingData['bookingDate'] . "</strong></a></li>";
+                                            $notificationCount++;
+                                        }
+                                        if ($currentDate == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
+                                            echo "<li><a class='dropdown-item' href='#'><strong>" . $bookingRecord['petName'] . "</strong> Has a <strong>" . $serviceData['serviceName'] . "</strong> Appointment on <strong>" . $bookingData['bookingDate'] . "</strong></a></li>";
+                                            $notificationCount++;
+                                        }
+                                    } else {
+                                        echo "Service data not found for Service ID: " . $serviceID . "<br>";
+                                    }
+                                }
+                                ?>
                                 </ul>
                             </div>
                             <div class="btn-group" role="group">

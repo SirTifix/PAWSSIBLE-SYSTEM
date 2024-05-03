@@ -166,7 +166,7 @@
             },
             title: {
               display: true,
-              text: 'Weekly Customer'
+              text: 'Monthly Customer'
             }
           }
         }

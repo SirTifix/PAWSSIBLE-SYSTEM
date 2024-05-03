@@ -4,7 +4,12 @@ session_start();
 if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
   header('location: index.php');
 }
-require_once('./tools/functions.php');
+require_once '../classes/booking.class.php';
+require_once ('./tools/functions.php');
+
+$booking = new Booking();
+$bookingData = $booking->showAllBooking();
+$bookingDataJson = json_encode($bookingData);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +31,6 @@ $title = 'Booking';
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
 </head>
 
 <?php
@@ -140,7 +144,6 @@ require_once ('./include/customer-header.php');
             <div>05:00 AM</div>
           </div>
 
-
         </div>
       </div>
     </div>
@@ -234,6 +237,41 @@ require_once ('./include/customer-header.php');
   <script src="./assets/script/validation.js"></script>
   <script src="./assets/script/calendar.js"></script>
   <script>
+
+    function checkAvailability(selectedDate, selectedTime, bookingData) {
+    for (let i = 0; i < bookingData.length; i++) {
+        if (selectedDate === bookingData[i]['bookingDate'] && selectedTime === bookingData[i]['bookingTime']) {
+          console.log("false")
+            return true; 
+        }
+    }
+    console.log(bookingData[0]['bookingDate'] + bookingData[0]['bookingTime'] + selectedDate)
+    return false; 
+    } 
+
+    document.getElementById('modal').addEventListener('show.bs.modal', function (event) {
+    const selectedDate = document.getElementById('selectedDate').value;
+    const selectedTime = document.getElementById('selectedTime').value;
+
+    // Check if the selected date and time are already booked
+    if (checkAvailability(selectedDate, selectedTime, <?php echo $bookingDataJson; ?>)) {
+        // Show alert if date and time are already taken
+        const modalContent = document.querySelector('.modal-content');
+        modalContent.innerHTML = `
+        <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
+            <div class="modal-header">
+                <h5 class="modal-title">Alert</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Date and time are already taken. Please select another date and time.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>`;
+    }
+    });
 
     $(document).ready(function () {
       $('#anotherModal').on('show.bs.modal', function (e) {

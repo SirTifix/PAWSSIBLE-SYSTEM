@@ -26,25 +26,29 @@
     <img class="sixth-lec" src="assets/img/vector-4.png" alt="img">
     <img class="eleventh-lec" src="assets/img/multiple-pets.png" alt="img">
 
-
     <div class="sticky-top">
-      <nav class="navbar navbar-expand-lg ">
+      <nav class="navbar navbar-expand-lg navbar-light" style="background: none;">
         <div class="container-fluid">
-          <div class="logo p-3 d-flex align-items-center ">
-            <img class="logo-clinic" src="assets/img/logo.png" alt="Logo">
-            <div class="logo-text-customer px-3">PAWSsible Solutions <br> Veterinary Clinic</div>
-
-
-            <div class="navbar-toggle  ">
-              <button class="menu-toggle" id="menu-toggle" style="color: black;">&#9776;</button>
+          <div class="d-flex justify-content-between align-items-center w-100">
+            <div class="logo p-3 d-flex align-items-center ">
+              <img class="logo-clinic img-fluid" src="assets/img/logo.png" alt="Logo">
+              <div class="logo-text-customer ps-1">PAWSsible Solutions <br> Veterinary Clinic</div>
+            </div>
+            <!-- Navbar toggler button -->
+            <div class=" d-flex align-items-center">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
             </div>
           </div>
 
-          <div class="navbar-links " id="navbar-links">
-            <a href="./index.php">Home</a>
-            <a href="./services.php">Services</a>
-            <a href="./aboutus.php">About Us</a>
-            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+          <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <div class="navbar-links navbar-nav navbar-nav align-items-center" id="navbar-links">
+              <a class="navbar-links" href="./index.php">Home</a>
+              <a class="navbar-links" href="./services.php">Services</a>
+              <a class="navbar-links" href="./aboutus.php">About Us</a>
+              <a class="navbar-links" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+            </div>
           </div>
         </div>
       </nav>
@@ -186,7 +190,7 @@
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
   </div>
-  
+
   <section class="FAQS">
     <div class=" intro-faqs text-center">
       <h1><Strong> FAQS</Strong></h1>
@@ -279,7 +283,6 @@
     // Initialize Swiper
     initializeSwiper();
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {

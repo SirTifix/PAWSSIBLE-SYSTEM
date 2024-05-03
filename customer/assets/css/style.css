@@ -17,9 +17,9 @@ body {
 .circle {
   position: absolute;
   top: -10%;
-  left: -20%;
+  left: -15%;
   width: auto;
-  height: 120vh;
+  height: 137vh;
 }
 
 .second-lec {
@@ -1752,7 +1752,6 @@ select {
 
   /*index.php */
   .navbar-links a {
-    display: none;
     position: relative;
     color: #0b0b0b;
     font-weight: 20px;
@@ -2007,3 +2006,4 @@ select {
     padding: 15px 5px;
   }
 }
+

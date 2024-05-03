@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("selectedDateTime").textContent =
       "" + selectedDate + ", " + selectedTime;
     document.getElementById("selectedDate").value = selectedDate;
-    document.getElementById("selectedTime").value = selectedTime;
+    document.getElementById("selectedTime").value = selectedTime;z
   }
 
   // Function to format date in "Month Day, Year" format

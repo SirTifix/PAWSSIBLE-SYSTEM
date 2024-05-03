@@ -14,7 +14,7 @@ if(isset($_SESSION['customerID'])) {
 
 <div class="Rounded-container-form container rounded mt-2">
     <div class="Pet-mail-table row">
-        <div class="Pet-mail-table col-md-12 border-right">
+        <div class="Pet-mail-table col-md-12">
             <div class="Pet-mail-table p-2 ">
                 <div class="search-container d-flex">
                     <div class="search-wrapper d-flex align-items-center m-0">
