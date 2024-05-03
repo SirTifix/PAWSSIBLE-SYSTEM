@@ -9,6 +9,14 @@ require_once ('./tools/functions.php');
 
 $booking = new Booking();
 $bookingData = $booking->showAllBooking();
+$pendingCount = 0;
+
+foreach ($bookingData as $booking2) {
+  if ($booking2['status'] == 'Pending') {
+    $pendingCount++;
+  }
+}
+$AvailSlot = 10 - $pendingCount;
 $bookingDataJson = json_encode($bookingData);
 ?>
 <!DOCTYPE html>
@@ -37,7 +45,7 @@ $title = 'Booking';
 require_once ('./include/customer-header.php');
 ?>
 <body>
-
+  <div class="alert-error fixed-top top-0 start-50 my-3" style="width:500px"></div>
   <div class="avail-date">
     <h2> <strong> AVAILABLE DATE </strong></h2>
   </div>
@@ -150,6 +158,8 @@ require_once ('./include/customer-header.php');
 
   </div>
 
+  
+
   <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-cont">
@@ -235,49 +245,215 @@ require_once ('./include/customer-header.php');
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="./assets/script/validation.js"></script>
-  <script src="./assets/script/calendar.js"></script>
   <script>
-
     function checkAvailability(selectedDate, selectedTime, bookingData) {
     for (let i = 0; i < bookingData.length; i++) {
         if (selectedDate === bookingData[i]['bookingDate'] && selectedTime === bookingData[i]['bookingTime']) {
-          console.log("false")
             return true; 
         }
     }
-    console.log(bookingData[0]['bookingDate'] + bookingData[0]['bookingTime'] + selectedDate)
     return false; 
     } 
 
-    document.getElementById('modal').addEventListener('show.bs.modal', function (event) {
-    const selectedDate = document.getElementById('selectedDate').value;
-    const selectedTime = document.getElementById('selectedTime').value;
+    // Function to display the selected date
+function displaySelectedDate(dateElement, selectedDate) {
+  dateElement.textContent = "Selected Date: " + selectedDate;
+}
 
-    // Check if the selected date and time are already booked
-    if (checkAvailability(selectedDate, selectedTime, <?php echo $bookingDataJson; ?>)) {
-        // Show alert if date and time are already taken
-        const modalContent = document.querySelector('.modal-content');
-        modalContent.innerHTML = `
-        <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
-            <div class="modal-header">
-                <h5 class="modal-title">Alert</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Date and time are already taken. Please select another date and time.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-            </div>`;
+document.addEventListener("DOMContentLoaded", function () {
+  // Get the pets dropdown menu
+  const petsDropdown = document.getElementById("pets");
+
+  // Add event listener to the pets dropdown menu
+  petsDropdown.addEventListener("change", function () {
+    console.log("Dropdown value changed");
+    const numberOfPets = parseInt(this.value);
+    const petFormsContainer = document.getElementById("petFormsContainer");
+
+    // Clear any existing pet info forms
+    petFormsContainer.innerHTML = "";
+
+    // Dynamically create and append pet info forms based on the selected number of pets
+    for (let i = 1; i <= numberOfPets; i++) {
+      // Fetch content from PHP file using AJAX
+      fetch("../customer/submit-booking.php")
+        .then((response) => response.text())
+        .then((data) => {
+          const petForm = document.createElement("div");
+          petForm.innerHTML = data;
+          petFormsContainer.appendChild(petForm);
+        })
+        .catch((error) => console.error("Error fetching pet form:", error));
     }
-    });
+  });
 
-    $(document).ready(function () {
-      $('#anotherModal').on('show.bs.modal', function (e) {
-        $('.modal').modal('hide');
+  const prevMonthBtn = document.getElementById("prevMonthBtn");
+  const nextMonthBtn = document.getElementById("nextMonthBtn");
+  const currentMonthYear = document.getElementById("currentMonthYear");
+  const calendarBody = document.getElementById("calendarBody");
+
+  let currentDate = new Date();
+  let currentMonth = currentDate.getMonth();
+  let currentYear = currentDate.getFullYear();
+  let formattedDate;
+  let selectedTime;
+
+  function generateCalendar(month, year) {
+    currentMonthYear.textContent = `${getMonthName(month)} ${year}`;
+    calendarBody.innerHTML = "";
+
+    const firstDayOfMonth = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    for (let i = 0; i < firstDayOfMonth; i++) {
+      const emptyCell = document.createElement("div");
+      emptyCell.classList.add("calendar-cell");
+      calendarBody.appendChild(emptyCell);
+    }
+
+    for (let i = 1; i <= daysInMonth; i++) {
+      const calendarCell = document.createElement("div");
+      calendarCell.classList.add("calendar-cell");
+      calendarCell.textContent = i;
+
+      calendarCell.addEventListener("click", () => {
+        const selectedDate = new Date(year, month, i);
+        formattedDate = formatDate(selectedDate); // Format the selected date
+        alert(`You clicked on ${formattedDate}`);
       });
+
+      // Create and append the "10 slots" text below each calendar cell
+      // const slotsText = document.createElement("div");
+      // slotsText.textContent = "10 slots";
+      // slotsText.classList.add("slots-text");
+      // calendarCell.appendChild(slotsText);
+
+      calendarBody.appendChild(calendarCell);
+    }
+  }
+
+  function getMonthName(month) {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    return months[month];
+  }
+
+  prevMonthBtn.addEventListener("click", () => {
+    currentMonth--;
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
+    }
+    generateCalendar(currentMonth, currentYear);
+  });
+
+  nextMonthBtn.addEventListener("click", () => {
+    currentMonth++;
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+    generateCalendar(currentMonth, currentYear);
+  });
+
+  generateCalendar(currentMonth, currentYear);
+
+  const timeSlots = document.querySelectorAll(".time-slot");
+
+  timeSlots.forEach((timeSlot) => {
+    timeSlot.addEventListener("mousedown", () => {
+      const selectedDateCell = document.querySelector(
+        ".calendar-cell.selected"
+      );
+      if (selectedDateCell) {
+        const selectedDate = new Date(
+          currentYear,
+          currentMonth,
+          parseInt(selectedDateCell.textContent)
+        );
+        selectedTime = timeSlot.dataset.time; // Get the time from the data-time attribute
+        openModal(formattedDate, selectedTime); 
+      } else {
+        alert("Please select a date from the calendar first.");
+      }
     });
+  });
+
+  
+  $('#modal').on('show.bs.modal', function (event) {
+    const selectedDateCell = document.querySelector(".calendar-cell.selected");
+    const bookingData = <?php echo $bookingDataJson; ?>;
+    if (!selectedTime || selectedTime.trim() === "") {
+    event.preventDefault();
+    return false;
+  }
+    if (checkAvailability(formattedDate, selectedTime, bookingData)) {
+        event.preventDefault();
+          const modalContent = document.querySelector('.alert-error');
+          modalContent.innerHTML = `
+            <div class="alert alert-danger alert-dismissible d-flex align-items-center fade show" role="alert">
+              <div>
+                Date and time are already taken! Please select another date and time.
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            `;
+      }
+    if (!selectedDateCell) {
+      event.preventDefault();
+      return false;
+    }
+  });
+
+  calendarBody.addEventListener("click", (event) => {
+    const selectedDate = document.querySelector(".calendar-cell.selected");
+    if (selectedDate) {
+      selectedDate.classList.remove("selected");
+    }
+    if (event.target.classList.contains("calendar-cell")) {
+      event.target.classList.add("selected");
+    }
+  });
+
+  function openModal(selectedDate, selectedTime) {
+    document.getElementById("selectedDateTime").textContent =
+      "" + selectedDate + ", " + selectedTime;
+    document.getElementById("selectedDate").value = selectedDate;
+    document.getElementById("selectedTime").value = selectedTime;
+  }
+
+  // Function to format date in "Month Day, Year" format
+  function formatDate(date) {
+    const options = { month: "long", day: "numeric", year: "numeric" };
+    return date.toLocaleDateString("en-US", options);
+  }
+});
+
+// Get the modal
+var modal = document.getElementById("registerModal");
+
+document.addEventListener("DOMContentLoaded", function() {
+  const selectButton = document.querySelectorAll(".select-button");
+
+  selectButton.forEach((button) => {
+      button.addEventListener("click", function() {
+          const modal = new bootstrap.Modal(document.getElementById("profileModal"));
+          modal.show();
+      });
+  });
+});
 
 
     document.getElementById('finishBookingBtn').addEventListener('click', function () {
