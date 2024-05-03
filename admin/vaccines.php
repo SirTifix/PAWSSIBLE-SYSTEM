@@ -7,7 +7,7 @@ require_once('../classes/vaccine.class.php');
 
 $vaccineClass = new Vaccine();
 
-if (isset($_POST['add'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $vaccineName = $_POST['Vaccine'];
     $vaccineType = $_POST['selectedVaccineType'];
     $vaccineAge = $_POST['age'];
@@ -185,6 +185,8 @@ if (isset($_POST['add'])) {
                                                 <option value="vaccine2">Dog</option>
                                                 <option value="vaccine3">Cat</option>
                                             </select>
+                                            <input type="hidden" name="selectedVaccineType" id="selectedVaccineType">
+                                            <input type="hidden" name="selectedPetType" id="selectedPetType">
                                         </div>
                                     </div>
 
@@ -252,9 +254,6 @@ if (isset($_POST['add'])) {
                                             <option value="vaccine3">Cat</option>
                                         </select>
                                     </div>
-
-                                    <input type="hidden" name="selectedVaccineType" id="selectedVaccineType">
-                                    <input type="hidden" name="selectedPetType" id="selectedPetType">
                                 </div>
 
                             </div>
