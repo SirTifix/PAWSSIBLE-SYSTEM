@@ -1028,3 +1028,14 @@ header {
    padding-top: 20px;
    
 }
+
+
+/* Secretary side Panel */
+.table-con-sec{
+    margin-left: 260px;
+    padding-top: 115px;
+}
+.pagination {
+    bottom: 0;
+    right: 0;
+}

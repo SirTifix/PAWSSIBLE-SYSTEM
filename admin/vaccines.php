@@ -131,6 +131,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         ?>
                     </tbody>
                 </table>
+                <nav aria-label="...">
+                    <ul class="pagination justify-content-end"> <!-- Align pagination to the right -->
+                        <li class="page-item disabled">
+                            <span class="page-link">Previous</span>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active">
+                            <span class="page-link">
+                                2
+                                <span class="sr-only">(current)</span>
+                            </span>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
             </div>
             </div>
@@ -297,30 +315,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     function populateFields(vaccineID) {
-    $.ajax({
-        url: 'fetch_vaccine.php',
-        type: 'POST',
-        data: { vaccineID: vaccineID },
-        success: function(response) {
-            if (response) {
-                var data = JSON.parse(response);
-                $('#updateVaccineModal #Vaccine').val(data.vaccineName);
-                $('#updateVaccineModal #vaccinetype').val(data.vaccineType);
-                $('#updateVaccineModal #age').val(data.vaccineAge);
-                $('#updateVaccineModal #dosage').val(data.vaccineDosage);
-                $('#updateVaccineModal #weeksInterval').val(data.vaccineInterval);
-                $('#updateVaccineModal #price').val(data.vaccinePrice);
-                $('#updateVaccineModal #petType').val(data.petType);
-            } else {
-                alert("Failed to fetch data for vaccine ID " + vaccineID);
+        $.ajax({
+            url: 'fetch_vaccine.php',
+            type: 'POST',
+            data: {
+                vaccineID: vaccineID
+            },
+            success: function(response) {
+                if (response) {
+                    var data = JSON.parse(response);
+                    $('#updateVaccineModal #Vaccine').val(data.vaccineName);
+                    $('#updateVaccineModal #vaccinetype').val(data.vaccineType);
+                    $('#updateVaccineModal #age').val(data.vaccineAge);
+                    $('#updateVaccineModal #dosage').val(data.vaccineDosage);
+                    $('#updateVaccineModal #weeksInterval').val(data.vaccineInterval);
+                    $('#updateVaccineModal #price').val(data.vaccinePrice);
+                    $('#updateVaccineModal #petType').val(data.petType);
+                } else {
+                    alert("Failed to fetch data for vaccine ID " + vaccineID);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
             }
-        },
-        error: function(xhr, status, error) {
-            console.error(xhr.responseText);
-        }
-    });
-}
-    
+        });
+    }
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </html>

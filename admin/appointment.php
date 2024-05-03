@@ -2,26 +2,25 @@
 <html lang="en">
 <?php
 $title = 'Appointment';
-require_once ('./include/admin-head.php');
+require_once('./include/admin-head.php');
 ?>
 
 <body>
   <?php
-  require_once ('./include/admin-header.php')
-    ?>
+  require_once('./include/admin-header.php')
+  ?>
 
   <main>
     <?php
-    require_once ('./include/admin-sidepanel.php')
-      ?>
+    require_once('./include/admin-sidepanel.php')
+    ?>
 
 
 
     <section class="veterinarian-con">
       <div class="row mx-5 justify-content-end">
         <div class="crud-btn-add col-4 col-sm-auto">
-          <a href="appointment-booking.php" class="crud-text"><i class="fa-solid fa-circle-plus pe-2 pt-1"
-              aria-hidden="true"></i>Add Appointment</a>
+          <a href="appointment-booking.php" class="crud-text"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Appointment</a>
         </div>
       </div>
     </section>
@@ -79,8 +78,24 @@ require_once ('./include/admin-head.php');
             </tr>
           </tbody>
         </table>
-
-
+        <nav aria-label="...">
+          <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+              <span class="page-link">Previous</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active">
+              <span class="page-link">
+                2
+                <span class="sr-only">(current)</span>
+              </span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </section>
 
@@ -92,8 +107,7 @@ require_once ('./include/admin-head.php');
               this Appointment?</h4>
             <div class="modal-footer justify-content-between" style="border: none;">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-              <button type="button" class="btn btn-primary" id="confirmDelete" data-customer-id=""
-                style="background-color: #FF0000; border: none;">Yes</button>
+              <button type="button" class="btn btn-primary" id="confirmDelete" data-customer-id="" style="background-color: #FF0000; border: none;">Yes</button>
             </div>
           </div>
         </div>
@@ -186,8 +200,7 @@ require_once ('./include/admin-head.php');
                         <label for="sex">
                           <h5>Sex</h5>
                         </label>
-                        <input type="text" class="book-form-control background-color" id="sex"
-                          placeholder="Enter sex" />
+                        <input type="text" class="book-form-control background-color" id="sex" placeholder="Enter sex" />
                       </div>
 
                       <div class="form-group col-sm-2">
@@ -246,13 +259,11 @@ require_once ('./include/admin-head.php');
                     </div>
 
                     <div class="d-flex justify-content-end">
-                      <button type="button" id="resched-btn" class="btn btn-primary" data-toggle="modal"
-                        data-target="#confirmModal">Reschedule Appointment</button>
+                      <button type="button" id="resched-btn" class="btn btn-primary" data-toggle="modal" data-target="#confirmModal">Reschedule Appointment</button>
                     </div>
                     <!-- Confirmation Modal -->
                     <div class="confirmation-modal">
-                      <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog"
-                        aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                           <div class="modal-content text-center">
                             <div class="modal-header">
@@ -263,16 +274,14 @@ require_once ('./include/admin-head.php');
                             </div>
 
                             <div class="modal-body align-items-center justify-content-center d-flex flex-column">
-                              <i class="fas fa-check-circle text-success confirmation-circle mb-3"
-                                style="font-size: 80px;"></i>
+                              <i class="fas fa-check-circle text-success confirmation-circle mb-3" style="font-size: 80px;"></i>
                               <p class="booking-number mb-2" style="font-size: 14px;">
                                 Your booking number:</p>
                               <p class="mb-4">0001</p>
                             </div>
 
                             <div class="modal-footer justify-content-center">
-                              <button type="button" class="btn btn-secondary" id="finishBookingBtn" data-dismiss="modal"
-                                style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
+                              <button type="button" class="btn btn-secondary" id="finishBookingBtn" data-dismiss="modal" style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
                                 Booking</button>
                             </div>
                           </div>
@@ -292,8 +301,7 @@ require_once ('./include/admin-head.php');
   </main>
 
   <!-- Modal -->
-  <div id="calendarModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="calendarModalLabel"
-    aria-hidden="true">
+  <div id="calendarModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="calendarModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-body">
@@ -361,56 +369,47 @@ require_once ('./include/admin-head.php');
                 </h6>
                 <div class="separator"></div>
                 <div class="time-slots">
-                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-                    data-time="08:00 AM - 09:00 AM">
+                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="08:00 AM - 09:00 AM">
                     <div> 08:00 AM</div>
                     <div> 09:00 AM</div>
                   </div>
 
-                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-                    data-time="09:00 AM 10:00 AM">
+                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="09:00 AM 10:00 AM">
                     <div>09:00 AM</div>
                     <div>10:00 AM</div>
                   </div>
 
-                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-                    data-time="10:00 AM 11:00 AM">
+                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="10:00 AM 11:00 AM">
                     <div>10:00 AM</div>
                     <div>11:00 AM</div>
                   </div>
 
-                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-                    data-time="11:00 AM 12:00 PM">
+                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="11:00 AM 12:00 PM">
                     <div>11:00 AM</div>
                     <div>12:00 PM</div>
                   </div>
 
-                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-                    data-time="12:00 AM 01:00 PM">
+                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="12:00 AM 01:00 PM">
                     <div>12:00 PM</div>
                     <div>01:00 PM</div>
                   </div>
 
-                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-                    data-time="01:00 AM 02:00 PM">
+                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="01:00 AM 02:00 PM">
                     <div>01:00 AM</div>
                     <div>02:00 AM</div>
                   </div>
 
-                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-                    data-time="02:00 AM 03:00 PM">
+                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="02:00 AM 03:00 PM">
                     <div>02:00 AM</div>
                     <div>03:00 AM</div>
                   </div>
 
-                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-                    data-time="03:00 AM 04:00 PM">
+                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="03:00 AM 04:00 PM">
                     <div>03:00 AM</div>
                     <div>04:00 AM</div>
                   </div>
 
-                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal"
-                    data-time="04:00 AM 05:00 PM">
+                  <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="04:00 AM 05:00 PM">
                     <div>04:00 AM</div>
                     <div>05:00 AM</div>
                   </div>
@@ -427,8 +426,7 @@ require_once ('./include/admin-head.php');
   </div>
 
   <!-- Confirmation Modal -->
-  <div class="modal fade" id="confirmselectdt" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel"
-    aria-hidden="true">
+  <div class="modal fade" id="confirmselectdt" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -454,27 +452,27 @@ require_once ('./include/admin-head.php');
     </div>
   </div>
   <?php
-  require_once ('./include/js.php')
-    ?>
+  require_once('./include/js.php')
+  ?>
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
       // Function to open the calendar modal
-      $("#openCalendarModalBtn").click(function () {
+      $("#openCalendarModalBtn").click(function() {
         $('#modal').modal('hide');
         $("#calendarModal").modal('show');
       });
 
-      $('#done-btn').click(function () {
+      $('#done-btn').click(function() {
         $('#calendarModal').modal('hide');
         $('#modal').modal('show');
       });
 
-      document.getElementById('finishBookingBtn').addEventListener('click', function () {
+      document.getElementById('finishBookingBtn').addEventListener('click', function() {
         location.reload();
       });
 
       // Function to handle reschedule appointment button click
-      $("#resched-btn").click(function () {
+      $("#resched-btn").click(function() {
         // Perform any necessary actions here, such as submitting the form data
         // For demonstration purposes, let's just log a message
         console.log("Reschedule appointment button clicked");
@@ -484,7 +482,7 @@ require_once ('./include/admin-head.php');
       });
 
       // Function to handle confirmation of reschedule appointment
-      $("#confirmSelectionBtn").click(function () {
+      $("#confirmSelectionBtn").click(function() {
         // Perform any necessary actions upon confirmation
         // For demonstration purposes, let's reload the page
         location.reload();
