@@ -98,6 +98,24 @@ $vaccineCount = $vaccineRecordClass->countAll();
             </tr>
           </tbody>
         </table>
+        <nav aria-label="...">
+          <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+              <span class="page-link">Previous</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active">
+              <span class="page-link">
+                2
+                <span class="sr-only">(current)</span>
+              </span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </section>
   </main>
@@ -184,6 +202,26 @@ $vaccineCount = $vaccineRecordClass->countAll();
       }
     })
   </script>
+
+  <script>
+    // Example JavaScript to handle pagination
+    document.getElementById('prev').addEventListener('click', function(event) {
+      // Handle "Previous" button click event
+      event.preventDefault();
+      // Perform necessary actions to show previous page
+      // For example, update table data, hide/show appropriate rows, etc.
+      console.log('Previous button clicked');
+    });
+
+    document.getElementById('next').addEventListener('click', function(event) {
+      // Handle "Next" button click event
+      event.preventDefault();
+      // Perform necessary actions to show next page
+      // For example, update table data, hide/show appropriate rows, etc.
+      console.log('Next button clicked');
+    });
+  </script>
+
 </body>
 
 </html>

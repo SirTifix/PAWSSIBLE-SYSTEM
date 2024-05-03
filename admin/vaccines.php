@@ -341,6 +341,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         });
     }
 </script>
+
+<script>
+    // Example JavaScript to handle pagination
+    document.getElementById('prev').addEventListener('click', function(event) {
+        // Handle "Previous" button click event
+        event.preventDefault();
+        // Perform necessary actions to show previous page
+        // For example, update table data, hide/show appropriate rows, etc.
+        console.log('Previous button clicked');
+    });
+
+    document.getElementById('next').addEventListener('click', function(event) {
+        // Handle "Next" button click event
+        event.preventDefault();
+        // Perform necessary actions to show next page
+        // For example, update table data, hide/show appropriate rows, etc.
+        console.log('Next button clicked');
+    });
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </html>
