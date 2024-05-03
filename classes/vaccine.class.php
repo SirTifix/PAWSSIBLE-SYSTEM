@@ -46,6 +46,18 @@ class Vaccine
         }
     }
 
+    function showByID($vaccineID)
+    {
+        $sql = "SELECT * FROM vaccine_list WHERE vaccineID = :vaccineID ORDER BY vaccineName ASC;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':vaccineID', $vaccineID);
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetch(PDO::FETCH_ASSOC);
+        }
+        return $data;
+    }
+
     function show()
     {
         $sql = "SELECT * FROM vaccine_list ORDER BY vaccineName ASC;";
@@ -68,5 +80,4 @@ class Vaccine
         }
         return $recordCount;
     }
-    
 }
