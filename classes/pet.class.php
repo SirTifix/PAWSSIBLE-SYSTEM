@@ -106,6 +106,17 @@ Class Pet{
         }
         return $data;
     }
+    function countAll()
+    {
+        $sql = "SELECT COUNT(*) AS record_count FROM pet;";
+        $query = $this->db->connect()->prepare($sql);
+        $recordCount = 0;
+        if ($query->execute()) {
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+            $recordCount = $result['record_count'];
+        }
+        return $recordCount;
+    }
     public function fetchByCustomerId($customer_id) {
         $sql = "SELECT * FROM pet WHERE customerID = :customerID;";
         $query = $this->db->connect()->prepare($sql);

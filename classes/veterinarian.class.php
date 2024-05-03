@@ -8,6 +8,7 @@ class Veterinarian
 
     public $vetID;
     public $vetFirstname;
+    public $vetMiddlename;
     public $vetLastname;
     public $vetPhone;
     public $vetEmail;
@@ -27,14 +28,15 @@ class Veterinarian
 
     function add()
     {
-        $sql = "INSERT INTO veterinarian (vetFirstname, vetLastname, vetPhone, vetEmail, vetUsername, vetPassword, created_at) VALUES 
-        (:vetFirstname, :vetLastname, :vetPhone, :vetEmail, :vetUsername, :vetPassword, :created_at);";
+        $sql = "INSERT INTO veterinarian (vetFirstname, vetMiddlename, vetLastname, vetPhone, vetEmail, vetUsername, vetPassword, created_at) VALUES 
+        (:vetFirstname, :vetMiddlename, :vetLastname, :vetPhone, :vetEmail, :vetUsername, :vetPassword, :created_at);";
 
         $hashedPassword = password_hash($this->vetPassword, PASSWORD_DEFAULT);
         $currentDateTime = date('Y-m-d H:i:s');
 
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':vetFirstname', $this->vetFirstname);
+        $query->bindParam(':vetMiddlename', $this->vetMiddlename);
         $query->bindParam(':vetLastname', $this->vetLastname);
         $query->bindParam(':vetPhone', $this->vetPhone);
         $query->bindParam(':vetEmail', $this->vetEmail);
@@ -51,15 +53,19 @@ class Veterinarian
 
     function update()
     {
-        $sql = "UPDATE veterinarian SET vetFirstname=:vetFirstname, vetLastname=:vetLastname, vetPhone=:vetPhone, vetEmail=:vetEmail, vetUsername=:vetUsername, vetPassword=:vetPassword WHERE vetID=:vetID;";
+        $sql = "UPDATE veterinarian SET vetFirstname=:vetFirstname, vetMiddlename=:vetMiddlename, vetLastname=:vetLastname, vetPhone=:vetPhone, vetEmail=:vetEmail, vetUsername=:vetUsername, vetPassword=:vetPassword, updated_at = :updated_at WHERE vetID=:vetID;";
 
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':vetFirstname', $this->vetFirstname);
+        $query->bindParam(':vetMiddlename', $this->vetMiddlename);
         $query->bindParam(':vetLastname', $this->vetLastname);
         $query->bindParam(':vetPhone', $this->vetPhone);
         $query->bindParam(':vetEmail', $this->vetEmail);
         $query->bindParam(':vetUsername', $this->vetUsername);
         $query->bindParam(':vetPassword', $this->vetPassword);
+        $query->bindParam(':updated_at', $this->updated_at);
+        $query->bindParam(':vetID', $this->vetID);
+
         if ($query->execute()) {
             return true;
         } else {

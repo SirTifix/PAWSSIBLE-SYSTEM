@@ -1,33 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    $title = 'Veterinarian';
-    require_once('./include/admin-head.php');
-    require_once('../classes/veterinarian.class.php');
-    $veterinarianClass = new Veterinarian();
-    
-    if(isset($_GET['vetID'])) {
-      $vetID = $_GET['vetID'];
-      $vetData = $veterinarianClass->fetch($vetID); // Fetch data from database
-      if($vetData) {
-          $vetFirstname = $vetData['vetFirstname'];
-          $vetMiddlename = $vetData['vetMiddlename'];
-          $vetLastname = $vetData['vetLastname'];
-          $vetEmail = $vetData['vetEmail'];
-          $vetUsername = $vetData['vetUsername'];
-          $vetPhone = $vetData['vetPhone'];
-      } else {
-          // Handle error if data not found
-          echo "Error: Veterinarian data not found.";
-          exit();
-      }
-    } else {
-      // Handle error if vetID not provided
-      echo "Error: vetID not provided.";
-      exit();
-    }
-    
+$title = 'Veterinarian';
+require_once('./include/admin-head.php');
+require_once('../classes/veterinarian.class.php');
 
+$veterinarianClass = new Veterinarian();
+
+if(isset($_GET['vetID'])) {
+    $vetID = $_GET['vetID'];
+    $vetData = $veterinarianClass->fetch($vetID); 
+    $currentDateTime = date('Y-m-d H:i:s');
+
+    if($vetData) {
+        $vetFirstname = $vetData['vetFirstname'];
+        $vetMiddlename = $vetData['vetMiddlename'];
+        $vetLastname = $vetData['vetLastname'];
+        $vetEmail = $vetData['vetEmail'];
+        $vetUsername = $vetData['vetUsername'];
+        $vetPhone = $vetData['vetPhone'];
+
+        if(isset($_POST['submit'])) {
+            $vetFirstname = $_POST['vetFirstname'];
+            $vetMiddlename = $_POST['vetMiddlename'];
+            $vetLastname = $_POST['vetLastname'];
+            $vetPhoneNumber = $_POST['vetPhone'];
+            $vetEmail = $_POST['vetEmail'];
+            $vetUsername = $_POST['vetUsername'];
+            $vetPassword = $_POST['vetPassword'];
+            $created_at = $currentDateTime;
+            $vetRePassword = $_POST['vetRePassword'];
+
+            if($vetPassword !== $vetRePassword) {
+                echo "Passwords do not match.";
+            } else {
+                $veterinarianClass->vetFirstname = $vetFirstname;
+                $veterinarianClass->vetMiddlename = $vetMiddlename;
+                $veterinarianClass->vetLastname = $vetLastname;
+                $veterinarianClass->vetPhone = $vetPhoneNumber;
+                $veterinarianClass->vetEmail = $vetEmail;
+                $veterinarianClass->vetUsername = $vetUsername;
+                $veterinarianClass->vetPassword = $vetPassword;
+                $veterinarianClass->vetID = $vetID;
+
+                $result = $veterinarianClass->update();
+
+                if($result) {
+                    echo "Veterinarian data updated successfully.";
+                    header("Location: veterinarians.php");
+                } else {
+                    echo "Failed to update veterinarian data.";
+                }
+            }
+        }
+    } else {
+        echo "Error: Veterinarian data not found.";
+        exit();
+    }
+} else {
+    echo "Error: vetID not provided.";
+    exit();
+}
 ?>
 <body>
   <?php
