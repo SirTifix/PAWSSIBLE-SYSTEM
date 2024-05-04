@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: May 04, 2024 at 07:02 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Host: 127.0.0.1
+-- Generation Time: May 04, 2024 at 11:51 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -135,6 +135,7 @@ INSERT INTO `customer` (`id`, `firstname`, `middlename`, `lastname`, `email`, `p
 CREATE TABLE `customer_record` (
   `customerID` int(11) NOT NULL,
   `customerFirstname` varchar(255) NOT NULL,
+  `customerMiddlename` varchar(255) DEFAULT NULL,
   `customerLastname` varchar(255) NOT NULL,
   `customerDOB` date NOT NULL,
   `customerAddress` varchar(255) NOT NULL,
@@ -142,7 +143,7 @@ CREATE TABLE `customer_record` (
   `customerEmail` varchar(255) NOT NULL,
   `customerState` varchar(255) NOT NULL,
   `customerPostal` int(11) NOT NULL,
-  `customerPhone` int(155) NOT NULL,
+  `customerPhone` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -151,8 +152,9 @@ CREATE TABLE `customer_record` (
 -- Dumping data for table `customer_record`
 --
 
-INSERT INTO `customer_record` (`customerID`, `customerFirstname`, `customerLastname`, `customerDOB`, `customerAddress`, `customerCity`, `customerEmail`, `customerState`, `customerPostal`, `customerPhone`, `created_at`, `updated_at`) VALUES
-(26, 'Anton', 'Altair', '2024-03-13', 'test', 'test', 'test@test.com', 'Zamboanga City', 7000, 2147483647, '2024-03-03 08:59:04', '2024-03-03 08:59:04');
+INSERT INTO `customer_record` (`customerID`, `customerFirstname`, `customerMiddlename`, `customerLastname`, `customerDOB`, `customerAddress`, `customerCity`, `customerEmail`, `customerState`, `customerPostal`, `customerPhone`, `created_at`, `updated_at`) VALUES
+(26, 'Anton', NULL, 'Altair', '2024-03-13', 'test', 'test', 'test@test.com', 'Zamboanga City', 7000, '2147483647', '2024-03-03 08:59:04', '2024-03-03 08:59:04'),
+(27, 'sample', '', 'sample', '2024-05-05', 'zone 4, socorro street', 'zamboanga city', 'sample@gmail.com', 'zambonaga del sur', 7000, '09159498333', '2024-05-04 20:16:07', '2024-05-04 20:16:07');
 
 -- --------------------------------------------------------
 
@@ -198,7 +200,8 @@ CREATE TABLE `pet` (
 
 INSERT INTO `pet` (`petId`, `petName`, `petBirthdate`, `petAge`, `petBreed`, `petType`, `petGender`, `petWeight`, `petColor`, `customerID`, `created_at`, `updated_at`) VALUES
 (14, 'Gompi', '0000-00-00', 2, 'Siamese', 'Cat', 'Male', 140, 'Brown', 26, '2024-03-03 08:59:04', '2024-03-03 08:59:04'),
-(15, 'Kongpi', '0000-00-00', 23, 'Wala', 'Grabe', 'Babae', 34, 'Rainbow', 26, '2024-05-02 23:49:33', '2024-05-02 23:49:33');
+(15, 'Kongpi', '0000-00-00', 23, 'Wala', 'Grabe', 'Babae', 34, 'Rainbow', 26, '2024-05-02 23:49:33', '2024-05-02 23:49:33'),
+(18, 'Fahad', '2024-05-05', 14, 'Terrier', 'Dog', 'Male', 10, 'White', 27, '2024-05-04 20:16:07', '2024-05-04 20:16:07');
 
 -- --------------------------------------------------------
 
@@ -220,12 +223,23 @@ CREATE TABLE `schedule_status` (
 
 CREATE TABLE `secretary` (
   `secretaryID` int(11) NOT NULL,
+  `secretaryFirstname` varchar(255) NOT NULL,
+  `secretaryMiddlename` varchar(255) NOT NULL,
+  `secretaryLastname` varchar(255) NOT NULL,
+  `secretaryPhone` varchar(255) NOT NULL,
+  `secretaryEmail` varchar(255) NOT NULL,
   `secretaryUsername` varchar(255) NOT NULL,
   `secretaryPassword` varchar(255) NOT NULL,
-  `secretaryEmail` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `secretary`
+--
+
+INSERT INTO `secretary` (`secretaryID`, `secretaryFirstname`, `secretaryMiddlename`, `secretaryLastname`, `secretaryPhone`, `secretaryEmail`, `secretaryUsername`, `secretaryPassword`, `created_at`, `updated_at`) VALUES
+(5, 'Rafael', '', 'Castelo', '123', 'raf@gmail.com', 'rafa', '$2y$10$hLAzmR4owtbmwjtITswlQer2lrig1PXY0BHzKc17.Ts9WWNDx1/Ze', '2024-05-04 13:59:12', '2024-05-04 19:59:12');
 
 -- --------------------------------------------------------
 
@@ -308,8 +322,9 @@ INSERT INTO `vaccine_list` (`vaccineID`, `vaccineName`, `vaccineType`, `vaccineA
 CREATE TABLE `veterinarian` (
   `vetID` int(11) NOT NULL,
   `vetFirstname` varchar(255) NOT NULL,
+  `vetMiddlename` varchar(255) DEFAULT NULL,
   `vetLastname` varchar(255) NOT NULL,
-  `vetPhone` int(11) NOT NULL,
+  `vetPhone` varchar(255) NOT NULL,
   `vetEmail` varchar(255) NOT NULL,
   `vetUsername` varchar(255) NOT NULL,
   `vetPassword` varchar(255) NOT NULL,
@@ -321,9 +336,9 @@ CREATE TABLE `veterinarian` (
 -- Dumping data for table `veterinarian`
 --
 
-INSERT INTO `veterinarian` (`vetID`, `vetFirstname`, `vetLastname`, `vetPhone`, `vetEmail`, `vetUsername`, `vetPassword`, `created_at`, `updated_at`) VALUES
-(4, 'Vet ', 'Test', 12314512, 'test@test.com', 'vet', '$2y$10$lL4yHJ.D6Z0WzlsZf0..CO1zEcLLY5Ts/SrGulWMkvZDvcWy0or7a', '2024-03-03 01:29:55', '2024-03-03 08:29:55'),
-(5, 'Kakong', 'Chips', 2147483647, 'raf_saludo@yahoo.com.ph', 'kingkong', '$2y$10$iGMQbhb7UtcklrB7JyiwK.CnL6XJI5D3LokUb.BkrOsr8w0dzioLq', '2024-04-27 13:04:45', '2024-04-27 19:04:45');
+INSERT INTO `veterinarian` (`vetID`, `vetFirstname`, `vetMiddlename`, `vetLastname`, `vetPhone`, `vetEmail`, `vetUsername`, `vetPassword`, `created_at`, `updated_at`) VALUES
+(4, 'Vet ', NULL, 'Test', '12314512', 'test@test.com', 'vet', '$2y$10$lL4yHJ.D6Z0WzlsZf0..CO1zEcLLY5Ts/SrGulWMkvZDvcWy0or7a', '2024-03-03 01:29:55', '2024-03-03 08:29:55'),
+(6, 'Raf', '', 'castelo', '09159498036', 'raf@gmail.com', 'raf', '$2y$10$3Izzfml.Lx6jWBArPiQFSedtcqGq9szQ7WPJYL5gzEGxMajLcCeuu', '2024-05-04 14:14:00', '2024-05-04 20:14:00');
 
 --
 -- Indexes for dumped tables
@@ -433,7 +448,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `customer_record`
 --
 ALTER TABLE `customer_record`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `medicalrecord`
@@ -445,7 +460,7 @@ ALTER TABLE `medicalrecord`
 -- AUTO_INCREMENT for table `pet`
 --
 ALTER TABLE `pet`
-  MODIFY `petId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `petId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `schedule_status`
@@ -457,7 +472,7 @@ ALTER TABLE `schedule_status`
 -- AUTO_INCREMENT for table `secretary`
 --
 ALTER TABLE `secretary`
-  MODIFY `secretaryID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `secretaryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `service`
@@ -481,7 +496,7 @@ ALTER TABLE `vaccine_list`
 -- AUTO_INCREMENT for table `veterinarian`
 --
 ALTER TABLE `veterinarian`
-  MODIFY `vetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `vetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
