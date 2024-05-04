@@ -16,12 +16,13 @@ if (isset($_POST['save'])) {
     $serviceClass->serviceDescription = htmlentities($_POST['serviceDescription']);
     $serviceClass->servicePrice = htmlentities($_POST['servicePrice']);
     $serviceClass->created_at = $currentDateTime;
+    $serviceClass->updated_at = $currentDateTime;
 
     if (
         validate_field($serviceClass->serviceName) &&
         validate_field($serviceClass->serviceDescription) &&
         validate_field($serviceClass->servicePrice) &&
-        validate_field($serviceClass->created_at)
+        validate_field($serviceClass->created_at) && validate_field($serviceClass->updated_at)
     ) {
         if ($serviceClass->add()) {
             header('location: services.php');

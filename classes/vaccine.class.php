@@ -25,8 +25,8 @@ class Vaccine
 
     function add()
     {
-        $sql = "INSERT INTO vaccine_list (vaccineName, vaccineType, vaccineAge, vaccineDosage, vaccineInterval, vaccinePrice, petType, created_at, updated_at) VALUES 
-        (:vaccineName, :vaccineType, :vaccineAge, :vaccineDosage, :vaccineInterval, :vaccinePrice, :petType, :created_at, :updated_at);";
+        $sql = "INSERT INTO vaccine_list (vaccineName, vaccineType, vaccineAge, vaccineDosage, vaccineInterval, vaccinePrice, petType) VALUES 
+        (:vaccineName, :vaccineType, :vaccineAge, :vaccineDosage, :vaccineInterval, :vaccinePrice, :petType);";
         $query = $this->db->connect()->prepare($sql);
 
         $query->bindParam(':vaccineName', $this->vaccineName);
@@ -36,8 +36,6 @@ class Vaccine
         $query->bindParam(':vaccineInterval', $this->vaccineInterval);
         $query->bindParam(':vaccinePrice', $this->vaccinePrice);
         $query->bindParam(':petType', $this->petType);
-        $query->bindParam(':created_at', $this->created_at);
-        $query->bindParam(':updated_at', $this->updated_at);
 
         if ($query->execute()) {
             return true;

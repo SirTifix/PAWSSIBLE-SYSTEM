@@ -22,14 +22,15 @@ class Service
     //Methods
     function add()
     {
-        $sql = "INSERT INTO service (serviceName, serviceDescription, servicePrice, created_at) VALUES 
-        (:serviceName, :serviceDescription, :servicePrice, :created_at);";
+        $sql = "INSERT INTO service (serviceName, serviceDescription, servicePrice, created_at, updated_at) VALUES 
+        (:serviceName, :serviceDescription, :servicePrice, :created_at, :updated_at);";
 
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':serviceName', $this->serviceName);
         $query->bindParam(':serviceDescription', $this->serviceDescription);
         $query->bindParam(':servicePrice', $this->servicePrice);
         $query->bindParam(':created_at', $this->created_at);
+        $query->bindParam(':updated_at', $this->updated_at);
 
         if ($query->execute()) {
             return true;

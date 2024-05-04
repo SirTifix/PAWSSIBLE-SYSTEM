@@ -47,10 +47,10 @@ require_once ('./include/customer-header.php');
 <body>
   <div class="alert-error fixed-top top-0 start-50 my-3" style="width:500px"></div>
   <div class="avail-date">
-    <h2> <strong> AVAILABLE DATE </strong></h2>
+    <h2> <strong> SELECT DATE </strong></h2>
   </div>
   <div class="avail-time">
-    <h2> <strong> AVAILABLE TIME </strong></h2>
+    <h2> <strong> SELECT TIME </strong></h2>
   </div>
   <div class="container">
     <div class="calendar-container container-box">
@@ -304,33 +304,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const firstDayOfMonth = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const currentDate = new Date(); 
+    currentDate.setDate(currentDate.getDate() - 1);
 
     for (let i = 0; i < firstDayOfMonth; i++) {
-      const emptyCell = document.createElement("div");
-      emptyCell.classList.add("calendar-cell");
-      calendarBody.appendChild(emptyCell);
+        const emptyCell = document.createElement("div");
+        emptyCell.classList.add("calendar-cell");
+        calendarBody.appendChild(emptyCell);
     }
 
     for (let i = 1; i <= daysInMonth; i++) {
-      const calendarCell = document.createElement("div");
-      calendarCell.classList.add("calendar-cell");
-      calendarCell.textContent = i;
+        const calendarCell = document.createElement("div");
+        calendarCell.classList.add("calendar-cell");
+        calendarCell.textContent = i;
 
-      calendarCell.addEventListener("click", () => {
+        // Check if the date is before the current date
         const selectedDate = new Date(year, month, i);
-        formattedDate = formatDate(selectedDate); // Format the selected date
-        alert(`You clicked on ${formattedDate}`);
-      });
+        if (selectedDate < currentDate) {
+            calendarCell.classList.add("unavailable");
+        } 
+            calendarCell.addEventListener("click", () => {
+                
+                if (selectedDate < currentDate) {
+                    formattedDate = null; 
+                } else {
+                    formattedDate = formatDate(selectedDate); 
+                }
+            });
 
-      // Create and append the "10 slots" text below each calendar cell
-      // const slotsText = document.createElement("div");
-      // slotsText.textContent = "10 slots";
-      // slotsText.classList.add("slots-text");
-      // calendarCell.appendChild(slotsText);
+            // Create and append the "10 slots" text below each calendar cell
+            // const slotsText = document.createElement("div");
+            // slotsText.textContent = "10 slots";
+            // slotsText.classList.add("slots-text");
+            // calendarCell.appendChild(slotsText);
 
-      calendarBody.appendChild(calendarCell);
+        calendarBody.appendChild(calendarCell);
     }
   }
+
 
   function getMonthName(month) {
     const months = [
@@ -384,12 +395,18 @@ document.addEventListener("DOMContentLoaded", function () {
           parseInt(selectedDateCell.textContent)
         );
         selectedTime = timeSlot.dataset.time; // Get the time from the data-time attribute
-        openModal(formattedDate, selectedTime); 
+        
+        if (formattedDate) {
+          openModal(formattedDate, selectedTime); 
+        } else {
+          alert("Please select available date from the calendar first.");
+        }
       } else {
-        alert("Please select a date from the calendar first.");
+        alert("Please select available date from the calendar first.");
       }
     });
-  });
+});
+
 
   
   $('#modal').on('show.bs.modal', function (event) {
@@ -405,7 +422,7 @@ document.addEventListener("DOMContentLoaded", function () {
           modalContent.innerHTML = `
             <div class="alert alert-danger alert-dismissible d-flex align-items-center fade show" role="alert">
               <div>
-                Date and time are already taken! Please select another date and time.
+                Time already taken! Please select another time.
               </div>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>

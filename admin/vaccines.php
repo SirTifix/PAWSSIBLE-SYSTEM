@@ -15,8 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $vaccineInterval = $_POST['weeksInterval'];
     $vaccinePrice = $_POST['price'];
     $petType = $_POST['selectedPetType'];
-    $created_at = date('Y-m-d H:i:s');
-    $updated_at = "No record";
 
     $vaccineClass->vaccineName = $vaccineName;
     $vaccineClass->vaccineType = $vaccineType;
@@ -25,8 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $vaccineClass->vaccineInterval = $vaccineInterval;
     $vaccineClass->vaccinePrice = $vaccinePrice;
     $vaccineClass->petType = $petType;
-    $vaccineClass->created_at = $created_at;
-    $vaccineClass->updated_at = $updated_at;
 
     $result = $vaccineClass->add();
 
@@ -105,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <?php
                         $vaccineList = $vaccineClass->show();
                         $id = 1;
-                        foreach ($vaccineList as $vaccine) {
+                        foreach ($vaccineList as $vaccine):
                             echo "<tr class='table-bodypet'>";
                             echo "<td>{$id}</td>";
                             echo "<td>{$vaccine['vaccineName']}</td>";
@@ -127,7 +123,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             echo "</td>";
                             echo "</tr>";
                             $id++;
-                        }
                         ?>
                     </tbody>
                 </table>
@@ -292,12 +287,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 this Vaccine?</h4>
                             <div class="modal-footer justify-content-between" style="border: none;">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-primary" id="confirmDelete" data-customer-id="" style="background-color: #FF0000; border: none;">Delete</button>
+                                <button type="button" class="btn btn-primary" id="confirmDelete" onclick="deleteService(<?php echo $vaccine['vaccineID']; ?>)" style="background-color: #FF0000; border: none;">Delete</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+            <?php endforeach;?>
     </main>
     <?php
     require_once('./include/js.php')
@@ -340,6 +336,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         });
     }
+
+    function deleteService(serviceID) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            alert('Vaccine deleted successfully!');
+                            window.location.reload();
+                        } else {
+                            alert('Failed to delete vaccine.');
+                        }
+                    }
+                };
+                xhr.open('POST', 'delete_vaccine.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.send('vaccineID=' + vaccineID);
+
+            }
 </script>
 
 <script>

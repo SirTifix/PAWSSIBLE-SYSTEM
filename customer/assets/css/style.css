@@ -703,6 +703,10 @@ img {
     text-align: center;
   }
 
+  .service-slider {
+    padding: 4em 3em !important;
+  }
+
   .dos {
     padding-bottom: 100px;
   }
@@ -955,6 +959,10 @@ img {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
   }
 
+  .service-slider {
+    padding: 4em 2em !important;
+  }
+
   /* aboutus.php */
 
   .about-us-description {
@@ -1116,6 +1124,10 @@ img {
     font-size: 17px;
   }
 
+  .service-slider {
+    padding: 4em 2em !important;
+  }
+
   .text-blk.desig {
     font-size: 15px;
   }
@@ -1134,51 +1146,43 @@ img {
 }
 
 /* swiper css */
+.service-slider {
+  padding: 4em 10em;
+}
+
 .swiper {
-  width: 120vh;
-  height: 65vh;
-  margin: 50px;
-  margin-top: 80px;
+  width: 100%;
+  height: 60vh;
 }
 
 .swiper-slide {
   text-align: center;
   font-size: 18px;
   background: #bccbe7;
-  display: flex;
-  justify-content: center;
+  display: flex !important;
+  flex-direction: column !important;
   align-items: center;
   border-radius: 20px;
+  padding: 1em;
 }
 
 .content-slider {
-  margin: 15px;
-  height: 0%;
-  border-radius: 20px;
-  text-align: center;
-  font-size: 10px;
-}
-
-.content-background-border h6 {
-  font-size: 10px;
-}
-
-.content-background-border h3 {
-  font-size: 25px;
-}
-.content-background-border {
   border: 5px solid white;
-  margin: 0;
-  height: auto;
   border-radius: 20px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3em 1em;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  position: absolute;
-  top: -50%;
-  transform: translateY(500%);
-  margin: 0 15em;
+.content-slider h6 {
+  font-size: 10px;
+}
+
+.content-slider h3 {
+  font-size: 25px;
 }
 
 .service-button {
@@ -1207,7 +1211,7 @@ img {
 .FAQS {
   width: 63%;
   margin-left: 35vh;
-  margin-top: 70vh;
+  margin-top: 20vh;
   background-color: #66666672;
   padding: 15px;
 }
@@ -1958,42 +1962,31 @@ select {
     padding: 15px;
   }
 
-  .swiper-button-prev,
-  .swiper-button-next {
-    position: absolute;
-    top: 0;
-    transform: translateY(1300%);
-    margin: 0;
-  }
-
-  .content-slider {
-    margin: 15px;
-    height: 94%;
-    width: 90%;
-    border-radius: 20px;
-    text-align: center;
-  }
-
-  .content-background-border {
-    margin: 0;
-    height: auto;
-    border-radius: 20px;
-  }
-
-  .swiper-slide {
-    flex-shrink: 0;
-    width: 100%;
-    font-size: 11px;
-    height: 100%;
-    position: relative;
-    transition-property: transform;
-  }
-
   .swiper {
     width: 100%;
-    height: 70vh;
-    margin: 50px;
-    margin-top: 80px;
+    height: 60vh;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #bccbe7;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+    border-radius: 20px;
+    padding: 1em;
+  }
+  
+  .content-slider {
+    border: 5px solid white;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3em 1em;
   }
 
   .eleventh-lec {

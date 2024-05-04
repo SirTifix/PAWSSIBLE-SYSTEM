@@ -119,9 +119,6 @@ require_once('./tools/functions.php');
                 </div>
 
                 <div class="select-ex-pet">
-                    <button type="button" class="btn btn-primary select-button" data-bs-toggle="modal" data-bs-target="#profileModal" style="background-color: #6075d1; float: right;">
-                        Select Existing Pet
-                    </button>
 
                     <!-- Profile Modal -->
                     <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
