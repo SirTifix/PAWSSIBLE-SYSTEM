@@ -78,4 +78,33 @@ class Vaccine
         }
         return $recordCount;
     }
+    function update()
+    {
+        $sql = "UPDATE vaccine_list SET vaccineName=:vaccineName,  vaccineType=:vaccineType, vaccineAge=:vaccineAge, vaccineDosage=:vaccineDosage, vaccineInterval=:vaccineInterval, vaccinePrice=:vaccinePrice, petType=:petType, updated_at=:updated_at WHERE vaccineID=:vaccineID;";
+
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':vaccineName', $this->vaccineName);
+        $query->bindParam(':vaccineType', $this->vaccineType);
+        $query->bindParam(':vaccineAge', $this->vaccineAge);
+        $query->bindParam(':vaccineDosage', $this->vaccineDosage);
+        $query->bindParam(':vaccineInterval', $this->vaccineInterval);
+        $query->bindParam(':vaccinePrice', $this->vaccinePrice);
+        $query->bindParam(':petType', $this->petType);
+        $query->bindParam(':updated_at', $this->updated_at);
+        $query->bindParam(':vaccineID', $this->vaccineID);
+
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function delete($vaccineID)
+    {
+        $sql = "DELETE FROM vaccine_list WHERE vaccineID = :vaccineID";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':vaccineID', $vaccineID);
+
+        return $query->execute();
+    }
 }

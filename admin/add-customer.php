@@ -6,7 +6,7 @@ require_once('./tools/functions.php');
 if(isset($_POST['save'])){
     $customer = new Customer();
     $customer->customerFirstname = $_POST['customerFirstname'];
-    $customer->customerMiddlename = $_POST['customerMiddlename'] ? $_POST['customerMiddlename'] : null;
+    $customer->customerMiddlename = $_POST['customerMiddlename'] ? $_POST['customerMiddlename'] : "";
     $customer->customerLastname = $_POST['customerLastname'];
     $customer->customerDOB = $_POST['customerDOB'];
     $customer->customerCity = $_POST['customerCity'];
@@ -38,6 +38,7 @@ if(isset($_POST['save'])){
             $pet->petGender = $_POST['petGender'];
             $pet->petWeight = $_POST['petWeight'];
             $pet->petColor = $_POST['petColor'];
+            $pet->customerID = $lastInsertedCustomerId;
             
             if (validate_field($pet->petName) &&
                 validate_field($pet->petBirthdate) &&

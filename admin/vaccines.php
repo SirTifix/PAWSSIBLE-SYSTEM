@@ -2,8 +2,7 @@
 <html lang="en">
 <?php
 $title = 'Vaccine';
-require_once('./include/admin-head.php');
-require_once('../classes/vaccine.class.php');
+require_once ('../classes/vaccine.class.php');
 
 $vaccineClass = new Vaccine();
 
@@ -32,16 +31,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Failed to add vaccine.";
     }
 }
+require_once ('./include/admin-head.php');
 ?>
-
 <body>
     <?php
-    require_once('./include/admin-header.php')
-    ?>
+    require_once ('./include/admin-header.php')
+        ?>
     <main>
         <?php
-        require_once('./include/admin-sidepanel.php')
-        ?>
+        require_once ('./include/admin-sidepanel.php')
+            ?>
         <section class="veterinarian-con">
             <div class="row mx-5 justify-content-end">
                 <div class="crud-btn-add col-4 col-sm-auto">
@@ -100,36 +99,110 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <tbody id="petHistoryTableBody">
                         <?php
                         $vaccineList = $vaccineClass->show();
-                        $id = 1;
-                        foreach ($vaccineList as $vaccine) {
-                            echo "<tr class='table-bodypet'>";
-                            echo "<td>{$id}</td>";
-                            echo "<td>{$vaccine['vaccineName']}</td>";
-                            echo "<td>{$vaccine['vaccineType']}</td>";
-                            echo "<td>{$vaccine['vaccineAge']}</td>";
-                            echo "<td>{$vaccine['vaccineDosage']}</td>";
-                            echo "<td>{$vaccine['vaccineInterval']}</td>";
-                            echo "<td>{$vaccine['vaccinePrice']}</td>";
-                            echo "<td>{$vaccine['petType']}</td>";
-                            echo "<td class='d-flex justify-content-center align-items-center'>";
-                            echo "<div class='crud-btn'>";
-                            echo "<a href='' class='edit-btn' data-bs-toggle='modal' data-bs-target='#updateVaccineModal'>";
-                            echo "<i class='fa-regular fa-pen-to-square' aria-hidden='true'></i></a>";
-                            echo "</div>";
-                            echo "<div class='crud-btn'>";
-                            echo "<a href='' class='delete-btn' data-bs-toggle='modal' data-bs-target='#deleteVaccineModal'>";
-                            echo "<i class='fa-regular fa-trash-can' aria-hidden='true'></i></a>";
-                            echo "</div>";
-                            echo "</td>";
-                            echo "</tr>";
-                            $id++;
-                        }
+                        foreach ($vaccineList as $vaccine):
+                            ?>
+                                    <tr class='table-bodypet'>
+                                        <td><?php echo $vaccine['vaccineID']; ?></td>
+                                        <td><?php echo $vaccine['vaccineName']; ?></td>
+                                        <td><?php echo $vaccine['vaccineType']; ?></td>
+                                        <td><?php echo $vaccine['vaccineAge']; ?></td>
+                                        <td><?php echo $vaccine['vaccineDosage']; ?></td>
+                                        <td><?php echo $vaccine['vaccineInterval']; ?></td>
+                                        <td><?php echo $vaccine['vaccinePrice']; ?></td>
+                                        <td><?php echo $vaccine['petType']; ?></td>
+                                        <td class='d-flex justify-content-center align-items-center'>
+                                            <div class='crud-btn'>
+                                                <a href='' class='edit-btn' data-bs-toggle='modal' data-bs-target='#updateVaccineModal<?php echo $vaccine['vaccineID']; ?>'>
+                                                <i class='fa-regular fa-pen-to-square' aria-hidden='true'></i></a>
+                                                <div class="modal fade" id="updateVaccineModal<?php echo $vaccine['vaccineID']; ?>" tabindex="-1" aria-labelledby="updateDModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header d-flex justify-content-center align-items-center" style="background-color: #303962; color: #fff; border-bottom: none; padding: 1rem;">
+                                                                <h2 class="modal-title">Vaccine</h2>
+                                                                </button>
+                                                            </div>
+                                                            <div>
+                                                                <div class="mt-4 mx-5">
+                                                                    <div class="d-flex">
+                                                                        <label for="Vaccine" class="form-label-vaccine fw-bold p-2">Vaccine:</label>
+                                                                        <input type="text" class="form-control-vaccine p-2" id="Vaccine<?php echo $vaccine['vaccineID']; ?>" value="<?php echo $vaccine['vaccineName']; ?>" name="Vaccine" required>
+                                                                    </div>
+                                                                    <div class="d-flex">
+                                                                        <label for="VaccineType" class="form-label-vaccine fw-bold p-2">Vaccine Type:</label>
+                                                                        <select class="form-select form-control-vaccine" id="vaccinetype<?php echo $vaccine['vaccineID']; ?>" name="vaccinetype" required>
+                                                                            <option value="<?php echo $vaccine['vaccineType']; ?>"><?php echo $vaccine['vaccineType']; ?></option>
+                                                                            <option value="vaccine1">Primary Series</option>
+                                                                            <option value="vaccine2">Annual Boosters</option>
+                                                                            <option value="vaccine3">Deworming</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="d-flex">
+                                                                        <label for="age" class="form-label-vaccine fw-bold p-2">Age(weeks):</label>
+                                                                        <input type="text" class="form-control-vaccine p-2" id="age<?php echo $vaccine['vaccineID']; ?>" value="<?php echo $vaccine['vaccineAge']; ?>" name="age" required>
+                                                                    </div>
+
+                                                                    <div class="d-flex">
+                                                                        <label for="dosage" class="form-label-vaccine fw-bold">Dosage:</label>
+                                                                        <input type="text" class="form-control-vaccine" id="dosage<?php echo $vaccine['vaccineID']; ?>" value="<?php echo $vaccine['vaccineDosage']; ?>" name="dosage" required>
+                                                                    </div>
+
+                                                                    <div class="d-flex">
+                                                                        <label for="weeksInterval" class="form-label-vaccine fw-bold">Weeks Interval:</label>
+                                                                        <input type="text" class="form-control-vaccine" id="weeksInterval<?php echo $vaccine['vaccineID']; ?>" value="<?php echo $vaccine['vaccineInterval']; ?>" name="weeksInterval" required>
+                                                                    </div>
+
+                                                                    <div class="d-flex">
+                                                                        <label for="price" class="form-label-vaccine fw-bold">Price:</label>
+                                                                        <input type="text" class="form-control-vaccine" id="price<?php echo $vaccine['vaccineID']; ?>" value="<?php echo $vaccine['vaccinePrice']; ?>" name="price" required>
+                                                                    </div>
+
+
+                                                                    <div class="d-flex">
+                                                                        <label for="petType" class="form-label-vaccine fw-bold">Pet Type: </label>
+                                                                        <select class="form-select form-control-vaccine" id="petType<?php echo $vaccine['vaccineID']; ?>" name="petType" required>
+                                                                            <option value="<?php echo $vaccine['petType']; ?>"><?php echo $vaccine['petType']; ?></option>
+                                                                            <option value="Dog">Dog</option>
+                                                                            <option value="Cat">Cat</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="modal-footer justify-content-between" style="border: none;">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                <button type="submit" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="updateVaccine(<?php echo $vaccine['vaccineID']; ?>)">Update</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                <div class='crud-btn'>
+                                                <a href='' class='delete-btn' data-bs-toggle='modal' data-bs-target='#deleteVaccineModal<?php echo $vaccine['vaccineID']; ?>'>
+                                                <i class='fa-regular fa-trash-can' aria-hidden='true'></i></a>
+                                                <div class="modal fade" id="deleteVaccineModal<?php echo $vaccine['vaccineID']; ?>" tabindex="-1" aria-labelledby="deleteDModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
+                                                                this Vaccine?</h4>
+                                                            <div class="modal-footer justify-content-between" style="border: none;">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                <button type="button" class="btn btn-primary" id="confirmDelete" onclick="deleteVaccine(<?php echo $vaccine['vaccineID']; ?>)" style="background-color: #FF0000; border: none;">Delete</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php
+                        endforeach;
                         ?>
                     </tbody>
                 </table>
             </div>
             </div>
             </div>
+
             <section>
                 <div class="modal fade" id="addVaccineModal" tabindex="-1" aria-labelledby="updateDModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -197,91 +270,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
             </section>
-
-            <section>
-                <div class="modal fade" id="updateVaccineModal" tabindex="-1" aria-labelledby="updateDModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header d-flex justify-content-center align-items-center" style="background-color: #303962; color: #fff; border-bottom: none; padding: 1rem;">
-                                <h2 class="modal-title">Vaccine</h2>
-                                </button>
-                            </div>
-                            <div>
-                                <div class="mt-4 mx-5">
-                                    <div class="d-flex">
-                                        <label for="Vaccine" class="form-label-vaccine fw-bold p-2">Vaccine:</label>
-                                        <input type="text" class="form-control-vaccine p-2" id="Vaccine" name="Vaccine" required>
-                                    </div>
-                                    <div class="d-flex">
-                                        <label for="VaccineType" class="form-label-vaccine fw-bold p-2">Vaccine Type:</label>
-                                        <select class="form-select form-control-vaccine" id="vaccinetype" name="vaccinetype" required>
-                                            <option value="">Select Vaccine Type</option>
-                                            <option value="vaccine1">Primary Series</option>
-                                            <option value="vaccine2">Annual Boosters</option>
-                                            <option value="vaccine3">Deworming</option>
-                                        </select>
-                                    </div>
-                                    <div class="d-flex">
-                                        <label for="age" class="form-label-vaccine fw-bold p-2">Age(weeks):</label>
-                                        <input type="text" class="form-control-vaccine p-2" id="age" name="age" required>
-                                    </div>
-
-                                    <div class="d-flex">
-                                        <label for="dosage" class="form-label-vaccine fw-bold">Dosage:</label>
-                                        <input type="text" class="form-control-vaccine" id="dosage" name="dosage" required>
-                                    </div>
-
-                                    <div class="d-flex">
-                                        <label for="weeksInterval" class="form-label-vaccine fw-bold">Weeks Interval:</label>
-                                        <input type="text" class="form-control-vaccine" id="weeksInterval" name="weeksInterval" required>
-                                    </div>
-
-                                    <div class="d-flex">
-                                        <label for="price" class="form-label-vaccine fw-bold">Price:</label>
-                                        <input type="text" class="form-control-vaccine" id="price" name="price" required>
-                                    </div>
-
-
-                                    <div class="d-flex">
-                                        <label for="petType" class="form-label-vaccine fw-bold">Pet Type: </label>
-                                        <select class="form-select form-control-vaccine" id="petType" name="petType" required>
-                                            <option value="">Select Pet Type</option>
-                                            <option value="vaccine2">Dog</option>
-                                            <option value="vaccine3">Cat</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="modal-footer justify-content-between" style="border: none;">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Add</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <div class="modal fade" id="deleteVaccineModal" tabindex="-1" aria-labelledby="deleteDModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
-                                this Vaccine?</h4>
-                            <div class="modal-footer justify-content-between" style="border: none;">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-primary" id="confirmDelete" data-customer-id="" style="background-color: #FF0000; border: none;">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
     </main>
-    <?php
-    require_once('./include/js.php')
-    ?>
-</body>
+
+<?php
+    require_once ('./include/js.php')
+?>
 <script>
+    function updateVaccine(vaccineID) {
+                var vaccineName = document.getElementById('Vaccine' + vaccineID).value;
+                var vaccineType = document.getElementById('vaccinetype' + vaccineID).value;
+                var vaccineAge = document.getElementById('age' + vaccineID).value;
+                var vaccineDosage = document.getElementById('dosage' + vaccineID).value;
+                var vaccineInterval = document.getElementById('weeksInterval' + vaccineID).value;
+                var vaccinePrice = document.getElementById('price' + vaccineID).value;
+                var petType = document.getElementById('petType' + vaccineID).value;
+
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            alert('Success to update vaccine.');
+                            window.location.reload();
+                        } else {
+                            alert('Failed to update vaccine.');
+                        }
+                    }
+                };
+                xhr.open('POST', 'update_vaccine.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.send('vaccineID=' + vaccineID + 
+                '&vaccineName=' + encodeURIComponent(vaccineName) + 
+                '&vaccineType=' + encodeURIComponent(vaccineType) + 
+                '&vaccineAge=' + encodeURIComponent(vaccineAge) +
+                '&vaccineDosage=' + encodeURIComponent(vaccineDosage) +
+                '&vaccineInterval=' + encodeURIComponent(vaccineInterval) +
+                '&vaccinePrice=' + encodeURIComponent(vaccinePrice) +
+                '&petType=' + encodeURIComponent(petType));
+            }
+
     function submitForm() {
         var selectedVaccineType = document.getElementById("vaccinetype").value;
         var selectedPetType = document.getElementById("petType").value;
@@ -291,6 +317,50 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         document.getElementById("vaccineForm").submit();
     }
-</script>
 
+    function populateFields(vaccineID) {
+        $.ajax({
+            url: 'fetch_vaccine.php',
+            type: 'POST',
+            data: {
+                vaccineID: vaccineID
+            },
+            success: function(response) {
+                if (response) {
+                    var data = JSON.parse(response);
+                    $('#updateVaccineModal #Vaccine').val(data.vaccineName);
+                    $('#updateVaccineModal #vaccinetype').val(data.vaccineType);
+                    $('#updateVaccineModal #age').val(data.vaccineAge);
+                    $('#updateVaccineModal #dosage').val(data.vaccineDosage);
+                    $('#updateVaccineModal #weeksInterval').val(data.vaccineInterval);
+                    $('#updateVaccineModal #price').val(data.vaccinePrice);
+                    $('#updateVaccineModal #petType').val(data.petType);
+                } else {
+                    alert("Failed to fetch data for vaccine ID " + vaccineID);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    }
+
+    function deleteVaccine(vaccineID) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            alert('Vaccine deleted successfully!');
+                            window.location.reload();
+                        } else {
+                            alert('Failed to delete vaccine.');
+                        }
+                    }
+                };
+                xhr.open('POST', 'delete-vaccine.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.send('vaccineID=' + vaccineID);
+            }
+</script>
+</body>
 </html>

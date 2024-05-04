@@ -1,5 +1,4 @@
 <?php
-
 require_once('../classes/vaccine.class.php');
 
 if (isset($_POST['vaccineID'])) {
