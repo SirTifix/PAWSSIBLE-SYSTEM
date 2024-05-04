@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <?php
-session_start();
 $title = 'Welcome to PAWSsible Solution Veterinary Clinic';
-
 require_once('./include/vet-index.php');
 require_once '../classes/account.class.php';
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['login'])) {
     $user = new Account();
     $user->vetUsername = htmlentities($_POST['username']);
     $user->vetPassword = htmlentities($_POST['password']);
-    if ($user->sign_in_vet()) {
+    if ($user->sign_in_admin()) {
+        $_SESSION['user'] = 'veterinarian';
+        $_SESSION['username'] = $user->vetUsername;
         header('location: dashboard.php');
     } else {
         $error = 'Invalid email/password. Try Again.';
     }
 }
 ?>
-
 <body>
     <main>
         <div class="row m-0">
