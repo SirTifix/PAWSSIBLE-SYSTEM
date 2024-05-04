@@ -62,6 +62,17 @@ Class Register{
         }
         return $data;
     }
+
+    function fetch($id)
+    {
+        $sql = "SELECT * FROM customer WHERE id = :id;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':id', $id);
+        if ($query->execute()) {
+            $data = $query->fetch();
+        }
+        return $data;
+    }
 }
 
 ?>

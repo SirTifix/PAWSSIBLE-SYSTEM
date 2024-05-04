@@ -30,10 +30,11 @@ class Customer
 
     function add()
     {
-        $sql = "INSERT INTO customer_record (customerFirstname, customerMiddlename, customerLastname, customerDOB, customerCity, customerAddress, customerEmail, customerState, customerPostal, customerPhone) VALUES 
-        (:customerFirstname, :customerMiddlename, :customerLastname, :customerDOB, :customerCity, :customerAddress, :customerEmail, :customerState, :customerPostal, :customerPhone);";
+        $sql = "INSERT INTO customer_record (customerFirstname, bookingID, customerMiddlename, customerLastname, customerDOB, customerCity, customerAddress, customerEmail, customerState, customerPostal, customerPhone) VALUES 
+        (:customerFirstname, :bookingID, :customerMiddlename, :customerLastname, :customerDOB, :customerCity, :customerAddress, :customerEmail, :customerState, :customerPostal, :customerPhone);";
 
         $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':bookingID', $this->bookingID);
         $query->bindParam(':customerFirstname', $this->customerFirstname);
         $query->bindParam(':customerMiddlename', $this->customerMiddlename);
         $query->bindParam(':customerLastname', $this->customerLastname);

@@ -5,6 +5,8 @@ require_once '../classes/service.class.php';
 $booking = new Booking();
 $service = new Service();
 
+$bookingCustomer = $booking->showCustomerBooking($_SESSION['customerID']);
+
 $bookingInfo = $booking->showAllAppointments();
 $notificationCount = 0;
 foreach ($bookingInfo as $bookingRecord) {
@@ -12,19 +14,22 @@ foreach ($bookingInfo as $bookingRecord) {
     $bookingID = $bookingRecord['bookingID'];
     $serviceData = $service->fetch($serviceID);
     $bookingData = $booking->show($bookingID);
-    $currentDate = date('Y-m-d');
+    if ($bookingData['bookingID'] == $bookingCustomer['bookingID']) {
+        $currentDate = date('Y-m-d');
+        $nextDay = date('Y-m-d', strtotime($currentDate . ' +1 day'));
 
-    if ($serviceData && $bookingData) {
-        $twoDaysBeforeBooking = date('Y-m-d', strtotime($currentDate . ' +2 days'));
+        if ($serviceData && $bookingData) {
+            $twoDaysBeforeBooking = date('Y-m-d', strtotime($nextDay . ' +2 days'));
 
-        if ($twoDaysBeforeBooking == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
-            $notificationCount++;
+            if ($twoDaysBeforeBooking == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
+                $notificationCount++;
+            }
+            if ($nextDay == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
+                $notificationCount++;
+            }
+        } else {
+            echo "Service data not found for Service ID: " . $serviceID . "<br>";
         }
-        if ($currentDate == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
-            $notificationCount++;
-        }
-    } else {
-        echo "Service data not found for Service ID: " . $serviceID . "<br>";
     }
 }
 ?>
@@ -62,9 +67,9 @@ foreach ($bookingInfo as $bookingRecord) {
                                 <i class="fa fa-bell position-relative" aria-hidden="true">
                                     <!-- number of li in notifications -->
                                     <?php if ($notificationCount > 0): ?>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px">
-                                            <?php echo $notificationCount; ?>
-                                        </span>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px">
+                                                <?php echo $notificationCount; ?>
+                                            </span>
                                     <?php endif; ?>
                                 </i>
                             </button>
@@ -82,23 +87,23 @@ foreach ($bookingInfo as $bookingRecord) {
                                 $bookingID = $bookingRecord['bookingID'];
                                 $serviceData = $service->fetch($serviceID);
                                 $bookingData = $booking->show($bookingID);
-                                $currentDate = date('Y-m-d');
+                                if ($bookingData['bookingID'] == $bookingCustomer['bookingID']) {
+                                    if ($serviceData && $bookingData) {
+                                        // Calculate the date two days before the booking date
+                                        $twoDaysBeforeBooking = date('Y-m-d', strtotime($nextDay . ' +2 days'));
 
-                                if ($serviceData && $bookingData) {
-                                    // Calculate the date two days before the booking date
-                                    $twoDaysBeforeBooking = date('Y-m-d', strtotime($currentDate . ' +2 days'));
-
-                                    // Check if the current date is within two days before the booking date
-                                    if ($twoDaysBeforeBooking == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
-                                        echo "<li><a class='dropdown-item' href='#'><strong>" . $bookingRecord['petName'] . "</strong> Has a <strong>" . $serviceData['serviceName'] . "</strong> Appointment on <strong>" . $bookingData['bookingDate'] . "</strong></a></li>";
-                                        $notificationCount++;
+                                        // Check if the current date is within two days before the booking date
+                                        if ($twoDaysBeforeBooking == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
+                                            echo "<li><a class='dropdown-item' href='#'><strong>" . $bookingRecord['petName'] . "</strong> Has a <strong>" . $serviceData['serviceName'] . "</strong> Appointment on <strong>" . $bookingData['bookingDate'] . "</strong></a></li>";
+                                            $notificationCount++;
+                                        }
+                                        if ($nextDay == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
+                                            echo "<li><a class='dropdown-item' href='#'><strong>" . $bookingRecord['petName'] . "</strong> Has a <strong>" . $serviceData['serviceName'] . "</strong> Appointment on <strong>" . $bookingData['bookingDate'] . "</strong></a></li>";
+                                            $notificationCount++;
+                                        }
+                                    } else {
+                                        echo "Service data not found for Service ID: " . $serviceID . "<br>";
                                     }
-                                    if ($currentDate == date('Y-m-d', strtotime($bookingData['bookingDate']))) {
-                                        echo "<li><a class='dropdown-item' href='#'><strong>" . $bookingRecord['petName'] . "</strong> Has a <strong>" . $serviceData['serviceName'] . "</strong> Appointment on <strong>" . $bookingData['bookingDate'] . "</strong></a></li>";
-                                        $notificationCount++;
-                                    }
-                                } else {
-                                    echo "Service data not found for Service ID: " . $serviceID . "<br>";
                                 }
                             }
                             ?>

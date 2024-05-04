@@ -5,8 +5,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
   header('location: index.php');
 }
 require_once '../classes/booking.class.php';
+require_once '../classes/customer-register.class.php';
 require_once ('./tools/functions.php');
 
+$customer = new Register();
 $booking = new Booking();
 $bookingData = $booking->showAllBooking();
 $pendingCount = 0;
@@ -18,6 +20,14 @@ foreach ($bookingData as $booking2) {
 }
 $AvailSlot = 10 - $pendingCount;
 $bookingDataJson = json_encode($bookingData);
+
+if (isset($_SESSION['customerID'])) {
+  $customerID = $_SESSION['customerID'];
+  
+  $customerInfo = $customer->fetch($customerID); 
+} else {
+  echo "No Customer Found";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -163,32 +173,33 @@ require_once ('./include/customer-header.php');
   <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-cont">
-        <span data-bs-dismiss="modal" class="close"><i class="fa-solid fa-circle-xmark"></i></span>
+        <span data-bs-dismiss="modal" class="close" style="cursor: pointer;"><i class="fa-solid fa-circle-xmark"></i></span>
         <h2>Personal Information</h2>
 
         <form action="submit-booking.php" class="needs-validation" method="post" novalidate>
           <div class="selected-details">
             <div class="row">
+            <input type="hidden" name="customerID" id="customerID" value="<?php echo $customerInfo['id']; ?>">
               <div class="input-container col-sm-3">
                 <label for="firstName">First Name:</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                <input type="text" class="form-control" id="firstName" name="firstName" value="<?php echo $customerInfo['firstname']; ?>" required>
               </div>
 
               <div class="input-container col-sm-3">
                 <label for="middleName">Middle Name:</label>
-                <input type="text" class="form-control" id="middleName" name="middleName">
+                <input type="text" class="form-control" id="middleName" name="middleName" value="<?php echo $customerInfo['middlename']; ?>">
               </div>
 
               <div class="input-container col-sm-3">
                 <label for="lastName">Last Name:</label>
-                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                <input type="text" class="form-control" id="lastName" name="lastName" value="<?php echo $customerInfo['lastname']; ?>" required>
               </div>
             </div>
 
             <div class="row">
               <div class="email-text input-container col-6">
                 <label for="email">Email Address:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email" value="<?php echo $customerInfo['email']; ?>" required>
               </div>
 
               <div class="details col-sm">

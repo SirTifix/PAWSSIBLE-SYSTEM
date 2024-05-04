@@ -75,13 +75,14 @@ class Booking
             $bookingID = $this->generateUniqueBookingID();
             $status = "Pending";
 
-            $sql = "INSERT INTO booking (bookingID, firstName, middleName, lastName, emailAddress, contactNumber, numberPets, status, bookingDate, bookingTime) VALUES 
-            (:bookingID, :firstname, :middlename, :lastname,:emailAddress, :contactNumber, :numberPets, :status, :bookingDate, :bookingTime);";
+            $sql = "INSERT INTO booking (bookingID, customerID, firstName, middleName, lastName, emailAddress, contactNumber, numberPets, status, bookingDate, bookingTime) VALUES 
+            (:bookingID, :customerID, :firstname, :middlename, :lastname, :emailAddress, :contactNumber, :numberPets, :status, :bookingDate, :bookingTime);";
 
             $query = $this->db->connect()->prepare($sql);
             $query->bindParam(':bookingID', $bookingID);
+            $query->bindParam(':customerID', $this->customerID);
             $query->bindParam(':firstname', $this->firstname);
-            $query->bindParam(':middlename', $this->middlename);
+            $query->bindParam(':middlename', $this->middleName);
             $query->bindParam(':lastname', $this->lastname);
             $query->bindParam(':emailAddress', $this->email);
             $query->bindParam(':contactNumber', $this->contactNumber);
@@ -165,6 +166,18 @@ class Booking
         $sql = "SELECT * FROM booking WHERE bookingID = :bookingID;";
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':bookingID', $bookingID);
+        if ($query->execute()) {
+            $data = $query->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $data = null;
+        }
+        return $data;
+    }
+    function showCustomerBooking($customerID)
+    {
+        $sql = "SELECT * FROM booking WHERE customerID = :customerID;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':customerID', $customerID);
         if ($query->execute()) {
             $data = $query->fetch(PDO::FETCH_ASSOC);
         } else {

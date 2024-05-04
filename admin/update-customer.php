@@ -102,7 +102,7 @@ require_once ('./include/admin-head.php');
 
                         <div class="d-flex align-items-center col-12 row">
                             <div class="my-1 d-flex align-items-center col-6 ps-5">
-                                <label for="email" class="forms-label">DOB:</label>
+                                <label for="email" class="forms-label">Email:</label>
                                 <input type="text" class="form-control" id="customerEmail" name="customerEmail" required
                                     value="<?php echo $customerData['customerEmail']; ?>">
                             </div>

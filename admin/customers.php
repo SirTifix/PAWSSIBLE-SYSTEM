@@ -102,7 +102,7 @@ require_once('./include/admin-head.php');
                         ?>
                                 <tr>
                                     <td>
-                                        <?= $counter ?>
+                                        <?= $item['customerID'] ?>
                                     </td>
                                     <td>
                                         <?= $item['customerLastname'] . ', ' . $item['customerFirstname'] ?>
