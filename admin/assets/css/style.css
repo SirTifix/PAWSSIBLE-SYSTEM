@@ -68,6 +68,10 @@ header {
     outline: none;
 }
 
+.search:hover {
+    background-color: transparent; /* Remove yellow hover effect */
+}
+
 .search-icon {
     color: rgba(0, 0, 0, 0.564);
 }
@@ -727,16 +731,6 @@ header {
 
 .appointment-btn:active {
     background-color: #d0d0d0; /* Change background color on click */
-}
-
-.search-input {
-    flex-grow: 1; /* Allow the input to grow and take up remaining space */
-    width: 100%; /* Make the input take up 100% of the available space */
-    border: none;
-}
-
-.search-input:hover {
-    background-color: transparent; /* Remove yellow hover effect */
 }
 
 .profile-pic {

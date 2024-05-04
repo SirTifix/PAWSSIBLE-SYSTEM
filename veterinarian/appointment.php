@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<?php
-    $title = 'Appointment';
-    require_once('./include/vet-head.php');
-?>
+  <?php
+  $title = 'Appointment';
+  require_once('./include/vet-head.php');
+  ?>
 
 <body>
   <?php
-        require_once('./include/vet-header.php')
-    ?>
+  require_once('./include/vet-header.php')
+  ?>
 
-    <main>
+  <main>
     <?php
-          require_once('./include/vet-sidepanel.php')
-      ?>
+    require_once('./include/vet-sidepanel.php')
+    ?>
 
     <section class="table-con ">
       <section class="customer-info-icon-vet row  ">
-        <div class="cus-head-form col-11 d-flex justify-content-between align-items-center mb-3">
+        <div class="cus-head-form col-12 d-flex justify-content-between align-items-center mb-3">
           <div class="col-12 d-flex justify-content-between align-items-center px-3">
             <div class="customer-info-head">
               <h2>Appointment </h2>
             </div>
             <div class="row col-4">
               <div class="row justify-content-start align-items-center">
-                <div class="col-auto my-1">
-                  <div class="search-con">
-                    <input type="text" id="searchInput" class="search-input" placeholder="Search here...">
+                <div class="search-container col-auto my-1">
+                  <div class="search-wrapper d-flex align-items-center m-0 row">
+                    <input type="text" class="search col-10" placeholder="search.....">
+                    <i class="search-icon fas fa-search col-2" aria-hidden="true"></i>
                   </div>
                 </div>
-              </div> 
+              </div>
             </div>
           </div>
         </div>
-     </section>
+      </section>
 
-      <div class="table-wrapper-vet">  
-        <table id ="customer"class="table table table-striped table-hover">
+      <div class="table-wrapper-vet">
+        <table id="customer" class="table table table-striped table-hover">
           <thead>
             <tr>
               <th scope="col">Book No.</th>
@@ -147,8 +149,7 @@
                         <label for="sex">
                           <h5>Sex</h5>
                         </label>
-                        <input type="text" class="book-form-control background-color" id="sex"
-                          placeholder="Enter sex" />
+                        <input type="text" class="book-form-control background-color" id="sex" placeholder="Enter sex" />
                       </div>
 
                       <div class="form-group col-sm-2">
@@ -218,14 +219,14 @@
       </div>
     </section>
     <?php
-      require_once ('./include/js.php')
-        ?>
+    require_once('./include/js.php')
+    ?>
     <script>
-      document.getElementById('resched-btn').addEventListener('click', function () {
+      document.getElementById('resched-btn').addEventListener('click', function() {
         location.reload();
       });
     </script>
-</main>
+  </main>
 </body>
-</html>
 
+</html>

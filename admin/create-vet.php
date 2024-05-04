@@ -98,14 +98,12 @@
                           <label for="vetPassword" class="form-label">Password</label>
                           <div class="d-flex align-items-center">
                               <input type="password" class="form-control" id="vetPassword" name="vetPassword" required>
-                              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password pt-3"></span>
                           </div>
                       </div>
                       <div>
                           <label for="vetRePassword" class="form-label">Re-enter Password</label>
                           <div class="d-flex align-items-center">
                               <input type="password" class="form-control" id="vetRePassword" name="vetRePassword" required>
-                              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password pt-3"></span>
                           </div>
                       </div>
                   </div>
