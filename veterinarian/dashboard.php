@@ -3,6 +3,12 @@
 <?php
     $title = 'Dashboard';
     require_once('./include/vet-head.php');
+    require_once('../classes/veterinarian.class.php');
+
+    $vetRecordClass = new Veterinarian;
+    $vetID = $vetRecordClass->vetID;
+
+    $vetCount = $vetRecordClass->countVet($vetID);
 ?>
 
 <body>
@@ -24,7 +30,7 @@
                     <p class="my-1">Customer Handled: </p>
                     <div class="d-flex justify-content-between align-items-center">
                       <i class="dashboard-icon fa-solid fa-users m-2" aria-hidden="true"></i>
-                      <h1 class="m-3">13</h1>
+                      <h1 class="m-3"><?php echo $vetCount; ?></h1>
                     </div>
                 </div> 
 
@@ -32,7 +38,7 @@
                     <p class="my-1">Upcoming Appointments: </p>
                     <div class="d-flex justify-content-between align-items-center">
                       <i class="dashboard-icon fa-solid  fa-clock  m-2" aria-hidden="true"></i>
-                      <h1 class="m-3">4</h1>
+                      <h1 class="m-3">0</h1>
                     </div>
                 </div> 
       

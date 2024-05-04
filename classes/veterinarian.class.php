@@ -114,19 +114,30 @@ class Veterinarian
         }
         return $data;
     }
-    
+
     function showVetByID($vetID)
-{
-    $sql = "SELECT vetID, CONCAT(vetFirstname, ' ', vetLastname) AS fullName, created_at FROM veterinarian WHERE vetID = :vetID ORDER BY vetLastname ASC, vetFirstname ASC;";
-    $query = $this->db->connect()->prepare($sql);
-    $query->bindParam(':vetID', $vetID);
-    $data = null;
-    if ($query->execute()) {
-        $data = $query->fetch(); 
+    {
+        $sql = "SELECT vetID, CONCAT(vetFirstname, ' ', vetLastname) AS fullName, created_at FROM veterinarian WHERE vetID = :vetID ORDER BY vetLastname ASC, vetFirstname ASC;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':vetID', $vetID);
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetch();
+        }
+        return $data;
     }
-    return $data;
-}
+
+    function countVet($vetID)
+    {
+        $sql = "SELECT COUNT(*) AS record_count FROM booking_pet; WHERE vetID = :vetID;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':vetID', $vetID);
+        $recordCount = 0;
+        if ($query->execute()) {
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+            $recordCount = $result['record_count'];
+        }
+        return $recordCount;
+    }
 
 }
-
-?>
