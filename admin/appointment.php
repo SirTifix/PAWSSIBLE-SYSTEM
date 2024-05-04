@@ -34,16 +34,15 @@ require_once('./include/admin-head.php');
             </div>
             <div class="row col-4">
               <div class="row justify-content-start align-items-center">
-                <div class="col-auto my-1">
-                  <div class="search-con">
-                    <input type="text" id="searchInput" class="search-input" placeholder="Search here...">
+                <div class="search-container col-auto my-1">
+                  <div class="search-wrapper d-flex align-items-center m-0 row">
+                    <input type="text" class="search col-10" placeholder="search.....">
+                    <i class="search-icon fas fa-search col-2" aria-hidden="true"></i>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-
       </section>
 
       <div class="table-wrapper">

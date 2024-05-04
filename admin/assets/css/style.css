@@ -25,7 +25,7 @@ header {
 
 .logosec{
     height: auto;
-    width: 20%;
+    width: 100px;
 }
 
 .logo-text {
@@ -53,7 +53,7 @@ header {
     display: flex;
     border: 1px solid rgba(0, 0, 0, 0.276);
     align-items: center;
-    border-radius: 50px;
+    border-radius: 10px;
     background-color: #fff;
     overflow: hidden;
     padding: 4px 20px;
@@ -727,17 +727,6 @@ header {
 
 .appointment-btn:active {
     background-color: #d0d0d0; /* Change background color on click */
-}
-
-.search-con {
-    background-color: #fff;
-    overflow: hidden;
-    padding: 5px 10px;
-    border: 1px solid rgba(0, 0, 0, 0.276);
-    width: 300px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
 }
 
 .search-input {
