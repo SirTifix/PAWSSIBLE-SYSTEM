@@ -15,8 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $vaccineInterval = $_POST['weeksInterval'];
     $vaccinePrice = $_POST['price'];
     $petType = $_POST['selectedPetType'];
-    $created_at = date('Y-m-d H:i:s');
-    $updated_at = "No record";
 
     $vaccineClass->vaccineName = $vaccineName;
     $vaccineClass->vaccineType = $vaccineType;
@@ -25,8 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $vaccineClass->vaccineInterval = $vaccineInterval;
     $vaccineClass->vaccinePrice = $vaccinePrice;
     $vaccineClass->petType = $petType;
-    $vaccineClass->created_at = $created_at;
-    $vaccineClass->updated_at = $updated_at;
 
     $result = $vaccineClass->add();
 
@@ -117,11 +113,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             echo "<td>{$vaccine['petType']}</td>";
                             echo "<td class='d-flex justify-content-center align-items-center'>";
                             echo "<div class='crud-btn'>";
-                            echo "<a href='' class='edit-btn' data-bs-toggle='modal' data-bs-target='#updateVaccineModal' onclick='populateFields({$vaccine['vaccineID']})'>";
+                            echo "<a href='' class='edit-btn' data-bs-toggle='modal' data-bs-target='#updateVaccineModal'>";
                             echo "<i class='fa-regular fa-pen-to-square' aria-hidden='true'></i></a>";
                             echo "</div>";
                             echo "<div class='crud-btn'>";
-                            echo "<a href='' class='delete-btn' data-bs-toggle='modal' data-bs-target='#deleteVaccineModal' data-vaccine-id='{$vaccine['vaccineID']}'>";
+                            echo "<a href='' class='delete-btn' data-bs-toggle='modal' data-bs-target='#deleteVaccineModal'>";
                             echo "<i class='fa-regular fa-trash-can' aria-hidden='true'></i></a>";
                             echo "</div>";
                             echo "</td>";
@@ -131,24 +127,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         ?>
                     </tbody>
                 </table>
-                <nav aria-label="...">
-                    <ul class="pagination justify-content-end"> <!-- Align pagination to the right -->
-                        <li class="page-item disabled">
-                            <span class="page-link">Previous</span>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active">
-                            <span class="page-link">
-                                2
-                                <span class="sr-only">(current)</span>
-                            </span>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
             </div>
             </div>
@@ -169,12 +147,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         </div>
                                         <div class="d-flex">
                                             <label for="VaccineType" class="form-label-vaccine fw-bold p-2">Vaccine Type:</label>
-                                            <select class="form-select form-control-vaccine" id="vaccinetype" name="vaccinetype" required>
-                                                <option value="">Select Vaccine Type</option>
-                                                <option value="Primary Series">Primary Series</option>
-                                                <option value="Annual Boosters">Annual Boosters</option>
-                                                <option value="Deworming">Deworming</option>
-                                            </select>
+                                                <select class="form-select form-control-vaccine" id="vaccinetype" name="vaccinetype" required>
+                                                    <option value="">Select Vaccine Type</option>
+                                                    <option value="vaccine1">Primary Series</option>
+                                                    <option value="vaccine2">Annual Boosters</option>
+                                                    <option value="vaccine3">Deworming</option>
+                                                </select>
                                         </div>
                                         <div class="d-flex">
                                             <label for="age" class="form-label-vaccine fw-bold p-2">Age(weeks):</label>
@@ -238,9 +216,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         <label for="VaccineType" class="form-label-vaccine fw-bold p-2">Vaccine Type:</label>
                                         <select class="form-select form-control-vaccine" id="vaccinetype" name="vaccinetype" required>
                                             <option value="">Select Vaccine Type</option>
-                                            <option value="Primary Series">Primary Series</option>
-                                            <option value="Annual Boosters">Annual Boosters</option>
-                                            <option value="Deworming">Deworming</option>
+                                            <option value="vaccine1">Primary Series</option>
+                                            <option value="vaccine2">Annual Boosters</option>
+                                            <option value="vaccine3">Deworming</option>
                                         </select>
                                     </div>
                                     <div class="d-flex">
@@ -268,8 +246,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         <label for="petType" class="form-label-vaccine fw-bold">Pet Type: </label>
                                         <select class="form-select form-control-vaccine" id="petType" name="petType" required>
                                             <option value="">Select Pet Type</option>
-                                            <option value="Dog">Dog</option>
-                                            <option value="Cat">Cat</option>
+                                            <option value="vaccine2">Dog</option>
+                                            <option value="vaccine3">Cat</option>
                                         </select>
                                     </div>
                                 </div>
@@ -277,7 +255,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
                             <div class="modal-footer justify-content-between" style="border: none;">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="submitForm()">Add</button>
+                                <button type="submit" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Add</button>
                             </div>
                         </div>
                     </div>
@@ -313,54 +291,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         document.getElementById("vaccineForm").submit();
     }
-
-    function populateFields(vaccineID) {
-        $.ajax({
-            url: 'fetch_vaccine.php',
-            type: 'POST',
-            data: {
-                vaccineID: vaccineID
-            },
-            success: function(response) {
-                if (response) {
-                    var data = JSON.parse(response);
-                    $('#updateVaccineModal #Vaccine').val(data.vaccineName);
-                    $('#updateVaccineModal #vaccinetype').val(data.vaccineType);
-                    $('#updateVaccineModal #age').val(data.vaccineAge);
-                    $('#updateVaccineModal #dosage').val(data.vaccineDosage);
-                    $('#updateVaccineModal #weeksInterval').val(data.vaccineInterval);
-                    $('#updateVaccineModal #price').val(data.vaccinePrice);
-                    $('#updateVaccineModal #petType').val(data.petType);
-                } else {
-                    alert("Failed to fetch data for vaccine ID " + vaccineID);
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error(xhr.responseText);
-            }
-        });
-    }
 </script>
-
-<script>
-    // Example JavaScript to handle pagination
-    document.getElementById('prev').addEventListener('click', function(event) {
-        // Handle "Previous" button click event
-        event.preventDefault();
-        // Perform necessary actions to show previous page
-        // For example, update table data, hide/show appropriate rows, etc.
-        console.log('Previous button clicked');
-    });
-
-    document.getElementById('next').addEventListener('click', function(event) {
-        // Handle "Next" button click event
-        event.preventDefault();
-        // Perform necessary actions to show next page
-        // For example, update table data, hide/show appropriate rows, etc.
-        console.log('Next button clicked');
-    });
-</script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </html>

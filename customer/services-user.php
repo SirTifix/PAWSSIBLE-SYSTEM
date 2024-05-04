@@ -5,8 +5,12 @@ session_start();
 if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
   header('location: index.php');
 }
-?>
 
+require_once '../classes/service.class.php';
+
+$services = new Service();
+$fetch = $services->show();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -97,138 +101,38 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
     <h1> Our Services </h1>
   </div>
 
-
-
-  <div class="sliders">
+<div class="service-slider">
+    <div class="sliders">
     <!-- Swiper -->
-    <div class="swiper mySwiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <div class="content-slider">
-            <div class="content-background-border">
-
-
-              <br>
-              <br>
-              <h2> <strong>Consultation</strong></h2>
-              <br>
-              <h6><em>Price starts at</em></h6>
-              <h3>Php 250.00</h3>
-              <br>
-              <br>
-              <h3>Offers expert care and advice to ensure the health and well-being of your beloved pets.</h3>
-              <br>
-              <br>
-
-              <a target="#" class="service-button"> <strong>BOOK NOW!</strong></a>
-            </div>
-          </div>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <?php
+          foreach ($fetch as $service) {
+            ?>
+                <div class="swiper-slide">
+                  <div class="content-slider">
+                      <h2><strong><?php echo $service['serviceName']; ?></strong></h2>
+                      <br>
+                      <h6><em>Price starts at</em></h6>
+                      <h3>Php <?php echo $service['servicePrice']; ?>.00</h3>
+                      <br>
+                      <br>
+                      <h3><?php echo $service['serviceDescription']; ?></h3>
+                  </div>
+                </div>
+              <?php
+          }
+          ?>
         </div>
-
-        <div class="swiper-slide">
-          <div class="content-slider">
-            <div class="content-background-border">
-              <br>
-              <br>
-              <h2> <strong>Vaccination</strong></h2>
-              <br>
-              <h6><em>Price starts at</em></h6>
-              <h3>Php 350.00</h3>
-              <br>
-              <br>
-              <h3>Ensure your pet's well-being with timely vaccinations for a lifetime of health.</h3>
-              <br>
-              <br>
-
-              <a target="#" class="service-button"> <strong>BOOK NOW!</strong></a>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="content-slider">
-            <div class="content-background-border">
-              <br>
-              <br>
-              <h2> <strong>Deworming</strong></h2>
-              <br>
-              <h6><em>Price starts at</em></h6>
-              <h3>Php 200.00</h3>
-              <br>
-              <br>
-              <h3>Promote your pet's health and vitality through regular, reliable deworming solutions.</h3>
-              <br>
-              <br>
-
-              <a target="#" class="service-button"> <strong>BOOK NOW!</strong></a>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="content-slider">
-            <div class="content-background-border">
-              <br>
-              <br>
-              <h2> <strong>Spay/Neuter</strong></h2>
-              <br>
-              <h6> <em>Price starts at </em></h6>
-              <h3>Php 250.00</h3>
-              <br>
-              <br>
-              <h3>Offers expert care and advice to ensure the health and well-being of your beloved pets.</h3>
-              <br>
-              <br>
-
-              <a target="#" class="service-button"> <strong>BOOK NOW!</strong></a>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="content-slider">
-            <div class="content-background-border">
-              <br>
-              <br>
-              <h2> <strong>Eye Surgery</strong></h2>
-              <br>
-              <h6><em>Price starts at</em></h6>
-              <h3>Php 250.00</h3>
-              <br>
-              <br>
-              <h3>Offers expert care and advice to ensure the health and well-being of your beloved pets.</h3>
-              <br>
-              <br>
-
-              <a target="#" class="service-button"> <strong>BOOK NOW!</strong></a>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div class="content-slider">
-            <div class="content-background-border">
-              <br>
-              <br>
-              <h2> <strong>Imputation</strong></h2>
-              <br>
-              <h6><em>Price starts at</em></h6>
-              <h3>Php 250.00</h3>
-              <br>
-              <br>
-              <h3>Offers expert care and advice to ensure the health and well-being of your beloved pets.</h3>
-              <br>
-              <br>
-
-              <a target="#" class="service-button"> <strong>BOOK NOW!</strong></a>
-            </div>
-          </div>
-        </div>
-
-
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
       </div>
-
-      <div class="swiper-pagination"></div>
     </div>
+  </div>
 
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+  <div style="display:flex; justify-content:center; align-items:center;">
+    <a href="booking.php" class="service-button"> <strong>BOOK NOW!</strong></a>
   </div>
 
   <section class="FAQS">
@@ -312,6 +216,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
       breakpoints: {
         1024: {
           slidesPerView: 3,
+          spaceBetween: 10,
+        },
+        720: {
+          slidesPerView: 2,
           spaceBetween: 10,
         },
         320: {

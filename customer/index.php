@@ -48,7 +48,7 @@ require_once ('./include/user-head.php');
         </div>
     </div>
 
-    <div class="description">
+    <div class="description d-flex justify-content-center mt-5">
         <div class="container-description">
             <h3>
                 Ensuring the well-being of your beloved companion begins 
