@@ -77,7 +77,7 @@ require_once('../classes/veterinarian.class.php');
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Recently Added</th>
+                            <th scope="col">Last Update</th>
                             <th scope="col" width="5%">Action</th>
                         </tr>
                     </thead>
@@ -131,10 +131,10 @@ require_once('../classes/veterinarian.class.php');
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
-                                this Veterinarian?</h4>
+                                this account?</h4>
                             <div class="modal-footer justify-content-between" style="border: none;">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
-                                <button type="button" class="btn btn-primary" id="confirmDelete" data-vet-id="" style="background-color: #FF0000; border: none;">DELETE</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary" id="confirmDelete" data-vet-id="" style="background-color: #FF0000; border: none;">Delete</button>
 
                             </div>
                         </div>

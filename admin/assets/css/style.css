@@ -263,6 +263,27 @@ header {
     padding-left: 10px;
 }
 
+.nxt-btn {
+    background-color: white;
+    border-radius: 5px;
+    padding: 7px 16px;
+    color: black;
+    text-decoration: none;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    /* Horizontally center */
+    align-items: center;
+    /* Vertically center */
+}
+
+.nxt-btn:hover {
+    background-color: #3A3F54;
+    /* Change text color on hover */
+    color: white;
+    border-radius: 5px;
+}
+
 .crud-text {
     background-color: #5263AB;
     border-radius: 50px;
@@ -429,6 +450,22 @@ header {
 }
 
 .create-vet-btn:hover {
+    background-color: #828aa9;
+    /* Change text color on hover */
+    color: white;
+}
+
+.create-secretary-btn {
+    padding: 10px 30px;
+    background-color: #3A3F54;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.create-secretary-btn:hover {
     background-color: #828aa9;
     /* Change text color on hover */
     color: white;

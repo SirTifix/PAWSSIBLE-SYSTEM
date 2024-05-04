@@ -96,7 +96,7 @@ if(isset($_GET['vetID'])) {
                       </div>
                       <div>
                           <label for="vetMiddlename" class="form-label">Middle Name (Optional)</label>
-                          <input type="text" class="form-control" id="vetMiddlename" name="vetMiddlename" required value="<?php echo $vetData['vetMiddlename']; ?>">
+                          <input type="text" class="form-control" id="vetMiddlename" name="vetMiddlename" value="<?php echo $vetData['vetMiddlename']; ?>">
                       </div>
                       <div>
                           <label for="vetLastname" class="form-label">Last Name</label>
