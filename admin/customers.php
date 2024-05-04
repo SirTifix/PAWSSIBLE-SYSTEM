@@ -217,6 +217,26 @@ require_once('./include/admin-head.php');
                 console.log('Next button clicked');
             });
         </script>
+        <script>
+            document.getElementById("dateRangeSelect").addEventListener("change", function() {
+                var customDateRange = document.getElementById("customDateRange");
+                if (this.value === "custom") {
+                    customDateRange.style.display = "block";
+                } else {
+                    customDateRange.style.display = "none";
+                }
+            });
+
+            // Add event listener for the Cancel button
+            document.querySelector("#customDateRange button.btn-secondary").addEventListener("click", function() {
+                var customDateRange = document.getElementById("customDateRange");
+                if (customDateRange.style.display === "none") {
+                    customDateRange.style.display = "block";
+                } else {
+                    customDateRange.style.display = "none";
+                }
+            });
+        </script>
 
     </main>
     <?php
