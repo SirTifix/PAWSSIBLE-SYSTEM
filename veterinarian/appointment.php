@@ -19,7 +19,7 @@
 
     <section class="table-con ">
       <section class="customer-info-icon-vet row  ">
-        <div class="cus-head-form col-12 d-flex justify-content-between align-items-center mb-3">
+        <div class="cus-head-form col-11 d-flex justify-content-between align-items-center mb-3">
           <div class="col-12 d-flex justify-content-between align-items-center px-3">
             <div class="customer-info-head">
               <h2>Appointment </h2>
