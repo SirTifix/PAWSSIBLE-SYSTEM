@@ -41,7 +41,17 @@ require_once('./tools/functions.php');
                         <label for="petType_<?php echo $i; ?>">
                             <h5>Pet Type</h5>
                         </label>
-                        <input type="text" class="form-control" id="pettype_<?php echo $i; ?>" name="petType[]" placeholder="Enter pet type" required />
+                        <input list="petTypeList_<?php echo $i; ?>" class="form-control" id="pettype_<?php echo $i; ?>" name="petType[]" placeholder="Enter or select pet type" required />
+                        <datalist id="petTypeList_<?php echo $i; ?>">
+                            <?php
+                            require_once '../classes/pet.class.php';
+                            $pet = new Pet();
+                            $pets = $pet->showPetTypes();
+                            foreach ($pets as $pet) {
+                                echo '<option value="' . $pet['petType'] . '">' . $pet['petType'] . '</option>';
+                            }
+                            ?>
+                        </datalist>
                     </div>
                     <div class="form-group col-sm-2 background-color">
                         <label for="sex_<?php echo $i; ?>">
@@ -67,7 +77,17 @@ require_once('./tools/functions.php');
                         <label for="breed_<?php echo $i; ?>">
                             <h5>Breed</h5>
                         </label>
-                        <input type="text" class="form-control" id="breed_<?php echo $i; ?>" name="petBreed[]" placeholder="Enter breed" required />
+                        <input list="petBreedList_<?php echo $i; ?>" type="text" class="form-control" id="breed_<?php echo $i; ?>" name="petBreed[]" placeholder="Enter breed" required />
+                        <datalist id="petBreedList_<?php echo $i; ?>">
+                            <?php
+                            require_once '../classes/pet.class.php';
+                            $pet = new Pet();
+                            $pets = $pet->showPetBreed();
+                            foreach ($pets as $pet) {
+                                echo '<option value="' . $pet['petBreed'] . '">' . $pet['petBreed'] . '</option>';
+                            }
+                            ?>
+                        </datalist>
                     </div>
                     <div class="form-group col-sm-2 background-color">
                         <label for="services_<?php echo $i; ?>">

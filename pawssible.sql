@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 05, 2024 at 04:50 PM
+-- Generation Time: May 05, 2024 at 06:50 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -69,9 +69,11 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`bookingID`, `customerID`, `firstName`, `middlename`, `lastName`, `emailAddress`, `contactNumber`, `numberPets`, `status`, `bookingDate`, `bookingTime`, `resched_reason`) VALUES
+(3959, 28, 'rambutan', '', 'apol', 'pruts@vejtabol.com', '55345', 1, 'Approved', 'May 9, 2024', '12:00 AM 01:00 PM', NULL),
 (4875, 13, 'Test', '', 'Test', 'test@test.com', '123123412', 1, 'Done', 'May 5, 2024', '08:00 AM - 09:00 AM', 'No time and no money hehe'),
 (5577, 28, 'Batman', 'Bin', 'Suparman', 'kryptonite@luthor.com', '12312', 2, 'Cancelled', 'May 6, 2024', '08:00 AM - 09:00 AM', 'dugay kaayo sila'),
-(5603, 13, 'test', '', 'test', 'test@test.com', '53453', 2, 'Approved', 'May 8, 2024', '12:00 AM 01:00 PM', NULL);
+(5603, 13, 'test', '', 'test', 'test@test.com', '53453', 2, 'Approved', 'May 8, 2024', '12:00 AM 01:00 PM', NULL),
+(7620, 46, 'era', 'era', 'era', 'joypioquinto1017@gmail.ph', '09278894171', 1, 'Approved', 'May 16, 2024', '12:00 AM 01:00 PM', NULL);
 
 -- --------------------------------------------------------
 
@@ -102,7 +104,9 @@ INSERT INTO `booking_pet` (`bookingPetID`, `petName`, `petType`, `sex`, `concern
 (45, 'Barry', 'Tortor', 'Male', '', 'Mabilis', '2024-05-25', 5577, 5, 4, 13),
 (46, 'Cyborg', 'Bakal', 'Female', 'wala lng mahina kasi', 'Mamaw', '2024-05-16', 5577, 2, 5, 13),
 (54, 'Maximus', 'Aso', 'Male', '', 'Mabilis', '2024-05-09', 5603, 8, 4, 36),
-(55, 'Max', 'Dog', 'Female', '', 'Doberman', '2024-05-23', 5603, 5, 5, 36);
+(55, 'Max', 'Dog', 'Female', '', 'Doberman', '2024-05-23', 5603, 5, 5, 36),
+(59, 'Bandit', 'Tortor', 'Female', '', 'Mix', '2024-05-09', 7620, 7, 5, 46),
+(62, 'Shinra', 'Cat', 'Male', '', 'Persian', '2024-05-10', 3959, 2, 5, 47);
 
 -- --------------------------------------------------------
 
@@ -161,7 +165,9 @@ CREATE TABLE `customer_record` (
 INSERT INTO `customer_record` (`customerID`, `bookingID`, `customerFirstname`, `customerMiddlename`, `customerLastname`, `customerDOB`, `customerAddress`, `customerCity`, `customerEmail`, `customerState`, `customerPostal`, `customerPhone`, `created_at`, `updated_at`) VALUES
 (26, NULL, 'Anton', '', 'Altair', '2024-03-13', 'test', 'test', 'test@test.com', 'Zamboanga City', 7000, '2147483647', '2024-03-03 08:59:04', '2024-03-03 08:59:04'),
 (35, 4998, 'RAF', 'Ruste', 'SALUDO', '0000-00-00', '', '', 'raf_saludo@yahoo.com.ph', '', 0, '09979784700', '2024-05-04 22:37:27', '2024-05-04 22:37:27'),
-(36, 5603, 'test', '', 'test', '0000-00-00', '', '', 'test@test.com', '', 0, '53453', '2024-05-05 10:22:45', '2024-05-05 10:22:45');
+(36, 5603, 'test', '', 'test', '0000-00-00', '', '', 'test@test.com', '', 0, '53453', '2024-05-05 10:22:45', '2024-05-05 10:22:45'),
+(46, 7620, 'era', 'era', 'era', '0000-00-00', '', '', 'joypioquinto1017@gmail.ph', '', 0, '09278894171', '2024-05-05 15:48:11', '2024-05-05 15:48:11'),
+(47, 3959, 'rambutan', '', 'apol', '0000-00-00', '', '', 'pruts@vejtabol.com', '', 0, '55345', '2024-05-05 16:47:48', '2024-05-05 16:47:48');
 
 -- --------------------------------------------------------
 
@@ -211,7 +217,55 @@ INSERT INTO `pet` (`petId`, `petName`, `petBirthdate`, `petAge`, `petBreed`, `pe
 (21, 'Steve', '2024-05-14', 0, 'Palito', 'Askal', 'Male', 0, '', 35, '2024-05-04 22:38:23', '2024-05-04 22:38:23'),
 (22, 'Raymond', '2024-05-23', 0, 'Billiard', 'Matangkad', 'Male', 0, '', 35, '2024-05-04 22:38:23', '2024-05-04 22:38:23'),
 (23, 'Maximus', '2024-05-09', 0, 'Mabilis', 'Aso', 'Male', 0, '', 36, '2024-05-05 10:23:15', '2024-05-05 10:23:15'),
-(24, 'Max', '2024-05-23', 0, 'Doberman', 'Dog', 'Female', 0, '', 36, '2024-05-05 10:23:15', '2024-05-05 10:23:15');
+(24, 'Max', '2024-05-23', 0, 'Doberman', 'Dog', 'Female', 0, '', 36, '2024-05-05 10:23:15', '2024-05-05 10:23:15'),
+(25, 'Bandit', '2024-05-09', 0, 'Mix', 'Tortor', 'Female', 0, '', 46, '2024-05-05 15:49:22', '2024-05-05 15:49:22'),
+(26, 'Shinra', '2024-05-10', 0, 'Persian', 'Cat', 'Male', 0, '', 47, '2024-05-05 16:48:07', '2024-05-05 16:48:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pet_breed`
+--
+
+CREATE TABLE `pet_breed` (
+  `petBreedID` int(11) NOT NULL,
+  `petBreed` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pet_breed`
+--
+
+INSERT INTO `pet_breed` (`petBreedID`, `petBreed`, `created_at`, `updated_at`) VALUES
+(1, 'Siamese', '2024-05-05 16:14:09', '2024-05-05 16:14:09'),
+(2, 'Husky', '2024-05-05 16:14:17', '2024-05-05 16:14:17'),
+(3, 'Golden Retriever', '2024-05-05 16:14:40', '2024-05-05 16:14:40'),
+(5, 'Persian', '2024-05-05 16:26:21', '2024-05-05 16:26:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pet_type`
+--
+
+CREATE TABLE `pet_type` (
+  `petTypeID` int(11) NOT NULL,
+  `petType` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pet_type`
+--
+
+INSERT INTO `pet_type` (`petTypeID`, `petType`, `created_at`, `updated_at`) VALUES
+(1, 'Dog', '2024-05-05 16:10:09', '2024-05-05 16:10:09'),
+(2, 'Cat', '2024-05-05 16:10:26', '2024-05-05 16:10:26'),
+(3, 'Hamster', '2024-05-05 16:12:34', '2024-05-05 16:12:34'),
+(5, 'Rabbit', '2024-05-05 16:26:30', '2024-05-05 16:26:30');
 
 -- --------------------------------------------------------
 
@@ -397,6 +451,18 @@ ALTER TABLE `pet`
   ADD PRIMARY KEY (`petId`);
 
 --
+-- Indexes for table `pet_breed`
+--
+ALTER TABLE `pet_breed`
+  ADD PRIMARY KEY (`petBreedID`);
+
+--
+-- Indexes for table `pet_type`
+--
+ALTER TABLE `pet_type`
+  ADD PRIMARY KEY (`petTypeID`);
+
+--
 -- Indexes for table `schedule_status`
 --
 ALTER TABLE `schedule_status`
@@ -446,7 +512,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `booking_pet`
 --
 ALTER TABLE `booking_pet`
-  MODIFY `bookingPetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `bookingPetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -458,7 +524,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `customer_record`
 --
 ALTER TABLE `customer_record`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `medicalrecord`
@@ -470,7 +536,19 @@ ALTER TABLE `medicalrecord`
 -- AUTO_INCREMENT for table `pet`
 --
 ALTER TABLE `pet`
-  MODIFY `petId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `petId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `pet_breed`
+--
+ALTER TABLE `pet_breed`
+  MODIFY `petBreedID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `pet_type`
+--
+ALTER TABLE `pet_type`
+  MODIFY `petTypeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `schedule_status`

@@ -1,27 +1,37 @@
 <?php
-require_once ('../classes/service.class.php');
+require_once ('../classes/pet.class.php');
 require_once ('./tools/functions.php');
-$CatergoryClass = new Service();
-$services = $CatergoryClass->show();
+$petClass = new Pet();
+$petTypes = $petClass->showPetTypes();
+$petBreeds = $petClass->showPetBreed();
 
-if (isset($_POST['save'])) {
-    $currentDateTime = date('Y-m-d H:i:s');
-    $CatergoryClass->serviceName = htmlentities($_POST['serviceName']);
-    $CatergoryClass->serviceDescription = htmlentities($_POST['serviceDescription']);
-    $CatergoryClass->servicePrice = htmlentities($_POST['servicePrice']);
-    $CatergoryClass->created_at = $currentDateTime;
-    $CatergoryClass->updated_at = $currentDateTime;
+if (isset($_POST['addType'])) {
+    $petClass->petType = htmlentities($_POST['petType']);
 
     if (
-        validate_field($CatergoryClass->serviceName) &&
-        validate_field($CatergoryClass->serviceDescription) &&
-        validate_field($CatergoryClass->servicePrice) &&
-        validate_field($CatergoryClass->created_at) &&
-        validate_field($CatergoryClass->updated_at)
+        validate_field($petClass->petType)
     ) {
 
-        if ($CatergoryClass->add()) {
-            header('location: services.php');
+        if ($petClass->addPetType()) {
+            header('location: pet-category.php');
+            exit;
+        } else {
+            echo 'An error occured while adding in the database.';
+        }
+    } else {
+        echo 'Failed to add service.';
+    }
+}
+
+if (isset($_POST['addBreed'])) {
+    $petClass->petBreed = htmlentities($_POST['petBreed']);
+
+    if (
+        validate_field($petClass->petBreed)
+    ) {
+
+        if ($petClass->addPetBreed()) {
+            header('location: pet-category.php');
             exit;
         } else {
             echo 'An error occured while adding in the database.';
@@ -54,7 +64,7 @@ require_once ('./include/admin-head.php');
         <section class="veterinarian-con">
             <div class="row mx-5 justify-content-end">
                 <div class="crud-btn-add col-4 col-sm-auto">
-                    <a href="" class="crud-text" data-bs-toggle="modal" data-bs-target="#addServiceModal"><i
+                    <a href="" class="crud-text" data-bs-toggle="modal" data-bs-target="#addTypeModal"><i
                             class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i> Add Type</a>
                 </div>
             </div>
@@ -72,24 +82,24 @@ require_once ('./include/admin-head.php');
                 </div>
             </section>
 
-            <form id="addServiceForm" method="post">
-                <div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel"
+            <form id="addTypeForm" method="post">
+                <div class="modal fade" id="addTypeModal" tabindex="-1" aria-labelledby="addTypeModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <h4 class="modal-title m-4 text-center" id="addServiceModalLabel">Add Pet Type</h4>
+                            <h4 class="modal-title m-4 text-center" id="addTypeModalLabel">Add Pet Type</h4>
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="serviceName" class="form-label">Breed of Pet:</label>
-                                    <input type="text" class="form-control" style="width: 465px;" id="serviceName"
-                                        name="serviceName" required>
+                                    <label for="petType" class="form-label">Pet Type:</label>
+                                    <input type="text" class="form-control" style="width: 465px;" id="petType"
+                                        name="petType" required>
                                 </div>
 
                             </div>
                             <div class="modal-footer justify-content-between" style="border: none;">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-primary" name="save"
-                                    style="background-color: #065916; border: none;">Save</button>
+                                <button type="submit" class="btn btn-primary" name="addType"
+                                    style="background-color: #065916; border: none;">Add</button>
                             </div>
                         </div>
                     </div>
@@ -101,88 +111,53 @@ require_once ('./include/admin-head.php');
             <table id="customer" class="table table-striped table-sm text-center">
                 <thead>
                     <tr class="table-headpet text-center">
-                        <th scope="col"> ID</th>
+                        <th scope="col">ID</th>
                         <th scope="col">Pet Type</th>
                         <th scope="col">Last Update</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody id="serviceTableBody">
-                    <?php foreach ($services as $service):
-                        $counter = 1;
+                    <?php foreach ($petTypes as $type):
                         ?>
                         <tr>
                             <td>
-                                <?php echo $service['serviceID']; ?>
+                                <?php echo $type['petTypeID']; ?>
                             </td>
 
                             <td>
-                                <?php echo $service['serviceName']; ?>
+                                <?php echo $type['petType']; ?>
                             </td>
 
                             <td>
-                                <?php echo $service['created_at']; ?>
+                                <?php echo $type['created_at']; ?>
                             </td>
                             <td class="d-flex justify-content-end align-items-center">
                                 <div class="crud-btn">
-                                    <a href="" class="crud-icon-update" data-bs-toggle="modal"
-                                        data-bs-target="#updateServiceModal<?php echo $service['serviceID']; ?>">
-                                        <i class="fa-solid fa-pen-to-square m-1" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                                <div class="modal fade" id="updateServiceModal<?php echo $service['serviceID']; ?>"
-                                    tabindex="-1" aria-labelledby="updateServiceModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <h4 class="modal-title m-4 text-center" id="updateServiceModalLabel">Update
-                                                Category</h4>
-                                            <div class="modal-body">
-                                                <form id="updateServiceForm<?php echo $service['serviceID']; ?>">
-                                                    <div class="mb-3">
-                                                        <label for="serviceName" class="form-label">Type of
-                                                            Pet:</label>
-                                                        <input type="text" class="form-control" style="width: 465px;"
-                                                            id="serviceName<?php echo $service['serviceID']; ?>"
-                                                            value="<?php echo $service['serviceName']; ?>" required>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer justify-content-between" style="border: none;">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Cancel</button>
-                                                <button type="button" class="btn btn-primary"
-                                                    style="background-color: #065916; border: none;"
-                                                    onclick="updateService(<?php echo $service['serviceID']; ?>)">Update</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="crud-btn">
                                     <a href="" class="crud-icon-delete" data-bs-toggle="modal"
-                                        data-bs-target="#deleteServiceModal<?php echo $service['serviceID']; ?>">
+                                        data-bs-target="#deleteTypeModal<?php echo $type['petTypeID']; ?>">
                                         <i class="fa-solid fa-trash-can m-1" aria-hidden="true"></i>
                                     </a>
                                 </div>
-                                <div class="modal fade" id="deleteServiceModal<?php echo $service['serviceID']; ?>"
-                                    tabindex="-1" aria-labelledby="deleteServiceModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="deleteTypeModal<?php echo $type['petTypeID']; ?>"
+                                    tabindex="-1" aria-labelledby="deleteTypeModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
-                                            <h4 class="modal-title m-4 text-center" id="deleteServiceModalLabel">Are you
-                                                sure you want to delete this Category?</h4>
+                                            <h4 class="modal-title m-4 text-center" id="deleteTypeModalLabel">Are you
+                                                sure you want to delete this pet type?</h4>
                                             <div class="modal-footer justify-content-between" style="border: none;">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Cancel</button>
                                                 <button type="button" class="btn btn-primary"
                                                     style="background-color: #FF0000; border: none;"
-                                                    onclick="deleteService(<?php echo $service['serviceID']; ?>)">Delete</button>
+                                                    onclick="deleteType(<?php echo $type['petTypeID']; ?>)">Delete</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                    <?php endforeach;
-                    $counter++ ?>
+                    <?php endforeach;?>
 
 
 
@@ -215,7 +190,7 @@ require_once ('./include/admin-head.php');
         <section class="veterinarian-con">
             <div class="row mx-5 justify-content-end">
                 <div class="crud-btn-add col-4 col-sm-auto">
-                    <a href="" class="crud-text" data-bs-toggle="modal" data-bs-target="#addServiceModal"><i
+                    <a href="" class="crud-text" data-bs-toggle="modal" data-bs-target="#addBreedModal"><i
                             class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i> Add Breed</a>
                 </div>
             </div>
@@ -233,24 +208,24 @@ require_once ('./include/admin-head.php');
                 </div>
             </section>
 
-            <form id="addServiceForm" method="post">
-                <div class="modal fade" id="addServiceModal" tabindex="-1" aria-labelledby="addServiceModalLabel"
+            <form id="addBreedForm" method="post">
+                <div class="modal fade" id="addBreedModal" tabindex="-1" aria-labelledby="addBreedModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <h4 class="modal-title m-4 text-center" id="addServiceModalLabel">Add Breed</h4>
+                            <h4 class="modal-title m-4 text-center" id="addBreedModalLabel">Add Breed</h4>
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="serviceName" class="form-label">Name of Breed:</label>
-                                    <input type="text" class="form-control" style="width: 465px;" id="serviceName"
-                                        name="serviceName" required>
+                                    <label for="petBreed" class="form-label">Name of Breed:</label>
+                                    <input type="text" class="form-control" style="width: 465px;" id="petBreed"
+                                        name="petBreed" required>
                                 </div>
 
                             </div>
                             <div class="modal-footer justify-content-between" style="border: none;">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-primary" name="save"
-                                    style="background-color: #065916; border: none;">Save</button>
+                                <button type="submit" class="btn btn-primary" name="addBreed"
+                                    style="background-color: #065916; border: none;">Add</button>
                             </div>
                         </div>
                     </div>
@@ -269,81 +244,46 @@ require_once ('./include/admin-head.php');
                     </tr>
                 </thead>
                 <tbody id="serviceTableBody">
-                    <?php foreach ($services as $service):
-                        $counter = 1;
+                    <?php foreach ($petBreeds as $breed):
                         ?>
                         <tr>
                             <td>
-                                <?php echo $service['serviceID']; ?>
+                                <?php echo $breed['petBreedID']; ?>
                             </td>
 
                             <td>
-                                <?php echo $service['serviceName']; ?>
+                                <?php echo $breed['petBreed']; ?>
                             </td>
 
                             <td>
-                                <?php echo $service['created_at']; ?>
+                                <?php echo $breed['created_at']; ?>
                             </td>
                             <td class="d-flex justify-content-end align-items-center">
                                 <div class="crud-btn">
-                                    <a href="" class="crud-icon-update" data-bs-toggle="modal"
-                                        data-bs-target="#updateServiceModal<?php echo $service['serviceID']; ?>">
-                                        <i class="fa-solid fa-pen-to-square m-1" aria-hidden="true"></i>
-                                    </a>
-                                </div>
-                                <div class="modal fade" id="updateServiceModal<?php echo $service['serviceID']; ?>"
-                                    tabindex="-1" aria-labelledby="updateServiceModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <h4 class="modal-title m-4 text-center" id="updateServiceModalLabel">Update
-                                                Category</h4>
-                                            <div class="modal-body">
-                                                <form id="updateServiceForm<?php echo $service['serviceID']; ?>">
-                                                    <div class="mb-3">
-                                                        <label for="serviceName" class="form-label">Breed of
-                                                            Pet:</label>
-                                                        <input type="text" class="form-control" style="width: 465px;"
-                                                            id="serviceName<?php echo $service['serviceID']; ?>"
-                                                            value="<?php echo $service['serviceName']; ?>" required>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer justify-content-between" style="border: none;">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-bs-dismiss="modal">Cancel</button>
-                                                <button type="button" class="btn btn-primary"
-                                                    style="background-color: #065916; border: none;"
-                                                    onclick="updateService(<?php echo $service['serviceID']; ?>)">Update</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="crud-btn">
                                     <a href="" class="crud-icon-delete" data-bs-toggle="modal"
-                                        data-bs-target="#deleteServiceModal<?php echo $service['serviceID']; ?>">
+                                        data-bs-target="#deleteBreedModal<?php echo $breed['petBreedID']; ?>">
                                         <i class="fa-solid fa-trash-can m-1" aria-hidden="true"></i>
                                     </a>
                                 </div>
-                                <div class="modal fade" id="deleteServiceModal<?php echo $service['serviceID']; ?>"
-                                    tabindex="-1" aria-labelledby="deleteServiceModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="deleteBreedModal<?php echo $breed['petBreedID']; ?>"
+                                    tabindex="-1" aria-labelledby="deleteBreedModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
-                                            <h4 class="modal-title m-4 text-center" id="deleteServiceModalLabel">Are you
-                                                sure you want to delete this Category?</h4>
+                                            <h4 class="modal-title m-4 text-center" id="deleteBreedModalLabel">Are you
+                                                sure you want to delete this breed?</h4>
                                             <div class="modal-footer justify-content-between" style="border: none;">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Cancel</button>
                                                 <button type="button" class="btn btn-primary"
                                                     style="background-color: #FF0000; border: none;"
-                                                    onclick="deleteService(<?php echo $service['serviceID']; ?>)">Delete</button>
+                                                    onclick="deleteBreed(<?php echo $breed['petBreedID']; ?>)">Delete</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                    <?php endforeach;
-                    $counter++ ?>
+                    <?php endforeach;?>
 
 
                 </tbody>
@@ -373,41 +313,40 @@ require_once ('./include/admin-head.php');
 
 
         <script>
-            function updateService(serviceID) {
-                var serviceName = document.getElementById('serviceName' + serviceID).value;
-                var serviceDescription = document.getElementById('serviceDescription' + serviceID).value;
-                var servicePrice = document.getElementById('servicePrice' + serviceID).value;
 
+            function deleteType(petTypeID) {
                 var xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         if (xhr.status === 200) {
+                            alert('Pet Type deleted successfully!');
                             window.location.reload();
                         } else {
-                            alert('Failed to update service.');
+                            alert('Failed to delete pet type.');
                         }
                     }
                 };
-                xhr.open('POST', 'update_service.php', true);
+                xhr.open('POST', 'delete-type.php', true);
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                xhr.send('serviceID=' + serviceID + '&serviceName=' + encodeURIComponent(serviceName) + '&serviceDescription=' + encodeURIComponent(serviceDescription) + '&servicePrice=' + encodeURIComponent(servicePrice));
+                xhr.send('petTypeID=' + petTypeID);
+
             }
 
-            function deleteService(serviceID) {
+            function deleteBreed(petBreedID) {
                 var xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         if (xhr.status === 200) {
-                            alert('Service deleted successfully!');
+                            alert('Breed deleted successfully!');
                             window.location.reload();
                         } else {
-                            alert('Failed to delete service.');
+                            alert('Failed to delete petBreed.');
                         }
                     }
                 };
-                xhr.open('POST', 'delete_service.php', true);
+                xhr.open('POST', 'delete-breed.php', true);
                 xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                xhr.send('serviceID=' + serviceID);
+                xhr.send('petBreedID=' + petBreedID);
 
             }
         </script>
