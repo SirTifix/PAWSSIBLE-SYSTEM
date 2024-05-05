@@ -10,7 +10,7 @@ require_once ('./tools/functions.php');
 
 $customer = new Register();
 $booking = new Booking();
-$bookingData = $booking->showAllBooking();
+$bookingData = $booking->showAllBookingWithStatusFilter();
 $pendingCount = 0;
 
 foreach ($bookingData as $booking2) {

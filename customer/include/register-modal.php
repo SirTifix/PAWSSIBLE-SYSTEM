@@ -22,13 +22,20 @@ if (isset($_POST['register'])) {
         !$user->is_email_exist()
     ) {
         if ($user->add()) {
+            $_SESSION['error'] = null;
+            $_SESSION['email_exist'] = null;
             $message = 'Account successfully created!';
             echo "<script>window.location.href = './include/success-registered.php';</script>";
         } else {
             echo 'An error occurred while adding in the database.';
         }
     } else {
-        $form_submission_failed = true;
+        if($user->is_email_exist()){
+            $_SESSION['email_exist'] = "Email already exist";
+        }
+        $_SESSION['error'] = 'Please check your input and try again.';
+        $_SESSION['form_submission_failed'] = true;
+        echo "<script>window.location.href = './index.php';</script>";
     }
 }
 ?>
@@ -39,10 +46,10 @@ if (isset($_POST['register'])) {
                     <div class="modal-body pr-3 pl-3 pb-3">
                         <section class="p-sm-3 d-flex justify-content-center align-items-center">
                             <div class="col-12 col-lg-10 col-lg-4">
-                            <?php if (isset($form_submission_failed) && $form_submission_failed): ?>
+                            <?php if (isset($_SESSION['form_submission_failed']) && $_SESSION['form_submission_failed']): ?>
                                                     <!-- Display error message here -->
                                                     <div class="alert alert-danger my-1 mb-3 text-center" role="alert">
-                                                        Please fill the required forms.
+                                                     Please check your input and try again.
                                                     </div>
                             <?php endif; ?>
                                 <h1 class="h1 text-center mb-5" style="color: #5263AB; font-weight: bold;">Register</h1>
@@ -77,24 +84,12 @@ if (isset($_POST['register'])) {
                                             echo $_POST['email'];
                                         } ?>" required>
                                         <?php
-                                        $new_user = new Register();
-                                        if (isset($_POST['email'])) {
-                                            $new_user->email = htmlentities($_POST['email']);
-                                        } else {
-                                            $new_user->email = '';
-                                        }
-
-                                        if (isset($_POST['email']) && strcmp(validate_email($_POST['email']), 'success') != 0) {
-                                            ?>
-                                                                    <p class="text-danger my-1"><?php echo validate_email($_POST['email']) ?></p>
-                                                            <?php
-                                        } else if ($new_user->is_email_exist() && $_POST['email']) {
-                                            ?>
-                                                <div class="invalid-feedback">
-                                                  Email already exist.
-                                                </div>
-                                                        <?php
-                                        }
+                                          if (isset($_SESSION['email_exist'])): ?>
+                                            <p class="text-danger">
+                                                <?= $_SESSION['email_exist'] ?>
+                                            </p>
+                                        <?php    
+                                            endif;
                                         ?>
                                     </div>
                                     <div class="mb-3">
@@ -119,23 +114,8 @@ if (isset($_POST['register'])) {
                                         }
                                         ?>
                                     </div>
-                                    <div class="or-divider my-3">
-                                        <span class="or-text">Or</span>
+                                    <div class="my-3">
                                     </div>
-                                        <div class="row mb-3">
-                                            <div class="col-md-6 text-center">
-                                                <!-- Facebook Button -->
-                                                <a href="#" class="btn btn-primary brand-bg-color btn-social" style="width: 150px">
-                                                    <i class="fab fa-facebook-f"></i>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-6 text-center">
-                                                <!-- Google Button -->
-                                                <a href="#" class="btn btn-danger brand-bg-color btn-social" style="width: 150px">
-                                                    <i class="fab fa-google"></i> 
-                                                </a>
-                                            </div>
-                                        </div>
                                     <div class="col-12 col-md-6 col-md-4 mt-5 mx-auto text-center">
                                         <button type="submit" name="register" class="btn btn-create-account py-2 px-3" style="background-color: #5263AB; color: white; font-weight: bold; border-radius: 10px;">Create Account</button>
                                     </div>

@@ -12,11 +12,26 @@ $title = 'Pawssible Solutions Veterinary';
 require_once ('./include/user-head.php');
 ?>
 <body>
+  <?php
+  if (isset($_SESSION['error'])) {
+    ?>
+        <div class="alert-error fixed-top top-1 start-50 translate-middle my-5" style="width:500px">
+         <div class="alert alert-danger alert-dismissible d-flex align-items-center fade show" role="alert">
+            <div>
+              <?= $_SESSION['error'] ?>
+            </div>
+           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+         </div>
+        </div>
+      <?php
+  }
+  ?>
     <?php
     require_once ('./include/user-header.php')
       ?>
     <section class="uno d-flex col-12">
         <div class="intro col-11"> 
+                              
             <h1>Your Pet's Health,</h1>
             <h1>Our Priority</h1> 
             <div class="border-line"></div>
@@ -142,11 +157,7 @@ require_once ('./include/user-head.php');
 
     ?>
     <script>
-      document.getElementById('menu-toggle').addEventListener('click', function() {
-          document.getElementById('navbar-links').classList.toggle('active');
-      });
-
-      const forms = document.querySelectorAll('.needs-validation')
+    const forms = document.querySelectorAll('.needs-validation')
 
       // Loop over them and prevent submission
       Array.from(forms).forEach(form => {
@@ -160,6 +171,9 @@ require_once ('./include/user-head.php');
         }, false)
       })
 
+      document.getElementById('menu-toggle').addEventListener('click', function() {
+          document.getElementById('navbar-links').classList.toggle('active');
+      });
     </script>
 </body>
 </html>

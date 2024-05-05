@@ -99,7 +99,7 @@ require_once('./include/admin-head.php');
 
                         <?php
                         if ($customerArray) {
-                            foreach ($customerArray as $item) {
+                            foreach ($customerArray as $item) :
                         ?>
                                 <tr>
                                     <td>
@@ -116,7 +116,19 @@ require_once('./include/admin-head.php');
                                             <a href="update-customer.php?customerID=<?= $item['customerID'] ?>" class="crud-icon-update"><i class="fa-regular fa-pen-to-square" aria-hidden="true"></i></a>
                                         </div>
                                         <div class="crud-btn">
-                                            <a href="" class="crud-icon-delete" data-bs-toggle="modal" data-bs-target="#deleteDModal" data-customer-id="<?= $item['customerID'] ?>"><i class="fa-regular fa-trash-can" aria-hidden="true"></i></a>
+                                            <a href="" class="crud-icon-delete" data-bs-toggle="modal" data-bs-target="#deleteDModal<?= $item['customerID'] ?>" data-customer-id=""><i class="fa-regular fa-trash-can" aria-hidden="true"></i></a>
+                                            <div class="modal fade" id="deleteDModal<?= $item['customerID'] ?>" tabindex="-1" aria-labelledby="deleteDModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
+                                                            this Customer?</h4>
+                                                        <div class="modal-footer justify-content-between" style="border: none;">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                            <button type="button" class="btn btn-primary" id="confirmDelete" data-customer-id="" onclick="deleteCustomer(<?= $item['customerID'] ?>)" style="background-color: #FF0000; border: none;">Delete</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="crud-btn">
                                             <a href="customer-info.php?customerID=<?= $item['customerID'] ?>" class=""><i class="fa fa-ellipsis-h me-2" aria-hidden="true"></i></a>
@@ -125,7 +137,7 @@ require_once('./include/admin-head.php');
                                 </tr>
                         <?php
                                 $counter + 1;
-                            }
+                            endforeach;
                         }
                         ?>
                     </tbody>
@@ -151,27 +163,9 @@ require_once('./include/admin-head.php');
             </div>
         </section>
 
-        <section>
-            <div class="modal fade" id="deleteDModal" tabindex="-1" aria-labelledby="deleteDModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
-                            this Customer?</h4>
-                        <div class="modal-footer justify-content-between" style="border: none;">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" id="confirmDelete" data-customer-id="" style="background-color: #FF0000; border: none;">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         </div>
-
-
         <script>
-            document.getElementById('confirmDelete').addEventListener('click', function() {
-                var customerID = this.getAttribute('data-customer-id');
+            function deleteCustomer(customerID) {
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'delete-customer.php');
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -183,7 +177,7 @@ require_once('./include/admin-head.php');
                     }
                 };
                 xhr.send('customerID=' + customerID);
-            });
+            };
 
             document.querySelector('.crud-icon-delete').addEventListener('click', function() {
                 var customerID = this.getAttribute('data-customer-id');

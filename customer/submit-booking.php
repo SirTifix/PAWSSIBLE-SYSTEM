@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $contactNumber = $_POST['contactNumber'];
     $numberPets = $_POST['pets'];
     $_SESSION['noofpets'] = $_POST['pets'];
-    $status = 'Pending';
+    $status = 'Approved';
     $selectedDate = $_POST['selectedDate'];
     $selectedTime = $_POST['selectedTime'];
 
