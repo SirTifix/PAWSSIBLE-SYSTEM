@@ -79,7 +79,8 @@ class Booking
             (:bookingID, :customerID, :firstname, :middlename, :lastname, :emailAddress, :contactNumber, :numberPets, :status, :bookingDate, :bookingTime);";
 
             $query = $this->db->connect()->prepare($sql);
-            $query->bindParam(':bookingID', $bookingID);
+            $param = $this->bookingID ?? $bookingID;
+            $query->bindParam(':bookingID', $param);
             $query->bindParam(':customerID', $this->customerID);
             $query->bindParam(':firstname', $this->firstname);
             $query->bindParam(':middlename', $this->middleName);

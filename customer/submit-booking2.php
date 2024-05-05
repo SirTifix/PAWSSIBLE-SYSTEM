@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $bookingIDs = [];
     if(isset($_SESSION['customerID'])) {
         
-
         for ($i = 0; $i < count($_POST['pet_index']); $i++) {
             $petIndex = $_POST['pet_index'][$i];
             $customerID = $_POST['customerID'][$petIndex];

@@ -30,6 +30,7 @@ require_once('./tools/functions.php');
                 <div class="form-row">
                     <input type="hidden" name="pet_index[]" value="<?php echo $i; ?>">
                     <input type="hidden" name="bookingID[]" value="<?php echo isset($_GET['bookingID']) ? $_GET['bookingID'] : ''; ?>">
+                    <input type="hidden" name="customerID[]" value="<?php echo isset($_GET['customerID']) ? $_GET['customerID'] : ''; ?>">
                     <div class="form-group col-sm-2  background-color">
                         <label for="petName">
                             <h5>Pet Name</h5>

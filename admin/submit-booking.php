@@ -6,8 +6,8 @@ require_once ('../classes/customer.class.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $booking = new Booking();
     $customer = new Customer();
+    $generateBookingID = $booking->generateUniqueBookingID();
 
-    $customerID = null;
     $firstname = $_POST['firstName'];
     $middlename = $_POST['middleName'];
     $lastname = $_POST['lastName'];
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $selectedDate = $_POST['selectedDate'];
     $selectedTime = $_POST['selectedTime'];
 
-    $booking->customerID = $customerID;
+    $booking->bookingID = $generateBookingID;
     $booking->firstname = $firstname;
     $booking->middleName = $middlename;
     $booking->lastname = $lastname;
@@ -29,10 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $booking->status = $status;
     $booking->bookingDate = $selectedDate;
     $booking->bookingTime = $selectedTime;
-    $savedBookingId = $booking->add();
 
     $customer->customerFirstname = $firstname;
-    $customer->bookingID = $savedBookingId;
+    $customer->bookingID = $generateBookingID;
     $customer->customerMiddlename = $middlename;
     $customer->customerLastname = $lastname;
     $customer->customerEmail = $email;
@@ -44,8 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $customer->customerPostal = "";
 
     $savedCustomerId = $customer->add();
+
+    $booking->customerID = $savedCustomerId;
     
-    echo "<script>window.location.href = './appointment-booking2.php?bookingID={$savedBookingId}&customerID={$savedCustomerId}';</script>";
+    $savedBookingId = $booking->add();
+    
+    echo "<script>window.location.href = './appointment-booking2.php?bookingID={$generateBookingID}&customerID={$savedCustomerId}';</script>";
     // Return success response with booking ID*/
     echo json_encode(array('success' => true, 'bookingID' => $savedBookingId));
 } else {
