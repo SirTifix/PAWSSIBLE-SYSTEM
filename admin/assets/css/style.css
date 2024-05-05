@@ -1017,6 +1017,15 @@ header {
 #customer th.text-center, #customer td.text-center {
     text-align: center; /* Center-align text within cells with class "text-center" */
 }
+
+    .pet-head-form{
+        background: rgb(119,132,190);
+        text-align: center;
+        height: 80px;
+        margin-top: 30px;
+        margin-left: 34px;
+        width: 87%;
+    }
     .cus-head-form{
 
 
@@ -1045,6 +1054,10 @@ header {
     color: white;
    
 }
+
+.pet-head-form h2{
+    color: white;
+}
 .customer-info-icon {
     margin-bottom: -20px; /* Adjust as needed */
 }
@@ -1072,6 +1085,8 @@ header {
 .pet-categories-container{
     display: flex;
     flex-direction: row;
+    margin-left: 23%;
+
 }
 .closebtn {
     position: absolute;

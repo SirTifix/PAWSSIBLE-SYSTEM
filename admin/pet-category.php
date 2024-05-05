@@ -60,9 +60,9 @@ require_once ('./include/admin-head.php');
             </div>
         </section>
 
-        <section class="table-con">
+        <section class="pet-table-con">
             <section class="customer-info-icon row">
-                <div class="cus-head-form col-11 d-flex justify-content-between align-items-center mb-3">
+                <div class="pet-head-form col-11 d-flex justify-content-between align-items-center mb-3">
                     <div class="col-12 d-flex justify-content-between align-items-center px-3">
                         <div class="customer-info-head">
                             <h2>Type of Pet </h2>
@@ -97,7 +97,7 @@ require_once ('./include/admin-head.php');
             </form>
         </section>
 
-        <div class="table-con px-4">
+        <div class="pet-table-con px-4">
             <table id="customer" class="table table-striped table-sm text-center">
                 <thead>
                     <tr class="table-headpet text-center">
@@ -221,9 +221,9 @@ require_once ('./include/admin-head.php');
             </div>
         </section>
 
-        <section class="table-con">
+        <section class="pet-table-con">
             <section class="customer-info-icon row">
-                <div class="cus-head-form col-11 d-flex justify-content-between align-items-center mb-3">
+                <div class="pet-head-form col-11 d-flex justify-content-between align-items-center mb-3">
                     <div class="col-12 d-flex justify-content-between align-items-center px-3">
                         <div class="customer-info-head">
                             <h2>Pet Breed </h2>
@@ -258,7 +258,7 @@ require_once ('./include/admin-head.php');
             </form>
         </section>
 
-        <div class="table-con px-4">
+        <div class="pet-table-con px-4">
             <table id="customer" class="table table-striped table-sm text-center">
                 <thead>
                     <tr class="table-headpet text-center">
