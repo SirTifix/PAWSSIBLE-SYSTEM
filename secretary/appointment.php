@@ -24,15 +24,48 @@
 
     <section class="table-con">
     <section class="customer-info-icon row">
-        <div class="cus-head-form col-12 col-md-11 mb-3 d-flex justify-content-between align-items-center">
+        <div class="cus-head-form col-12 col-md-11 mb-3 d-flex justify-content-between align-items-center px-4">
             <div class="customer-info-head">
                 <h2>Appointment</h2>
             </div>
-            <div class="col-md-4 col-12 d-flex justify-content-end">
-                <div class="search-container my-1">
-                    <div class="search-wrapper d-flex align-items-center">
-                        <input type="text" class="search form-control" placeholder="Search...">
-                        <i class="search-icon fas fa-search" aria-hidden="true"></i>
+            <div class="row">
+                <div class="form-group col-8 col-sm-auto">
+                    <div class="d-flex align-items-center">
+                        <div class="search-container col-auto my-1 pe-4">
+                            <div class="search-wrapper d-flex align-items-center m-0 row">
+                                <input type="text" class="search col-10" placeholder="search.....">
+                                <i class="search-icon fas fa-search col-2" aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+                        <select id="dateRangeSelect" class="form-select ms-3">
+                            <option value="today">Today</option>
+                            <option value="thisYear">This Year</option>
+                            <option value="lastYear">Last Year</option>
+                            <option value="custom" class="custom-option">Custom</option>
+                        </select>
+
+                        <div id="customDateContainer" class="ms-3">
+                            <div id="customDateRange" class="customDateRange">
+                                <label for="startDate" class="my-1">After:</label>
+                                <input type="date" id="startDate" class="my-1" name="startDate">
+                                <label for="endDate" class="my-2">Before:</label>
+                                <input type="date" id="endDate" name="endDate">
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <button type="button" class="btn btn-secondary btn-height">Cancel</button>
+                                    <button type="button" class="btn btn-primary btn-height">Apply</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-4 col-sm-auto">
+                            <select name="status" class="form-select">
+                                <option value="">All Status</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Done">Done</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>

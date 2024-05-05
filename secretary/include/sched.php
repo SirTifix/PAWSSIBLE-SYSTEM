@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="vendor/bootstrap-5.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/sched.css">
 </head>
+
+<body>
+    
 <script>
     function confirmLogout() {
         // Display a confirmation dialog

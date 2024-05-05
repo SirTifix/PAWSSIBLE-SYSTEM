@@ -45,45 +45,39 @@ require_once('./include/admin-head.php');
                             <h2>Customer Records </h2>
                         </div>
                         <div class="row">
-    <div class="form-group col-8 col-sm-auto">
-        <div class="d-flex align-items-center">
-            <div class="search-container col-auto my-1">
-                <div class="search-wrapper d-flex align-items-center m-0 row">
-                    <input type="text" class="search col-10" placeholder="search.....">
-                    <i class="search-icon fas fa-search col-2" aria-hidden="true"></i>
-                </div>
-            </div>
+                            <div class="form-group col-8 col-sm-auto">
+                                <div class="d-flex align-items-center">
+                                    <div class="search-container col-auto my-1 pe-4">
+                                        <div class="search-wrapper d-flex align-items-center m-0 row">
+                                            <input type="text" class="search col-10" placeholder="search.....">
+                                            <i class="search-icon fas fa-search col-2" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
 
-            <select id="dateRangeSelect" class="form-select ms-3">
-                <option value="today">Today</option>
-                <option value="thisYear">This Year</option>
-                <option value="lastYear">Last Year</option>
-                <option value="custom" class="custom-option">Custom</option>
-            </select>
+                                    <select id="dateRangeSelect" class="form-select ms-3">
+                                        <option value="today">Today</option>
+                                        <option value="thisYear">This Year</option>
+                                        <option value="lastYear">Last Year</option>
+                                        <option value="custom" class="custom-option">Custom</option>
+                                    </select>
 
-            <div id="customDateContainer" class="ms-3">
-                <div id="customDateRange" class="customDateRange">
-                    <label for="startDate" class="my-1">After:</label>
-                    <input type="date" id="startDate" class="my-1" name="startDate">
-                    <label for="endDate" class="my-2">Before:</label>
-                    <input type="date" id="endDate" name="endDate">
-                    <div class="d-flex justify-content-between align-items-center mt-3">
-                        <button type="button" class="btn btn-secondary btn-height">Cancel</button>
-                        <button type="button" class="btn btn-primary btn-height">Apply</button>
+                                    <div id="customDateContainer" class="ms-3">
+                                        <div id="customDateRange" class="customDateRange">
+                                            <label for="startDate" class="my-1">After:</label>
+                                            <input type="date" id="startDate" class="my-1" name="startDate">
+                                            <label for="endDate" class="my-2">Before:</label>
+                                            <input type="date" id="endDate" name="endDate">
+                                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                                <button type="button" class="btn btn-secondary btn-height">Cancel</button>
+                                                <button type="button" class="btn btn-primary btn-height">Apply</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group col-4 col-sm-auto">
-        <select name="status" class="form-select">
-            <option value="">All Status</option>
-            <option value="Active">Active</option>
-            <option value="Deactivated">Deactivated</option>
-        </select>
-    </div>
-</div>
             </section>
             <div class="table-wrapper ">
                 <table id="customer" class="table table-striped table-sm">

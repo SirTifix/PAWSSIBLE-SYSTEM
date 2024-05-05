@@ -25,39 +25,45 @@ require_once ('../classes/veterinarian.class.php');
                         <div class="customer-info-head">
                             <h2>Veterinarian Accounts </h2>
                         </div>
-                        <div class="row ">
+                        <div class="row">
                             <div class="form-group col-8 col-sm-auto">
-                                <select id="dateRangeSelect" class="form-select">
-                                    <option value="today">Today</option>
-                                    <option value="thisYear">This Year</option>
-                                    <option value="lastYear">Last Year</option>
-                                    <option value="custom" class="custom-option">Custom date range</option>
-                                </select>
-
-
-                                <div id="customDateContainer">
-                                    <div id="customDateRange" class="customDateRange">
-                                        <label for="startDate" class="my-1">After:</label>
-                                        <input type="date" id="startDate" class="my-1" name="startDate">
-
-                                        <label for="endDate" class="my-2">Before:</label>
-                                        <input type="date" id="endDate" name="endDate">
-
-                                        <div class="d-flex justify-content-between align-items-center mt-3">
-                                            <button type="button" class="btn btn-secondary">Cancel</button>
-                                            <button type="button" class="btn btn-primary">Apply</button>
+                                <div class="d-flex align-items-center">
+                                    <div class="search-container col-auto my-1 pe-4">
+                                        <div class="search-wrapper d-flex align-items-center m-0 row">
+                                            <input type="text" class="search col-10" placeholder="search.....">
+                                            <i class="search-icon fas fa-search col-2" aria-hidden="true"></i>
                                         </div>
+                                    </div>
 
+                                    <select id="dateRangeSelect" class="form-select ms-3">
+                                        <option value="today">Today</option>
+                                        <option value="thisYear">This Year</option>
+                                        <option value="lastYear">Last Year</option>
+                                        <option value="custom" class="custom-option">Custom</option>
+                                    </select>
+
+                                    <div id="customDateContainer" class="ms-3">
+                                        <div id="customDateRange" class="customDateRange">
+                                            <label for="startDate" class="my-1">After:</label>
+                                            <input type="date" id="startDate" class="my-1" name="startDate">
+                                            <label for="endDate" class="my-2">Before:</label>
+                                            <input type="date" id="endDate" name="endDate">
+                                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                                <button type="button" class="btn btn-secondary btn-height">Cancel</button>
+                                                <button type="button" class="btn btn-primary btn-height">Apply</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-4 col-sm-auto">
+                                        <select name="status" class="form-select">
+                                            <option value="">All Status</option>
+                                            <option value="Approved">Approved</option>
+                                            <option value="Done">Done</option>
+                                            <option value="Cancelled">Cancelled</option>
+                                        </select>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group col-4 col-sm-auto">
-                                <select name="status" class="form-select">
-                                    <option value="">All Status</option>
-                                    <option value="Available">Available</option>
-                                    <option value="Unavailable">Unavailable</option>
-                                </select>
                             </div>
                         </div>
                     </div>

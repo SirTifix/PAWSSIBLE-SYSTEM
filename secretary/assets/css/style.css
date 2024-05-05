@@ -25,7 +25,7 @@ header {
 
 .logosec{
     height: auto;
-    width: 20%;
+    width: 100px;
 }
 
 .logo-text {
@@ -53,10 +53,10 @@ header {
     display: flex;
     border: 1px solid rgba(0, 0, 0, 0.276);
     align-items: center;
-    border-radius: 50px;
+    border-radius: 10px;
     background-color: #fff;
     overflow: hidden;
-    padding: 4px 20px;
+    padding: 6px 20px;
 }
 
 .search {
@@ -66,6 +66,10 @@ header {
 
 .search:focus {
     outline: none;
+}
+
+.search:hover {
+    background-color: transparent; /* Remove yellow hover effect */
 }
 
 .search-icon {
@@ -142,7 +146,7 @@ header {
     margin-bottom: 20px;
 }
 
-.side-panel-links {
+.sidepanel {
     align-items: start;
 }
 
@@ -254,13 +258,34 @@ header {
     padding: 10px 10px;
 }
 
-.crud-btn {
+.crud-btn , .crud-btn-add{
     display: flex;
     justify-content: center;
     /* Horizontally center */
     align-items: center;
     /* Vertically center */
     padding-left: 10px;
+}
+
+.nxt-btn {
+    background-color: white;
+    border-radius: 5px;
+    padding: 6px 16px;
+    color: black;
+    text-decoration: none;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    /* Horizontally center */
+    align-items: center;
+    /* Vertically center */
+}
+
+.nxt-btn:hover {
+    background-color: #3A3F54;
+    /* Change text color on hover */
+    color: white;
+    border-radius: 5px;
 }
 
 .crud-text {
@@ -317,6 +342,9 @@ header {
 }
 
 /* Veterinarian Account Table */
+.table-con {
+    margin-left: 260px;
+}
 .table-con {
     margin-left: 260px;
 }
@@ -413,7 +441,7 @@ header {
 
 
 .form-control {
-    width: 330px;
+    width: 100%;
     margin-bottom: 10px;
     box-sizing: border-box;
 }
@@ -429,6 +457,22 @@ header {
 }
 
 .create-vet-btn:hover {
+    background-color: #828aa9;
+    /* Change text color on hover */
+    color: white;
+}
+
+.create-secretary-btn {
+    padding: 10px 30px;
+    background-color: #3A3F54;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.create-secretary-btn:hover {
     background-color: #828aa9;
     /* Change text color on hover */
     color: white;
@@ -729,27 +773,6 @@ header {
     background-color: #d0d0d0; /* Change background color on click */
 }
 
-.search-con {
-    background-color: #fff;
-    overflow: hidden;
-    padding: 5px 10px;
-    border: 1px solid rgba(0, 0, 0, 0.276);
-    width: 300px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-}
-
-.search-input {
-    flex-grow: 1; /* Allow the input to grow and take up remaining space */
-    width: 100%; /* Make the input take up 100% of the available space */
-    border: none;
-}
-
-.search-input:hover {
-    background-color: transparent; /* Remove yellow hover effect */
-}
-
 .profile-pic {
     background-color: #EAEAEA !important;
     width: 250px;
@@ -809,9 +832,7 @@ header {
     font-size: 1.1em;
 }
 
-.table-headpet th {
-    background-color: #8493D9;
-}
+
 
 .table-bodypet td {
     background-color: white; /* Set background color to white */
@@ -965,8 +986,9 @@ header {
 
 }
 .vac-container{
-   margin:20px;
-   margin-left: 70px;
+   margin-top: 10px;
+   margin-left: 56px;
+   
 }
 .form-label-petType {
    
@@ -980,14 +1002,9 @@ header {
     margin-bottom: 10px;
     box-sizing: border-box;
 }
+
 /* TABLE */
-.veterinarian-con {
-    padding-top: 72px;
- 
-}
-.table-con-vet {
-    margin-left: 160px;
-}
+
 .table-wrapper {
     padding: 10px; /* Add space around the table */
 
@@ -1000,13 +1017,28 @@ header {
 #customer th.text-center, #customer td.text-center {
     text-align: center; /* Center-align text within cells with class "text-center" */
 }
+
+    .pet-head-form{
+        background: rgb(119,132,190);
+        text-align: center;
+        height: 80px;
+        margin-top: 30px;
+        margin-left: 34px;
+        width: 87%;
+    }
     .cus-head-form{
+
 
         background: rgb(119,132,190);
        
+       
         text-align: center;
        
+       
         height: 80px;
+        
+        margin-top:30px;
+        margin-left: 30px;
         
         margin-top:30px;
         margin-left: 30px;
@@ -1022,6 +1054,10 @@ header {
     color: white;
    
 }
+
+.pet-head-form h2{
+    color: white;
+}
 .customer-info-icon {
     margin-bottom: -20px; /* Adjust as needed */
 }
@@ -1032,5 +1068,135 @@ header {
 }
 .crud-btn-add {
    padding-top: 20px;
-  
+   
 }
+
+
+/* Secretary side Panel */
+.table-con-sec{
+    margin-left: 260px;
+    padding-top: 115px;
+}
+.pagination {
+    bottom: 0;
+    right: 0;
+}
+
+.pet-categories-container{
+    display: flex;
+    flex-direction: row;
+    margin-left: 23%;
+
+}
+.closebtn {
+    position: absolute;
+    top: -9999px; /* Position off-screen */
+    left: -9999px; /* Position off-screen */
+}
+/* RESPONSIVE */
+/* Hide the sidebar by default */
+.side-panel {
+    display: none;
+}
+
+/* Show the sidebar on smaller screens */
+@media only screen and (max-width: 500px) {
+   .logo-text{
+    display: none;
+   }
+   .closebtn {
+    display: block;
+ 
+
+}
+.side-panel {
+    display: block;
+    width: 0; 
+    position: fixed; 
+    z-index: 1; 
+    top: -30px;
+
+    left: 0;
+    overflow-x: hidden; 
+    transition: width 0.5s; /* Specify 'width' in the transition property */
+}
+
+/* Add styles for when the side panel is open */
+
+    .side-panel a {
+        padding: 5px ;
+        padding-left: 32px;
+        text-decoration: none;
+        font-size: 1.2rem;
+     
+        display: block;
+        transition: 0.3s;
+    }
+    
+    /* When you mouse over the navigation links, change their color */
+    .side-panel a:hover {
+        color: #f1f1f1;
+    }
+    
+    /* Position and style the close button (top right corner) */
+    .side-panel .closebtn {
+        position: absolute;
+        top: 100px;
+        left: 80px;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+        display: block;
+    }
+    
+    /* Style the button that is used to open the sidepanel */
+    .openbtn {
+        display: block;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #2a2f4f;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        position: fixed;
+        top: 90px;
+        left: 10px;
+        border-radius: 5px;
+    }
+    .openbtn:hover {
+        background-color: #444;
+    }
+    /* DASHBOARD */
+    .dashboard-con {
+        margin-left: 60px;
+        padding-top: 68px;
+    }
+    .dashboard-box{
+        width: 70%;
+    }
+    .crud-text{
+        margin-right: 100px;
+        width: 130px;
+        font-size: 0.98rem;
+    }
+}
+@media (max-width: 767px) {
+      .box {
+        padding: 10px;
+      }
+
+      .dashboard-box {
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .chart-box {
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .pagination {
+        margin-top: 10px;
+      }
+
+    }

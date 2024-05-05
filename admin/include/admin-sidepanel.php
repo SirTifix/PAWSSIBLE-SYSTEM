@@ -1,5 +1,4 @@
 <div class="side-panel d-flex flex-column" id="sidePanel">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" >&times;</a>
     <i class="admin-icon fa-solid fa-circle-user align-items-center"></i>
     <div class="admin-header pt-2 pe-2">Admin</div>
     <div class="border-line"></div>
@@ -14,14 +13,3 @@
     <a href="pet-category.php" class="sidebar-text align-items-center"><i class="fa-solid fa-shield-dog"></i> Pet Categories</a>
     <a href="account-setting.php" class="sidebar-text align-items-center"><i class="fa-solid fa-gear" aria-hidden="true"></i> Settings</a>
 </div>
-<button class="openbtn" onclick="openNav()"><i class="fa fa-home"></i></button>
-
-<script>
-    function openNav() {
-        document.getElementById("sidePanel").style.width = "200px";
-    }
-
-    function closeNav() {
-        document.getElementById("sidePanel").style.width = "0";
-    }
-</script>

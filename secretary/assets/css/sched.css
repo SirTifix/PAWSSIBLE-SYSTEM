@@ -24,7 +24,7 @@ header {
 
 .logosec, img {
     height: auto;
-    width: 20%;
+    width: 100px;
 }
 
 .logo-text {
@@ -823,8 +823,7 @@ button {
     margin-right: 20px; /* Add spacing between calendar and time container */
     background-color: #ffffff;
     border-radius: 15px;
-    height: 580px;
-
+    
     border: 1px solid #dee2e6; /* Border style */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -893,8 +892,7 @@ button {
     background-color: #fffcfc;
     flex-direction: column; 
     border-radius: 15px;
-    height: 580px;
-
+    height: 630px;
 }
 
 .time-slots-container {
@@ -1116,6 +1114,7 @@ button {
     background: #ede9e4;
 
 }
+
 .cal{
     margin-top: -30px;
 }
