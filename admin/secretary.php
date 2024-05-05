@@ -35,7 +35,7 @@ require_once('../classes/secretary.class.php');
                                     <option value="today">Today</option>
                                     <option value="thisYear">This Year</option>
                                     <option value="lastYear">Last Year</option>
-                                    <option value="custom" class="custom-option">Custom date range</option>
+                                    <option value="custom" class="custom-option">Custom</option>
                                 </select>
 
 
