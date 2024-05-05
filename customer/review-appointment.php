@@ -163,13 +163,8 @@ if (!empty($appointmentInfo['appointmentData'])) {
 
 
                                         <?php
-                                        // your existing code...
-                                        
-                                        // Check if appointment data exists
                                         if (!empty($appointmentInfo['appointmentData'])) {
-                                            // Loop through each appointment data
                                             foreach ($appointmentInfo['appointmentData'] as $bookingData) {
-                                                // Extract pet information for each booking
                                                 $bookingPetID = $bookingData['bookingPetID'];
                                                 $petName = $bookingData['petName'];
                                                 $petType = $bookingData['petType'];
@@ -180,11 +175,9 @@ if (!empty($appointmentInfo['appointmentData'])) {
                                                 $serviceID = $bookingData['serviceID'];
                                                 $vetID = $bookingData['vetID'];
 
-                                                // Fetch service and veterinarian information
                                                 $serviceName = $service->fetch($serviceID);
                                                 $vets = $veterinarian->showVetByID($vetID);
                                                 ?>
-                                                        <!-- Start of pet information form -->
                                                         <div class="pet-info-form background-color-container container mt-4 p-4">
                                                             <h2 class="mb-4">Pet Information Form #<?php echo $bookingPetID; ?></h2>
                                                             <div class="form-row">

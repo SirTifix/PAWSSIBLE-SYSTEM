@@ -108,6 +108,9 @@ timeSlots.forEach((timeSlot) => {
       );
       const selectedTime = timeSlot.dataset.time; // Get the time from the data-time attribute
       openModal(selectedDate, selectedTime); // Call the openModal function
+      $(document).ready(function () {
+        $("#calendarModal").modal("hide");
+    });
     } else {
       alert("Please select a date from the calendar first.");
     }

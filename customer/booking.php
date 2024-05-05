@@ -55,7 +55,7 @@ $title = 'Booking';
 require_once ('./include/customer-header.php');
 ?>
 <body>
-  <div class="alert-error fixed-top top-0 start-50 my-3" style="width:500px"></div>
+  <div class="alert-error fixed-top top-1 start-50 translate-middle my-5" style="width:500px"></div>
   <div class="avail-date">
     <h2> <strong> SELECT DATE </strong></h2>
   </div>

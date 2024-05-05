@@ -15,6 +15,7 @@
       $veterinarianClass->vetLastname = htmlentities($_POST['vetLastname']);
       $veterinarianClass->vetPhone = htmlentities($_POST['vetPhone']);
       $veterinarianClass->vetEmail = htmlentities($_POST['vetEmail']);
+      $veterinarianClass->vetStatus = "Available";
       $veterinarianClass->vetUsername = htmlentities($_POST['vetUsername']);
       $veterinarianClass->vetPassword = htmlentities($_POST['vetPassword']);
       $veterinarianClass->created_at = $currentDateTime;

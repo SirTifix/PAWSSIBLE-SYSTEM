@@ -61,18 +61,18 @@ require_once ('./include/admin-head.php');
                             <div class="form-group col-6 col-sm-auto">
                                 <select id="dateRangeSelect" class="form-select">
                                     <option value="">Select Pet Type</option>
-                                    <option value="all">All</option>
-                                    <option value="dog">Dog</option>
-                                    <option value="cat">Cat</option>
+                                    <option value="All">All</option>
+                                    <option value="Dog">Dog</option>
+                                    <option value="Cat">Cat</option>
                                 </select>
                             </div>
 
                             <div class="form-group col-6 col-sm-auto">
                                 <select name="status" class="form-select">
                                     <option value="">Select Vaccine Type</option>
-                                    <option value="vaccine1">Annual Booster</option>
-                                    <option value="vaccine2">Primary Series</option>
-                                    <option value="vaccine3">Deworming</option>
+                                    <option value="Annual Booster">Annual Booster</option>
+                                    <option value="Primary Series">Primary Series</option>
+                                    <option value="Deworming">Deworming</option>
                                 </select>
                             </div>
                         </div>
@@ -131,9 +131,9 @@ require_once ('./include/admin-head.php');
                                                                         <label for="VaccineType" class="form-label-vaccine fw-bold p-2">Vaccine Type:</label>
                                                                         <select class="form-select form-control-vaccine" id="vaccinetype<?php echo $vaccine['vaccineID']; ?>" name="vaccinetype" required>
                                                                             <option value="<?php echo $vaccine['vaccineType']; ?>"><?php echo $vaccine['vaccineType']; ?></option>
-                                                                            <option value="vaccine1">Primary Series</option>
-                                                                            <option value="vaccine2">Annual Boosters</option>
-                                                                            <option value="vaccine3">Deworming</option>
+                                                                            <option value="Primary Series">Primary Series</option>
+                                                                            <option value="Annual Boosters">Annual Boosters</option>
+                                                                            <option value="Deworming">Deworming</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="d-flex">
@@ -222,9 +222,9 @@ require_once ('./include/admin-head.php');
                                             <label for="VaccineType" class="form-label-vaccine fw-bold p-2">Vaccine Type:</label>
                                                 <select class="form-select form-control-vaccine" id="vaccinetype" name="vaccinetype" required>
                                                     <option value="">Select Vaccine Type</option>
-                                                    <option value="vaccine1">Primary Series</option>
-                                                    <option value="vaccine2">Annual Boosters</option>
-                                                    <option value="vaccine3">Deworming</option>
+                                                    <option value="Primary Series">Primary Series</option>
+                                                    <option value="Annual Boosters">Annual Boosters</option>
+                                                    <option value="Deworming">Deworming</option>
                                                 </select>
                                         </div>
                                         <div class="d-flex">

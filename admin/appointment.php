@@ -7,12 +7,12 @@ require_once('./include/admin-head.php');
 
 <body>
   <?php
-  require_once('./include/admin-header.php')
+  require_once('./include/admin-header.php');
   ?>
 
   <main>
     <?php
-    require_once('./include/admin-sidepanel.php')
+    require_once('./include/admin-sidepanel.php');
     ?>
 
 
@@ -57,6 +57,11 @@ require_once('./include/admin-head.php');
           <tbody id="appointmentTableBody">
             <?php
               require_once '../classes/booking.class.php';
+              require_once '../classes/veterinarian.class.php';
+              require_once '../classes/service.class.php';
+
+              $veterinarian = new Veterinarian();
+              $service = new Service();
               $booking = new Booking();
 
               $bookings = $booking->showAllBookingWithStatusFilter();
@@ -70,6 +75,7 @@ require_once('./include/admin-head.php');
               <td><?php echo $bookingAppointment['bookingTime']; ?></td>
               <td><?php echo $bookingAppointment['status']; ?></td>
               <td class="d-flex justify-content-center align-items-center">
+
               <div class="crud-btn">
                   <a href="" class="done-btn" data-bs-toggle="modal" data-bs-target="#statusModal<?php echo $bookingAppointment['bookingID']; ?>">
                   <i class="fa-solid fa-clipboard-question pe-3"></i></a>
@@ -90,8 +96,261 @@ require_once('./include/admin-head.php');
                 </div>
                 
                 <div class="crud-btn">
-                  <a href="" class="edit-btn" data-bs-toggle="modal" data-bs-target="#editModal">
+                  <a href="" class="edit-btn" data-bs-toggle="modal" data-bs-target="#editModal<?php echo $bookingAppointment['bookingID']; ?>">
                   <i class="fa-solid fa-pen-to-square pe-4"></i></a>
+
+                  <div id="editModal<?php echo $bookingAppointment['bookingID']; ?>" class="modal fade" data-bs-backdr="static" tabindex="-1">
+                  <?php
+                      $appointmentInfo = $booking->populateAppointment($bookingAppointment['bookingID']);
+                      $bookingData = $appointmentInfo['appointmentData'][0];
+                      echo $bookingData['firstName'];
+
+                      if (!empty($appointmentInfo['appointmentData'])) {
+                          $bookingData = $appointmentInfo['appointmentData'][0];
+                          $firstName = $bookingData['firstName'];
+                          $middleName = $bookingData['middlename'];
+                          $lastName = $bookingData['lastName'];
+                          $email = $bookingData['emailAddress'];
+                          $contactNumber = $bookingData['contactNumber'];
+                          $selectedDate = $bookingData['bookingDate'];
+                          $selectedTime = $bookingData['bookingTime'];
+                          $numberPets = $bookingData['numberPets'];
+                          $reason = $bookingData['resched_reason'];
+                          $concerns = $bookingData['concerns'];
+                          $petName = $bookingData['petName'];
+                          $petType = $bookingData['petType'];
+                          $sex = $bookingData['sex'];
+                          $breed = $bookingData['petBreed'];
+                          $birthdate = $bookingData['petBirthDate'];
+                          $serviceID = $bookingData['serviceID'];
+                          $vetID = $bookingData['vetID'];
+
+                          $vets = $veterinarian->showVetByID($vetID);
+                          $serviceName = $service->fetch($serviceID);
+                      } else {
+                          echo "No appointment data found for the given bookingID.";
+                      }
+                      ?>
+                    <div class="modal-dialog">
+                      <div class="modal-cont">
+                        <span data-bs-dismiss="modal" class="close"><i class="fa-solid fa-circle-xmark"></i></span>
+                        <h3 class="align-self-center mb-4">Personal Information</h3>
+                        <div class="selected-details">
+                                    <div class="row">
+
+                                        <div class="input-container  col-sm-3">
+                                            <label for="firstName">First Name:</label>
+                                            <input type="text" id="firstName" name="firstName"
+                                                value="<?php echo $firstName; ?>" disabled/>
+                                        </div>
+
+                                        <div class="input-container col-sm-3">
+                                            <label for="middleName">Middle Name (Optional):</label>
+                                            <input type="text" id="middleName" name="middleName" value="<?php echo $middleName; ?>" disabled/>
+                                        </div>
+
+                                        <div class="input-container col-sm-3">
+                                            <label for="lastName">Last Name:</label>
+                                            <input type="text" id="lastName" name="lastName"
+                                                value="<?php echo $lastName; ?>" disabled/>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="input-container col-6">
+                                                <label for="email">Email Address:</label>
+                                                <input type="email" id="email" name="email"
+                                                    value="<?php echo $email; ?>" disabled/>
+                                            </div>
+
+                                            <div class="details col-sm m-4">
+                                                <label for="lastName">Selected Date and Time</label>
+
+                                                <div class="d-flex gap-3">
+                                                    <div class="d-flex flex-column"> 
+                                                        <p id="currentDateTime"><?php echo $selectedDate; ?> - <?php echo $selectedTime; ?></p>
+                                                        <h5>To be change: </h5><p id="selectedDateTime" style="background:yellow; border-radius:5px;"></p>
+                                                        <input type="hidden" name="selectedDate" id="selectedDate" value="">
+                                                        <input type="hidden" name="selectedTime" id="selectedTime" value="">
+                                                    </div>
+                                                    <button id="openCalendarModalBtn" class="Calendar-review-button"
+                                                        type="button">
+                                                        <i class="calendar-icon fa-regular fa-calendar"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="input-container col-6">
+                                                <label for="contactNumber">Contact Number:</label>
+                                                <input type="tel" id="contactNumber" name="contactNumber"
+                                                    value="<?php echo $contactNumber; ?>" disabled/>
+                                            </div>
+
+                                            <div class="form-group col-sm-2">
+                                                <label for="concerns">
+                                                    <h5>Reason for Rescheduling</h5>
+                                                </label>
+                                                <textarea style="height: 120px;" class="form-concerns" id="reason" name="reason" ><?php echo $reason; ?></textarea>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="input-container col-6">
+                                                <label for="pets">Number of Pets:</label>
+                                                <select id="pets" name="pets" disabled>
+                                                    <option value="<?php echo $numberPets; ?>"><?php echo $numberPets; ?></option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <?php
+                                        if (!empty($appointmentInfo['appointmentData'])) {
+                                            foreach ($appointmentInfo['appointmentData'] as $bookingData) {
+                                                $bookingPetID = $bookingData['bookingPetID'];
+                                                $petName = $bookingData['petName'];
+                                                $petType = $bookingData['petType'];
+                                                $sex = $bookingData['sex'];
+                                                $concerns = $bookingData['concerns'];
+                                                $breed = $bookingData['petBreed'];
+                                                $birthdate = $bookingData['petBirthDate'];
+                                                $serviceID = $bookingData['serviceID'];
+                                                $vetID = $bookingData['vetID'];
+
+                                                $serviceName = $service->fetch($serviceID);
+                                                $vets = $veterinarian->showVetByID($vetID);
+                                                ?>
+                                                        <div class="pet-info-form">
+                                                            <h2 class="mb-4">Pet Information Form #<?php echo $bookingPetID; ?></h2>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-sm-2 background-color">
+                                                                    <label for="petname">
+                                                                        <h5>Pet Name</h5>
+                                                                    </label>
+                                                                    <input type="text" class="book-form-control" id="petname"
+                                                                        value="<?php echo $petName; ?>" placeholder="Enter pet name" disabled/>
+                                                                </div>
+                                                                <div class="form-group col-sm-2 background-color">
+                                                                    <label for="pettype">
+                                                                        <h5>Pet Type</h5>
+                                                                    </label>
+                                                                    <input type="text" class="book-form-control" id="pettype"
+                                                                        value="<?php echo $petType; ?>" placeholder="Enter pet type" disabled/>
+                                                                </div>
+                                                                <div class="form-group col-sm-2 background-color">
+                                                                    <label for="sex">
+                                                                        <h5>Sex</h5>
+                                                                    </label>
+                                                                    <input type="text" class="book-form-control background-color"
+                                                                        value="<?php echo $sex; ?>" id="sex" placeholder="Enter sex" disabled/>
+                                                                </div>
+
+                                                                <div class="form-group col-sm-2">
+                                                                    <label for="concerns">
+                                                                        <h5>Concerns</h5>
+                                                                    </label>
+                                                                    <textarea style="height: 200px;" class="form-concerns"
+                                                                        id="concerns" disabled><?php echo $concerns; ?></textarea>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-row">
+                                                                <div class="form-group col-sm-2 background-color">
+                                                                    <label for="breed">
+                                                                        <h5>Breed</h5>
+                                                                    </label>
+                                                                    <input type="text" class="book-form-control" id="breed"
+                                                                        value="<?php echo $breed; ?>" placeholder="Enter breed" disabled/>
+                                                                </div>
+
+                                                                <div class="form-group col-sm-2 background-color">
+                                                                    <label for="services">
+                                                                        <h5>Select Services</h5>
+                                                                    </label>
+                                                                    <select class="book-form-control" id="services" disabled>
+                                                                        <option value="<?php echo $serviceName['serviceID']; ?>"
+                                                                            selected>
+                                                                            <?php echo $serviceName['serviceName']; ?>
+                                                                            <span class="price">PHP
+                                                                                <?php echo $serviceName['servicePrice']; ?></span>
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+
+                                                                <div class="form-group col-sm-2 background-color">
+                                                                    <label for="vet">
+                                                                        <h5>Select vet</h5>
+                                                                    </label>
+                                                                    <select class="book-form-control" id="vet" disabled>
+                                                                        <option value="<?php echo $vets['vetID']; ?>" selected>
+                                                                            <?php echo $vets['fullName']; ?>
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-row">
+                                                                <div class="form-group col-sm-2 background-color">
+                                                                    <label for="birthdate">
+                                                                        <h5>BirthDate</h5>
+                                                                    </label>
+                                                                    <input type="date" class="book-form-control form-control" value="<?php echo $birthdate; ?>"
+                                                                        id="birthdate" disabled/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End of pet information form -->
+                                                        <?php
+                                            }
+                                        } else {
+                                            // If no appointment data found
+                                            echo "No appointment data found for the given bookingID.";
+                                        }
+                                        ?>
+
+                                <div class="d-flex justify-content-end">
+                                  <button type="button" id="resched-btn" class="btn btn-primary" data-toggle="modal" data-target="#confirmModal">Reschedule Appointment</button>
+                                </div>
+                                <!-- Confirmation Modal -->
+                                <div class="confirmation-modal">
+                                  <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                      <div class="modal-content text-center">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title mx-auto" id="confirmationModalLabel">Your Appointment
+                                            Rescheduling Request Has Been Sent!
+                                          </h5>
+                                          </button>
+                                        </div>
+
+                                        <div class="modal-body align-items-center justify-content-center d-flex flex-column">
+                                          <i class="fas fa-check-circle text-success confirmation-circle mb-3" style="font-size: 80px;"></i>
+                                          <p class="booking-number mb-2" style="font-size: 14px;">
+                                            Your booking number:</p>
+                                          <p class="mb-4">0001</p>
+                                        </div>
+
+                                        <div class="modal-footer justify-content-center">
+                                          <button type="button" class="btn btn-secondary" id="finishBookingBtn" data-dismiss="modal" style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
+                                            Booking</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </td>
             </tr>
@@ -101,215 +360,24 @@ require_once('./include/admin-head.php');
           </tbody>
         </table>
         <nav aria-label="...">
-            <ul class="pagination justify-content-end">
-                <li class="page-item disabled">
-                    <span class="page-link">Previous</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active">
-                    <span class="page-link">
-                        2
-                        <span class="sr-only">(current)</span>
-                    </span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
+          <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+              <span class="page-link">Previous</span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active">
+              <span class="page-link">
+                2
+                <span class="sr-only">(current)</span>
+              </span>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
         </nav>
-    </div>
-</section>
-
-
-
-    <section>
-      
-    </section>
-
-    <section>
-      <div id="editModal" class="modal fade" data-bs-backdr="static" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-cont">
-            <span data-bs-dismiss="modal" class="close"><i class="fa-solid fa-circle-xmark"></i></span>
-            <h3 class="align-self-center mb-4">Personal Information</h3>
-            <div class="selected-details">
-              <div class="row">
-
-                <div class="input-container  col-sm-3">
-                  <label for="firstName">First Name:</label>
-                  <input type="text" id="firstName" name="firstName" required>
-                </div>
-
-                <div class="input-container col-sm-3">
-                  <label for="middleName">Middle Name (Optional):</label>
-                  <input type="text" id="middleName" name="middleName">
-                </div>
-
-                <div class="input-container col-sm-3">
-                  <label for="lastName">Last Name:</label>
-                  <input type="text" id="lastName" name="lastName" required>
-                </div>
-
-                <div class="row">
-                  <div class="input-container col-6">
-                    <label for="email">Email Address:</label>
-                    <input type="email" id="email" name="email" required>
-                  </div>
-                  <div class="details col-sm">
-                    <label for="date">Selected Date and Time</label>
-                    <div class="d-flex">
-                      <p id="selectedDateTime"></p>
-                      <button id="openCalendarModalBtn" class="Calendar-review-button">
-                        <i class="calendar-icon fa-regular fa-calendar"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="input-container col-6">
-                    <label for="contactNumber">Contact Number:</label>
-                    <input type="tel" id="contactNumber" name="contactNumber" required>
-                  </div>
-                  <div class="form-group col-sm-2">
-                    <label for="concerns">
-                      <p>Reason for Rescheduling</p>
-                    </label>
-                    <textarea style="height: 100px;" class="form-concerns" id="concerns"></textarea>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="input-container col-6">
-                    <label for="pets">Number of Pets:</label>
-                    <select id="pets" name="pets">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="pet-info-form">
-                  <h3 class="mb-4 text-center">Pet Information Form</h3>
-                  <form>
-                    <div class="form-row">
-                      <div class="form-group col-sm-2  background-color">
-                        <label for="petname">
-                          <h5>Pet Name</h5>
-                        </label>
-                        <input type="text" class="book-form-control" id="petname" placeholder="Enter pet name" />
-                      </div>
-                      <div class="form-group col-sm-2 background-color">
-                        <label for="pettype">
-                          <h5>Pet Type</h5>
-                        </label>
-                        <input type="text" class="book-form-control" id="pettype" placeholder="Enter pet type" />
-                      </div>
-                      <div class="form-group col-sm-2 background-color">
-                        <label for="sex">
-                          <h5>Sex</h5>
-                        </label>
-                        <input type="text" class="book-form-control background-color" id="sex" placeholder="Enter sex" />
-                      </div>
-
-                      <div class="form-group col-sm-2">
-                        <label for="concerns">
-                          <h5>Concerns</h5>
-                        </label>
-                        <textarea style="height: 200px;" class="form-concerns" id="concerns"></textarea>
-                      </div>
-                    </div>
-
-                    <div class="form-row">
-                      <div class="form-group col-sm-2 background-color">
-                        <label for="breed">
-                          <h5>Breed</h5>
-                        </label>
-                        <input type="text" class="book-form-control" id="breed" placeholder="Enter breed" />
-                      </div>
-                      <div class="form-group col-sm-2 background-color">
-                        <label for="services">
-                          <h5>Select Services</h5>
-                        </label>
-                        <select class="book-form-control" id="services">
-                          <option value="">Choose...</option>
-                          <option value="grooming">
-                            Grooming<span class="price">PHP 1,000</span>
-                          </option>
-                          <option value="boarding">
-                            Boarding<span class="price">PHP 1,500</span>
-                          </option>
-                          <option value="training">
-                            Training<span class="price">PHP 2,000</span>
-                          </option>
-                        </select>
-                      </div>
-
-                      <div class="form-group col-sm-2 background-color">
-                        <label for="vet">
-                          <h5>Select vet</h5>
-                        </label>
-                        <select class="book-form-control" id="vet">
-                          <option value="">Choose...</option>
-                          <option value="vet1">Vet 1</option>
-                          <option value="vet2">Vet 2</option>
-                          <option value="vet3">Vet 3</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div class="form-row">
-                      <div class="form-group col-sm-2 background-color">
-                        <label for="birthdate">
-                          <h5>BirthDate</h5>
-                        </label>
-                        <input type="date" class="book-form-control" id="birthdate" />
-                      </div>
-                    </div>
-
-                    <div class="d-flex justify-content-end">
-                      <button type="button" id="resched-btn" class="btn btn-primary" data-toggle="modal" data-target="#confirmModal">Reschedule Appointment</button>
-                    </div>
-                    <!-- Confirmation Modal -->
-                    <div class="confirmation-modal">
-                      <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                          <div class="modal-content text-center">
-                            <div class="modal-header">
-                              <h5 class="modal-title mx-auto" id="confirmationModalLabel">Your Appointment
-                                Rescheduling Request Has Been Sent!
-                              </h5>
-                              </button>
-                            </div>
-
-                            <div class="modal-body align-items-center justify-content-center d-flex flex-column">
-                              <i class="fas fa-check-circle text-success confirmation-circle mb-3" style="font-size: 80px;"></i>
-                              <p class="booking-number mb-2" style="font-size: 14px;">
-                                Your booking number:</p>
-                              <p class="mb-4">0001</p>
-                            </div>
-
-                            <div class="modal-footer justify-content-center">
-                              <button type="button" class="btn btn-secondary" id="finishBookingBtn" data-dismiss="modal" style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none;">Finish
-                                Booking</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-
-    </section>
     </section>
   </main>
 

@@ -1,3 +1,14 @@
+<?php
+require_once '../classes/booking.class.php';
+require_once '../classes/customer-register.class.php';
+require_once ('./tools/functions.php');
+
+$customer = new Register();
+$booking = new Booking();
+$bookingData = $booking->showAllBookingWithStatusFilter();
+
+$bookingDataJson = json_encode($bookingData);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -14,6 +25,8 @@ require_once ('./include/appoint-book-head.php');
     <?php
     require_once ('./include/admin-sidepanel.php')
       ?>
+
+<div class="alert-error fixed-top top-1 start-50 translate-middle my-5" style="width:500px"></div>
 
     <section class="veterinarian-con">
       <div class="d-flex justify-content-between align-items-center mb-4">
@@ -136,33 +149,36 @@ require_once ('./include/appoint-book-head.php');
               <span data-bs-dismiss="modal" class="close"><i class="fa-solid fa-circle-xmark"></i></span>
               <h2>Personal Information</h2>
 
+              <form action="submit-booking.php" class="needs-validation" method="post" novalidate>
               <div class="selected-details">
                 <div class="row">
 
                   <div class="input-container  col-sm-3">
                     <label for="firstName">First Name:</label>
-                    <input type="text" id="firstName" name="firstName" required>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required>
                   </div>
 
                   <div class="input-container col-sm-3">
                     <label for="middleName">Middle Name (Optional):</label>
-                    <input type="text" id="middleName" name="middleName">
+                    <input type="text" class="form-control" id="middleName" name="middleName">
                   </div>
 
                   <div class="input-container col-sm-3">
                     <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastName" name="lastName" required>
+                    <input type="text" class="form-control" id="lastName" name="lastName" required>
                   </div>
 
                   <div class="row">
                     <div class="input-container col-6">
                       <label for="email">Email Address:</label>
-                      <input type="email" id="email" name="email" required>
+                      <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="details col-sm">
                       <label for="lastName">Selected Date and Time</label>
                       <div class="col-sm">
                         <p id="selectedDateTime"></p>
+                        <input type="hidden" name="selectedDate" id="selectedDate" value="">
+                        <input type="hidden" name="selectedTime" id="selectedTime" value="">
                       </div>
                     </div>
                   </div>
@@ -170,14 +186,14 @@ require_once ('./include/appoint-book-head.php');
                   <div class="row">
                     <div class="input-container col-6">
                       <label for="contactNumber">Contact Number:</label>
-                      <input type="tel" id="contactNumber" name="contactNumber" required>
+                      <input type="tel" class="form-control" id="contactNumber" name="contactNumber" required>
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="input-container col-6">
                       <label for="pets">Number of Pets:</label>
-                      <select id="pets" name="pets">
+                      <select id="pets" class="form-control" name="pets" required>
                         <option value="0">Select Number of Pets</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -190,39 +206,10 @@ require_once ('./include/appoint-book-head.php');
 
                   <div id="petFormsContainer" class="petFormsContainer"></div>
 
-                  <button type="button" id="submitBtn" class="btn btn-primary" data-toggle="modal"
-                    data-target="#confirmationModal" style="background-color:#2A2F4F" class="float-right">
-                    Book Appointment
+                  <button type="submit" value="Submit" id="submitBtn" class="btn btn-primary" style="background-color:#2A2F4F" class="float-right">
+                    Next
                   </button>
-
-
-                  <!-- Confirmation Modal -->
-                  <div class="confirmation-modal">
-                    <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
-                      aria-labelledby="confirmationModalLabel" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                        <div class="modal-content text-center">
-                          <div class="modal-header">
-                            <h5 class="modal-title mx-auto" id="confirmationModalLabel">Appointment Confirmation</h5>
-                            </button>
-                          </div>
-
-                          <div class="modal-body align-items-center justify-content-center d-flex flex-column">
-                            <i class="fas fa-check-circle text-success confirmation-circle mb-3"
-                              style="font-size: 80px;"></i>
-                            <p class="booking-number mb-2" style="font-size: 14px;">Your booking number:</p>
-                            <p class="mb-4">0001</p>
-                          </div>
-
-                          <div class="modal-footer justify-content-center">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                              style="color: #8F9CA7; background-color: #EAEFF6; border-radius: 0%; border-style: none; ">Finish
-                              Booking</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -236,20 +223,232 @@ require_once ('./include/appoint-book-head.php');
         <a href="appointment.php" class="top-back btn-secondary">Back</a>
       </div>
     </section>
+  </main>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="./assets/script/validation.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="./assets/js/calendar.js"></script>
-
-
-  </main>
 
   <script>
+
+    function checkAvailability(selectedDate, selectedTime, bookingData) {
+    for (let i = 0; i < bookingData.length; i++) {
+        if (selectedDate === bookingData[i]['bookingDate'] && selectedTime === bookingData[i]['bookingTime']) {
+            return true; 
+        }
+    }
+    return false; 
+    } 
+
+    // Function to display the selected date
+function displaySelectedDate(dateElement, selectedDate) {
+  dateElement.textContent = "Selected Date: " + selectedDate;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Get the pets dropdown menu
+  const petsDropdown = document.getElementById("pets");
+
+  // Add event listener to the pets dropdown menu
+  petsDropdown.addEventListener("change", function () {
+    console.log("Dropdown value changed");
+    const numberOfPets = parseInt(this.value);
+    const petFormsContainer = document.getElementById("petFormsContainer");
+
+    // Clear any existing pet info forms
+    petFormsContainer.innerHTML = "";
+
+    // Dynamically create and append pet info forms based on the selected number of pets
+    for (let i = 1; i <= numberOfPets; i++) {
+      // Fetch content from PHP file using AJAX
+      fetch("../customer/submit-booking.php")
+        .then((response) => response.text())
+        .then((data) => {
+          const petForm = document.createElement("div");
+          petForm.innerHTML = data;
+          petFormsContainer.appendChild(petForm);
+        })
+        .catch((error) => console.error("Error fetching pet form:", error));
+    }
+  });
+
+  const prevMonthBtn = document.getElementById("prevMonthBtn");
+  const nextMonthBtn = document.getElementById("nextMonthBtn");
+  const currentMonthYear = document.getElementById("currentMonthYear");
+  const calendarBody = document.getElementById("calendarBody");
+
+  let currentDate = new Date();
+  let currentMonth = currentDate.getMonth();
+  let currentYear = currentDate.getFullYear();
+  let formattedDate;
+  let selectedTime;
+
+  function generateCalendar(month, year) {
+    currentMonthYear.textContent = `${getMonthName(month)} ${year}`;
+    calendarBody.innerHTML = "";
+
+    const firstDayOfMonth = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const currentDate = new Date(); 
+    currentDate.setDate(currentDate.getDate() - 1);
+
+    for (let i = 0; i < firstDayOfMonth; i++) {
+        const emptyCell = document.createElement("div");
+        emptyCell.classList.add("calendar-cell");
+        calendarBody.appendChild(emptyCell);
+    }
+
+    for (let i = 1; i <= daysInMonth; i++) {
+        const calendarCell = document.createElement("div");
+        calendarCell.classList.add("calendar-cell");
+        calendarCell.textContent = i;
+
+        // Check if the date is before the current date
+        const selectedDate = new Date(year, month, i);
+        if (selectedDate < currentDate) {
+            calendarCell.classList.add("unavailable");
+        } 
+            calendarCell.addEventListener("click", () => {
+                
+                if (selectedDate < currentDate) {
+                    formattedDate = null; 
+                } else {
+                    formattedDate = formatDate(selectedDate); 
+                }
+            });
+
+            // Create and append the "10 slots" text below each calendar cell
+            // const slotsText = document.createElement("div");
+            // slotsText.textContent = "10 slots";
+            // slotsText.classList.add("slots-text");
+            // calendarCell.appendChild(slotsText);
+
+        calendarBody.appendChild(calendarCell);
+    }
+  }
+
+
+  function getMonthName(month) {
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    return months[month];
+  }
+
+  prevMonthBtn.addEventListener("click", () => {
+    currentMonth--;
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
+    }
+    generateCalendar(currentMonth, currentYear);
+  });
+
+  nextMonthBtn.addEventListener("click", () => {
+    currentMonth++;
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+    generateCalendar(currentMonth, currentYear);
+  });
+
+  generateCalendar(currentMonth, currentYear);
+
+  const timeSlots = document.querySelectorAll(".time-slot");
+
+  timeSlots.forEach((timeSlot) => {
+    timeSlot.addEventListener("mousedown", () => {
+      const selectedDateCell = document.querySelector(
+        ".calendar-cell.selected"
+      );
+      if (selectedDateCell) {
+        const selectedDate = new Date(
+          currentYear,
+          currentMonth,
+          parseInt(selectedDateCell.textContent)
+        );
+        selectedTime = timeSlot.dataset.time; // Get the time from the data-time attribute
+        
+        if (formattedDate) {
+          openModal(formattedDate, selectedTime); 
+        } else {
+          alert("Please select available date from the calendar first.");
+        }
+      } else {
+        alert("Please select available date from the calendar first.");
+      }
+    });
+});
+
+
+  
+  $('#modal').on('show.bs.modal', function (event) {
+    const selectedDateCell = document.querySelector(".calendar-cell.selected");
+    const bookingData = <?php echo $bookingDataJson; ?>;
+    if (!selectedTime || selectedTime.trim() === "") {
+    event.preventDefault();
+    return false;
+  }
+    if (checkAvailability(formattedDate, selectedTime, bookingData)) {
+        event.preventDefault();
+          const modalContent = document.querySelector('.alert-error');
+          modalContent.innerHTML = `
+            <div class="alert alert-danger alert-dismissible d-flex align-items-center fade show" role="alert">
+              <div>
+                Time already taken! Please select another time.
+              </div>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            `;
+      }
+    if (!selectedDateCell) {
+      event.preventDefault();
+      return false;
+    }
+  });
+
+  calendarBody.addEventListener("click", (event) => {
+    const selectedDate = document.querySelector(".calendar-cell.selected");
+    if (selectedDate) {
+      selectedDate.classList.remove("selected");
+    }
+    if (event.target.classList.contains("calendar-cell")) {
+      event.target.classList.add("selected");
+    }
+  });
+
+  function openModal(selectedDate, selectedTime) {
+    document.getElementById("selectedDateTime").textContent =
+      "" + selectedDate + ", " + selectedTime;
+    document.getElementById("selectedDate").value = selectedDate;
+    document.getElementById("selectedTime").value = selectedTime;
+  }
+
+  // Function to format date in "Month Day, Year" format
+  function formatDate(date) {
+    const options = { month: "long", day: "numeric", year: "numeric" };
+    return date.toLocaleDateString("en-US", options);
+  }
+});
+
+
     $(document).ready(function () {
       $('#anotherModal').on('show.bs.modal', function (e) {
         $('.modal').modal('hide');
