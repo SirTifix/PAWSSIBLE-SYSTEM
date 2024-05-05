@@ -87,25 +87,43 @@ require_once ('../classes/veterinarian.class.php');
                         <?php
                         $veterinarianClass = new Veterinarian();
                         $vetRecords = $veterinarianClass->showVet();
-                        $id = 1;
-                        foreach ($vetRecords as $record) {
-                            echo '<tr>';
-                            echo '<th scope="row">' . $id . '</th>';
-                            echo '<td>' . $record['fullName'] . '</td>';
-                            echo '<td>' . date('d M Y', strtotime($record['created_at'])) . '</td>';
-                            echo '<td>' . $record['vetStatus'] . '</td>';
-                            echo '<td class="d-flex justify-content-end">';
-                            echo '<div class="crud-btn">';
-                            echo '<a href="update-vet.php?vetID=' . $record['vetID'] . '" class="crud-icon-update"><i class="fa-regular fa-pen-to-square m-1" aria-hidden="true"></i></a>';
-                            echo '</div>';
-                            echo '<div class="crud-btn">';
-                            echo '<a href="" class="crud-icon-delete" data-bs-toggle="modal" data-bs-target="#deleteDModal" data-vet-id="' . $record['vetID'] . '"><i class="fa-regular fa-trash-can m-1" aria-hidden="true"></i></a>';
-                            echo '</div>';
-                            echo '</td>';
-                            echo '</tr>';
-                            $id++;
-                        }
-                        ?>
+                        foreach ($vetRecords as $record) : ?>
+                            <tr>
+                            <th scope="row"><?php echo $record['vetID'] ?></th>
+                            <td><?php echo $record['fullName'] ?></td>
+                            <td><?php echo date('d M Y', strtotime($record['created_at'])) ?></td>
+                            <td><?php echo $record['vetStatus'] ?></td>
+                            <td class="d-flex justify-content-end">
+
+                                <div class="crud-btn">
+                                <a href="update-vet.php?vetID=' . $record['vetID'] . '" class="crud-icon-update"><i class="fa-regular fa-pen-to-square m-1" aria-hidden="true"></i></a>
+                                </div>
+
+
+                                <div class="crud-btn">
+                                <a href="" class="crud-icon-delete" data-bs-toggle="modal" data-bs-target="#deleteDModal<?php echo $record['vetID'] ?>" data-vet-id=""><i class="fa-regular fa-trash-can m-1" aria-hidden="true"></i></a>
+                                </div>
+                                <div class="modal fade" id="deleteDModal<?php echo $record['vetID'] ?>" tabindex="-1" aria-labelledby="deleteDModalLabel"
+                                    aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to
+                                                delete
+                                                this account?</h4>
+                                            <div class="modal-footer justify-content-between" style="border: none;">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <button type="button" class="btn btn-primary" id="confirmDelete" onclick="deleteVet(<?php echo $record['vetID'] ?>)"
+                                                    style="background-color: #FF0000; border: none;">Delete</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            </tr>
+                            <?php
+                                endforeach;
+                            ?>
                     </tbody>
                 </table>
                 <nav aria-label="...">
@@ -128,41 +146,21 @@ require_once ('../classes/veterinarian.class.php');
                 </nav>
             </div>
 
-
-            <section>
-                <div class="modal fade" id="deleteDModal" tabindex="-1" aria-labelledby="deleteDModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to
-                                delete
-                                this account?</h4>
-                            <div class="modal-footer justify-content-between" style="border: none;">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-primary" id="confirmDelete" data-vet-id=""
-                                    style="background-color: #FF0000; border: none;">Delete</button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <script>
-                document.getElementById('confirmDelete').addEventListener('click', function () {
-                    var vetID = this.getAttribute('data-vet-id');
+                function deleteVet(vetID) {
                     var xhr = new XMLHttpRequest();
                     xhr.open('POST', 'delete-vet.php');
                     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
                     xhr.onload = function () {
                         if (xhr.status === 200) {
+                            alert('Veterinarian deleted successfully!');
                             location.reload();
                         } else {
                             console.error('Error:', xhr.statusText);
                         }
                     };
                     xhr.send('vetID=' + vetID);
-                });
+                };
 
                 document.querySelector('.crud-icon-delete').addEventListener('click', function () {
                     var vetID = this.getAttribute('data-vet-id');
