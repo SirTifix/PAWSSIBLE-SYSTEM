@@ -13,6 +13,13 @@ require_once('./include/admin-head.php');
         <?php
         require_once('./include/admin-sidepanel.php')
         ?>
+        <section class="veterinarian-con">
+            <div class="row mx-5 justify-content-end">
+                <div class="crud-btn-add col-4 col-sm-auto">
+                    <a href="secretary.php" class="crud-text ps-3" style="width: 100%"><i class="fa-solid fa-arrow-left pe-3"></i>Back</a>
+                </div>
+            </div>
+        </section>
 
         <section class="table-con-sec">
             <section class="customer-info-icon row">
