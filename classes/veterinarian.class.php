@@ -12,6 +12,7 @@ class Veterinarian
     public $vetLastname;
     public $vetPhone;
     public $vetEmail;
+    public $vetStatus;
     public $vetUsername;
     public $vetPassword;
     public $updated_at;
@@ -28,8 +29,8 @@ class Veterinarian
 
     function add()
     {
-        $sql = "INSERT INTO veterinarian (vetFirstname, vetMiddlename, vetLastname, vetPhone, vetEmail, vetUsername, vetPassword, created_at) VALUES 
-        (:vetFirstname, :vetMiddlename, :vetLastname, :vetPhone, :vetEmail, :vetUsername, :vetPassword, :created_at);";
+        $sql = "INSERT INTO veterinarian (vetFirstname, vetMiddlename, vetLastname, vetPhone, vetEmail, vetStatus, vetUsername, vetPassword, created_at) VALUES 
+        (:vetFirstname, :vetMiddlename, :vetLastname, :vetPhone, :vetEmail, :vetStatus, :vetUsername, :vetPassword, :created_at);";
 
         $hashedPassword = password_hash($this->vetPassword, PASSWORD_DEFAULT);
         $currentDateTime = date('Y-m-d H:i:s');
@@ -40,6 +41,7 @@ class Veterinarian
         $query->bindParam(':vetLastname', $this->vetLastname);
         $query->bindParam(':vetPhone', $this->vetPhone);
         $query->bindParam(':vetEmail', $this->vetEmail);
+        $query->bindParam(':vetStatus', $this->vetStatus);
         $query->bindParam(':vetUsername', $this->vetUsername);
         $query->bindParam(':vetPassword', $hashedPassword);
         $query->bindParam(':created_at', $currentDateTime);
@@ -53,7 +55,7 @@ class Veterinarian
 
     function update()
     {
-        $sql = "UPDATE veterinarian SET vetFirstname=:vetFirstname, vetMiddlename=:vetMiddlename, vetLastname=:vetLastname, vetPhone=:vetPhone, vetEmail=:vetEmail, vetUsername=:vetUsername, vetPassword=:vetPassword, updated_at = :updated_at WHERE vetID=:vetID;";
+        $sql = "UPDATE veterinarian SET vetFirstname=:vetFirstname, vetMiddlename=:vetMiddlename, vetLastname=:vetLastname, vetPhone=:vetPhone, vetEmail=:vetEmail, vetStatus=:vetStatus, vetUsername=:vetUsername, vetPassword=:vetPassword, updated_at = :updated_at WHERE vetID=:vetID;";
 
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':vetFirstname', $this->vetFirstname);
@@ -61,6 +63,7 @@ class Veterinarian
         $query->bindParam(':vetLastname', $this->vetLastname);
         $query->bindParam(':vetPhone', $this->vetPhone);
         $query->bindParam(':vetEmail', $this->vetEmail);
+        $query->bindParam(':vetStatus', $this->vetStatus);
         $query->bindParam(':vetUsername', $this->vetUsername);
         $query->bindParam(':vetPassword', $this->vetPassword);
         $query->bindParam(':updated_at', $this->updated_at);
@@ -106,7 +109,7 @@ class Veterinarian
 
     function showVet()
     {
-        $sql = "SELECT vetID, CONCAT(vetFirstname, ' ', vetLastname) AS fullName, created_at FROM veterinarian ORDER BY vetLastname ASC, vetFirstname ASC;";
+        $sql = "SELECT vetID, CONCAT(vetFirstname, ' ', vetLastname) AS fullName, vetStatus, created_at FROM veterinarian ORDER BY vetLastname ASC, vetFirstname ASC;";
         $query = $this->db->connect()->prepare($sql);
         $data = null;
         if ($query->execute()) {
@@ -117,7 +120,7 @@ class Veterinarian
 
     function showVetByID($vetID)
     {
-        $sql = "SELECT vetID, CONCAT(vetFirstname, ' ', vetLastname) AS fullName, created_at FROM veterinarian WHERE vetID = :vetID ORDER BY vetLastname ASC, vetFirstname ASC;";
+        $sql = "SELECT vetID, CONCAT(vetFirstname, ' ', vetLastname) AS fullName, vetStatus, created_at FROM veterinarian WHERE vetID = :vetID ORDER BY vetLastname ASC, vetFirstname ASC;";
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':vetID', $vetID);
         $data = null;

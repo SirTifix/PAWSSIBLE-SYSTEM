@@ -1771,6 +1771,7 @@ select {
     padding-bottom: 65vh;
   }
 
+  
   .boton {
     align-items: center;
     appearance: none;
@@ -1997,6 +1998,10 @@ select {
     display: flex;
     align-items: center;
     padding: 15px 5px;
+  }
+
+  .uno{
+    justify-content: center;
   }
 }
 

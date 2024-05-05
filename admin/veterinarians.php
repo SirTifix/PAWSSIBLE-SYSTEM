@@ -2,22 +2,23 @@
 <html lang="en">
 <?php
 $title = 'Veterinarian';
-require_once('./include/admin-head.php');
-require_once('../classes/veterinarian.class.php');
+require_once ('./include/admin-head.php');
+require_once ('../classes/veterinarian.class.php');
 ?>
 
 <body>
     <?php
-    require_once('./include/admin-header.php')
-    ?>
+    require_once ('./include/admin-header.php')
+        ?>
     <main>
         <?php
-        require_once('./include/admin-sidepanel.php')
-        ?>
+        require_once ('./include/admin-sidepanel.php')
+            ?>
         <section class="veterinarian-con">
             <div class="row mx-5 justify-content-end">
                 <div class="crud-btn-add col-4 col-sm-auto">
-                    <a href="create-vet.php" class="crud-text" style="width: 100%"><i class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Veterinarian</a>
+                    <a href="create-vet.php" class="crud-text" style="width: 100%"><i
+                            class="fa-solid fa-circle-plus pe-2 pt-1" aria-hidden="true"></i>Add Veterinarian</a>
                 </div>
             </div>
 
@@ -78,6 +79,7 @@ require_once('../classes/veterinarian.class.php');
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Last Update</th>
+                            <th scope="col">Status</th>
                             <th scope="col" width="5%">Action</th>
                         </tr>
                     </thead>
@@ -91,6 +93,7 @@ require_once('../classes/veterinarian.class.php');
                             echo '<th scope="row">' . $id . '</th>';
                             echo '<td>' . $record['fullName'] . '</td>';
                             echo '<td>' . date('d M Y', strtotime($record['created_at'])) . '</td>';
+                            echo '<td>' . $record['vetStatus'] . '</td>';
                             echo '<td class="d-flex justify-content-end">';
                             echo '<div class="crud-btn">';
                             echo '<a href="update-vet.php?vetID=' . $record['vetID'] . '" class="crud-icon-update"><i class="fa-regular fa-pen-to-square m-1" aria-hidden="true"></i></a>';
@@ -127,14 +130,17 @@ require_once('../classes/veterinarian.class.php');
 
 
             <section>
-                <div class="modal fade" id="deleteDModal" tabindex="-1" aria-labelledby="deleteDModalLabel" aria-hidden="true">
+                <div class="modal fade" id="deleteDModal" tabindex="-1" aria-labelledby="deleteDModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
-                            <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
+                            <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to
+                                delete
                                 this account?</h4>
                             <div class="modal-footer justify-content-between" style="border: none;">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-primary" id="confirmDelete" data-vet-id="" style="background-color: #FF0000; border: none;">Delete</button>
+                                <button type="button" class="btn btn-primary" id="confirmDelete" data-vet-id=""
+                                    style="background-color: #FF0000; border: none;">Delete</button>
 
                             </div>
                         </div>
@@ -143,12 +149,12 @@ require_once('../classes/veterinarian.class.php');
             </section>
 
             <script>
-                document.getElementById('confirmDelete').addEventListener('click', function() {
+                document.getElementById('confirmDelete').addEventListener('click', function () {
                     var vetID = this.getAttribute('data-vet-id');
                     var xhr = new XMLHttpRequest();
                     xhr.open('POST', 'delete-vet.php');
                     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                    xhr.onload = function() {
+                    xhr.onload = function () {
                         if (xhr.status === 200) {
                             location.reload();
                         } else {
@@ -158,12 +164,12 @@ require_once('../classes/veterinarian.class.php');
                     xhr.send('vetID=' + vetID);
                 });
 
-                document.querySelector('.crud-icon-delete').addEventListener('click', function() {
+                document.querySelector('.crud-icon-delete').addEventListener('click', function () {
                     var vetID = this.getAttribute('data-vet-id');
                     document.getElementById('confirmDelete').setAttribute('data-vet-id', vetID);
                 });
 
-                document.getElementById("dateRangeSelect").addEventListener("change", function() {
+                document.getElementById("dateRangeSelect").addEventListener("change", function () {
                     var customDateRange = document.getElementById("customDateRange");
                     if (this.value === "custom") {
                         customDateRange.style.display = "block";
@@ -175,7 +181,7 @@ require_once('../classes/veterinarian.class.php');
 
             <script>
                 // Example JavaScript to handle pagination
-                document.getElementById('prev').addEventListener('click', function(event) {
+                document.getElementById('prev').addEventListener('click', function (event) {
                     // Handle "Previous" button click event
                     event.preventDefault();
                     // Perform necessary actions to show previous page
@@ -183,7 +189,7 @@ require_once('../classes/veterinarian.class.php');
                     console.log('Previous button clicked');
                 });
 
-                document.getElementById('next').addEventListener('click', function(event) {
+                document.getElementById('next').addEventListener('click', function (event) {
                     // Handle "Next" button click event
                     event.preventDefault();
                     // Perform necessary actions to show next page
@@ -191,8 +197,9 @@ require_once('../classes/veterinarian.class.php');
                     console.log('Next button clicked');
                 });
             </script>
+
             <script>
-                document.getElementById("dateRangeSelect").addEventListener("change", function() {
+                document.getElementById("dateRangeSelect").addEventListener("change", function () {
                     var customDateRange = document.getElementById("customDateRange");
                     if (this.value === "custom") {
                         customDateRange.style.display = "block";
@@ -202,7 +209,7 @@ require_once('../classes/veterinarian.class.php');
                 });
 
                 // Add event listener for the Cancel button
-                document.querySelector("#customDateRange button.btn-secondary").addEventListener("click", function() {
+                document.querySelector("#customDateRange button.btn-secondary").addEventListener("click", function () {
                     var customDateRange = document.getElementById("customDateRange");
                     if (customDateRange.style.display === "none") {
                         customDateRange.style.display = "block";
@@ -214,8 +221,8 @@ require_once('../classes/veterinarian.class.php');
 
     </main>
     <?php
-    require_once('./include/js.php')
-    ?>
+    require_once ('./include/js.php')
+        ?>
 </body>
 
 </html>
