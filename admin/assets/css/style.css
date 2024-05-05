@@ -342,6 +342,9 @@ header {
 }
 
 /* Veterinarian Account Table */
+.table-con {
+    margin-left: 260px;
+}
 
 .veterinarian-con {
     padding-top: 72px;
@@ -1012,12 +1015,15 @@ header {
     text-align: center; /* Center-align text within cells with class "text-center" */
 }
     .cus-head-form{
+
         background: rgb(119,132,190);
+       
         text-align: center;
+       
         height: 80px;
-        margin-top: 30px;
-        margin-left: 36px;
-        width: 87%;
+        
+        margin-top:30px;
+        margin-left: 30px;
     }
     
     .head-form i {
@@ -1057,5 +1063,4 @@ header {
 .pet-categories-container{
     display: flex;
     flex-direction: row;
-    margin-left: 21em;
 }
