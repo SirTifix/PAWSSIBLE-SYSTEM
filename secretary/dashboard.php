@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    $title = 'Dashboard';
-    require_once('./include/sec-head.php');
+$title = 'Dashboard';
+require_once ('./include/sec-head.php');
+require_once ('../classes/customer.class.php');
+require_once ('../classes/pet.class.php');
+require_once ('../classes/vaccine.class.php');
+
+$customerRecordClass = new Customer;
+$petRecordClass = new Pet;
+$vaccineRecordClass = new Vaccine;
+
+$customerCount = $customerRecordClass->countAll();
+$petCount = $petRecordClass->countAll();
+$vaccineCount = $vaccineRecordClass->countAll();
+
+$recentCustomer = $customerRecordClass->showWeekly();
 ?>
 <body>
     <?php
-        require_once('./include/sec-header.php')
-    ?>
+    require_once ('./include/sec-header.php')
+      ?>
     <main>
     <?php
-        require_once('./include/sec-sidepanel.php')
-    ?>
+    require_once ('./include/sec-sidepanel.php')
+      ?>
     <section class="dashboard-con mb-5">
         <div class="box">
             <div class="dashboard-head mb-5">
@@ -24,7 +37,7 @@
                     <p class="my-1">Total No. of Customer: </p>
                     <div class="d-flex justify-content-between align-items-center">
                       <i class="dashboard-icon fa-solid fa-users m-2" aria-hidden="true"></i>
-                      <h1 class="m-3">13</h1>
+                      <h1 class="m-3"><?php echo $customerCount; ?></h1>
                     </div>
                 </div> 
 
@@ -32,7 +45,7 @@
                     <p class="my-1">Total No. of Pet: </p>
                     <div class="d-flex justify-content-between align-items-center">
                       <i class="dashboard-icon fa-solid fa-paw m-2" aria-hidden="true"></i>
-                      <h1 class="m-3">4</h1>
+                      <h1 class="m-3"><?php echo $petCount; ?></h1>
                     </div>
                 </div> 
 
@@ -40,7 +53,7 @@
                     <p class="my-1">Total No. of Vaccination: </p>
                     <div class="d-flex justify-content-between align-items-center">
                       <i class="dashboard-icon fa-solid fa-syringe m-2" aria-hidden="true"></i>
-                      <h1 class="m-3">22</h1>
+                      <h1 class="m-3"><?php echo $vaccineCount; ?></h1>
                     </div>
                 </div> 
                 
@@ -79,12 +92,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+          <?php foreach ($recentCustomer as $customer):
+            ?>
+              <tr>
+                <th scope="row"><?php echo $customer['customerID']; ?></th>
+                <td><?php echo $customer['customerFirstname']; ?></td>
+                <td><?php echo $customer['customerLastname']; ?></td>
+                <td><?php echo date('F j, Y', strtotime($customer['created_at'])); ?></td>
+              </tr>
+            <?php endforeach; ?>
           </tbody>
         </table>
       </div>

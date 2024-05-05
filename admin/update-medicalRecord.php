@@ -223,7 +223,7 @@
 
         <section class="">
             <div class="d-flex justify-content-end">
-                <a href="update-customer.php" class="top-back btn-secondary">Back</a>
+                <a href="customers.php" class="top-back btn-secondary">Back</a>
             </div>
         </section>
 

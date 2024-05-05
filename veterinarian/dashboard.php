@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -7,8 +10,10 @@ require_once('../classes/veterinarian.class.php');
 
 $vetRecordClass = new Veterinarian;
 $vetID = $vetRecordClass->vetID;
-
 $vetCount = $vetRecordClass->countVet($vetID);
+
+$userInfo = $vetRecordClass->fetch($_SESSION['vetID']);
+$status = $userInfo['vetStatus']
 ?>
 
 <body>
@@ -26,10 +31,10 @@ $vetCount = $vetRecordClass->countVet($vetID);
 
       <div class="status-vet-con d-flex align-items-center">
         <div class="col-6 text-start">
-          <div class="status-border mx-5">Status: Active status</div>
+          <div class="status-border mx-5" style="background: <?= $status === 'Unavailable' ? '#ff0000' : '#00a500' ?>;">Status: <?= $status ?></div>
         </div>
         <div class="col-6 text-end">
-          <button id="availabilityButton" class="btn btn-success mx-5" data-bs-toggle="modal" data-bs-target="#availabilityModal">Change Status</button>
+          <button id="availabilityButton" class="btn btn-primary mx-5" data-bs-toggle="modal" data-bs-target="#availabilityModal">Change Status</button>
         </div>
       </div>
 
@@ -41,8 +46,8 @@ $vetCount = $vetRecordClass->countVet($vetID);
               <i class="fa-solid fa-circle-xmark"></i></button>
             <h5 class="modal-title text-center" id="availabilityModalLabel">Change Status</h5>
             <div class="modal-body d-flex align-items-center justify-content-between">
-              <button type="button" class="btn btn-success">Available</button>
-              <button type="button" class="btn btn-secondary">Unavailable</button>
+              <button type="button" class="btn btn-success" onclick="updateStatus(<?php echo $_SESSION['vetID']; ?>, 'Available')">Available</button>
+              <button type="button" class="btn btn-secondary" onclick="updateStatus(<?php echo $_SESSION['vetID']; ?>, 'Unavailable')">Unavailable</button>
             </div>
           </div>
         </div>
@@ -94,6 +99,24 @@ $vetCount = $vetRecordClass->countVet($vetID);
   </section>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function updateStatus(vetID, vetStatus) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            alert('Status: ' + vetStatus);
+                            window.location.reload();
+                        } else {
+                            alert('Failed to update status.');
+                        }
+                    }
+                };
+                xhr.open('POST', 'update-status.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.send('vetID=' + vetID + '&vetStatus=' + encodeURIComponent(vetStatus));
+            }
+  </script>
 
 </body>
 

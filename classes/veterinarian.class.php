@@ -76,6 +76,23 @@ class Veterinarian
         }
     }
 
+    function updateStatus()
+    {
+        $sql = "UPDATE veterinarian SET vetStatus=:vetStatus WHERE vetID=:vetID;";
+
+        $query = $this->db->connect()->prepare($sql);
+
+        $query->bindParam(':vetID', $this->vetID);
+        $query->bindParam(':vetStatus', $this->vetStatus);
+
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     function delete($vetID)
     {
         $sql = "DELETE FROM veterinarian WHERE vetID = :vetID";
@@ -106,7 +123,16 @@ class Veterinarian
         }
         return $data;
     }
-
+    function showAvailable()
+    {
+        $sql = "SELECT * FROM veterinarian WHERE vetStatus = 'Available' ORDER BY vetLastname ASC, vetFirstname ASC;";
+        $query = $this->db->connect()->prepare($sql);
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
     function showVet()
     {
         $sql = "SELECT vetID, CONCAT(vetFirstname, ' ', vetLastname) AS fullName, vetStatus, created_at FROM veterinarian ORDER BY vetLastname ASC, vetFirstname ASC;";
@@ -143,5 +169,5 @@ class Veterinarian
         return $recordCount;
     }
 
-    
+
 }

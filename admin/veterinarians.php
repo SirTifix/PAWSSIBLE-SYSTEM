@@ -96,7 +96,7 @@ require_once ('../classes/veterinarian.class.php');
                             <td class="d-flex justify-content-end">
 
                                 <div class="crud-btn">
-                                <a href="update-vet.php?vetID=' . $record['vetID'] . '" class="crud-icon-update"><i class="fa-regular fa-pen-to-square m-1" aria-hidden="true"></i></a>
+                                <a href="update-vet.php?vetID=<?php echo $record['vetID'] ?>" class="crud-icon-update"><i class="fa-regular fa-pen-to-square m-1" aria-hidden="true"></i></a>
                                 </div>
 
 

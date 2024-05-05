@@ -15,8 +15,6 @@ require_once('./include/admin-head.php');
     require_once('./include/admin-sidepanel.php');
     ?>
 
-
-
     <section class="veterinarian-con">
       <div class="row mx-5 justify-content-end">
         <div class="crud-btn-add col-4 col-sm-auto">

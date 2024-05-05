@@ -115,7 +115,7 @@ require_once('./tools/functions.php');
                             <?php
                             require_once '../classes/veterinarian.class.php';
                             $vet = new Veterinarian();
-                            $vets = $vet->show();
+                            $vets = $vet->showAvailable();
                             foreach ($vets as $vet) {
                                 echo '<option value="' . $vet['vetID'] . '">Dr. ' . $vet['vetFirstname'] . ' ' . $vet['vetLastname'] . '</option>';
                             }

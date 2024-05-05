@@ -26,8 +26,10 @@ if(isset($_GET['vetID'])) {
             $vetLastname = $_POST['vetLastname'];
             $vetPhoneNumber = $_POST['vetPhone'];
             $vetEmail = $_POST['vetEmail'];
+            $vetStatus = "Available";
             $vetUsername = $_POST['vetUsername'];
             $vetPassword = $_POST['vetPassword'];
+            $hashedPassword = password_hash($vetPassword, PASSWORD_DEFAULT);
             $created_at = $currentDateTime;
             $vetRePassword = $_POST['vetRePassword'];
 
@@ -39,8 +41,9 @@ if(isset($_GET['vetID'])) {
                 $veterinarianClass->vetLastname = $vetLastname;
                 $veterinarianClass->vetPhone = $vetPhoneNumber;
                 $veterinarianClass->vetEmail = $vetEmail;
+                $veterinarianClass->vetStatus = $vetStatus;
                 $veterinarianClass->vetUsername = $vetUsername;
-                $veterinarianClass->vetPassword = $vetPassword;
+                $veterinarianClass->vetPassword = $hashedPassword;
                 $veterinarianClass->vetID = $vetID;
 
                 $result = $veterinarianClass->update();
