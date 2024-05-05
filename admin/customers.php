@@ -244,7 +244,6 @@ require_once('./include/admin-head.php');
     require_once('./include/js.php')
     ?>
 </body>
-
 </html> 
 
 <style>
