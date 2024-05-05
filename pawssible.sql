@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 05, 2024 at 02:17 PM
+-- Generation Time: May 05, 2024 at 04:50 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -70,10 +70,8 @@ CREATE TABLE `booking` (
 
 INSERT INTO `booking` (`bookingID`, `customerID`, `firstName`, `middlename`, `lastName`, `emailAddress`, `contactNumber`, `numberPets`, `status`, `bookingDate`, `bookingTime`, `resched_reason`) VALUES
 (4875, 13, 'Test', '', 'Test', 'test@test.com', '123123412', 1, 'Done', 'May 5, 2024', '08:00 AM - 09:00 AM', 'No time and no money hehe'),
-(4998, 28, 'RAF', 'Ruste', 'SALUDO', 'raf_saludo@yahoo.com.ph', '09979784700', 2, 'Cancelled', 'May 10, 2024', '01:00 AM 02:00 PM', NULL),
-(5577, 28, 'Batman', 'Bin', 'Suparman', 'kryptonite@luthor.com', '12312', 2, 'Done', 'May 6, 2024', '08:00 AM - 09:00 AM', 'dugay kaayo sila'),
-(5603, 13, 'test', '', 'test', 'test@test.com', '53453', 2, 'Pending', 'May 8, 2024', '12:00 AM 01:00 PM', NULL),
-(8125, 28, 'rambutan', '', 'apol', 'pruts@vejtabol.com', '123123', 1, 'Approved', 'May 10, 2024', '10:00 AM 11:00 AM', NULL);
+(5577, 28, 'Batman', 'Bin', 'Suparman', 'kryptonite@luthor.com', '12312', 2, 'Cancelled', 'May 6, 2024', '08:00 AM - 09:00 AM', 'dugay kaayo sila'),
+(5603, 13, 'test', '', 'test', 'test@test.com', '53453', 2, 'Approved', 'May 8, 2024', '12:00 AM 01:00 PM', NULL);
 
 -- --------------------------------------------------------
 
@@ -92,7 +90,7 @@ CREATE TABLE `booking_pet` (
   `bookingID` int(11) NOT NULL,
   `serviceID` int(11) NOT NULL,
   `vetID` int(11) NOT NULL,
-  `customerID` int(10) NOT NULL
+  `customerID` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -448,7 +446,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `booking_pet`
 --
 ALTER TABLE `booking_pet`
-  MODIFY `bookingPetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `bookingPetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -460,7 +458,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `customer_record`
 --
 ALTER TABLE `customer_record`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `medicalrecord`
@@ -502,13 +500,13 @@ ALTER TABLE `vaccines`
 -- AUTO_INCREMENT for table `vaccine_list`
 --
 ALTER TABLE `vaccine_list`
-  MODIFY `vaccineID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `vaccineID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `veterinarian`
 --
 ALTER TABLE `veterinarian`
-  MODIFY `vetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `vetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
