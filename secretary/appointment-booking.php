@@ -89,29 +89,29 @@ require_once('./include/sec-head.php');
               <div>12:00 PM</div>
             </div>
 
-            <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="12:00 AM 01:00 PM">
+            <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="12:00 PM 01:00 PM">
               <div>12:00 PM</div>
               <div>01:00 PM</div>
             </div>
 
-            <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="01:00 AM 02:00 PM">
-              <div>01:00 AM</div>
-              <div>02:00 AM</div>
+            <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="01:00 PM 02:00 PM">
+              <div>01:00 PM</div>
+              <div>02:00 PM</div>
             </div>
 
-            <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="02:00 AM 03:00 PM">
-              <div>02:00 AM</div>
-              <div>03:00 AM</div>
+            <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="02:00 PM 03:00 PM">
+              <div>02:00 PM</div>
+              <div>03:00 PM</div>
             </div>
 
-            <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="03:00 AM 04:00 PM">
-              <div>03:00 AM</div>
-              <div>04:00 AM</div>
+            <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="03:00 PM 04:00 PM">
+              <div>03:00 PM</div>
+              <div>04:00 PM</div>
             </div>
 
-            <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="04:00 AM 05:00 PM">
-              <div>04:00 AM</div>
-              <div>05:00 AM</div>
+            <div class="time-slot" data-bs-toggle="modal" type="button" data-bs-target="#modal" data-time="04:00 PM 05:00 PM">
+              <div>04:00 PM</div>
+              <div>05:00 PM</div>
             </div>
 
 
