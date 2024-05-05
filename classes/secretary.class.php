@@ -28,11 +28,10 @@ class Secretary
 
     function add()
     {
-        $sql = "INSERT INTO secretary (secretaryFirstname, secretaryMiddlename, secretaryLastname, secretaryPhone, secretaryEmail, secretaryUsername, secretaryPassword, created_at) VALUES 
-        (:secretaryFirstname, :secretaryMiddlename, :secretaryLastname, :secretaryPhone, :secretaryEmail, :secretaryUsername, :secretaryPassword, :created_at);";
+        $sql = "INSERT INTO secretary (secretaryFirstname, secretaryMiddlename, secretaryLastname, secretaryPhone, secretaryEmail, secretaryUsername, secretaryPassword) VALUES 
+        (:secretaryFirstname, :secretaryMiddlename, :secretaryLastname, :secretaryPhone, :secretaryEmail, :secretaryUsername, :secretaryPassword);";
 
         $hashedPassword = password_hash($this->secretaryPassword, PASSWORD_DEFAULT);
-        $currentDateTime = date('Y-m-d H:i:s');
 
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':secretaryFirstname', $this->secretaryFirstname);
@@ -42,7 +41,6 @@ class Secretary
         $query->bindParam(':secretaryEmail', $this->secretaryEmail);
         $query->bindParam(':secretaryUsername', $this->secretaryUsername);
         $query->bindParam(':secretaryPassword', $hashedPassword);
-        $query->bindParam(':created_at', $currentDateTime);
         if ($query->execute()) {
             return true;
         } else {

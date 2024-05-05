@@ -6,10 +6,17 @@ $booking = new Booking();
 
 if (isset($_SESSION['customerID'])) {
     $customerID = $_SESSION['customerID'];
-    $petInfo = $booking->populatePetInfo($customerID);
+    $bookingCustomer = $booking->showCustomerAppointment($_SESSION['customerID']);
+    $petInfo = array();
+    
+    foreach ($bookingCustomer as $appointment) {
+        $bookingID = $appointment['bookingID'];
+        $petInfo[$bookingID] = $booking->populatePetInfo($bookingID);
+    }
 } else {
     $petInfo = array();
 }
+
 ?>
 <div class="Rounded-container-form container rounded mt-2">
     <div class="Pet-mail-table row">
@@ -39,28 +46,27 @@ if (isset($_SESSION['customerID'])) {
                             </tr>
                         </thead>
                         <tbody id="appointmentTableBody">
-                            <?php foreach ($petInfo['petNames'] as $pet): ?>
-                                <tr class="table-row">
-                                    <td>
-                                        <?php echo $pet['bookingPetID']; ?>
-                                    </td>
-                                    <td>
-                                        <label class="custom-checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <?php echo $pet['petName']; ?>
-                                    </td>
-                                    <td> <strong> <?php echo $pet['bookingDate'][0]['bookingDate']; ?> </strong></td>
-                                    <td>
-                                        <input type="hidden" name="bookingID"
-                                            value="<?php echo $pet['bookingID']; ?>">
-                                        <a href="./review-appointment.php?bookingID=<?php echo $pet['bookingID']; ?>">
-                                            <button type="button" class="Review-button btn-sm">
-                                                <i class="fa-solid fa-ellipsis"></i>
-                                            </button>
-                                        </a>
-                                    </td>
-                                </tr>
+                            <?php foreach ($petInfo as $bookingID => $bookingPets): ?>
+                                <?php foreach ($bookingPets['petNames'] as $pet): ?>
+                                    <tr class="table-row">
+                                        <td><?php echo $pet['bookingPetID']; ?></td>
+                                        <td>
+                                            <label class="custom-checkbox">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <?php echo $pet['petName']; ?>
+                                        </td>
+                                        <td><strong><?php echo $pet['bookingDate'][0]['bookingDate']; ?></strong></td>
+                                        <td>
+                                            <input type="hidden" name="bookingID" value="<?php echo $pet['bookingID']; ?>">
+                                            <a href="./review-appointment.php?bookingID=<?php echo $pet['bookingID']; ?>">
+                                                <button type="button" class="Review-button btn-sm">
+                                                    <i class="fa-solid fa-ellipsis"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
                             <?php endforeach; ?>
                         </tbody>
                     </table>

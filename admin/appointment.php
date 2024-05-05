@@ -42,42 +42,64 @@ require_once('./include/admin-head.php');
         </div>
     </section>
 
-    <div class="table-wrapper">
-        <div class="table-responsive">
-            <table id="customer" class="table table-striped table-sm">
-                <thead>
-                    <tr>
-                        <th scope="col">Book No.</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Status</th>
-                        <th scope="col" width="5%">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="appointmentTableBody">
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="d-flex justify-content-center align-items-center">
-                            <div class="crud-btn">
-                                <a href="" class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteDModal">
-                                    <i class="fa-solid fa-ban pe-4" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                            <div class="crud-btn">
-                                <a href="" class="edit-btn" data-bs-toggle="modal" data-bs-target="#modal">
-                                    <i class="fa fa-ellipsis-h pe-5" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+      <div class="table-wrapper">
+        <table id="customer" class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Book No.</th>
+              <th scope="col">Name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Time</th>
+              <th scope="col">Status</th>
+              <th scope="col" width="5%">Action</th>
+            </tr>
+          </thead>
+          <tbody id="appointmentTableBody">
+            <?php
+              require_once '../classes/booking.class.php';
+              $booking = new Booking();
+
+              $bookings = $booking->showAllBookingWithStatusFilter();
+
+              foreach ($bookings as $bookingAppointment):
+              ?>
+            <tr>
+              <td><?php echo $bookingAppointment['bookingID']; ?></td>
+              <td><?php echo $bookingAppointment['fullName']; ?></td>
+              <td><?php echo $bookingAppointment['bookingDate']; ?></td>
+              <td><?php echo $bookingAppointment['bookingTime']; ?></td>
+              <td><?php echo $bookingAppointment['status']; ?></td>
+              <td class="d-flex justify-content-center align-items-center">
+              <div class="crud-btn">
+                  <a href="" class="done-btn" data-bs-toggle="modal" data-bs-target="#statusModal<?php echo $bookingAppointment['bookingID']; ?>">
+                  <i class="fa-solid fa-clipboard-question pe-3"></i></a>
+                  <div class="modal fade" id="statusModal<?php echo $bookingAppointment['bookingID']; ?>" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <h4 class="modal-title m-4 text-center" id="statusModalLabel">Change Appointment Status?</h4>
+                        <div class="modal-footer justify-content-between" style="border: none;">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <div>
+                            <button type="button" class="btn btn-primary" id="confirmCancelled" data-customer-id="" onclick="updateStatus(<?php echo $bookingAppointment['bookingID']; ?>, 'Cancelled')" style="background-color: #FF0000; border: none;">Cancelled</button>
+                            <button type="button" class="btn btn-primary" id="confirmDone" data-customer-id="" onclick="updateStatus(<?php echo $bookingAppointment['bookingID']; ?>, 'Done')" style="background-color: #2e9a40; border: none;">Done</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="crud-btn">
+                  <a href="" class="edit-btn" data-bs-toggle="modal" data-bs-target="#editModal">
+                  <i class="fa-solid fa-pen-to-square pe-4"></i></a>
+                </div>
+              </td>
+            </tr>
+                <?php
+                  endforeach;
+                  ?>
+          </tbody>
+        </table>
         <nav aria-label="...">
             <ul class="pagination justify-content-end">
                 <li class="page-item disabled">
@@ -102,22 +124,11 @@ require_once('./include/admin-head.php');
 
 
     <section>
-      <div class="modal fade" id="deleteDModal" tabindex="-1" aria-labelledby="deleteDModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to cancel
-              this Appointment?</h4>
-            <div class="modal-footer justify-content-between" style="border: none;">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-              <button type="button" class="btn btn-primary" id="confirmDelete" data-customer-id="" style="background-color: #FF0000; border: none;">Yes</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      
     </section>
 
     <section>
-      <div id="modal" class="modal fade" data-bs-backdr="static" tabindex="-1">
+      <div id="editModal" class="modal fade" data-bs-backdr="static" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-cont">
             <span data-bs-dismiss="modal" class="close"><i class="fa-solid fa-circle-xmark"></i></span>
@@ -309,21 +320,6 @@ require_once('./include/admin-head.php');
         <div class="modal-body">
 
           <!-- Calendar content goes here -->
-
-          <div style="
-                position: absolute;
-                bottom: 90vh;
-                left: 6vh;
-                color: #2a2f4f;">
-            <h2><strong> AVAILABLE DATE </strong></h2>
-          </div>
-          <div style="
-                position: absolute;
-                bottom: 90vh;
-                left: 77vh;
-                color: #2a2f4f;">
-            <h2><strong> AVAILABLE TIME </strong></h2>
-          </div>
           <div class="review-calendar container">
             <div class="calendar-container cont-box">
               <div class="calendar cont-content">
@@ -457,6 +453,26 @@ require_once('./include/admin-head.php');
   require_once('./include/js.php')
   ?>
   <script>
+    function updateStatus(bookingID, newStatus) {
+                var savedBookingId = bookingID;
+                var status = newStatus;
+
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                          alert('Status: '+status);
+                            window.location.reload();
+                        } else {
+                            alert('Failed to update status.');
+                        }
+                    }
+                };
+                xhr.open('POST', 'update-status.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.send('bookingID=' + bookingID + '&status=' + encodeURIComponent(status));
+            }
+
     $(document).ready(function() {
       // Function to open the calendar modal
       $("#openCalendarModalBtn").click(function() {
@@ -490,9 +506,7 @@ require_once('./include/admin-head.php');
         location.reload();
       });
     });
-  </script>
 
-  <script>
     // Example JavaScript to handle pagination
     document.getElementById('prev').addEventListener('click', function(event) {
       // Handle "Previous" button click event

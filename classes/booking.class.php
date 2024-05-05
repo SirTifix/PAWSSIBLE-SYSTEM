@@ -103,14 +103,14 @@ class Booking
     }
 
 
-    function addPet($petName, $petType, $sex, $concerns, $petBreed, $petBirthDate, $savedBookingId, $service, $vet,$customerID)
+    function addPet($petName, $petType, $sex, $concerns, $petBreed, $petBirthDate, $savedBookingId, $service, $vet, $customerID)
     {
         try {
             $sqlPet = "INSERT INTO booking_pet (petName, petType, sex, concerns, petBreed, petBirthDate, bookingID, serviceID, vetID, customerID) VALUES 
                 (:petName, :petType, :sex, :concerns, :petBreed, :petBirthDate, :bookingID, :serviceID, :vetID, :customerID);";
             $queryPet = $this->db->connect()->prepare($sqlPet);
 
-            $queryPet->bindParam(':petName', $petName); 
+            $queryPet->bindParam(':petName', $petName);
             $queryPet->bindParam(':petType', $petType);
             $queryPet->bindParam(':sex', $sex);
             $queryPet->bindParam(':concerns', $concerns);
@@ -120,7 +120,7 @@ class Booking
             $queryPet->bindParam(':serviceID', $service);
             $queryPet->bindParam(':vetID', $vet);
             $queryPet->bindParam(':customerID', $customerID);
-            
+
             if (!$queryPet->execute()) {
                 throw new Exception("Error inserting pet data");
             }
@@ -150,17 +150,25 @@ class Booking
         return $data;
     }
 
-    function showAllBooking()
+    function showAllBookingWithStatusFilter()
     {
-        $sql = "SELECT * FROM booking";
+        $sql = "SELECT bookingID, CONCAT(firstName, ' ', lastName) AS fullName, status, bookingDate, bookingTime 
+            FROM booking 
+            WHERE status IN ('Approved', 'Done', 'Cancelled')
+            ORDER BY FIELD(status, 'Approved', 'Done', 'Cancelled')";
+
         $query = $this->db->connect()->prepare($sql);
+
         if ($query->execute()) {
             $data = $query->fetchAll(PDO::FETCH_ASSOC);
         } else {
             $data = null;
         }
+
         return $data;
     }
+
+
     function show($bookingID)
     {
         $sql = "SELECT * FROM booking WHERE bookingID = :bookingID;";
@@ -180,6 +188,18 @@ class Booking
         $query->bindParam(':customerID', $customerID);
         if ($query->execute()) {
             $data = $query->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $data = null;
+        }
+        return $data;
+    }
+    function showCustomerAppointment($customerID)
+    {
+        $sql = "SELECT * FROM booking WHERE customerID = :customerID;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':customerID', $customerID);
+        if ($query->execute()) {
+            $data = $query->fetchAll(PDO::FETCH_ASSOC);
         } else {
             $data = null;
         }
@@ -210,13 +230,13 @@ class Booking
         return $data;
     }
 
-    function populatePetInfo($customerID)
+    function populatePetInfo($bookingID)
     {
         $petInfo = array();
 
-        $sql = "SELECT * FROM booking_pet WHERE customerID = :customerID";
+        $sql = "SELECT * FROM booking_pet WHERE bookingID = :bookingID";
         $query = $this->db->connect()->prepare($sql);
-        $query->bindParam(':customerID', $customerID);
+        $query->bindParam(':bookingID', $bookingID);
         if ($query->execute()) {
             $petInfo['petNames'] = $query->fetchAll();
         }
@@ -233,18 +253,18 @@ class Booking
         return $petInfo;
     }
 
-    function populatePetInfoHistory($customerID)
+    function populatePetInfoHistory($bookingID)
     {
         $petInfo = array();
 
         $sql = "SELECT bp.*, b.status, b.bookingDate 
                 FROM booking_pet bp 
                 JOIN booking b ON bp.bookingID = b.bookingID
-                WHERE bp.customerID = :customerID AND b.status = 'Done'";
-    
+                WHERE bp.bookingID = :bookingID AND b.status IN ('Done', 'Cancelled')";
+
         $query = $this->db->connect()->prepare($sql);
-        $query->bindParam(':customerID', $customerID);
-    
+        $query->bindParam(':bookingID', $bookingID);
+
         if ($query->execute()) {
             $petInfo['petNames'] = $query->fetchAll();
         }
@@ -260,10 +280,10 @@ class Booking
                 FROM booking_pet bp 
                 JOIN booking b ON bp.bookingID = b.bookingID
                 WHERE b.bookingID = :bookingID";
-    
+
         $query = $this->db->connect()->prepare($sql);
         $query->bindParam(':bookingID', $bookingID);
-    
+
         if ($query->execute()) {
             $appointmentInfo['appointmentData'] = $query->fetchAll();
         }
@@ -271,7 +291,7 @@ class Booking
         return $appointmentInfo;
     }
 
-    
+
 
     function fetchNameViaEmail($email)
     {
@@ -284,7 +304,31 @@ class Booking
         return $data;
     }
 
-    function rescheduleAppointment($bookingID, $newDate, $newTime, $reason) {
+    function updateStatus($bookingID, $status)
+    {
+        try {
+            $sql = "UPDATE booking 
+                    SET status = :status 
+                    WHERE bookingID = :bookingID";
+
+            $query = $this->db->connect()->prepare($sql);
+
+            $query->bindParam(':status', $status);
+            $query->bindParam(':bookingID', $bookingID);
+
+            if ($query->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    function rescheduleAppointment($bookingID, $newDate, $newTime, $reason)
+    {
         try {
             $sql = "UPDATE booking 
                     SET bookingDate = :newDate, 

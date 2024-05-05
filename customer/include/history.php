@@ -6,7 +6,13 @@ $booking = new Booking();
 
 if(isset($_SESSION['customerID'])) {
     $customerID = $_SESSION['customerID'];
-    $petInfo = $booking->populatePetInfoHistory($customerID);
+    $bookingCustomer = $booking->showCustomerAppointment($_SESSION['customerID']);
+    $petInfo = array();
+
+    foreach ($bookingCustomer as $appointment) {
+        $bookingID = $appointment['bookingID'];
+        $petInfo[$bookingID] = $booking->populatePetInfoHistory($bookingID);
+    }
 } else {
     $petInfo = array(); 
 }
@@ -34,12 +40,13 @@ if(isset($_SESSION['customerID'])) {
                         <thead>
                             <tr>
                                 <th scope="col" style="padding-left:5em;">Pet Name</th>
-                                <th scope="col">status</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Date</th>
                             </tr>
                         </thead>
                         <tbody id="appointmentTableBody">
-                            <?php foreach ($petInfo['petNames'] as $pet) : ?>
+                        <?php foreach ($petInfo as $bookingID => $bookingPets): ?>
+                            <?php foreach ($bookingPets['petNames'] as $pet): ?>
                             <tr class="table-row">
                                 <td>
                                     <label class="custom-checkbox">
@@ -51,6 +58,8 @@ if(isset($_SESSION['customerID'])) {
                                 <td><strong><?php echo $pet['bookingDate']; ?></strong></td>
                             </tr>
                             <?php endforeach; ?>
+                            <?php endforeach; ?>
+                            </tbody>
                     </table>
                 </div>
 

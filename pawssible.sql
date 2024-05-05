@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 04, 2024 at 11:51 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: 127.0.0.1:3306
+-- Generation Time: May 05, 2024 at 02:17 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -51,6 +51,7 @@ INSERT INTO `admin` (`adminID`, `adminUsername`, `adminPassword`, `adminEmail`, 
 
 CREATE TABLE `booking` (
   `bookingID` int(10) NOT NULL,
+  `customerID` int(11) DEFAULT NULL,
   `firstName` varchar(100) NOT NULL,
   `middlename` varchar(255) NOT NULL,
   `lastName` varchar(100) NOT NULL,
@@ -67,9 +68,12 @@ CREATE TABLE `booking` (
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`bookingID`, `firstName`, `middlename`, `lastName`, `emailAddress`, `contactNumber`, `numberPets`, `status`, `bookingDate`, `bookingTime`, `resched_reason`) VALUES
-(4875, 'Test', '', 'Test', 'test@test.com', '123123412', 1, 'Pending', 'May 4, 2024', '08:00 AM - 09:00 AM', 'No time and no money hehe'),
-(5577, 'Batman', 'Bin', 'Suparman', 'kryptonite@luthor.com', '12312', 2, 'Pending', 'May 5, 2024', '08:00 AM - 09:00 AM', 'dugay kaayo sila');
+INSERT INTO `booking` (`bookingID`, `customerID`, `firstName`, `middlename`, `lastName`, `emailAddress`, `contactNumber`, `numberPets`, `status`, `bookingDate`, `bookingTime`, `resched_reason`) VALUES
+(4875, 13, 'Test', '', 'Test', 'test@test.com', '123123412', 1, 'Done', 'May 5, 2024', '08:00 AM - 09:00 AM', 'No time and no money hehe'),
+(4998, 28, 'RAF', 'Ruste', 'SALUDO', 'raf_saludo@yahoo.com.ph', '09979784700', 2, 'Cancelled', 'May 10, 2024', '01:00 AM 02:00 PM', NULL),
+(5577, 28, 'Batman', 'Bin', 'Suparman', 'kryptonite@luthor.com', '12312', 2, 'Done', 'May 6, 2024', '08:00 AM - 09:00 AM', 'dugay kaayo sila'),
+(5603, 13, 'test', '', 'test', 'test@test.com', '53453', 2, 'Pending', 'May 8, 2024', '12:00 AM 01:00 PM', NULL),
+(8125, 28, 'rambutan', '', 'apol', 'pruts@vejtabol.com', '123123', 1, 'Approved', 'May 10, 2024', '10:00 AM 11:00 AM', NULL);
 
 -- --------------------------------------------------------
 
@@ -98,7 +102,9 @@ CREATE TABLE `booking_pet` (
 INSERT INTO `booking_pet` (`bookingPetID`, `petName`, `petType`, `sex`, `concerns`, `petBreed`, `petBirthDate`, `bookingID`, `serviceID`, `vetID`, `customerID`) VALUES
 (32, 'Kongkik', 'Cat', 'Male', 'Cat neuter', 'Siamese', '2024-04-18', 4875, 2, 5, 13),
 (45, 'Barry', 'Tortor', 'Male', '', 'Mabilis', '2024-05-25', 5577, 5, 4, 13),
-(46, 'Cyborg', 'Bakal', 'Female', 'wala lng mahina kasi', 'Mamaw', '2024-05-16', 5577, 2, 5, 13);
+(46, 'Cyborg', 'Bakal', 'Female', 'wala lng mahina kasi', 'Mamaw', '2024-05-16', 5577, 2, 5, 13),
+(54, 'Maximus', 'Aso', 'Male', '', 'Mabilis', '2024-05-09', 5603, 8, 4, 36),
+(55, 'Max', 'Dog', 'Female', '', 'Doberman', '2024-05-23', 5603, 5, 5, 36);
 
 -- --------------------------------------------------------
 
@@ -123,8 +129,9 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`id`, `firstname`, `middlename`, `lastname`, `email`, `password`, `created_at`, `updated_at`) VALUES
 (13, 'test', '', 'test', 'test@test.com', '$2y$10$CQh7F4D5R1UerGTqw0qcBO/nCNA8utVQOn6qPPE0wRb5Ujd6mlQoK', '2024-03-04 12:51:10', '2024-03-04 12:51:10'),
-(27, 'joy', '', 'pioquinto', 'joypioquinto1017@gmail.ph', '$2y$10$butq3BTeLUdhhjqdbwUGnOTFC45iQ/oe.Evk2Rq18CkH4tyWiA.FO', '2024-05-01 09:28:39', '2024-05-01 09:28:39'),
-(28, 'rambutan', '', 'apol', 'pruts@vejtabol.com', '$2y$10$0ZszKdppLOPAjD88FrSu2usf1lo3UYQRJGRtoLkDkM6jDRQvCEDgi', '2024-05-04 13:42:12', '2024-05-04 13:42:12');
+(28, 'rambutan', '', 'apol', 'pruts@vejtabol.com', '$2y$10$0ZszKdppLOPAjD88FrSu2usf1lo3UYQRJGRtoLkDkM6jDRQvCEDgi', '2024-05-04 13:42:12', '2024-05-04 13:42:12'),
+(29, 'Steve', 'Papa', 'Garciano', 'steveG@gmail.com', '$2y$10$nRoJksCzl54fQqJzu3O7eOrkeJh7zdebr.UZzX61yo8DqZB6apF2C', '2024-05-05 11:49:50', '2024-05-05 11:49:50'),
+(30, 'Neri', 'Garcia', 'Arthur', 'arthurNery@neri.com', '$2y$10$5oQhBV3Tgr0M7YnAzWpQeuT.LvX0tpPA8aYiGCvie0vG6irQTwSd.', '2024-05-05 11:51:48', '2024-05-05 11:51:48');
 
 -- --------------------------------------------------------
 
@@ -134,8 +141,9 @@ INSERT INTO `customer` (`id`, `firstname`, `middlename`, `lastname`, `email`, `p
 
 CREATE TABLE `customer_record` (
   `customerID` int(11) NOT NULL,
+  `bookingID` int(11) DEFAULT NULL,
   `customerFirstname` varchar(255) NOT NULL,
-  `customerMiddlename` varchar(255) DEFAULT NULL,
+  `customerMiddlename` varchar(255) NOT NULL,
   `customerLastname` varchar(255) NOT NULL,
   `customerDOB` date NOT NULL,
   `customerAddress` varchar(255) NOT NULL,
@@ -152,9 +160,10 @@ CREATE TABLE `customer_record` (
 -- Dumping data for table `customer_record`
 --
 
-INSERT INTO `customer_record` (`customerID`, `customerFirstname`, `customerMiddlename`, `customerLastname`, `customerDOB`, `customerAddress`, `customerCity`, `customerEmail`, `customerState`, `customerPostal`, `customerPhone`, `created_at`, `updated_at`) VALUES
-(26, 'Anton', NULL, 'Altair', '2024-03-13', 'test', 'test', 'test@test.com', 'Zamboanga City', 7000, '2147483647', '2024-03-03 08:59:04', '2024-03-03 08:59:04'),
-(27, 'sample', '', 'sample', '2024-05-05', 'zone 4, socorro street', 'zamboanga city', 'sample@gmail.com', 'zambonaga del sur', 7000, '09159498333', '2024-05-04 20:16:07', '2024-05-04 20:16:07');
+INSERT INTO `customer_record` (`customerID`, `bookingID`, `customerFirstname`, `customerMiddlename`, `customerLastname`, `customerDOB`, `customerAddress`, `customerCity`, `customerEmail`, `customerState`, `customerPostal`, `customerPhone`, `created_at`, `updated_at`) VALUES
+(26, NULL, 'Anton', '', 'Altair', '2024-03-13', 'test', 'test', 'test@test.com', 'Zamboanga City', 7000, '2147483647', '2024-03-03 08:59:04', '2024-03-03 08:59:04'),
+(35, 4998, 'RAF', 'Ruste', 'SALUDO', '0000-00-00', '', '', 'raf_saludo@yahoo.com.ph', '', 0, '09979784700', '2024-05-04 22:37:27', '2024-05-04 22:37:27'),
+(36, 5603, 'test', '', 'test', '0000-00-00', '', '', 'test@test.com', '', 0, '53453', '2024-05-05 10:22:45', '2024-05-05 10:22:45');
 
 -- --------------------------------------------------------
 
@@ -201,7 +210,10 @@ CREATE TABLE `pet` (
 INSERT INTO `pet` (`petId`, `petName`, `petBirthdate`, `petAge`, `petBreed`, `petType`, `petGender`, `petWeight`, `petColor`, `customerID`, `created_at`, `updated_at`) VALUES
 (14, 'Gompi', '0000-00-00', 2, 'Siamese', 'Cat', 'Male', 140, 'Brown', 26, '2024-03-03 08:59:04', '2024-03-03 08:59:04'),
 (15, 'Kongpi', '0000-00-00', 23, 'Wala', 'Grabe', 'Babae', 34, 'Rainbow', 26, '2024-05-02 23:49:33', '2024-05-02 23:49:33'),
-(18, 'Fahad', '2024-05-05', 14, 'Terrier', 'Dog', 'Male', 10, 'White', 27, '2024-05-04 20:16:07', '2024-05-04 20:16:07');
+(21, 'Steve', '2024-05-14', 0, 'Palito', 'Askal', 'Male', 0, '', 35, '2024-05-04 22:38:23', '2024-05-04 22:38:23'),
+(22, 'Raymond', '2024-05-23', 0, 'Billiard', 'Matangkad', 'Male', 0, '', 35, '2024-05-04 22:38:23', '2024-05-04 22:38:23'),
+(23, 'Maximus', '2024-05-09', 0, 'Mabilis', 'Aso', 'Male', 0, '', 36, '2024-05-05 10:23:15', '2024-05-05 10:23:15'),
+(24, 'Max', '2024-05-23', 0, 'Doberman', 'Dog', 'Female', 0, '', 36, '2024-05-05 10:23:15', '2024-05-05 10:23:15');
 
 -- --------------------------------------------------------
 
@@ -239,7 +251,7 @@ CREATE TABLE `secretary` (
 --
 
 INSERT INTO `secretary` (`secretaryID`, `secretaryFirstname`, `secretaryMiddlename`, `secretaryLastname`, `secretaryPhone`, `secretaryEmail`, `secretaryUsername`, `secretaryPassword`, `created_at`, `updated_at`) VALUES
-(5, 'Rafael', '', 'Castelo', '123', 'raf@gmail.com', 'rafa', '$2y$10$hLAzmR4owtbmwjtITswlQer2lrig1PXY0BHzKc17.Ts9WWNDx1/Ze', '2024-05-04 13:59:12', '2024-05-04 19:59:12');
+(2, 'RAF', '', 'SALUDO', '09979784700', 'raf_saludo@yahoo.com.ph', 'ASDAS', '$2y$10$xG6jCraIWk0DE/ig/Ib2ueeCt2zmtbJtm2VOjfog6ZUlexFkMnIvy', '2024-05-05 10:29:34', '2024-05-05 10:29:34');
 
 -- --------------------------------------------------------
 
@@ -261,7 +273,7 @@ CREATE TABLE `service` (
 --
 
 INSERT INTO `service` (`serviceID`, `serviceName`, `serviceDescription`, `servicePrice`, `created_at`, `updated_at`) VALUES
-(2, 'Kapon', 'Low cost male', 1700, '2024-03-04', '2024-03-04'),
+(2, 'Stomach Surgery', 'asdasdasdasdasdasdasdasdasd', 1700, '2024-03-04', '2024-05-04'),
 (5, 'Vaccination', 'bakuna', 999, '2024-04-27', '0000-00-00'),
 (7, 'Eye Surgery', 'Offers expert care and advice to ensure the health and well-being of your beloved pets.', 250, '2024-05-03', '2024-05-04'),
 (8, 'Deworming', 'Promote your pet&#039;s health and vitality through regular, reliable deworming solutions.', 200, '2024-05-04', '2024-05-04');
@@ -309,9 +321,8 @@ CREATE TABLE `vaccine_list` (
 --
 
 INSERT INTO `vaccine_list` (`vaccineID`, `vaccineName`, `vaccineType`, `vaccineAge`, `vaccineDosage`, `vaccineInterval`, `vaccinePrice`, `petType`, `created_at`, `updated_at`) VALUES
-(1, 'adasd', 'vaccine1', 'adasd', 'asdas', 'asdasd', 'asdasd', 'vaccine2', '2024-05-02 16:00:00', '0000-00-00 00:00:00'),
-(2, 'Certromycin', 'vaccine3', '2 weeks', '1ml per kilo', '48 weeks', '250', 'vaccine3', '2024-05-02 16:00:00', '0000-00-00 00:00:00'),
-(3, 'asdasd', 'vaccine1', 'asdasd', 'asdasd', 'asdas', 'asdasd', '', '2024-05-03 01:55:05', '2024-05-03 01:55:05');
+(2, 'Certromycin', 'vaccine2', '2 weeks', '1ml per kilo', '48 weeks', '250', 'Cat', '2024-05-02 16:00:00', '2024-05-04 12:54:31'),
+(4, 'Malakas', 'vaccine1', '60', 'Sampung Turok', '3 Weeks', '500.00', 'Dog', '2024-05-04 18:48:54', '2024-05-04 12:54:24');
 
 -- --------------------------------------------------------
 
@@ -322,10 +333,11 @@ INSERT INTO `vaccine_list` (`vaccineID`, `vaccineName`, `vaccineType`, `vaccineA
 CREATE TABLE `veterinarian` (
   `vetID` int(11) NOT NULL,
   `vetFirstname` varchar(255) NOT NULL,
-  `vetMiddlename` varchar(255) DEFAULT NULL,
+  `vetMiddlename` varchar(255) NOT NULL,
   `vetLastname` varchar(255) NOT NULL,
-  `vetPhone` varchar(255) NOT NULL,
+  `vetPhone` int(11) NOT NULL,
   `vetEmail` varchar(255) NOT NULL,
+  `vetStatus` varchar(255) NOT NULL,
   `vetUsername` varchar(255) NOT NULL,
   `vetPassword` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -336,9 +348,9 @@ CREATE TABLE `veterinarian` (
 -- Dumping data for table `veterinarian`
 --
 
-INSERT INTO `veterinarian` (`vetID`, `vetFirstname`, `vetMiddlename`, `vetLastname`, `vetPhone`, `vetEmail`, `vetUsername`, `vetPassword`, `created_at`, `updated_at`) VALUES
-(4, 'Vet ', NULL, 'Test', '12314512', 'test@test.com', 'vet', '$2y$10$lL4yHJ.D6Z0WzlsZf0..CO1zEcLLY5Ts/SrGulWMkvZDvcWy0or7a', '2024-03-03 01:29:55', '2024-03-03 08:29:55'),
-(6, 'Raf', '', 'castelo', '09159498036', 'raf@gmail.com', 'raf', '$2y$10$3Izzfml.Lx6jWBArPiQFSedtcqGq9szQ7WPJYL5gzEGxMajLcCeuu', '2024-05-04 14:14:00', '2024-05-04 20:14:00');
+INSERT INTO `veterinarian` (`vetID`, `vetFirstname`, `vetMiddlename`, `vetLastname`, `vetPhone`, `vetEmail`, `vetStatus`, `vetUsername`, `vetPassword`, `created_at`, `updated_at`) VALUES
+(4, 'Vet ', '', 'Test', 12314512, 'test@test.com', '', 'vet', '$2y$10$lL4yHJ.D6Z0WzlsZf0..CO1zEcLLY5Ts/SrGulWMkvZDvcWy0or7a', '2024-03-03 01:29:55', '2024-03-03 08:29:55'),
+(5, 'Kakong', '', 'Chips', 2147483647, 'raf_saludo@yahoo.com.ph', '', 'kingkong', '$2y$10$iGMQbhb7UtcklrB7JyiwK.CnL6XJI5D3LokUb.BkrOsr8w0dzioLq', '2024-04-27 13:04:45', '2024-04-27 19:04:45');
 
 --
 -- Indexes for dumped tables
@@ -436,19 +448,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `booking_pet`
 --
 ALTER TABLE `booking_pet`
-  MODIFY `bookingPetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `bookingPetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `customer_record`
 --
 ALTER TABLE `customer_record`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `medicalrecord`
@@ -460,7 +472,7 @@ ALTER TABLE `medicalrecord`
 -- AUTO_INCREMENT for table `pet`
 --
 ALTER TABLE `pet`
-  MODIFY `petId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `petId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `schedule_status`
@@ -472,7 +484,7 @@ ALTER TABLE `schedule_status`
 -- AUTO_INCREMENT for table `secretary`
 --
 ALTER TABLE `secretary`
-  MODIFY `secretaryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `secretaryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `service`
@@ -490,13 +502,13 @@ ALTER TABLE `vaccines`
 -- AUTO_INCREMENT for table `vaccine_list`
 --
 ALTER TABLE `vaccine_list`
-  MODIFY `vaccineID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `vaccineID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `veterinarian`
 --
 ALTER TABLE `veterinarian`
-  MODIFY `vetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `vetID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

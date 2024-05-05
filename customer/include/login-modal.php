@@ -8,9 +8,11 @@ if (isset($_POST['login'])) {
         $_SESSION['user'] = 'customer';
         $_SESSION['email2'] = $user->email;
         $_SESSION['customerID'] = $user->customerID;
+        $_SESSION['error'] = null;
         echo "<script>window.location.href = './home.php';</script>";
     } else {
-        $error = 'Invalid email/password. Try Again.';
+        $_SESSION['error'] = 'Invalid email/password. Try Again.';
+        echo "<script>window.location.href = './index.php';</script>";
     }
 }
 ?>
@@ -27,32 +29,32 @@ if (isset($_POST['login'])) {
                                     <img src="./assets/img/clinic-logo.png" class="h-100 d-inline-block" style="width: 150px" alt="">
                                 </p>    
                                 <h1 class="h2 mb-5 text-center" style="color: #5263AB; font-weight: bold;">LOGIN</h1>
-                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                                <form id="loginForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="needs-validation" method="post" novalidate>
                                     <div class="mb-5 input-group">
                                         <span class="input-group-text" style="background-color: #ffffff;"><i class="fa fa-user"></i></span>
                                         <input type="email" class="form-control" style="border-left: none;" id="email2" name="email2" placeholder="Email" value="<?php if (isset($_POST['email2'])) {
                                             echo $_POST['email2'];
-                                        } ?>">
+                                        } ?>" required>
                                     </div>
                                     <div class="mb-4 input-group">
                                         <span class="input-group-text" style="background-color: #ffffff;"><i class="fa fa-lock"></i></span>
                                         <input type="password" class="form-control" style="border-left: none;" id="password2" name="password2" placeholder="Password" value="<?php if (isset($_POST['password2'])) {
                                             echo $_POST['password2'];
-                                        } ?>">
+                                        } ?>" required>
                                     </div>
                                     <div class="form-group text-end">
                                         <a href="#" id="forgotpasswordLink" style="color: #8A8A8A;" data-bs-toggle="modal" data-bs-target="#forgotpasswordModal">Forgot Password?</a>
                                     </div>
                                     <div class="col-12 col-md-6 col-md-4 mt-5 mx-auto text-center">
-                                        <button type="submit" name="login" class="btn btn-create-account py-2 px-5" style="background-color: #5263AB; color: white; font-weight: bold; border-radius: 10px;">Login</button>
+                                        <button type="submit" id="loginBtn" name="login" class="btn btn-create-account py-2 px-5" style="background-color: #5263AB; color: white; font-weight: bold; border-radius: 10px;">Login</button>
                                     </div>
                                 </form>
                                 <?php
-                                if (isset($_POST['login']) && isset($error)) {
+                                if (isset($_SESSION['error'])) {
                                     ?>
                                         <div>
                                             <p class="text-danger text-center">
-                                                <?= $error ?>
+                                                <?= $_SESSION['error'] ?>
                                             </p>
                                         </div>
                                     <?php

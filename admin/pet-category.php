@@ -65,7 +65,7 @@ require_once ('./include/admin-head.php');
                 <div class="cus-head-form col-11 d-flex justify-content-between align-items-center mb-3">
                     <div class="col-12 d-flex justify-content-between align-items-center px-3">
                         <div class="customer-info-head">
-                            <h2>Pet Type </h2>
+                            <h2>Type of Pet </h2>
                         </div>
 
                     </div>
@@ -77,10 +77,10 @@ require_once ('./include/admin-head.php');
                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <h4 class="modal-title m-4 text-center" id="addServiceModalLabel">Add Service</h4>
+                            <h4 class="modal-title m-4 text-center" id="addServiceModalLabel">Add Pet Type</h4>
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="serviceName" class="form-label">Name of Service:</label>
+                                    <label for="serviceName" class="form-label">Breed of Pet:</label>
                                     <input type="text" class="form-control" style="width: 465px;" id="serviceName"
                                         name="serviceName" required>
                                 </div>
@@ -135,7 +135,7 @@ require_once ('./include/admin-head.php');
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <h4 class="modal-title m-4 text-center" id="updateServiceModalLabel">Update
-                                                Service</h4>
+                                                Category</h4>
                                             <div class="modal-body">
                                                 <form id="updateServiceForm<?php echo $service['serviceID']; ?>">
                                                     <div class="mb-3">
@@ -296,12 +296,12 @@ require_once ('./include/admin-head.php');
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <h4 class="modal-title m-4 text-center" id="updateServiceModalLabel">Update
-                                                Service</h4>
+                                                Category</h4>
                                             <div class="modal-body">
                                                 <form id="updateServiceForm<?php echo $service['serviceID']; ?>">
                                                     <div class="mb-3">
-                                                        <label for="serviceName" class="form-label">Name of
-                                                            Service:</label>
+                                                        <label for="serviceName" class="form-label">Breed of
+                                                            Pet:</label>
                                                         <input type="text" class="form-control" style="width: 465px;"
                                                             id="serviceName<?php echo $service['serviceID']; ?>"
                                                             value="<?php echo $service['serviceName']; ?>" required>
