@@ -22,6 +22,7 @@ $title = 'Pawssible Solutions Veterinary';
   <link rel="stylesheet" href="./assets/css/booking-style.css">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/customer-profile.css">
+  
   <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome for icons -->

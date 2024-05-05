@@ -14,6 +14,9 @@ require_once('./tools/functions.php');
     <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="../customer/assets/css/booking-style.css">
+    <link rel="stylesheet" href="../customer/assets/css/style.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
