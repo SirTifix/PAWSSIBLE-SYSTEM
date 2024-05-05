@@ -1017,3 +1017,14 @@ header {
    padding-top: 20px;
   
 }
+
+/*Status Veterinarian */
+.status-vet-con{
+    margin: 60px 20px;
+}
+.status-border {
+    border: 2px solid #28a745; /* Green border */
+    border-radius: 5px;
+    padding: 5px;
+    display: inline-block; /* Ensures the border wraps around the content */
+}
