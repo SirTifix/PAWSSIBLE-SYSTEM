@@ -194,7 +194,7 @@ require_once ('./include/appoint-book-head.php');
                     <div class="input-container col-6">
                       <label for="pets">Number of Pets:</label>
                       <select id="pets" class="form-control" name="pets" required>
-                        <option value="0">Select Number of Pets</option>
+                        <option value="">Select Number of Pets</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -225,7 +225,7 @@ require_once ('./include/appoint-book-head.php');
     </section>
   </main>
 
-  <script src="./assets/script/validation.js"></script>
+  <script src="./assets/js/validation.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>

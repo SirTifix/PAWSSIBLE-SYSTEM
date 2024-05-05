@@ -2,14 +2,12 @@
 session_start();
 require_once '../classes/booking.class.php';
 
-$customerID = $_SESSION['customerID'];
+$customerID = null;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $booking2 = new Booking();
     $bookingIDs = [];
-    if(isset($_SESSION['customerID'])) {
-        
-
+    if(!isset($customerID)) {
         for ($i = 0; $i < count($_POST['pet_index']); $i++) {
             $petIndex = $_POST['pet_index'][$i];
             $petName = $_POST['petName'][$petIndex];

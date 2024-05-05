@@ -1,10 +1,5 @@
 <?php
 session_start();
-
-if (!isset($_SESSION['user']) || $_SESSION['user'] != 'customer') {
-    header('location: index.php');
-}
-
 require_once('./tools/functions.php');
 ?>
 <!DOCTYPE html>
@@ -16,14 +11,10 @@ require_once('./tools/functions.php');
     <title>Booking</title>
     <link rel="website icon" type="png" href="./assets/img/logo.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/booking-style.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/customer-profile.css">
     <script src="https://kit.fontawesome.com/9ea2f828e7.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
 </head>
 
 <body>
@@ -185,7 +176,7 @@ require_once('./tools/functions.php');
         </button>
     </div>
 
-    <script src="./assets/script/validation.js"></script>
+    <script src="./assets/js/validation.js"></script>
     <script>
         $(document).ready(function() {
             $('#anotherModal').on('show.bs.modal', function(e) {

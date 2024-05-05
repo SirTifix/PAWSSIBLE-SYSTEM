@@ -130,6 +130,23 @@ class Customer
         return $data;
     }
 
+    function showWeekly()
+    {
+        $oneWeekAgo = date('Y-m-d H:i:s', strtotime('-1 week'));
+
+        $sql = "SELECT * FROM customer_record WHERE created_at >= :oneWeekAgo ORDER BY created_at ASC;";
+
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':oneWeekAgo', $oneWeekAgo);
+
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
+
+
     public function deleteCustomerAndPets($customerID)
     {
         $petQuery = $this->db->connect()->prepare("DELETE FROM pet WHERE customerID = :customerID");

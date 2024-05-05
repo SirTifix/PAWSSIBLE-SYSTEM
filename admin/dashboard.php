@@ -15,6 +15,7 @@ $customerCount = $customerRecordClass->countAll();
 $petCount = $petRecordClass->countAll();
 $vaccineCount = $vaccineRecordClass->countAll();
 
+$recentCustomer = $customerRecordClass->showWeekly();
 ?>
 
 <body>
@@ -90,12 +91,15 @@ $vaccineCount = $vaccineRecordClass->countAll();
             </tr>
           </thead>
           <tbody>
+          <?php foreach ($recentCustomer as $customer) :
+                    ?>
             <tr>
-              <th scope="row"></th>
-              <td></td>
-              <td></td>
-              <td></td>
+              <th scope="row"><?php echo $customer['customerID']; ?></th>
+              <td><?php echo $customer['customerFirstname']; ?></td>
+              <td><?php echo $customer['customerLastname']; ?></td>
+              <td><?php echo date('F j, Y', strtotime($customer['created_at'])); ?></td>
             </tr>
+            <?php endforeach;?>
           </tbody>
         </table>
         <nav aria-label="...">

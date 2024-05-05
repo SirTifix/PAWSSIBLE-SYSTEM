@@ -73,7 +73,7 @@ class Booking
     {
         try {
             $bookingID = $this->generateUniqueBookingID();
-            $status = "Pending";
+            $status = "Approved";
 
             $sql = "INSERT INTO booking (bookingID, customerID, firstName, middleName, lastName, emailAddress, contactNumber, numberPets, status, bookingDate, bookingTime) VALUES 
             (:bookingID, :customerID, :firstname, :middlename, :lastname, :emailAddress, :contactNumber, :numberPets, :status, :bookingDate, :bookingTime);";
