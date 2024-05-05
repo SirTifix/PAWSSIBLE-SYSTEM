@@ -146,7 +146,7 @@ header {
     margin-bottom: 20px;
 }
 
-.side-panel-links {
+.sidepanel {
     align-items: start;
 }
 
@@ -342,6 +342,9 @@ header {
 }
 
 /* Veterinarian Account Table */
+.table-con {
+    margin-left: 260px;
+}
 
 .veterinarian-con {
     padding-top: 72px;
@@ -1012,12 +1015,15 @@ header {
     text-align: center; /* Center-align text within cells with class "text-center" */
 }
     .cus-head-form{
+
         background: rgb(119,132,190);
+       
         text-align: center;
+       
         height: 80px;
-        margin-top: 30px;
-        margin-left: 36px;
-        width: 87%;
+        
+        margin-top:30px;
+        margin-left: 30px;
     }
     
     .head-form i {
@@ -1053,9 +1059,115 @@ header {
     bottom: 0;
     right: 0;
 }
-
-.pet-categories-container{
-    display: flex;
-    flex-direction: row;
-    margin-left: 21em;
+.closebtn {
+    position: absolute;
+    top: -9999px; /* Position off-screen */
+    left: -9999px; /* Position off-screen */
 }
+/* RESPONSIVE */
+/* Hide the sidebar by default */
+.side-panel {
+    display: none;
+}
+
+/* Show the sidebar on smaller screens */
+@media only screen and (max-width: 500px) {
+   .logo-text{
+    display: none;
+   }
+   .closebtn {
+    display: block;
+ 
+
+}
+.side-panel {
+    display: block;
+    width: 0; 
+    position: fixed; 
+    z-index: 1; 
+    top: -30px;
+
+    left: 0;
+    overflow-x: hidden; 
+    transition: width 0.5s; /* Specify 'width' in the transition property */
+}
+
+/* Add styles for when the side panel is open */
+
+    .side-panel a {
+        padding: 5px ;
+        padding-left: 32px;
+        text-decoration: none;
+        font-size: 1.2rem;
+     
+        display: block;
+        transition: 0.3s;
+    }
+    
+    /* When you mouse over the navigation links, change their color */
+    .side-panel a:hover {
+        color: #f1f1f1;
+    }
+    
+    /* Position and style the close button (top right corner) */
+    .side-panel .closebtn {
+        position: absolute;
+        top: 100px;
+        left: 80px;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+        display: block;
+    }
+    
+    /* Style the button that is used to open the sidepanel */
+    .openbtn {
+        display: block;
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #2a2f4f;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        position: fixed;
+        top: 90px;
+        left: 10px;
+        border-radius: 5px;
+    }
+    .openbtn:hover {
+        background-color: #444;
+    }
+    /* DASHBOARD */
+    .dashboard-con {
+        margin-left: 60px;
+        padding-top: 68px;
+    }
+    .dashboard-box{
+        width: 70%;
+    }
+    .crud-text{
+        margin-right: 100px;
+        width: 130px;
+        font-size: 0.98rem;
+    }
+}
+@media (max-width: 767px) {
+      .box {
+        padding: 10px;
+      }
+
+      .dashboard-box {
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .chart-box {
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .pagination {
+        margin-top: 10px;
+      }
+
+    }

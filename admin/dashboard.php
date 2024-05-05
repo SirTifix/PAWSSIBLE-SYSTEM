@@ -31,9 +31,9 @@ $vaccineCount = $vaccineRecordClass->countAll();
           <p>Welcome to Dashboard!</p>
         </div>
 
-        <div class="dashboard-container">
+        <div class="dashboard-container col-md-12">
 
-          <div class="dashboard-box py-1 px-3">
+          <div class="dashboard-box col-md-6 py-1 px-3">
             <p class="my-1">Total No. of Customer: </p>
             <div class="d-flex justify-content-between align-items-center">
               <i class="dashboard-icon fa-solid fa-users m-2" aria-hidden="true"></i>
@@ -41,7 +41,7 @@ $vaccineCount = $vaccineRecordClass->countAll();
             </div>
           </div>
 
-          <div class="dashboard-box py-1 px-3">
+          <div class="dashboard-box  col-sm-12  py-1 px-3">
             <p class="my-1">Total No. of Pet: </p>
             <div class="d-flex justify-content-between align-items-center">
               <i class="dashboard-icon fa-solid fa-paw m-2" aria-hidden="true"></i>
@@ -49,7 +49,7 @@ $vaccineCount = $vaccineRecordClass->countAll();
             </div>
           </div>
 
-          <div class="dashboard-box py-1 px-3">
+          <div class="dashboard-box  col-sm-12 py-1 px-3">
             <p class="my-1">Total No. of Vaccination: </p>
             <div class="d-flex justify-content-between align-items-center">
               <i class="dashboard-icon fa-solid fa-syringe m-2" aria-hidden="true"></i>
@@ -65,12 +65,12 @@ $vaccineCount = $vaccineRecordClass->countAll();
       <div class="chart-container">
 
         <div class="chart-box row">
-          <p class="col-lg-10 m-3">Weekly Customer </p> <button class="calendar col-lg-2"><i class="fa-solid fa-calendar " aria-hidden="true"></i> </button>
+          <p class="col-lg-10 col-8 m-3">Weekly Customer </p> <button class="calendar col-lg-2 col-4"><i class="fa-solid fa-calendar " aria-hidden="true"></i> </button>
           <canvas id="weeklyTable"></canvas>
         </div>
 
         <div class="chart-box row">
-          <p class="col-lg-10 m-3">Monthly Customer </p> <button class="calendar col-lg-2"><i class="fa-solid fa-calendar " aria-hidden="true"></i> </button>
+          <p class="col-lg-10 col-8 m-3">Monthly Customer </p> <button class="calendar col-lg-2 col-4"><i class="fa-solid fa-calendar " aria-hidden="true"></i> </button>
           <canvas id="monthlyTable"></canvas>
         </div>
 

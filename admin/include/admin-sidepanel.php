@@ -1,17 +1,27 @@
-<div class="side-panel d-flex flex-column">
+<div class="side-panel d-flex flex-column" id="sidePanel">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" >&times;</a>
     <i class="admin-icon fa-solid fa-circle-user align-items-center"></i>
     <div class="admin-header pt-2 pe-2">Admin</div>
     <div class="border-line"></div>
-    <div class="side-panel-links">
-        <a href="dashboard.php" class="sidebar-text align-items-center"><i class="fa fa-tasks" aria-hidden="true"></i> Dashboard</a>
-        <a href="customers.php" class="sidebar-text align-items-center"><i class="fa-solid fa-users" aria-hidden="true"></i> Customers</a>
-        <a href="appointment.php" class="sidebar-text align-items-center"><i class="fa-solid fa-clock" aria-hidden="true"></i> Appointment</a>
-        <a href="secretary.php" class="sidebar-text align-items-center"><i class="fa-solid fa-user-tie" aria-hidden="true"></i> Secretaries</a>
-        <a href="veterinarians.php" class="sidebar-text align-items-center"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i></i> Veterinarians</a>
-        <a href="schedule.php" class="sidebar-text align-items-center"><i class="fa-solid fa-calendar" aria-hidden="true"></i> Schedule</a>
-        <a href="vaccines.php" class="sidebar-text align-items-center"><i class="fa-solid fa-syringe" aria-hidden="true"></i> Vaccines</a>
-        <a href="services.php" class="sidebar-text align-items-center"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> Services</a>
-        <a href="pet-category.php" class="sidebar-text align-items-center"><i class="fa-solid fa-shield-dog"></i> Pet Categories</a>
-        <a href="account-setting.php" class="sidebar-text align-items-center"><i class="fa-solid fa-gear" aria-hidden="true"></i> Settings</a>
-    </div>
+    <a href="dashboard.php" class="sidebar-text align-items-center"><i class="fa fa-tasks" aria-hidden="true"></i> Dashboard</a>
+    <a href="customers.php" class="sidebar-text align-items-center"><i class="fa-solid fa-users" aria-hidden="true"></i> Customers</a>
+    <a href="appointment.php" class="sidebar-text align-items-center"><i class="fa-solid fa-clock" aria-hidden="true"></i> Appointment</a>
+    <a href="secretary.php" class="sidebar-text align-items-center"><i class="fa-solid fa-user-tie" aria-hidden="true"></i> Secretaries</a>
+    <a href="veterinarians.php" class="sidebar-text align-items-center"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i> Veterinarians</a>
+    <a href="schedule.php" class="sidebar-text align-items-center"><i class="fa-solid fa-calendar" aria-hidden="true"></i> Schedule</a>
+    <a href="vaccines.php" class="sidebar-text align-items-center"><i class="fa-solid fa-syringe" aria-hidden="true"></i> Vaccines</a>
+    <a href="services.php" class="sidebar-text align-items-center"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> Services</a>
+    <a href="pet-category.php" class="sidebar-text align-items-center"><i class="fa-solid fa-shield-dog"></i> Pet Categories</a>
+    <a href="account-setting.php" class="sidebar-text align-items-center"><i class="fa-solid fa-gear" aria-hidden="true"></i> Settings</a>
 </div>
+<button class="openbtn" onclick="openNav()"><i class="fa fa-home"></i></button>
+
+<script>
+    function openNav() {
+        document.getElementById("sidePanel").style.width = "200px";
+    }
+
+    function closeNav() {
+        document.getElementById("sidePanel").style.width = "0";
+    }
+</script>

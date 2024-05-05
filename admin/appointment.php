@@ -26,77 +26,80 @@ require_once('./include/admin-head.php');
     </section>
 
     <section class="table-con">
-      <section class="customer-info-icon row  ">
-        <div class="cus-head-form col-11 d-flex justify-content-between align-items-center mb-3">
-          <div class="col-12 d-flex justify-content-between align-items-center px-3">
+    <section class="customer-info-icon row">
+        <div class="cus-head-form col-12 col-md-11 mb-3 d-flex justify-content-between align-items-center">
             <div class="customer-info-head">
-              <h2>Appointment </h2>
+                <h2>Appointment</h2>
             </div>
-            <div class="row col-4">
-              <div class="row justify-content-start align-items-center">
-                <div class="search-container col-auto my-1">
-                  <div class="search-wrapper d-flex align-items-center m-0 row">
-                    <input type="text" class="search col-10" placeholder="search.....">
-                    <i class="search-icon fas fa-search col-2" aria-hidden="true"></i>
-                  </div>
+            <div class="col-md-4 col-12 d-flex justify-content-end">
+                <div class="search-container my-1">
+                    <div class="search-wrapper d-flex align-items-center">
+                        <input type="text" class="search form-control" placeholder="Search...">
+                        <i class="search-icon fas fa-search" aria-hidden="true"></i>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-      </section>
-
-      <div class="table-wrapper">
-        <table id="customer" class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th scope="col">Book No.</th>
-              <th scope="col">Name</th>
-              <th scope="col">Date</th>
-              <th scope="col">Time</th>
-              <th scope="col">Status</th>
-              <th scope="col" width="5%">Action</th>
-            </tr>
-          </thead>
-          <tbody id="appointmentTableBody">
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td class="d-flex justify-content-center align-items-center">
-                <div class="crud-btn">
-                  <a href="" class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteDModal">
-                    <i class="fa-solid fa-ban pe-4" aria-hidden="true"></i></a>
-                </div>
-                <div class="crud-btn">
-                  <a href="" class="edit-btn" data-bs-toggle="modal" data-bs-target="#modal">
-                    <i class="fa fa-ellipsis-h pe-5" aria-hidden="true"></i></a>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <nav aria-label="...">
-          <ul class="pagination justify-content-end">
-            <li class="page-item disabled">
-              <span class="page-link">Previous</span>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active">
-              <span class="page-link">
-                2
-                <span class="sr-only">(current)</span>
-              </span>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+        </div>
     </section>
+
+    <div class="table-wrapper">
+        <div class="table-responsive">
+            <table id="customer" class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">Book No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Status</th>
+                        <th scope="col" width="5%">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="appointmentTableBody">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="d-flex justify-content-center align-items-center">
+                            <div class="crud-btn">
+                                <a href="" class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteDModal">
+                                    <i class="fa-solid fa-ban pe-4" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                            <div class="crud-btn">
+                                <a href="" class="edit-btn" data-bs-toggle="modal" data-bs-target="#modal">
+                                    <i class="fa fa-ellipsis-h pe-5" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <nav aria-label="...">
+            <ul class="pagination justify-content-end">
+                <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active">
+                    <span class="page-link">
+                        2
+                        <span class="sr-only">(current)</span>
+                    </span>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+
 
     <section>
       <div class="modal fade" id="deleteDModal" tabindex="-1" aria-labelledby="deleteDModalLabel" aria-hidden="true">
