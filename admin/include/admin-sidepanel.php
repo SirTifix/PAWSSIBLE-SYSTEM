@@ -11,6 +11,7 @@
         <a href="schedule.php" class="sidebar-text align-items-center"><i class="fa-solid fa-calendar" aria-hidden="true"></i> Schedule</a>
         <a href="vaccines.php" class="sidebar-text align-items-center"><i class="fa-solid fa-syringe" aria-hidden="true"></i> Vaccines</a>
         <a href="services.php" class="sidebar-text align-items-center"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> Services</a>
+        <a href="pet-category.php" class="sidebar-text align-items-center"><i class="fa-solid fa-shield-dog"></i> Pet Categories</a>
         <a href="account-setting.php" class="sidebar-text align-items-center"><i class="fa-solid fa-gear" aria-hidden="true"></i> Settings</a>
     </div>
 </div>
