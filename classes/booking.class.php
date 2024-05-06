@@ -265,6 +265,16 @@ class Booking
         }
         return $petInfo;
     }
+    function vetCustomers($vetID)
+    {
+        $sql = "SELECT * FROM booking_pet WHERE vetID = :vetID";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':vetID', $vetID);
+        if ($query->execute()) {
+            $data = $query->fetchAll();
+        }
+        return $data;
+    }
 
     function populatePetInfoHistory($bookingID)
     {
@@ -303,8 +313,6 @@ class Booking
 
         return $appointmentInfo;
     }
-
-
 
     function fetchNameViaEmail($email)
     {

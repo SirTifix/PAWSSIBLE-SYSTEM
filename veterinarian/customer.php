@@ -6,10 +6,15 @@
   }
   
   require_once('../classes/account.class.php');
+  require_once('../classes/booking.class.php');
+  require_once('../classes/veterinarian.class.php');
   $vetClass = new Account();
+  $vetMethods = new Veterinarian();
+  $bookingClass = new Booking();
   
   $vetID = $_SESSION['vetID'];
   $vetData = $vetClass->fetchVet($vetID); 
+  $vetPets = $bookingClass->vetCustomers($vetID);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,15 +72,20 @@ require_once('./include/vet-head.php');
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Recently Added</th>
+                                <th scope="col">Contact No.</th>
                             </tr>
                         </thead>
                         <tbody id="customerTableBody">
-                            <tr onclick="window.location.href='customer_information.php';">
-                                <td>1</td>
-                                <td>Maria Makiling</td>
-                                <td>Oct 20 2023</td>
+                        <?php foreach($vetPets as $pets): 
+                            $bookingID = $pets['bookingID'];
+                            $appointments = $bookingClass->show($bookingID);
+                        ?>
+                            <tr onclick="window.location.href='customer_information.php?customerID=<?= $pets['customerID'] ?>';">
+                                <td><?= $appointments['bookingID'] ?></td>
+                                <td><?= $appointments['firstName'] . " " . $appointments['lastName'] ?></td>
+                                <td><?= $appointments['contactNumber'] ?></td>
                             </tr>
+                        <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

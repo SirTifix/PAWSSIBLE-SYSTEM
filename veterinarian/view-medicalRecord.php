@@ -1,3 +1,28 @@
+<?php
+  session_start();
+
+  if (!isset($_SESSION['user']) || $_SESSION['user'] != 'veterinarian') {
+    header('location: index.php');
+  }
+  
+  require_once('../classes/account.class.php');
+  require_once('../classes/booking.class.php');
+  require_once ('../classes/medical-history.class.php');
+  require_once ('../classes/pet.class.php');
+  $vetClass = new Account();
+  $bookingClass = new Booking();
+  
+    $vetID = $_SESSION['vetID'];
+    $vetData = $vetClass->fetchVet($vetID); 
+    if (isset($_GET['petId'])) {
+        $pet_Id = $_GET['petId'];
+    }
+    $pet = new Pet();
+    $recordClass = new MedicalHistory();
+
+    $medRecords = $recordClass->showRecord1($pet_Id);
+    $vacRecords = $recordClass->showRecord2($pet_Id);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -27,97 +52,113 @@
             <h2 class="text-center">Pet Information</h2>
         </div>
     <div class="petmed-body d-flex justify-content-around">
+                <?php
+                    $pets = $pet->fetch($pet_Id);
+                    if ($pets) {
+                        ?>
 
-        <div class="form-body p-1">
-            <div class="d-flex mt-3">
-                <label for="petName" class="form-label-medhist fw-bold">Pet Name:</label>
-                <input type="text" class="form-control-medhist" id="petName" name="petName">
-                <?php
-                    if(isset($_POST['petName']) && !validate_field($_POST['petName'])){
-                ?>
-                        <p class="text-danger my-1">Pet name is required</p>
-                <?php
+                                <div class="form-body p-1">
+                                    <div class="d-flex mt-3">
+                                        <label for="petName" class="form-label-medhist fw-bold">Pet Name:</label>
+                                        <input type="text" class="form-control-medhist" id="petName" name="petName"
+                                            value="<?php echo $pets['petName']; ?>" readonly>
+                                        <?php
+                                        if (isset($_POST['petName']) && !validate_field($_POST['petName'])) {
+                                            ?>
+                                                <p class="text-danger my-1">Pet name is required</p>
+                                                <?php
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="d-flex">
+                                        <label for="petBirthdate" class="form-label-medhist fw-bold">Birth Date:</label>
+                                        <input type="text" class="form-control-medhist" id="petBirthdate" name="petBirthdate"
+                                            value="<?php echo $pets['petBirthdate']; ?>" readonly>
+                                        <?php
+                                        if (isset($_POST['petBirthdate']) && !validate_field($_POST['petBirthdate'])) {
+                                            ?>
+                                                <p class="text-danger my-1">Pet birthdate is required</p>
+                                                <?php
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="d-flex">
+                                        <label for="petAge" class="form-label-medhist fw-bold">Pet Age:</label>
+                                        <input type="text" class="form-control-medhist" id="petAge" name="petAge"
+                                            value="<?php echo $pets['petAge']; ?>" readonly>
+                                        <?php
+                                        if (isset($_POST['petAge']) && !validate_field($_POST['petAge'])) {
+                                            ?>
+                                                <p class="text-danger my-1">Pet age is required</p>
+                                                <?php
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="d-flex">
+                                        <label for="petBreed" class="form-label-medhist fw-bold">Breed:</label>
+                                        <input type="text" class="form-control-medhist" id="petBreed" name="petBreed"
+                                            value="<?php echo $pets['petBreed']; ?>" readonly>
+                                        <?php
+                                        if (isset($_POST['petBreed']) && !validate_field($_POST['petBreed'])) {
+                                            ?>
+                                                <p class="text-danger my-1">Pet breed is required</p>
+                                                <?php
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="d-flex">
+                                        <label for="petType" class="form-label-medhist fw-bold">Pet Type:</label>
+                                        <input type="text" class="form-control-medhist" id="petType" name="petType"
+                                            value="<?php echo $pets['petType']; ?>" readonly>
+                                        <?php
+                                        if (isset($_POST['petType']) && !validate_field($_POST['petType'])) {
+                                            ?>
+                                                <p class="text-danger my-1">Pet type is required</p>
+                                                <?php
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="d-flex">
+                                        <label for="petGender" class="form-label-medhist fw-bold">Gender:</label>
+                                        <input type="text" class="form-control-medhist" id="petGender" name="petGender"
+                                            value="<?php echo $pets['petGender']; ?>" readonly>
+                                        <?php
+                                        if (isset($_POST['petGender']) && !validate_field($_POST['petGender'])) {
+                                            ?>
+                                                <p class="text-danger my-1">Pet gender is required</p>
+                                                <?php
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="d-flex">
+                                        <label for="petWeight" class="form-label-medhist fw-bold">Weight:</label>
+                                        <input type="text" class="form-control-medhist" id="petWeight" name="petWeight"
+                                            value="<?php echo $pets['petWeight']; ?>" readonly>
+                                        <?php
+                                        if (isset($_POST['petWeight']) && !validate_field($_POST['petWeight'])) {
+                                            ?>
+                                                <p class="text-danger my-1">Pet weight is required</p>
+                                                <?php
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="d-flex">
+                                        <label for="petColor" class="form-label-medhist fw-bold">Color:</label>
+                                        <input type="text" class="form-control-medhist" id="petColor" name="petColor"
+                                            value="<?php echo $pets['petColor']; ?>" readonly>
+                                        <?php
+                                        if (isset($_POST['petColor']) && !validate_field($_POST['petColor'])) {
+                                            ?>
+                                                <p class="text-danger my-1">Pet color is required</p>
+                                                <?php
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                                <?php
                     }
-                ?>
-            </div>
-            <div class="d-flex">
-                <label for="petBirthdate" class="form-label-medhist fw-bold">Birth Date:</label>
-                <input type="text" class="form-control-medhist" id="petBirthdate" name="petBirthdate">
-                <?php
-                    if(isset($_POST['petBirthdate']) && !validate_field($_POST['petBirthdate'])){
-                ?>
-                        <p class="text-danger my-1">Pet birthdate is required</p>
-                <?php
-                    }
-                ?>
-            </div>
-            <div class="d-flex">
-                <label for="petAge" class="form-label-medhist fw-bold">Pet Age:</label>
-                <input type="text" class="form-control-medhist" id="petAge" name="petAge">
-                <?php
-                    if(isset($_POST['petAge']) && !validate_field($_POST['petAge'])){
-                ?>
-                        <p class="text-danger my-1">Pet age is required</p>
-                <?php
-                    }
-                ?>
-            </div>
-            <div class="d-flex">
-                <label for="petBreed" class="form-label-medhist fw-bold">Breed:</label>
-                <input type="text" class="form-control-medhist" id="petBreed" name="petBreed">
-                <?php
-                    if(isset($_POST['petBreed']) && !validate_field($_POST['petBreed'])){
-                ?>
-                        <p class="text-danger my-1">Pet breed is required</p>
-                <?php
-                    }
-                ?>
-            </div>
-            <div class="d-flex">
-                <label for="petType" class="form-label-medhist fw-bold">Pet Type:</label>
-                <input type="text" class="form-control-medhist" id="petType" name="petType">
-                <?php
-                    if(isset($_POST['petType']) && !validate_field($_POST['petType'])){
-                ?>
-                        <p class="text-danger my-1">Pet type is required</p>
-                <?php
-                    }
-                ?>
-            </div>
-            <div class="d-flex">
-                <label for="petGender" class="form-label-medhist fw-bold">Gender:</label>
-                <input type="text" class="form-control-medhist" id="petGender" name="petGender">
-                <?php
-                    if(isset($_POST['petGender']) && !validate_field($_POST['petGender'])){
-                ?>
-                        <p class="text-danger my-1">Pet gender is required</p>
-                <?php
-                    }
-                ?>
-            </div>
-            <div class="d-flex">
-                <label for="petWeight" class="form-label-medhist fw-bold">Weight:</label>
-                <input type="text" class="form-control-medhist" id="petWeight" name="petWeight">
-                <?php
-                    if(isset($_POST['petWeight']) && !validate_field($_POST['petWeight'])){
-                ?>
-                        <p class="text-danger my-1">Pet weight is required</p>
-                <?php
-                    }
-                ?>
-            </div>
-            <div class="d-flex">
-                <label for="petColor" class="form-label-medhist fw-bold">Color:</label>
-                <input type="text" class="form-control-medhist" id="petColor" name="petColor">
-                <?php
-                    if(isset($_POST['petColor']) && !validate_field($_POST['petColor'])){
-                ?>
-                        <p class="text-danger my-1">Pet color is required</p>
-                <?php
-                    }
-                ?>
-            </div>
-        </div>
+
+                    ?>
 
         <div class="position-relative mt-5">
             <input type="file" id="fileInput" style="display: none;" accept="image/*">
@@ -143,14 +184,16 @@
                     </tr>
                 </thead>
                 <tbody id="petHistoryTableBody">
-                    <tr class="table-bodypet ">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                             <?php if ($medRecords): ?>
+                                <tr class="table-bodypet ">
+                                <td><?php echo $medRecords['ageWeeks']; ?></td>
+                                <td><?php echo $medRecords['recordDate'] ?></td>
+                                <td><?php echo $medRecords['veterinarian'] ?></td>
+                                <td><?php echo $medRecords['recordHistory'] ?></td>
+                                <td><?php echo $medRecords['recordExamination'] ?></td>
+                                <td><?php echo $medRecords['recordTreatment'] ?></td>
+                                </tr>
+                            <?php endif; ?>
                 </tbody>
             </table>
         </div>
@@ -173,14 +216,16 @@
                     </tr>
                 </thead>
                 <tbody id="petHistoryTableBody">
-                    <tr class="table-bodypet">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                            <?php if ($vacRecords): ?>
+                                <tr class="table-bodypet">
+                                <td><?php echo $vacRecords['ageVaccine'] ?></td>
+                                <td><?php echo $vacRecords['veterinarian'] ?></td>
+                                <td><?php echo $vacRecords['vaccine'] ?></td>
+                                <td><?php echo $vacRecords['category'] ?></td>
+                                <td><?php echo $vacRecords['dateGiven'] ?></td>
+                                <td><?php echo $vacRecords['next_date'] ?></td>  
+                                </tr>
+                            <?php endif; ?>
                 </tbody>
             </table>
         </div>
@@ -188,7 +233,7 @@
 
     <section class="m-4 d-flex justify-content-around align-items-center">
         <div style="margin-left: 200px;">
-            <a href="update-medicalRecord.php" class="transfer-btn btn-secondary">Update Medical Record</a>
+            <a href="update-medicalRecord.php?petId=<?php echo $pets['petId']; ?>" class="transfer-btn btn-secondary">Update Medical Record</a>
         </div>
         <div style="margin-left: 30%;">
             <a href="customer_information.php" class="top-back btn-secondary">Back</a>
