@@ -92,6 +92,17 @@ class MedicalHistory
         }
         return $data;
     }
+    function showRecord1($petId)
+    {
+        $sql = "SELECT * FROM medicalrecord WHERE petId = :petId ORDER BY created_at ASC;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':petId', $petId);
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetch();
+        }
+        return $data;
+    }
     function showVaccRecord()
     {
         $sql = "SELECT * FROM vaccines ORDER BY created_at ASC;";
@@ -99,6 +110,17 @@ class MedicalHistory
         $data = null;
         if ($query->execute()) {
             $data = $query->fetchAll();
+        }
+        return $data;
+    }
+    function showRecord2($petId)
+    {
+        $sql = "SELECT * FROM vaccines WHERE petId = :petId ORDER BY created_at ASC;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':petId', $petId);
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetch();
         }
         return $data;
     }

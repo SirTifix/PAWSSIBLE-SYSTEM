@@ -9,8 +9,8 @@ $recordClass = new MedicalHistory();
 
 $petID = $_GET['petId'];
 $pet = $petClass->fetch($petID);
-$medRecords = $recordClass->show();
-$vacRecords = $recordClass->showVaccRecord();
+$medRecords = $recordClass->showRecord1($petID);
+$vacRecords = $recordClass->showRecord2($petID);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -165,21 +165,21 @@ $vacRecords = $recordClass->showVaccRecord();
                     </tr>
                 </thead>
                 <tbody id="petHistoryTableBody">
-                    <?php foreach($medRecords as $record): ?>
+                <?php if ($medRecords): ?>
                     <tr class="table-bodypet ">
-                        <td><?php echo $record['ageWeeks']?></td>
-                        <td><?php echo $record['recordDate']?></td>
-                        <td><?php echo $record['veterinarian']?></td>
-                        <td><?php echo $record['recordHistory']?></td>
-                        <td><?php echo $record['recordExamination']?></td>
-                        <td><?php echo $record['recordTreatment']?></td>
+                                <td><?php echo $medRecords['ageWeeks']; ?></td>
+                                <td><?php echo $medRecords['recordDate'] ?></td>
+                                <td><?php echo $medRecords['veterinarian'] ?></td>
+                                <td><?php echo $medRecords['recordHistory'] ?></td>
+                                <td><?php echo $medRecords['recordExamination'] ?></td>
+                                <td><?php echo $medRecords['recordTreatment'] ?></td>
                         <td class="d-flex justify-content-center align-items-center">
                             <div class="crud-btn">
-                                <a href="" class="delete-btn" data-bs-toggle="modal"data-bs-target="#deleteMedRecModal<?php echo $record['recordID']?>">
+                                <a href="" class="delete-btn" data-bs-toggle="modal"data-bs-target="#deleteMedRecModal<?php echo $medRecords['recordID']?>">
                                     <i class="fa-regular fa-trash-can" aria-hidden="true"></i></a>
                             </div>
 
-                            <div class="modal fade" id="deleteMedRecModal<?php echo $record['recordID']?>" tabindex="-1" aria-labelledby="deleteDModalLabel"
+                            <div class="modal fade" id="deleteMedRecModal<?php echo $medRecords['recordID']?>" tabindex="-1" aria-labelledby="deleteDModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
@@ -187,7 +187,7 @@ $vacRecords = $recordClass->showVaccRecord();
                                         this Medical Record?</h4>
                                     <div class="modal-footer justify-content-between" style="border: none;">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-primary" id="confirmDelete" onclick="deleteMedRecord(<?php echo $record['recordID']?>)" data-customer-id=""
+                                        <button type="button" class="btn btn-primary" id="confirmDelete" onclick="deleteMedRecord(<?php echo $medRecords['recordID']?>)" data-customer-id=""
                                             style="background-color: #FF0000; border: none;">Delete</button>
                                     </div>
                                 </div>
@@ -195,7 +195,7 @@ $vacRecords = $recordClass->showVaccRecord();
                             </div>
                         </td>
                     </tr>
-                    <?php endforeach; ?>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
@@ -226,21 +226,21 @@ $vacRecords = $recordClass->showVaccRecord();
                     </tr>
                 </thead>
                 <tbody id="petHistoryTableBody">
-                <?php foreach($vacRecords as $record): ?>
+                <?php if ($vacRecords): ?>
                     <tr class="table-bodypet">
-                        <td><?php echo $record['ageVaccine']?></td>
-                        <td><?php echo $record['veterinarian']?></td>
-                        <td><?php echo $record['vaccine']?></td>
-                        <td><?php echo $record['category']?></td>
-                        <td><?php echo $record['dateGiven']?></td>
-                        <td><?php echo $record['next_date']?></td>
+                                <td><?php echo $vacRecords['ageVaccine'] ?></td>
+                                <td><?php echo $vacRecords['veterinarian'] ?></td>
+                                <td><?php echo $vacRecords['vaccine'] ?></td>
+                                <td><?php echo $vacRecords['category'] ?></td>
+                                <td><?php echo $vacRecords['dateGiven'] ?></td>
+                                <td><?php echo $vacRecords['next_date'] ?></td> 
                         <td class="d-flex justify-content-center align-items-center">
                             <div class="crud-btn">
-                                <a href="" class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteVaccineModal<?php echo $record['vaccineRecordID']?>">
+                                <a href="" class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteVaccineModal<?php echo $vacRecords['vaccineRecordID']?>">
                                     <i class="fa-regular fa-trash-can" aria-hidden="true"></i></a>
                             </div>
 
-                            <div class="modal fade" id="deleteVaccineModal<?php echo $record['vaccineRecordID']?>" tabindex="-1" aria-labelledby="deleteDModalLabel"
+                            <div class="modal fade" id="deleteVaccineModal<?php echo $vacRecords['vaccineRecordID']?>" tabindex="-1" aria-labelledby="deleteDModalLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
@@ -248,7 +248,7 @@ $vacRecords = $recordClass->showVaccRecord();
                                             this Vaccine?</h4>
                                         <div class="modal-footer justify-content-between" style="border: none;">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-primary" id="confirmDelete" onclick="deleteVacRecord(<?php echo $record['vaccineRecordID']?>)" data-customer-id=""
+                                            <button type="button" class="btn btn-primary" id="confirmDelete" onclick="deleteVacRecord(<?php echo $vacRecords['vaccineRecordID']?>)" data-customer-id=""
                                                 style="background-color: #FF0000; border: none;">Delete</button>
                                         </div>
                                     </div>
@@ -256,7 +256,7 @@ $vacRecords = $recordClass->showVaccRecord();
                             </div>
                         </td>
                     </tr>
-                    <?php endforeach; ?>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </div>
