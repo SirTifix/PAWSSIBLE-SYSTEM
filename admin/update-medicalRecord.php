@@ -1,3 +1,17 @@
+<?php
+require_once ('../classes/customer.class.php');
+require_once ('../classes/medical-history.class.php');
+require_once ('../classes/pet.class.php');
+require_once ('./tools/functions.php');
+
+$petClass = new Pet();
+$recordClass = new MedicalHistory();
+
+$petID = $_GET['petId'];
+$pet = $petClass->fetch($petID);
+$medRecords = $recordClass->show();
+$vacRecords = $recordClass->showVaccRecord();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -31,7 +45,7 @@
         <div class="form-body p-1">
             <div class="d-flex mt-3">
                 <label for="petName" class="form-label-medhist fw-bold">Pet Name:</label>
-                <input type="text" class="form-control-medhist" id="petName" name="petName">
+                <input type="text" class="form-control-medhist" id="petName" name="petName" value="<?php echo $pet['petName']; ?>" readonly>
                 <?php
                     if(isset($_POST['petName']) && !validate_field($_POST['petName'])){
                 ?>
@@ -42,7 +56,7 @@
             </div>
             <div class="d-flex">
                 <label for="petBirthdate" class="form-label-medhist fw-bold">Birth Date:</label>
-                <input type="text" class="form-control-medhist" id="petBirthdate" name="petBirthdate">
+                <input type="text" class="form-control-medhist" id="petBirthdate" name="petBirthdate" value="<?php echo $pet['petBirthdate']; ?>" readonly>
                 <?php
                     if(isset($_POST['petBirthdate']) && !validate_field($_POST['petBirthdate'])){
                 ?>
@@ -53,7 +67,7 @@
             </div>
             <div class="d-flex">
                 <label for="petAge" class="form-label-medhist fw-bold">Pet Age:</label>
-                <input type="text" class="form-control-medhist" id="petAge" name="petAge">
+                <input type="text" class="form-control-medhist" id="petAge" name="petAge" value="<?php echo $pet['petAge']; ?>" readonly>
                 <?php
                     if(isset($_POST['petAge']) && !validate_field($_POST['petAge'])){
                 ?>
@@ -64,7 +78,7 @@
             </div>
             <div class="d-flex">
                 <label for="petBreed" class="form-label-medhist fw-bold">Breed:</label>
-                <input type="text" class="form-control-medhist" id="petBreed" name="petBreed">
+                <input type="text" class="form-control-medhist" id="petBreed" name="petBreed" value="<?php echo $pet['petBreed']; ?>" readonly>
                 <?php
                     if(isset($_POST['petBreed']) && !validate_field($_POST['petBreed'])){
                 ?>
@@ -75,7 +89,7 @@
             </div>
             <div class="d-flex">
                 <label for="petType" class="form-label-medhist fw-bold">Pet Type:</label>
-                <input type="text" class="form-control-medhist" id="petType" name="petType">
+                <input type="text" class="form-control-medhist" id="petType" name="petType" value="<?php echo $pet['petType']; ?>" readonly>
                 <?php
                     if(isset($_POST['petType']) && !validate_field($_POST['petType'])){
                 ?>
@@ -86,7 +100,7 @@
             </div>
             <div class="d-flex">
                 <label for="petGender" class="form-label-medhist fw-bold">Gender:</label>
-                <input type="text" class="form-control-medhist" id="petGender" name="petGender">
+                <input type="text" class="form-control-medhist" id="petGender" name="petGender" value="<?php echo $pet['petGender']; ?>" readonly>
                 <?php
                     if(isset($_POST['petGender']) && !validate_field($_POST['petGender'])){
                 ?>
@@ -97,7 +111,7 @@
             </div>
             <div class="d-flex">
                 <label for="petWeight" class="form-label-medhist fw-bold">Weight:</label>
-                <input type="text" class="form-control-medhist" id="petWeight" name="petWeight">
+                <input type="text" class="form-control-medhist" id="petWeight" name="petWeight" value="<?php echo $pet['petWeight']; ?>" readonly>
                 <?php
                     if(isset($_POST['petWeight']) && !validate_field($_POST['petWeight'])){
                 ?>
@@ -108,7 +122,7 @@
             </div>
             <div class="d-flex">
                 <label for="petColor" class="form-label-medhist fw-bold">Color:</label>
-                <input type="text" class="form-control-medhist" id="petColor" name="petColor">
+                <input type="text" class="form-control-medhist" id="petColor" name="petColor" value="<?php echo $pet['petColor']; ?>" readonly>
                 <?php
                     if(isset($_POST['petColor']) && !validate_field($_POST['petColor'])){
                 ?>
@@ -151,24 +165,37 @@
                     </tr>
                 </thead>
                 <tbody id="petHistoryTableBody">
+                    <?php foreach($medRecords as $record): ?>
                     <tr class="table-bodypet ">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $record['ageWeeks']?></td>
+                        <td><?php echo $record['recordDate']?></td>
+                        <td><?php echo $record['veterinarian']?></td>
+                        <td><?php echo $record['recordHistory']?></td>
+                        <td><?php echo $record['recordExamination']?></td>
+                        <td><?php echo $record['recordTreatment']?></td>
                         <td class="d-flex justify-content-center align-items-center">
                             <div class="crud-btn">
-                                <a href="" class="edit-btn" data-bs-toggle="modal"data-bs-target="#updateMedRecModal">
-                                    <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></a>
-                            </div>
-                            <div class="crud-btn">
-                                <a href="" class="delete-btn" data-bs-toggle="modal"data-bs-target="#deleteMedRecModal">
+                                <a href="" class="delete-btn" data-bs-toggle="modal"data-bs-target="#deleteMedRecModal<?php echo $record['recordID']?>">
                                     <i class="fa-regular fa-trash-can" aria-hidden="true"></i></a>
+                            </div>
+
+                            <div class="modal fade" id="deleteMedRecModal<?php echo $record['recordID']?>" tabindex="-1" aria-labelledby="deleteDModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
+                                        this Medical Record?</h4>
+                                    <div class="modal-footer justify-content-between" style="border: none;">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-primary" id="confirmDelete" onclick="deleteMedRecord(<?php echo $record['recordID']?>)" data-customer-id=""
+                                            style="background-color: #FF0000; border: none;">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                         </td>
                     </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -199,24 +226,37 @@
                     </tr>
                 </thead>
                 <tbody id="petHistoryTableBody">
+                <?php foreach($vacRecords as $record): ?>
                     <tr class="table-bodypet">
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $record['ageVaccine']?></td>
+                        <td><?php echo $record['veterinarian']?></td>
+                        <td><?php echo $record['vaccine']?></td>
+                        <td><?php echo $record['category']?></td>
+                        <td><?php echo $record['dateGiven']?></td>
+                        <td><?php echo $record['next_date']?></td>
                         <td class="d-flex justify-content-center align-items-center">
                             <div class="crud-btn">
-                                <a href="" class="edit-btn" data-bs-toggle="modal"data-bs-target="#updateVaccineModal">
-                                    <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></a>
-                            </div>
-                            <div class="crud-btn">
-                                <a href="" class="delete-btn" data-bs-toggle="modal"data-bs-target="#deleteVaccineModal">
+                                <a href="" class="delete-btn" data-bs-toggle="modal" data-bs-target="#deleteVaccineModal<?php echo $record['vaccineRecordID']?>">
                                     <i class="fa-regular fa-trash-can" aria-hidden="true"></i></a>
+                            </div>
+
+                            <div class="modal fade" id="deleteVaccineModal<?php echo $record['vaccineRecordID']?>" tabindex="-1" aria-labelledby="deleteDModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
+                                            this Vaccine?</h4>
+                                        <div class="modal-footer justify-content-between" style="border: none;">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-primary" id="confirmDelete" onclick="deleteVacRecord(<?php echo $record['vaccineRecordID']?>)" data-customer-id=""
+                                                style="background-color: #FF0000; border: none;">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </td>
                     </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -239,9 +279,10 @@
                             </button>
                         </div>
                         <div>
-                            <form action="" method="post">
+                            <form action="add-medical-history.php" method="post">
                                 <div class="row p-3">
                                     <div class="col-6">
+                                    <input type="hidden" class="form-control-medHis" id="petId" name="petId" value="<?php echo $petID; ?>" required>
                                         <div class="d-flex mt-3">
                                             <label for="age" class="form-label-medHis fw-bold">Age(weeks):</label>
                                             <input type="text" class="form-control-medHis" id="age" name="age" required>
@@ -254,7 +295,17 @@
                                         
                                         <div class="d-flex">
                                             <label for="veterinarian" class="form-label-medHis fw-bold">Veterinarian:</label>
-                                            <input type="text" class="form-control-medHis" id="veterinarian" name="veterinarian" required>
+                                            <select class="form-control" id="veterinarian" name="veterinarian" required>
+                                                <option value="">Choose...</option>
+                                                <?php
+                                                require_once '../classes/veterinarian.class.php';
+                                                $vet = new Veterinarian();
+                                                $vets = $vet->show();
+                                                foreach ($vets as $vet) {
+                                                    echo '<option value="' . $vet['vetFirstname'] . ' ' . $vet['vetLastname'] . '">Dr. ' . $vet['vetFirstname'] . ' ' . $vet['vetLastname'] . '</option>';
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
 
                                         <div class="d-flex">
@@ -275,13 +326,13 @@
                                         </div>
                                     </div>
                                 </div>
- 
-                            </form>
+                            
                         </div>
                         <div class="modal-footer justify-content-between" style="border: none;">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Add</button>
+                            <button type="submit" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Add</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -358,8 +409,9 @@
                             </button>
                         </div>
                         <div>
-                            <form action="" method="post">
+                            <form action="add-vaccine-record.php" method="post">
                                 <div class="mt-4 mx-5">
+                                <input type="hidden" class="form-control-medHis" id="petId" name="petId" value="<?php echo $petID; ?>" required>
                                         <div class="d-flex">
                                             <label for="age" class="form-label-vaccine fw-bold p-2">Age(weeks):</label>
                                             <input type="text" class="form-control-vaccine p-2" id="age" name="age" required>
@@ -367,16 +419,31 @@
                                         
                                         <div class="d-flex">
                                             <label for="veterinarian" class="form-label-vaccine fw-bold">Veterinarian:</label>
-                                            <input type="text" class="form-control-vaccine" id="veterinarian" name="veterinarian" required>
+                                            <select class="form-control" id="veterinarian" name="veterinarian" required>
+                                                <option value="">Choose...</option>
+                                                <?php
+                                                require_once '../classes/veterinarian.class.php';
+                                                $vet = new Veterinarian();
+                                                $vets = $vet->show();
+                                                foreach ($vets as $vet) {
+                                                    echo '<option value="' . $vet['vetID'] . '">Dr. ' . $vet['vetFirstname'] . ' ' . $vet['vetLastname'] . '</option>';
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
 
                                         <div class="d-flex">
                                             <label for="vaccine" class="form-label-vaccine fw-bold">Vaccine:</label>
                                             <select class="form-select form-control-vaccine" id="vaccine" name="vaccine" required>
                                                 <option value="">Select Vaccine</option>
-                                                <option value="vaccine1">Vaccine 1</option>
-                                                <option value="vaccine2">Vaccine 2</option>
-                                                <option value="vaccine3">Vaccine 3</option>
+                                                <?php
+                                                                            require_once '../classes/vaccine.class.php';
+                                                                            $vet = new Vaccine();
+                                                                            $vets = $vet->show();
+                                                                            foreach ($vets as $vet) {
+                                                                                echo '<option value="' . $vet['vaccineName'] . '">' . $vet['vaccineName'] . '</option>';
+                                                                            }
+                                                                            ?>
                                             </select>
                                         </div>
 
@@ -384,9 +451,9 @@
                                             <label for="vaccineCateg" class="form-label-vaccine fw-bold">Vaccine Category:</label>
                                             <select class="form-select form-control-vaccine" id="vaccineCateg" name="vaccineCateg" required>
                                                 <option value="">Select Vaccine Category</option>
-                                                <option value="vaccine1">Primary Series</option>
-                                                <option value="vaccine2">Annual Boosters</option>
-                                                <option value="vaccine3">Deworming</option>
+                                                <option value="Primary Series">Primary Series</option>
+                                                <option value="Annual Boosters">Annual Boosters</option>
+                                                <option value="Deworming">Deworming</option>
                                             </select>
                                         </div>
 
@@ -401,12 +468,12 @@
                                         </div>
 
                                 </div>
-                            </form>
                         </div>
                         <div class="modal-footer justify-content-between" style="border: none;">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Add</button>
+                            <button type="submit" class="btn btn-primary" style="background-color: #303962; border: none;" onclick="">Add</button>
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -477,44 +544,43 @@
             </div>
         </section>
 
-
-        <section>
-            <div class="modal fade" id="deleteMedRecModal" tabindex="-1" aria-labelledby="deleteDModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
-                            this Medical Record?</h4>
-                        <div class="modal-footer justify-content-between" style="border: none;">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" id="confirmDelete" data-customer-id=""
-                                style="background-color: #FF0000; border: none;">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="modal fade" id="deleteVaccineModal" tabindex="-1" aria-labelledby="deleteDModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <h4 class="modal-title m-4 text-center" id="deleteDModalLabel">Are you sure you want to delete
-                            this Vaccine?</h4>
-                        <div class="modal-footer justify-content-between" style="border: none;">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" id="confirmDelete" data-customer-id=""
-                                style="background-color: #FF0000; border: none;">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     </section>
 
     <script>
+        function deleteMedRecord(vaccineID) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            alert('Medical record deleted successfully!');
+                            window.location.reload();
+                        } else {
+                            alert('Failed to delete record.');
+                        }
+                    }
+                };
+                xhr.open('POST', 'delete-med-record.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.send('recordID=' + vaccineID);
+            }
+
+            function deleteVacRecord(vaccineID) {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            alert('Vaccine record deleted successfully!');
+                            window.location.reload();
+                        } else {
+                            alert('Failed to delete record.');
+                        }
+                    }
+                };
+                xhr.open('POST', 'delete-vaccine-record.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.send('vaccineRecordID=' + vaccineID);
+            }
+
         document.getElementById("hamburger-icon-medhist").addEventListener("click", function() {
         this.classList.toggle("active");
         });

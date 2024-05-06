@@ -1,12 +1,27 @@
 <?php
-  session_start();
+session_start();
+
+if (!isset($_SESSION['user']) || $_SESSION['user'] != 'veterinarian') {
+  header('location: index.php');
+}
+
+require_once ('../classes/account.class.php');
+require_once ('../classes/booking.class.php');
+require_once ('../classes/veterinarian.class.php');
+$vetClass = new Account();
+$vetMethods = new Veterinarian();
+$bookingClass = new Booking();
+
+$vetID = $_SESSION['vetID'];
+$vetData = $vetClass->fetchVet($vetID);
+$vetPets = $vetMethods->vetAppointments($vetID);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
 $title = 'Dashboard';
-require_once('./include/vet-head.php');
-require_once('../classes/veterinarian.class.php');
+require_once ('./include/vet-head.php');
+require_once ('../classes/veterinarian.class.php');
 
 $vetRecordClass = new Veterinarian;
 $vetID = $vetRecordClass->vetID;
@@ -14,15 +29,15 @@ $vetCount = $vetRecordClass->countVet($vetID);
 
 $userInfo = $vetRecordClass->fetch($_SESSION['vetID']);
 $status = $userInfo['vetStatus']
-?>
+  ?>
 
 <body>
   <?php
-  require_once('./include/vet-header.php')
-  ?>
+  require_once ('./include/vet-header.php')
+    ?>
   <?php
-  require_once('./include/vet-sidepanel.php')
-  ?>
+  require_once ('./include/vet-sidepanel.php')
+    ?>
   <section class="dashboard-con mb-5 ">
     <div class="box">
       <div class="dashboard-head mb-5">
@@ -87,12 +102,17 @@ $status = $userInfo['vetStatus']
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row"></th>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+        <?php foreach ($vetPets as $pets):
+          $bookingID = $pets['bookingID'];
+          $appointments = $bookingClass->show($bookingID);
+          ?>
+            <tr>
+              <td><?= $appointments['bookingID'] ?></td>
+              <td><?= $appointments['firstName'] . " " . $appointments['lastName'] ?></td>
+              <td><?= $appointments['bookingDate'] ?></td>
+              <td><?= $appointments['bookingTime'] ?></td>
+            </tr>
+          <?php endforeach; ?>
         </tbody>
       </table>
     </div>

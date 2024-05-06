@@ -161,8 +161,14 @@ require_once ('./include/admin-head.php');
                                                                         <label for="petType" class="form-label-vaccine fw-bold">Pet Type: </label>
                                                                         <select class="form-select form-control-vaccine" id="petType<?php echo $vaccine['vaccineID']; ?>" name="petType" required>
                                                                             <option value="<?php echo $vaccine['petType']; ?>"><?php echo $vaccine['petType']; ?></option>
-                                                                            <option value="Dog">Dog</option>
-                                                                            <option value="Cat">Cat</option>
+                                                                            <?php
+                                                                            require_once '../classes/pet.class.php';
+                                                                            $vet = new Pet();
+                                                                            $vets = $vet->showPetTypes();
+                                                                            foreach ($vets as $vet) {
+                                                                                echo '<option value="' . $vet['petType'] . '">' . $vet['petType'] . '</option>';
+                                                                            }
+                                                                            ?>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -250,10 +256,16 @@ require_once ('./include/admin-head.php');
                                         <div class="d-flex">
                                             <label for="petType" class="form-label-vaccine fw-bold">Pet Type: </label>
                                             <select class="form-select form-control-vaccine" id="petType" name="petType" required>
-                                                <option value="">Select Pet Type</option>
-                                                <option value="Dog">Dog</option>
-                                                <option value="Cat">Cat</option>
-                                            </select>
+                                                <option value="">Choose...</option>
+                                                    <?php
+                                                    require_once '../classes/pet.class.php';
+                                                    $vet = new Pet();
+                                                    $vets = $vet->showPetTypes();
+                                                    foreach ($vets as $vet) {
+                                                        echo '<option value="' . $vet['petType'] . '">' . $vet['petType'] . '</option>';
+                                                    }
+                                                    ?>
+                                                </select>
                                             <input type="hidden" name="selectedVaccineType" id="selectedVaccineType">
                                             <input type="hidden" name="selectedPetType" id="selectedPetType">
                                         </div>

@@ -1,3 +1,21 @@
+<?php
+  session_start();
+
+  if (!isset($_SESSION['user']) || $_SESSION['user'] != 'veterinarian') {
+    header('location: index.php');
+  }
+  
+  require_once('../classes/account.class.php');
+  require_once('../classes/booking.class.php');
+  require_once('../classes/veterinarian.class.php');
+  $vetClass = new Account();
+  $vetMethods = new Veterinarian();
+  $bookingClass = new Booking();
+  
+  $vetID = $_SESSION['vetID'];
+  $vetData = $vetClass->fetchVet($vetID); 
+  $vetPets = $vetMethods->vetAppointments($vetID);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,12 +69,16 @@
             </tr>
           </thead>
           <tbody id="appointmentTableBody">
+            <?php foreach($vetPets as $pets): 
+                  $bookingID = $pets['bookingID'];
+                  $appointments = $bookingClass->show($bookingID);
+            ?>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td><?= $appointments['bookingID'] ?></td>
+              <td><?= $appointments['firstName'] . " " . $appointments['lastName'] ?></td>
+              <td><?= $appointments['bookingDate'] ?></td>
+              <td><?= $appointments['bookingTime'] ?></td>
+              <td><?= $appointments['status'] ?></td>
               <td class="d-flex justify-content-center align-items-center">
                 <div class="crud-btn">
                   <a href="" class="edit-btn" data-bs-toggle="modal" data-bs-target="#modal">
@@ -64,6 +86,7 @@
                 </div>
               </td>
             </tr>
+              <?php endforeach; ?>
           </tbody>
         </table>
       </div>

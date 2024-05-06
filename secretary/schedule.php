@@ -1,9 +1,21 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user']) || $_SESSION['user'] != 'secretary') {
+  header('location: index.php');
+}
+
+require_once('../classes/account.class.php');
+$secretaryClass = new Account();
+
+$secretaryID = $_SESSION['secretaryID'];
+$secretaryData = $secretaryClass->fetchSec($secretaryID); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
     $title = 'Schedule';
     require_once('./include/sched.php');
-    // require_once('./include/sec-head.php')
 ?>
 <body>
 <?php

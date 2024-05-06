@@ -70,6 +70,22 @@ class Secretary
             return false;
         }
     }
+    function updateCreds()
+    {
+        $sql = "UPDATE secretary SET secretaryEmail=:secretaryEmail, secretaryUsername=:secretaryUsername, secretaryPassword=:secretaryPassword WHERE secretaryID=:secretaryID;";
+
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':secretaryEmail', $this->secretaryEmail);
+        $query->bindParam(':secretaryUsername', $this->secretaryUsername);
+        $query->bindParam(':secretaryPassword', $this->secretaryPassword);
+        $query->bindParam(':secretaryID', $this->secretaryID);
+
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     function delete($secretaryID)
     {
@@ -112,18 +128,18 @@ class Secretary
         }
         return $data;
     }
-    
+
     function showSecretaryByID($secretaryID)
-{
-    $sql = "SELECT secretaryID, CONCAT(secretaryFirstname, ' ', secretaryLastname) AS fullName, created_at FROM secretary WHERE secretaryID = :secretaryID ORDER BY secretaryLastname ASC, secretaryFirstname ASC;";
-    $query = $this->db->connect()->prepare($sql);
-    $query->bindParam(':secretaryID', $secretaryID);
-    $data = null;
-    if ($query->execute()) {
-        $data = $query->fetch(); 
+    {
+        $sql = "SELECT secretaryID, CONCAT(secretaryFirstname, ' ', secretaryLastname) AS fullName, created_at FROM secretary WHERE secretaryID = :secretaryID ORDER BY secretaryLastname ASC, secretaryFirstname ASC;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':secretaryID', $secretaryID);
+        $data = null;
+        if ($query->execute()) {
+            $data = $query->fetch();
+        }
+        return $data;
     }
-    return $data;
-}
 
 }
 

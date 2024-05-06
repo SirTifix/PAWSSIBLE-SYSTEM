@@ -182,6 +182,18 @@ class Booking
         }
         return $data;
     }
+    function showRecent($bookingID)
+    {
+        $sql = "SELECT * FROM booking ORDER BY bookingDate DESC LIMIT 4;";
+        $query = $this->db->connect()->prepare($sql);
+        if ($query->execute()) {
+            $data = $query->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            $data = null;
+        }
+        return $data;
+    }
+
     function showCustomerBooking($customerID)
     {
         $sql = "SELECT * FROM booking WHERE customerID = :customerID;";

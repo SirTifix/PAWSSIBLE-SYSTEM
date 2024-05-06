@@ -89,6 +89,32 @@ class Account
 
         return false;
     }
+    function updateAdmin()
+    {
+        $sql = "UPDATE admin SET adminUsername=:adminUsername, adminEmail=:adminEmail, adminPassword=:adminPassword WHERE adminID=:adminID;";
+
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':adminUsername', $this->adminUsername);
+        $query->bindParam(':adminEmail', $this->adminEmail);
+        $query->bindParam(':adminPassword', $this->adminPassword);
+        $query->bindParam(':adminID', $this->adminID);
+
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function fetchAdmin($adminID)
+    {
+        $sql = "SELECT * FROM admin WHERE adminID = :adminID;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':adminID', $adminID);
+        if ($query->execute()) {
+            $data = $query->fetch();
+        }
+        return $data;
+    }
 
     function sign_in_vet()
     {
@@ -107,7 +133,16 @@ class Account
 
         return false;
     }
-
+    function fetchVet($vetID)
+    {
+        $sql = "SELECT * FROM veterinarian WHERE vetID = :vetID;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':vetID', $vetID);
+        if ($query->execute()) {
+            $data = $query->fetch();
+        }
+        return $data;
+    }
 
     function sign_in_secretary()
     {
@@ -125,6 +160,16 @@ class Account
         }
 
         return false;
+    }
+    function fetchSec($secretaryID)
+    {
+        $sql = "SELECT * FROM secretary WHERE secretaryID = :secretaryID;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':secretaryID', $secretaryID);
+        if ($query->execute()) {
+            $data = $query->fetch();
+        }
+        return $data;
     }
 
 }

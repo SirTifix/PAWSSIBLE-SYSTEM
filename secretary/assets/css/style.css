@@ -25,7 +25,8 @@ header {
 
 .logosec{
     height: auto;
-    width: 100px;
+    width: 80px;
+    margin: 0.5em 0;
 }
 
 .logo-text {

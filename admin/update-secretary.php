@@ -28,6 +28,7 @@ if(isset($_GET['secretaryID'])) {
             $secretaryEmail = $_POST['secretaryEmail'];
             $secretaryUsername = $_POST['secretaryUsername'];
             $secretaryPassword = $_POST['secretaryPassword'];
+            $hashedPassword = password_hash($secretaryPassword, PASSWORD_DEFAULT);
             $created_at = $currentDateTime;
             $secretaryRePassword = $_POST['secretaryRePassword'];
 
@@ -40,7 +41,7 @@ if(isset($_GET['secretaryID'])) {
                 $secretaryClass->secretaryPhone = $secretaryPhoneNumber;
                 $secretaryClass->secretaryEmail = $secretaryEmail;
                 $secretaryClass->secretaryUsername = $secretaryUsername;
-                $secretaryClass->secretaryPassword = $secretaryPassword;
+                $secretaryClass->secretaryPassword = $hashedPassword;
                 $secretaryClass->secretaryID = $secretaryID;
 
                 $result = $secretaryClass->update();

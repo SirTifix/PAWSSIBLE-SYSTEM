@@ -1,4 +1,17 @@
 <?php
+  session_start();
+
+  if (!isset($_SESSION['user']) || $_SESSION['user'] != 'veterinarian') {
+    header('location: index.php');
+  }
+  
+  require_once('../classes/account.class.php');
+  $vetClass = new Account();
+  
+  $vetID = $_SESSION['vetID'];
+  $vetData = $vetClass->fetchVet($vetID); 
+?>
+<?php
 require_once('../classes/customer.class.php');
 require_once('../classes/pet.class.php');
 require_once('./tools/functions.php');

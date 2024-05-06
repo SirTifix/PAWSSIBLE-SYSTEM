@@ -21,6 +21,47 @@ if (isset($_GET['customerID'])) {
   echo "Customer ID is missing.";
   exit;
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $customer = new Customer();
+  $pet = new Pet();
+
+  $customer->customerID = $customer_id;
+  $customer->customerFirstname = $_POST['customerFirstname'];
+  $customer->customerMiddlename = $_POST['customerMiddlename'];
+  $customer->customerLastname = $_POST['customerLastname'];
+  $customer->customerDOB = $_POST['customerDOB'];
+  $customer->customerCity = $_POST['customerCity'];
+  $customer->customerAddress = $_POST['customerAddress'];
+  $customer->customerEmail = $_POST['customerEmail'];
+  $customer->customerState = $_POST['customerState'];
+  $customer->customerPostal = $_POST['customerPostal'];
+  $customer->customerPhone = $_POST['num'];
+
+  $customerUpdated = $customer->update();
+
+  $petUpdated = false; // Initialize $petUpdated before the loop
+  foreach ($_POST['pet'] as $petData) {
+      $pet->petID = $petData['petId'];
+      $pet->petName = $petData['petName'];
+      $pet->petBirthdate = $petData['petBirthdate'];
+      $pet->petAge = $petData['petAge'];
+      $pet->petBreed = $petData['petBreed'];
+      $pet->petType = $petData['petType'];
+      $pet->petGender = $petData['petGender'];
+      $pet->petWeight = $petData['petWeight'];
+      $pet->petColor = $petData['petColor'];
+      $pet->customerID = $customer_id;
+      
+      // Update $petUpdated based on the success of each update operation
+      if ($pet->update()) {
+          $petUpdated = true; // Set $petUpdated to true if any update is successful
+      } else {
+          $petUpdated = false; // Set $petUpdated to false if any update fails
+          // Optionally, you can break out of the loop or handle the error differently
+      }
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -131,6 +172,7 @@ require_once ('./include/admin-head.php');
           <?php
           $pets = $pet->fetchByCustomerId($customer_id);
           if ($pets) {
+            $index = 0;
             foreach ($pets as $petData) {
               ?>
                 <div class="vet-head-form mt-4">
@@ -146,45 +188,45 @@ require_once ('./include/admin-head.php');
                   </div>
 
                   <div class="form-body">
-                
+                        <input type="hidden" name="pet[<?php echo $index; ?>][petId]" value="<?php echo $petData['petId']; ?>">
                         <div class="d-flex mt-3">
                           <label for="petName" class="forms-label fw-bold">Pet Name:</label>
-                          <input type="text" class="form-control" id="petName" name="petName" required value="<?php echo $petData['petName']; ?>">
+                          <input type="text" class="form-control" id="petName" name="pet[<?php echo $index; ?>][petName]" required value="<?php echo $petData['petName']; ?>">
                         </div>
 
                         <div class="d-flex">
                           <label for="petBirthdate" class="forms-label fw-bold">Birth Date:</label>
-                          <input type="date" class="form-control" id="petBirthdate" name="petBirthdate" required value="<?php echo $petData['petBirthdate']; ?>">
+                          <input type="date" class="form-control" id="petBirthdate" name="pet[<?php echo $index; ?>][petBirthdate]" required value="<?php echo $petData['petBirthdate']; ?>">
                         </div>
 
                         <div class="d-flex">
                           <label for="petAge" class="forms-label fw-bold">Pet Age:</label>
-                          <input type="text" class="form-control" id="petAge" name="petAge" required value="<?php echo $petData['petAge']; ?>">
+                          <input type="text" class="form-control" id="petAge" name="pet[<?php echo $index; ?>][petAge]" required value="<?php echo $petData['petAge']; ?>">
                         </div>
 
                         <div class="d-flex">
                           <label for="petBreed" class="forms-label fw-bold">Breed:</label>
-                          <input type="text" class="form-control" id="petBreed" name="petBreed" required value="<?php echo $petData['petBreed']; ?>">
+                          <input type="text" class="form-control" id="petBreed" name="pet[<?php echo $index; ?>][petBreed]" required value="<?php echo $petData['petBreed']; ?>">
                         </div>
 
                         <div class="d-flex">
                           <label for="petType" class="forms-label fw-bold">Pet Type:</label>
-                          <input type="text" class="form-control" id="petType" name="petType" required value="<?php echo $petData['petType']; ?>">
+                          <input type="text" class="form-control" id="petType" name="pet[<?php echo $index; ?>][petType]" required value="<?php echo $petData['petType']; ?>">
                         </div>
 
                         <div class="d-flex">
                           <label for="petGender" class="forms-label fw-bold">Gender:</label>
-                          <input type="text" class="form-control" id="petGender" name="petGender" required value="<?php echo $petData['petGender']; ?>">
+                          <input type="text" class="form-control" id="petGender" name="pet[<?php echo $index; ?>][petGender]" required value="<?php echo $petData['petGender']; ?>">
                         </div>
 
                         <div class="d-flex">
                           <label for="petWeight" class="forms-label fw-bold">Weight:</label>
-                          <input type="text" class="form-control" id="petWeight" name="petWeight" required value="<?php echo $petData['petWeight']; ?>">
+                          <input type="text" class="form-control" id="petWeight" name="pet[<?php echo $index; ?>][petWeight]" required value="<?php echo $petData['petWeight']; ?>">
                         </div>
 
                         <div class="d-flex">
                           <label for="petColor" class="forms-label fw-bold">Color:</label>
-                          <input type="text" class="form-control" id="petColor" name="petColor" required value="<?php echo $petData['petColor']; ?>">
+                          <input type="text" class="form-control" id="petColor" name="pet[<?php echo $index; ?>][petColor]" required value="<?php echo $petData['petColor']; ?>">
                         </div>
                 
                       </div>
@@ -192,19 +234,19 @@ require_once ('./include/admin-head.php');
 
                     <div class="m-4 d-flex justify-content-between align-items-center">
                       <div>
-                        <a href="transfer-ownership.php" class="transfer-btn btn-secondary">Transfer Ownership</a>
+                        <a href="transfer-ownership.php?petId=<?php echo $petData['petId']?>" class="transfer-btn btn-secondary">Transfer Ownership</a>
                       </div>
                       <div>
-                        <a href="update-medicalRecord.php" class="back-btn btn-secondary">View Medical History</a>
+                        <a href="update-medicalRecord.php?petId=<?php echo $petData['petId']?>" class="back-btn btn-secondary">View Medical History</a>
                       </div>
                     </div>
                     <?php
-  }
-} else {
-  echo "No pets found for this customer.";
-}
-?>
-          </form>
+                  $index++;
+              }
+          } else {
+              echo "No pets found for this customer.";
+          }
+          ?>
       </div>
     </section>
 
@@ -215,7 +257,7 @@ require_once ('./include/admin-head.php');
                 </div>
                 <div class="ms-5 ps-5">
                     <button type="submit" name="save" class="save-vet-btn btn-secondary"
-                        id="addCustomerButton">Save</button>
+                        id="save">Save</button>
                 </div>
             </div>
         </section>

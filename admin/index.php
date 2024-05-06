@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -11,8 +14,8 @@ if (isset($_POST['login'])) {
     $user->adminPassword = htmlentities($_POST['password']);
     if ($user->sign_in_admin()) {
         $_SESSION['user'] = 'admin';
-        $_SESSION['username'] = $user->adminUsername;
-        header('location: dashboard.php');
+        $_SESSION['adminID'] = $user->id;
+        echo "<script>window.location.href = 'dashboard.php';</script>";
     } else {
         $error = 'Invalid email/password. Try Again.';
     }
@@ -36,14 +39,20 @@ if (isset($_POST['login'])) {
                                 <img src="./assets/img/clinic-logo.png" style="width: 300px" alt="">
                             </p>    
                             <h1 class="h1 my-5 text-center" style="color: #5263AB; font-weight: bold;">LOGIN</h1>
-                            <form action="" method="post">
+
+                            <?php if(isset($error)): ?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <div><?php echo $error; ?></div>
+                                </div>
+                            <?php endif; ?>
+                            <form action="" method="post" class="needs-validation" novalidate>
                                 <div class="mb-5 input-group">
                                     <span class="input-group-text pe-4" style="background-color: #C1CCF8;"><i class="fa fa-user ps-2"></i></span>
-                                    <input type="text" class="form-control py-2" style="border-left: none; background-color: #C1CCF8;" id="username" name="username" placeholder="Username">
+                                    <input type="text" class="form-control py-2" style="border-left: none; background-color: #C1CCF8;" id="username" name="username" placeholder="Username" required>
                                 </div>
                                 <div class="mb-4 input-group">
                                     <span class="input-group-text pe-4" style="background-color: #C1CCF8;"><i class="fa fa-lock ps-2"></i></span>
-                                    <input type="password" class="form-control py-2" style="border-left: none; background-color: #C1CCF8;" id="password" name="password" placeholder="Password">
+                                    <input type="password" class="form-control py-2" style="border-left: none; background-color: #C1CCF8;" id="password" name="password" placeholder="Password" required>
                                 </div>
                                 <div class="form-group text-end">
                                     <a href="forgot-password.php" style="color: #8A8A8A; font-size: 15px;">Forgot Password?</a>

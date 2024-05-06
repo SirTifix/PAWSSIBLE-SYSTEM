@@ -75,7 +75,22 @@ class Veterinarian
             return false;
         }
     }
+    function updateCreds()
+    {
+        $sql = "UPDATE veterinarian SET vetEmail=:vetEmail, vetUsername=:vetUsername, vetPassword=:vetPassword WHERE vetID=:vetID;";
 
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':vetEmail', $this->vetEmail);
+        $query->bindParam(':vetUsername', $this->vetUsername);
+        $query->bindParam(':vetPassword', $this->vetPassword);
+        $query->bindParam(':vetID', $this->vetID);
+
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     function updateStatus()
     {
         $sql = "UPDATE veterinarian SET vetStatus=:vetStatus WHERE vetID=:vetID;";
@@ -168,6 +183,15 @@ class Veterinarian
         }
         return $recordCount;
     }
-
+    function vetAppointments($vetID)
+    {
+        $sql = "SELECT * FROM booking_pet WHERE vetID = :vetID;";
+        $query = $this->db->connect()->prepare($sql);
+        $query->bindParam(':vetID', $vetID);
+        if ($query->execute()) {
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $result;
+    }
 
 }

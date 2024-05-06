@@ -133,11 +133,11 @@ class Pet
 
     function fetch($record_id)
     {
-        $sql = "SELECT * FROM pet WHERE petID = :petID;";
+        $sql = "SELECT * FROM pet WHERE petId = :petId;";
         $query = $this->db->connect()->prepare($sql);
-        $query->bindParam(':petID', $record_id);
+        $query->bindParam(':petId', $record_id);
         if ($query->execute()) {
-            $data = $query->fetchAll();
+            $data = $query->fetch();
         }
         return $data;
     }

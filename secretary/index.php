@@ -9,7 +9,9 @@ if (isset($_POST['login'])) {
     $user->secretaryUsername = htmlentities($_POST['username']);
     $user->secretaryPassword = htmlentities($_POST['password']);
     if ($user->sign_in_secretary()) {
-        header('location: dashboard.php');
+        $_SESSION['user'] = 'secretary';
+        $_SESSION['secretaryID'] = $user->id;
+        echo "<script>window.location.href = 'dashboard.php';</script>";
     } else {
         $error = 'Invalid email/password. Try Again.';
     }

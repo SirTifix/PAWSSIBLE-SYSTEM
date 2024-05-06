@@ -1,4 +1,16 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['user']) || $_SESSION['user'] != 'secretary') {
+  header('location: index.php');
+}
+
+require_once('../classes/account.class.php');
+$secretaryClass = new Account();
+
+$secretaryID = $_SESSION['secretaryID'];
+$secretaryData = $secretaryClass->fetchSec($secretaryID); 
+
 require_once('../classes/customer.class.php');
 require_once('../classes/pet.class.php');
 require_once('./tools/functions.php');

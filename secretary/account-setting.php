@@ -1,3 +1,53 @@
+<?php
+session_start();
+require_once('../classes/account.class.php');
+require_once('../classes/secretary.class.php');
+
+$secretaryClass = new Account();
+$secretaryUpdate = new Secretary();
+
+if(isset($_SESSION['secretaryID'])) {
+    $secretaryID = $_SESSION['secretaryID'];
+    $secretaryData = $secretaryClass->fetchSec($secretaryID); 
+
+    if($secretaryData) {
+        $secretaryUsername = $secretaryData['secretaryUsername'];
+        $secretaryEmail = $secretaryData['secretaryEmail'];
+
+        if(isset($_POST['submit'])) {
+            $secretaryUsername = $_POST['secretaryUsername'];
+            $secretaryEmail = $_POST['secretaryEmail'];
+            $secretaryPassword = $_POST['secretaryPassword'];
+            $hashedPassword = password_hash($secretaryPassword, PASSWORD_DEFAULT);
+            $secretaryRePassword = $_POST['secretaryRePassword'];
+
+            if($secretaryPassword !== $secretaryRePassword) {
+                echo "Passwords do not match.";
+            } else {
+                $secretaryUpdate->secretaryUsername = $secretaryUsername;
+                $secretaryUpdate->secretaryEmail = $secretaryEmail;
+                $secretaryUpdate->secretaryPassword = $hashedPassword;
+                $secretaryUpdate->secretaryID = $secretaryID;
+
+                $result = $secretaryUpdate->updateCreds();
+
+                if($result) {
+                    echo "Secretary data updated successfully.";
+                    header("Location: dashboard.php");
+                } else {
+                    echo "Failed to update secretary data.";
+                }
+            }
+        }
+    } else {
+        echo "Error: secretary data not found.";
+        exit();
+    }
+} else {
+    echo "Error: secretaryID not provided.";
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php
@@ -28,50 +78,44 @@
                         <div class="d-flex mt-3 align-items-center ">
                             <div class="my-1 align-items-center ps-5">
                             <label for="emailadd" class="form-label-setting">Email Address</label>
-                            <input type="text" class="form-control" id="emailadd" name="emailadd" required>
+                            <input type="text" class="form-control" id="emailadd" name="emailadd" value="<?=$secretaryEmail?>" readonly>
                             </div>
                         </div>  
                         <div class="d-flex mt-3 align-items-center">
                             <div class="my-1 align-items-center ps-5">
                                 <label for="username" class="form-label-setting">Username </label>
-                                <input type="text" class="form-control" id="username" name="username" required>
-                            </div>
-                        </div> 
-                        <div class="d-flex mt-3 align-items-center">
-                            <div class="my-1 align-items-center ps-5">
-                                <label for="currentpass" class="form-label-setting">Current Password </label>
-                                <input type="text" class="form-control" id="currentpass" name="currentpass" required>
+                                <input type="text" class="form-control" id="username" name="username" value="<?=$secretaryUsername?>" readonly>
                             </div>
                         </div> 
                     </div> 
                     <div class="new-account-con col-lg-6 col-md-6">
                         <div class="d-flex mt-3 align-items-center col-12 ">
                             <div class="my-1 align-items-center ps-5">
-                            <label for="change_email" class="form-label-setting">Change Email Address</label>
-                            <input type="text" class="form-control" id="change_email" name="change_email" required>
+                            <label for="secretaryEmail" class="form-label-setting">Change Email Address</label>
+                            <input type="text" class="form-control" id="secretaryEmail" name="secretaryEmail" required>
                             </div>
                         </div>  
                         <div class="d-flex mt-3 align-items-center col-12 ">
                             <div class="my-1 align-items-center ps-5">
-                                <label for="change_username" class="form-label-setting">Change Username </label>
-                                <input type="text" class="form-control" id="change_username" name="change_username" required>
+                                <label for="secretaryUsername" class="form-label-setting">Change Username </label>
+                                <input type="text" class="form-control" id="secretaryUsername" name="secretaryUsername" required>
                             </div>
                         </div> 
                         <div class="d-flex mt-3 align-items-center col-12 ">
                             <div class="my-1 align-items-center ps-5">
-                                <label for="newpass" class="form-label-setting">New Password </label>
-                                <input type="text" class="form-control" id="newpass" name="newpass" required>
+                                <label for="secretaryPassword" class="form-label-setting">New Password </label>
+                                <input type="password" class="form-control" id="secretaryPassword" name="secretaryPassword" required>
                             </div>
                         </div> 
                         <div class="d-flex mt-3 align-items-center col-12 ">
                             <div class="my-1 align-items-center ps-5">
-                                <label for="confirmpass" class="form-label-setting">Confirm Password </label>
-                                <input type="text" class="form-control" id="confirmpass" name="confirmpass" required>
+                                <label for="secretaryRePassword" class="form-label-setting">Confirm Password </label>
+                                <input type="password" class="form-control" id="secretaryRePassword" name="secretaryRePassword" required>
                             </div>
                         </div> 
                     </div> 
                     <div class="col-md-12 mt-3 text-md-end">
-                        <button type="submit" class="save-vet-btn btn-secondary" id="addStaffButton">Save</button>
+                        <button type="submit" name="submit" class="save-vet-btn btn-secondary" id="submit">Save</button>
                     </div>
                 </form>
             </div>
